@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class petani extends Model
 {
     use HasFactory;
+    protected $table = 'mstr_petani';
 }
