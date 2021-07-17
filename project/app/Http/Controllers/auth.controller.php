@@ -10,10 +10,13 @@ class authcontroller extends Controller
     // check user is already exist or not
     public function getUser(string $username)
     {
+        // find username found or not
         $data = user::where('username', $username)->first();
+        // return data
         return $data === null
             ? ['fail' => true]
             : ['data' => [
+                'id_user' => $data->id_user,
                 'username' => $data->username,
                 'password' => $data->password,
                 'nama' => $data->nama,
