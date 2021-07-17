@@ -1,1 +1,3 @@
-const URL = document.querySelector(".baseurl").value;
+const URL = document
+  .querySelector('meta[name=baseurl]')
+  .getAttribute('aria-valuemin');

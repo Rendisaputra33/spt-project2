@@ -5,17 +5,19 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>SPT | {{ $title === null ? 'Page' : $title }}</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('assets/vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <meta name="baseurl" aria-valuemin="{{ url('/') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" />
     @yield('specific-css')
 </head>
 
 <body>
+    <input type="hidden" name="token" value="{{ csrf_token() }}">
     {{-- content section --}}
     @yield('content')
     {{-- end content section --}}
