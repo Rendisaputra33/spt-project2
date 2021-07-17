@@ -26,36 +26,36 @@ Route::prefix('auth')->group(function () {
 // routing master user
 Route::prefix('user')->group(function () {
     // default routing
-    Route::get('/', [usercontroller::class, 'index']);
-    Route::put('/{id}', [usercontroller::class, 'update']);
-    Route::get('/{id}', [usercontroller::class, 'delete']);
+    Route::get('/', [usercontroller::class, 'indexMethod'])->middleware('authuser');
+    Route::put('/{id}', [usercontroller::class, 'updateMethod'])->middleware('authuser');
+    Route::get('/{id}', [usercontroller::class, 'deleteMethod'])->middleware('authuser');
     // json handler
     Route::prefix('json')->group(function () {
-        Route::get('/{id}', [usercontroller::class, 'getUpdate']);
+        Route::get('/{id}', [usercontroller::class, 'getupMethod'])->middleware('authuser');
     });
 });
 // routing master petani
 Route::prefix('petani')->group(function () {
     // default routing
-    Route::get('/', [petanicontroller::class, 'index']);
-    Route::post('/', [petanicontroller::class, 'add']);
-    Route::put('/{id}', [petanicontroller::class, 'update']);
-    Route::get('/{id}', [petanicontroller::class, 'delete']);
+    Route::get('/', [petanicontroller::class, 'indexMethod'])->middleware('authuser');
+    Route::post('/', [petanicontroller::class, 'addMethod'])->middleware('authuser');
+    Route::put('/{id}', [petanicontroller::class, 'updateMethod'])->middleware('authuser');
+    Route::get('/{id}', [petanicontroller::class, 'deleteMethod'])->middleware('authuser');
     // json handler
     Route::prefix('json')->group(function () {
-        Route::get('/{id}', [petanicontroller::class, 'getUpdate']);
+        Route::get('/{id}', [petanicontroller::class, 'getupMethod'])->middleware('authuser');
     });
 });
 // routing master pabrik
 Route::prefix('pabrik')->group(function () {
     // default routing
-    Route::get('/', [pabrikcontroller::class, 'index']);
-    Route::post('/', [pabrikcontroller::class, 'add']);
-    Route::put('/{id}', [pabrikcontroller::class, 'update']);
-    Route::get('/{id}', [pabrikcontroller::class, 'delete']);
+    Route::get('/', [pabrikcontroller::class, 'indexMethod'])->middleware('authuser');
+    Route::post('/', [pabrikcontroller::class, 'addMethod'])->middleware('authuser');
+    Route::put('/{id}', [pabrikcontroller::class, 'updateMethod'])->middleware('authuser');
+    Route::get('/{id}', [pabrikcontroller::class, 'deleteMethod'])->middleware('authuser');
     // json handler
     Route::prefix('json')->group(function () {
-        Route::get('/{id}', [pabrikcontroller::class, 'getUpdate']);
+        Route::get('/{id}', [pabrikcontroller::class, 'getupMethod'])->middleware('authuser');
     });
 });
 
