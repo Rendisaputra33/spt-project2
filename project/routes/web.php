@@ -19,5 +19,5 @@ Route::prefix('/auth', function () {
 });
 
 Route::get('/', function () {
-    return view('template/template');
+    return view('login');
 });
