@@ -16,6 +16,8 @@ class basicAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        return session('id_user') !== null
+            ? $next($request)
+            : redirect()->back()->with('unauthorize');
     }
 }
