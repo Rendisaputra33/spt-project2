@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class authcontroller extends Controller
 {
     // check user is already exist or not
-    public function getUser($username)
+    public function getUser(string $username)
     {
         $data = user::where('username', $username)->first();
         return $data === null
@@ -20,19 +20,36 @@ class authcontroller extends Controller
                 'level' => $data->level
             ]];
     }
+    // register user / add account user
+    public function register(Request $req)
+    {
+        $checkaccount = $this->getUser($req->username);
+        // check username already exist or not
+        if (!isset($checkaccount['fail'])) {
+            return redirect()->back()->with('error', 'username telah terdaftar!');
+        }
+        // insert data and redirect
+        return user::insert([
+            'username' => $req->username,
+            'nama' => $req->nama,
+            'password' => bcrypt($req->password),
+            'level' => $req->level
+        ]) ? redirect()->back()->with('sukses', 'data user berhasil ditambah')
+            : redirect()->back()->with('error', 'username telah terdaftar!');
+    }
     // authenticate user login
     public function login(Request $req)
     {
         $checkaccount = $this->getUser($req->username);
-
+        // check username already exist or not
         if (isset($checkaccount['fail'])) {
             return redirect()->back()->with('error', 'username tidak terdaftar!');
         }
-
+        // check password wo=rong or not
         if (!password_verify($req->password, $checkaccount['data']['password'])) {
             return redirect()->back()->with('error', 'password salah!');;
         }
-
+        // set user session end redirect to dashboard
         $this->createSession($req, $checkaccount['data']);
         return redirect('dashbord');
     }
