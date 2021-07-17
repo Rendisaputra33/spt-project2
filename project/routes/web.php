@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 // routing authenticate
 Route::prefix('auth')->group(function () {
-    Route::post('login', [authcontroller::class, 'login']);
+    Route::post('login', [authcontroller::class, 'login'])->name('login');
     Route::get('logout', [authcontroller::class, 'logout']);
     Route::post('register', [authcontroller::class, 'register']);
 });
@@ -61,5 +61,5 @@ Route::prefix('pabrik')->group(function () {
 
 
 Route::get('/', function () {
-    return view('auth');
+    return view('login', ['title' => 'Login']);
 });
