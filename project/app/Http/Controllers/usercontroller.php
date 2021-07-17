@@ -46,4 +46,11 @@ class usercontroller extends Controller
             ? redirect('/user')->with('sukses', 'data berhasil di update')
             : redirect()->back()->with('error', 'data gagal di update');
     }
+    // get data update for update data user
+    public function getupMethod()
+    {
+        return response()->json([
+            'data' => user::where('id_user', request('id'))->first()
+        ]);
+    }
 }
