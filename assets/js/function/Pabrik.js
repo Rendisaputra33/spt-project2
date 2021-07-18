@@ -1,6 +1,9 @@
-const URL = document.querySelector('.baseurl').value;
+const URL = document
+  .querySelector('meta[name=baseurl]')
+  .getAttribute('aria-valuemin');
 const URL_PABRIK = URL + '/pabrik/';
 
+// declaration input form
 const INPUT = {
   nama: document.querySelector('input[name=nama]'),
   kode: document.querySelector('input[name=kode]'),
@@ -29,6 +32,6 @@ const setFormUpdate = result => {
   INPUT.kode.value = result.kode_pabrik;
 };
 
-// function execution here
+// global function execution here
 
 bindingUpdate();

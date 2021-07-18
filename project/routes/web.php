@@ -32,7 +32,7 @@ Route::prefix('user')->group(function () {
     Route::get('/{id}', [usercontroller::class, 'deleteMethod'])->middleware('authuser');
     // json handler
     Route::prefix('json')->group(function () {
-        Route::get('/{id}', [usercontroller::class, 'getupMethod'])->middleware('authuser');
+        Route::get('/', [usercontroller::class, 'getupMethod'])->middleware('authuser');
     });
 });
 // routing master petani
@@ -44,7 +44,7 @@ Route::prefix('petani')->group(function () {
     Route::get('/{id}', [petanicontroller::class, 'deleteMethod'])->middleware('authuser');
     // json handler
     Route::prefix('json')->group(function () {
-        Route::get('/{id}', [petanicontroller::class, 'getupMethod'])->middleware('authuser');
+        Route::get('/', [petanicontroller::class, 'getupMethod'])->middleware('authuser');
     });
 });
 // routing master pabrik

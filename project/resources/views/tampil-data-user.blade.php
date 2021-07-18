@@ -31,10 +31,9 @@
                                         <td>{{ $item->level === 1 ? 'Admin' : 'Super Admin' }}</td>
                                         <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-sm btn-warning btn-icon-text">
+                                            <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-md-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_user }}">
                                                 <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
-                                            <button type="button" class="btn btn-sm btn-danger btn-icon-text">
-                                                <i class="mdi mdi-delete btn-icon-prepend"></i> Hapus </button>
+                                            <a class="btn btn-sm btn-danger btn-icon-text delete"> <i class="mdi mdi-delete btn-icon-prepend"></i> Hapus </a>
                                         </td>
 
                                     </tr>
@@ -53,8 +52,9 @@
         </footer>
     </div>
     <!-- modal untuk tambah data -->
-    <form action="/berangkat" method="post">
+    <form action="{{ url('/user') }}" method="post">
         @csrf
+        <div id="method"></div>
         <div class="modal fade" id="modal-md-tambah">
             <div class="modal-dialog modal-md">
                 <div class="modal-content">
@@ -65,14 +65,19 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group" id="reg">
+                        <div class="form-group">
                             <label for="exampleInputPassword1">Nama</label>
-                            <input type="text" class="form-control" placeholder="REG" name="reg" required>
+                            <input type="text" class="form-control" placeholder="Nama" name="nama" required>
                             <span class="text-dark"></span>
                         </div>
-                        <div class="form-group" id="nama_pemilik">
-                            <label for="exampleInputPassword1">Nama Pemilik</label>
-                            <input type="text" class="form-control" placeholder="Nama Pemilik" name="nama_pemilik" required>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Username</label>
+                            <input type="text" class="form-control" placeholder="Username" name="useranme" required>
+                            <span class="text-dark"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" placeholder="Password" name="password" required>
                             <span class="text-dark"></span>
                         </div>
                     </div>
@@ -87,4 +92,7 @@
         <!-- /.modal-dialog -->
         </div>
     </form>
+@endsection
+@section('specific-js')
+    <script src="{{ asset('assets/js/function/User.js') }}"></script>
 @endsection
