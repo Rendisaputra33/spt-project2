@@ -64,4 +64,15 @@ class authcontroller extends Controller
         $req->session()->put('name', $data['nama']);
         $req->session()->put('role', $data['level']);
     }
+    // function logout
+    public function Logout()
+    {
+        if (session()->has('username')) {
+            session()->pull('name');
+            session()->pull('username');
+            session()->pull('user_id');
+            session()->pull('role');
+        }
+        return redirect('/');
+    }
 }
