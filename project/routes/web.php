@@ -60,5 +60,9 @@ Route::prefix('pabrik')->group(function () {
     });
 });
 
-Route::get('/', [redirectcontroller::class, 'indexMethod']);
-Route::get('dashboard', [redirectcontroller::class, 'dashMethod']);
+
+Route::get('/', function () {
+    return view('dashboard', ['title' => 'Dashboard']);
+});
+// Route::get('/', [redirectcontroller::class, 'indexMethod']);
+// Route::get('dashboard', [redirectcontroller::class, 'dashMethod']);
