@@ -75,7 +75,7 @@
                   </a>
               </li> --}}
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="{{ url('/dashboard') }}">
                             <i class="mdi mdi-apps menu-icon"></i>&nbsp;
                             <span class="menu-title">Dashboard</span>
                         </a>
