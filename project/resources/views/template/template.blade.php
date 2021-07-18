@@ -29,7 +29,7 @@
         .sidebar.sidebar-offcanvas.pt-5 {
             height: 100vh;
         }
-
+        
         @media only screen and (max-width: 576px) {
             nav.navbar.default-layout-navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row {
                 display: flex !important;
@@ -43,6 +43,12 @@
             .pt-5 {
                 padding-top: 0rem !important;
             }
+            .main-panel{
+              margin-top: 5rem !important;
+            }
+            .table.table-hover{
+          overflow: scroll !important;
+        }
         }
 
     </style>
