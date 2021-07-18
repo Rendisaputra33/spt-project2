@@ -29,7 +29,6 @@
         .sidebar.sidebar-offcanvas.pt-5 {
             height: 100vh;
         }
-        
         @media only screen and (max-width: 576px) {
             nav.navbar.default-layout-navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row {
                 display: flex !important;
@@ -44,11 +43,15 @@
                 padding-top: 0rem !important;
             }
             .main-panel{
-              margin-top: 5rem !important;
+                margin-top: 5rem !important;
+
             }
-            .table.table-hover{
-          overflow: scroll !important;
-        }
+            .card-body{
+                padding: 0 !important;
+                width: 100% !important;
+                overflow: scroll !important;
+            }
+            
         }
 
     </style>
@@ -59,7 +62,7 @@
 
 <body>
 
-    <div class="container-scroller">
+    <div class="container-scroller bg-white">
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -71,7 +74,7 @@
                 </button>
             </div>
         </nav>
-        <div class="container-fluid page-body-wrapper p-0">
+        <div class="container-fluid page-body-wrapper p-0 bg-light">
             <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas pt-5" id="sidebar">
                 <ul class="nav">

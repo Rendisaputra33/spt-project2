@@ -1,7 +1,7 @@
 
 @extends('template.template')
 @section('content')
-    <div class="main-panel">
+    <div class="main-panel bg-white">
         <div class="content-wrapper">
             <div class="page-header">
                 <h3 class="page-title">
