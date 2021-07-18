@@ -41,10 +41,10 @@ class pabrikcontroller extends Controller
             : redirect()->back()->with('error', 'data gagal di hapus');
     }
     // get data update for update data pabrik
-    public function getupMethod()
+    public function getupMethod($id)
     {
         return response()->json([
-            'data' => pabrik::where('id_pabrik', request('id'))->first()
+            'data' => pabrik::where('id_pabrik', $id)->first()
         ]);
     }
 }
