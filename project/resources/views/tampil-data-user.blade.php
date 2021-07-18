@@ -52,7 +52,7 @@
         </footer>
     </div>
     <!-- modal untuk tambah data -->
-    <form action="{{ url('/user') }}" method="post">
+    <form action="{{ url('/auth/register') }}" method="post" id="form-">
         @csrf
         <div id="method"></div>
         <div class="modal fade" id="modal-md-tambah">
@@ -82,14 +82,12 @@
                         </div>
                         <div class="form-group">
                             <label for="level">Level</label>
-                            <select class="form-control" id="level">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                              <option>5</option>
+                            <select class="form-control" name="level" id="level">
+                                <option selected value="">Pilih</option>
+                                <option value="1">Admin</option>
+                                <option value="2">Super Admin</option>
                             </select>
-                          </div>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">

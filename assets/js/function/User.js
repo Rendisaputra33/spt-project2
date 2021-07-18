@@ -6,11 +6,12 @@ const URL_ROOT = URL + '/user/';
 // declaration input form
 const FORM = {
   close: document.getElementById('close-modal'),
-  action: document.getElementById('modal-md-tambah'),
+  action: document.getElementById('form-'),
   method: document.getElementById('method'),
   nama: document.querySelector('input[name=nama]'),
   password: document.querySelector('input[name=password]'),
   username: document.querySelector('input[name=username]'),
+  level: document.querySelector('select[name=level]'),
 };
 
 // function definition here
@@ -30,6 +31,7 @@ const clearForm = () => {
   FORM.nama.value = '';
   FORM.username.value = '';
   FORM.password.value = '';
+  FORM.level.value = '';
 };
 
 const fetchUpdate = async THIS => {
@@ -45,6 +47,7 @@ const setFormUpdate = result => {
   FORM.nama.value = result.nama;
   FORM.username.value = result.username;
   FORM.password.value = result.password;
+  FORM.level.value = result.level;
 };
 
 // global function execution here
