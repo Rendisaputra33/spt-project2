@@ -13,50 +13,10 @@
     <meta name="baseurl" aria-valuemin="{{ url('/') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" />
-    <style>
-        .pt-5 {
-            padding-top: 7rem !important;
-        }
-
-        .menu-icon {
-            margin: 0 1rem 0 0 !important;
-        }
-
-        nav.navbar.default-layout-navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row {
-            display: none !important;
-        }
-
-        .sidebar.sidebar-offcanvas.pt-5 {
-            height: 100vh;
-        }
-        @media only screen and (max-width: 576px) {
-            nav.navbar.default-layout-navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row {
-                display: flex !important;
-                justify-content: flex-end;
-            }
-
-            .sidebar.sidebar-offcanvas.d-flex.align-items-center {
-                align-items: flex-start;
-            }
-
-            .pt-5 {
-                padding-top: 0rem !important;
-            }
-            .main-panel{
-                margin-top: 5rem !important;
-
-            }
-            .card-body{
-                padding: 0 !important;
-                width: 100% !important;
-                overflow: scroll !important;
-            }
-            
-        }
-
-    </style>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alerts-css@1.0.2/assets/css/alerts-css.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/devcss.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/icon/css/all.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alerts-css@1.0.2/assets/css/alerts-css.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.18/sweetalert2.min.css" integrity="sha512-riZwnB8ebhwOVAUlYoILfran/fH0deyunXyJZ+yJGDyU0Y8gsDGtPHn1eh276aNADKgFERecHecJgkzcE9J3Lg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @yield('specific-css')
 </head>
 
@@ -132,7 +92,10 @@
     <script src="{{ asset('assets/js/hoverable-collapse.js') }}"></script>
     <script src="{{ asset('assets/js/misc.js') }}"></script>
     <script src="{{ asset('assets/plugins/icon/js/fontawesome.min.js') }}"></script>
+    {{-- online script --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.18/sweetalert2.min.js" integrity="sha512-mBSqtiBr4vcvTb6BCuIAgVx4uF3EVlVvJ2j+Z9USL0VwgL9liZ638rTANn5m1br7iupcjjg/LIl5cCYcNae7Yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/alerts-css@1.0.1/assets/js/alerts.min.js"></script>
+    {{-- definition script --}}
     <script>
         $(function() {
             var current = location.pathname;

@@ -1,0 +1,40 @@
+.pt-5 {
+  padding-top: 7rem !important;
+}
+
+.menu-icon {
+  margin: 0 1rem 0 0 !important;
+}
+
+nav.navbar.default-layout-navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row {
+  display: none !important;
+}
+
+.sidebar.sidebar-offcanvas.pt-5 {
+  height: 100vh;
+}
+
+@media only screen and (max-width: 576px) {
+  nav.navbar.default-layout-navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row {
+    display: flex !important;
+    justify-content: flex-end;
+  }
+
+  .sidebar.sidebar-offcanvas.d-flex.align-items-center {
+    align-items: flex-start;
+  }
+
+  .pt-5 {
+    padding-top: 0rem !important;
+  }
+
+  .main-panel {
+    margin-top: 5rem !important;
+  }
+
+  .card-body {
+    padding: 0 !important;
+    width: 100% !important;
+    overflow: scroll !important;
+  }
+}
