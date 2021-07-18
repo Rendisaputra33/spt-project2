@@ -54,7 +54,7 @@ class authcontroller extends Controller
         }
         // set user session end redirect to dashboard
         $this->createSession($req, $checkaccount['data']);
-        return redirect('dashbord');
+        return redirect('dashboard');
     }
     // create user session
     private function createSession($req, $data)

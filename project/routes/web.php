@@ -3,6 +3,7 @@
 use App\Http\Controllers\authcontroller;
 use App\Http\Controllers\pabrikcontroller;
 use App\Http\Controllers\petanicontroller;
+use App\Http\Controllers\redirectcontroller;
 use App\Http\Controllers\usercontroller;
 use Illuminate\Support\Facades\Route;
 
@@ -60,6 +61,5 @@ Route::prefix('pabrik')->group(function () {
 });
 
 
-Route::get('/', function () {
-    return view('login', ['title' => 'Login']);
-});
+Route::get('/', [redirectcontroller::class, 'indexMethod']);
+Route::get('dashboard', [redirectcontroller::class, 'dashMethod']);
