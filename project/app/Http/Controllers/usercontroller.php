@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 
 class usercontroller extends Controller
 {
-    public function index()
+    public function indexMethod()
     {
-        return view('tampil-data-user');
+        return view('tampil-data-user', [
+            'title' => 'User'
+        ]);
     }
     // method to delete data user
     public function deleteMethod($id)
