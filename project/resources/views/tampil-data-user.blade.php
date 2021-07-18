@@ -1,54 +1,54 @@
-
 @extends('template.template')
 @section('content')
     <div class="main-panel">
         <div class="content-wrapper">
-        <div class="col-lg-12 p-0 d-flex justify-content-between">
-        <h2>Data User</h2>
-        <button type="button" class="btn btn-success btn-icon" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
-            <i class="mdi mdi-plus"></i>
-          </button>
-        </div>
-          <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
-              <div class="card">
-                <div class="card-body">
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>level</th>
-                        <th>Tanggal Masuk</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                          <td>1</td>
-                          <td>dummy</td>
-                          <td>dummy</td>
-                          <td>dummy</td>
-                          <td>dummy</td>
-                          <td>dummy</td>
-                          <td>
-                              <button type="button" class="btn btn-sm btn-warning btn-icon-text">
-                                  <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
-                              <button type="button" class="btn btn-sm btn-danger btn-icon-text">
-                                  <i class="mdi mdi-delete btn-icon-prepend"></i> Hapus </button>
-                          </td>
+            <div class="col-lg-12 p-0 d-flex justify-content-between">
+                <h2>Data User</h2>
+                <button type="button" class="btn btn-success btn-icon" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
+                    <i class="mdi mdi-plus"></i>
+                </button>
+            </div>
+            <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Username</th>
+                                    <th>level</th>
+                                    <th>Tanggal Masuk</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $no = 1; ?>
+                                @foreach ($data as $item)
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $item->nama }}</td>
+                                        <td>{{ $item->username }}</td>
+                                        <td>{{ $item->level === 1 ? 'Admin' : 'Super Admin' }}</td>
+                                        <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-warning btn-icon-text">
+                                                <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
+                                            <button type="button" class="btn btn-sm btn-danger btn-icon-text">
+                                                <i class="mdi mdi-delete btn-icon-prepend"></i> Hapus </button>
+                                        </td>
 
-                      </tr>
-                    </tbody>
-                  </table>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-              </div>
             </div>
         </div>
         <footer class="footer">
             <div class="container-fluid clearfix">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
             </div>
         </footer>
     </div>
@@ -85,6 +85,6 @@
             <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
-</div>
-</form>
+        </div>
+    </form>
 @endsection

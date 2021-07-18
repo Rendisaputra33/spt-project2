@@ -10,7 +10,8 @@ class usercontroller extends Controller
     public function indexMethod()
     {
         return view('tampil-data-user', [
-            'title' => 'User'
+            'title' => 'User',
+            'data' => user::get()
         ]);
     }
     // method to delete data user
