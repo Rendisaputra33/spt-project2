@@ -44,10 +44,10 @@ class petanicontroller extends Controller
             : redirect()->back()->with('error', 'data gagal di hapus');
     }
     // get data update for update data petani
-    public function getupMethod()
+    public function getupMethod($id)
     {
         return response()->json([
-            'data' => petani::where('id_petani', request('id'))->first()
+            'data' => petani::where('id_petani', $id)->first()
         ]);
     }
 }

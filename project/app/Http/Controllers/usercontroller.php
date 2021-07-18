@@ -50,10 +50,10 @@ class usercontroller extends Controller
             : redirect()->back()->with('error', 'data gagal di update');
     }
     // get data update for update data user
-    public function getupMethod()
+    public function getupMethod($id)
     {
         return response()->json([
-            'data' => user::where('id_user', request('id'))->first()
+            'data' => user::where('id_user', $id)->first()
         ]);
     }
 }

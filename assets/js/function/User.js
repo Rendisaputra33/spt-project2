@@ -24,7 +24,7 @@ const bindingUpdate = () => {
 };
 
 const fetchUpdate = async THIS => {
-  await fetch(`${URL_ROOT}json?id=${THIS.getAttribute('data-id')}`)
+  await fetch(`${URL_ROOT}json/${THIS.getAttribute('data-id')}`)
     .then(res => res.json())
     .then(result => setFormUpdate(result.data))
     .catch(error => console.log(error));
