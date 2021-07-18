@@ -15,7 +15,7 @@ class redirectcontroller extends Controller
 
     public function dashMethod()
     {
-        return view('master', [
+        return view('dashboard', [
             'title' => 'Dashborad'
         ]);
     }
