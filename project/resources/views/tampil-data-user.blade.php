@@ -33,7 +33,7 @@
                                         <td>
                                             <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-md-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_user }}">
                                                 <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
-                                            <a class="btn btn-sm btn-danger btn-icon-text delete"> <i class="mdi mdi-delete btn-icon-prepend"></i> Hapus </a>
+                                            <a class="btn btn-sm btn-danger btn-icon-text delete" href="{{ url('/user') }}/{{ $item->id_user }}"> <i class="mdi mdi-delete btn-icon-prepend"></i> Hapus </a>
                                         </td>
 
                                     </tr>
@@ -52,7 +52,7 @@
         </footer>
     </div>
     <!-- modal untuk tambah data -->
-    <form action="{{ url('/user') }}" method="post">
+    <form action="{{ url('/auth/register') }}" method="post" id="form-">
         @csrf
         <div id="method"></div>
         <div class="modal fade" id="modal-md-tambah">
@@ -82,14 +82,12 @@
                         </div>
                         <div class="form-group">
                             <label for="level">Level</label>
-                            <select class="form-control" id="level">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                              <option>5</option>
+                            <select class="form-control" name="level" id="level">
+                                <option selected value="">Pilih</option>
+                                <option value="1">Admin</option>
+                                <option value="2">Super Admin</option>
                             </select>
-                          </div>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
