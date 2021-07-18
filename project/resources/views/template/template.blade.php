@@ -18,6 +18,8 @@
             margin-top: 7rem !important;
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alerts-css@1.0.2/assets/css/alerts-css.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/icon/css/all.min.css') }}">
     @yield('specific-css')
 </head>
 
@@ -213,6 +215,8 @@
     <script src="{{ asset('assets/js/off-canvas.js') }}"></script>
     <script src="{{ asset('assets/js/hoverable-collapse.js') }}"></script>
     <script src="{{ asset('assets/js/misc.js') }}"></script>
+    <script src="{{ asset('assets/plugins/icon/js/fontawesome.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alerts-css@1.0.1/assets/js/alerts.min.js"></script>
     {{-- end default js --}}
     @yield('specific-js')
 </body>

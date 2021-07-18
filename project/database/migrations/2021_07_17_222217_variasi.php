@@ -16,7 +16,8 @@ class Variasi extends Migration
         Schema::create('variasi', function (Blueprint $table) {
             $table->integerIncrements('id_variasi');
             $table->string('variasi');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

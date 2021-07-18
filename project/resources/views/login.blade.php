@@ -4,7 +4,12 @@
         <div class="container-fluid page-body-wrapper full-page-wrapper">
             <div class="content-wrapper d-flex align-items-center auth">
                 <div class="row flex-grow">
-                    <div class="col-lg-4 mx-auto">
+                    <div class="col-lg-4 mx-auto err-msg">
+                        <div class="msg">
+                            @if (session('error') !== null)
+                                <x-alert type="danger" message="{{ session('error') }}" />
+                            @endif
+                        </div>
                         <div class="auth-form-light text-left p-5">
                             <div class="brand-logo">
                                 <h2 class="">Login</h2>
@@ -31,4 +36,7 @@
         </div>
         <!-- page-body-wrapper ends -->
     </div>
+@endsection
+@section('specific-js')
+    <script src="{{ asset('assets/js/function/Auth.js') }}"></script>
 @endsection
