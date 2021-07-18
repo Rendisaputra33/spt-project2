@@ -12,7 +12,9 @@ const INPUT = {
   close: document.getElementById('close-modal'),
 };
 
-// function definition here
+/**
+ * @function definition & @processed handler here
+ */
 
 const bindingUpdate = () => {
   const btnUpdate = document.querySelectorAll('.update');
@@ -38,6 +40,32 @@ const fetchUpdate = async THIS => {
     .catch(error => console.log(error));
 };
 
+// funtion binding update interacted delete button
+const listDelete = () => {
+  const del = document.querySelectorAll('.delete');
+  for (let i = 0; i < del.length; i++) {
+    del[i].onclick = function (e) {
+      e.preventDefault();
+      swalDelete(this.getAttribute('href'));
+    };
+  }
+};
+// swal definition
+const swalDelete = param => {
+  Swal.fire({
+    title: 'Yakin ingin Menghapus?',
+    text: 'Data akan di hapus secara permanent!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Ya',
+    cancelButtonText: 'Batal',
+  }).then(result => {
+    result.isConfirmed ? (window.location.href = param) : '';
+  });
+};
+
 const setFormUpdate = result => {
   INPUT.action.setAttribute('action', URL_PETANI + result.id_petani);
   INPUT.method.innerHTML = '<input type="hidden" name="_method" value="PUT" />';
@@ -49,6 +77,7 @@ const setFormUpdate = result => {
 // function execution here
 
 bindingUpdate();
+listDelete();
 
 INPUT.close.onclick = function () {
   clearForm();

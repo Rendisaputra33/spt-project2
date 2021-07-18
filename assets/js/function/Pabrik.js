@@ -12,8 +12,11 @@ const INPUT = {
   kode: document.querySelector('input[name=kode]'),
 };
 
-// function definition here
+/**
+ * @function definition & @processed handler here
+ */
 
+// funtion binding update interacted update button
 const bindingUpdate = () => {
   const btnUpdate = document.querySelectorAll('.update');
   for (let i = 0; i < btnUpdate.length; i++) {
@@ -22,7 +25,32 @@ const bindingUpdate = () => {
     };
   }
 };
-
+// funtion binding update interacted delete button
+const listDelete = () => {
+  const del = document.querySelectorAll('.delete');
+  for (let i = 0; i < del.length; i++) {
+    del[i].onclick = function (e) {
+      e.preventDefault();
+      swalDelete(this.getAttribute('href'));
+    };
+  }
+};
+// swal definition
+const swalDelete = param => {
+  Swal.fire({
+    title: 'Yakin ingin Menghapus?',
+    text: 'Data akan di hapus secara permanent!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Ya',
+    cancelButtonText: 'Batal',
+  }).then(result => {
+    result.isConfirmed ? (window.location.href = param) : '';
+  });
+};
+// function clear form after update data
 const clearForm = () => {
   INPUT.action.setAttribute('action', URL_PABRIK);
   INPUT.method.innerHTML = '';
@@ -44,9 +72,12 @@ const setFormUpdate = result => {
   INPUT.kode.value = result.kode_pabrik;
 };
 
-// global function execution here
+/**
+ * @function execution here
+ */
 
 bindingUpdate();
+listDelete();
 
 INPUT.close.onclick = function () {
   clearForm();
