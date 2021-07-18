@@ -24,9 +24,9 @@ class usercontroller extends Controller
     // method prosesing request update
     public function updateMethod(Request $req, $id)
     {
-        $data = user::where('username', $req->uusername)->first();
+        $data = user::where('username', $req->username)->first();
         if ($data !== null) {
-            if ($data->username === $req->uusername && $data->id_user === (int) $id) {
+            if ($data->username === $req->username && $data->id_user === (int) $id) {
                 return $this->saveUpdate($req, $id);
             } elseif ($data->id_user !== (int) $id) {
                 return redirect()->back()->with('gagal', 'username telah dipakai');
@@ -41,10 +41,10 @@ class usercontroller extends Controller
     public function saveUpdate($req, $id)
     {
         return User::where('id_user', $id)->update([
-            'nama' => $req->unama_user,
-            'username' => $req->uusername,
-            'passowrd' => bcrypt($req->upassword),
-            'level' => $req->ulevel
+            'nama' => $req->nama,
+            'username' => $req->username,
+            'passowrd' => bcrypt($req->password),
+            'level' => $req->level
         ])
             ? redirect('/user')->with('sukses', 'data berhasil di update')
             : redirect()->back()->with('error', 'data gagal di update');

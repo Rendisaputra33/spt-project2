@@ -5,6 +5,7 @@ const URL_ROOT = URL + '/user/';
 
 // declaration input form
 const FORM = {
+  close: document.getAnimations('close-modal'),
   action: document.getElementById('modal-md-tambah'),
   method: document.getElementById('method'),
   nama: document.querySelector('input[name=nama]'),
@@ -21,6 +22,14 @@ const bindingUpdate = () => {
       await fetchUpdate(this);
     };
   }
+};
+
+const clearForm = () => {
+  FORM.action.setAttribute('action', URL_ROOT);
+  FORM.method.innerHTML = '';
+  FORM.nama.value = '';
+  FORM.username.value = '';
+  FORM.password.value = '';
 };
 
 const fetchUpdate = async THIS => {
@@ -41,3 +50,7 @@ const setFormUpdate = result => {
 // global function execution here
 
 bindingUpdate();
+
+FORM.close.onclick = function () {
+  clearForm();
+};
