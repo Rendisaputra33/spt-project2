@@ -1,10 +1,7 @@
 const logout = document.getElementById('log');
-const URL = document
-  .querySelector('meta[name=baseurl]')
-  .getAttribute('aria-valuemin');
 
 log.onclick = function () {
-  swalLogout(URL + '/logout');
+  swalLogout(URL + '/auth/logout');
 };
 
 const swalLogout = param => {

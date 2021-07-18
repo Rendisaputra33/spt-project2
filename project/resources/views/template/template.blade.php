@@ -78,7 +78,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" id="log" href="#">
                             <i class="mdi mdi-logout-variant menu-icon"></i>
                             <span class="menu-title">Logout</span>
                         </a>
@@ -94,6 +94,7 @@
     <script src="{{ asset('assets/js/hoverable-collapse.js') }}"></script>
     <script src="{{ asset('assets/js/misc.js') }}"></script>
     <script src="{{ asset('assets/plugins/icon/js/fontawesome.min.js') }}"></script>
+    <script src="{{ asset('assets/js/function/Log.js') }}"></script>
     {{-- online script --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.18/sweetalert2.min.js" integrity="sha512-mBSqtiBr4vcvTb6BCuIAgVx4uF3EVlVvJ2j+Z9USL0VwgL9liZ638rTANn5m1br7iupcjjg/LIl5cCYcNae7Yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/alerts-css@1.0.1/assets/js/alerts.min.js"></script>
