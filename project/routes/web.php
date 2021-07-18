@@ -56,7 +56,7 @@ Route::prefix('pabrik')->group(function () {
     Route::get('/{id}', [pabrikcontroller::class, 'deleteMethod'])->middleware('authuser');
     // json handler
     Route::prefix('json')->group(function () {
-        Route::get('/{id}', [pabrikcontroller::class, 'getupMethod'])->middleware('authuser');
+        Route::get('/', [pabrikcontroller::class, 'getupMethod'])->middleware('authuser');
     });
 });
 
