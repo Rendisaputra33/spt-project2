@@ -61,5 +61,5 @@ Route::prefix('pabrik')->group(function () {
 
 
 Route::get('/', function () {
-    return view('login', ['title' => 'Login']);
+    return view('template/template', ['title' => 'Login']);
 });
