@@ -5,6 +5,9 @@
             <div class="content-wrapper d-flex align-items-center auth">
                 <div class="row flex-grow">
                     <div class="col-lg-4 mx-auto">
+                        @if (session('error') !== null)
+                            <x-alert type="danger" message="{{ session('error') }}" />
+                        @endif
                         <div class="auth-form-light text-left p-5">
                             <div class="brand-logo">
                                 <h2 class="">Login</h2>

@@ -16,7 +16,8 @@ class Type extends Migration
         Schema::create('type', function (Blueprint $table) {
             $table->integerIncrements('id_type');
             $table->string('type');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

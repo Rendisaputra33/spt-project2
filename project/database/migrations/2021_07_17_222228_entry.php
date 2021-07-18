@@ -28,7 +28,8 @@ class Entry extends Migration
             $table->double('harga_beli');
             $table->double('hpp');
             $table->double('sisa');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

@@ -18,7 +18,8 @@ class Petani extends Migration
             $table->string('reg');
             $table->string('nama_petani');
             $table->integer('id_pabrik');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 
