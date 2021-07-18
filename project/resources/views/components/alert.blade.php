@@ -1,4 +1,4 @@
-<div class="alert alert_{{ $getType() }}" style="animation-delay: .2s">
+<div class="alert alert_{{ $getType() }}" style="animation-delay: .1s">
     <div class="alert--icon">
         <i class="{{ $getIcon() }}"></i>
     </div>
