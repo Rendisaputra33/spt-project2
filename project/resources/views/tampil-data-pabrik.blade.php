@@ -12,31 +12,31 @@
           <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
               <div class="card">
                 <div class="card-body">
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th>No</th>
-                        <th>Nama PG</th>
-                        <th>Kode PG</th>
-                        <th>Tanggal Masuk</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                          <td>1</td>
-                          <td>dummy</td>
-                          <td>dummy</td>
-                          <td>dummy</td>
-                          <td>
-                              <button type="button" class="btn btn-sm btn-warning btn-icon-text">
-                                  <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
-                              <button type="button" class="btn btn-sm btn-danger btn-icon-text">
-                                  <i class="mdi mdi-delete btn-icon-prepend"></i> Hapus </button>
-                          </td>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama PG</th>
+                            <th>Kode PG</th>
+                            <th>Tanggal Masuk</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>dummy</td>
+                            <td>dummy</td>
+                            <td>dummy</td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-warning btn-icon-text">
+                                    <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
+                                <button type="button" class="btn btn-sm btn-danger btn-icon-text">
+                                    <i class="mdi mdi-delete btn-icon-prepend"></i> Hapus </button>
+                            </td>
 
-                      </tr>
-                    </tbody>
-                  </table>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
               </div>
             </div>
