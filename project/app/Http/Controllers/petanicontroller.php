@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\pabrik;
 use App\Models\petani;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class petanicontroller extends Controller
     {
         return view('tampil-data-petani', [
             'data' => petani::get(),
-            'title' => 'Pabrik'
+            'pabrik' => pabrik::get(),
+            'title' => 'Petani'
         ]);
     }
     // add method for add data petani

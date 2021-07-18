@@ -50,27 +50,37 @@
         </footer>
     </div>
     <!-- modal untuk tambah data -->
-    <form action="/berangkat" method="post">
+    <form action="/berangkat" method="post" id="form-">
         @csrf
+        <div id="method"></div>
         <div class="modal fade" id="modal-md-tambah">
             <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3 class="modal-title">Tambah Data Barang</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" id="close-modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="form-group" id="reg">
                             <label for="exampleInputPassword1">REG</label>
-                            <input type="text" class="form-control" placeholder="REG" name="reg" required>
+                            <input type="text" class="form-control" placeholder="REG" name="register" required>
                             <span class="text-dark"></span>
                         </div>
                         <div class="form-group" id="nama_pemilik">
                             <label for="exampleInputPassword1">Nama Pemilik</label>
-                            <input type="text" class="form-control" placeholder="Nama Pemilik" name="nama_pemilik" required>
+                            <input type="text" class="form-control" placeholder="Nama Pemilik" name="nama" required>
                             <span class="text-dark"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="level">Pabrik</label>
+                            <select class="form-control" name="pabrik" id="level" required>
+                                <option selected value="">Pilih</option>
+                                @foreach ($pabrik as $item)
+                                    <option value="{{ $item->id_pabrik }}">{{ $item->nama_pabrik }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -84,4 +94,7 @@
         <!-- /.modal-dialog -->
         </div>
     </form>
+@endsection
+@section('specific-js')
+    <script src="{{ asset('assets/js/function/Petani.js') }}"></script>
 @endsection
