@@ -31,7 +31,7 @@
                                         <td>
                                             <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-md-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_petani }}">
                                                 <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
-                                            <a class="btn btn-sm btn-danger btn-icon-text delete" href="{{ url('/petani') }}/{{ $item->id_user }}"> <i class="mdi mdi-delete btn-icon-prepend"></i> Hapus </a>
+                                            <a class="btn btn-sm btn-danger btn-icon-text delete" href="{{ url('/petani') . '/' . $item->id_petani }}"> <i class="mdi mdi-delete btn-icon-prepend"></i> Hapus </a>
                                         </td>
 
                                     </tr>
@@ -50,7 +50,7 @@
         </footer>
     </div>
     <!-- modal untuk tambah data -->
-    <form action="/berangkat" method="post" id="form-">
+    <form action="{{ asset('/petani') }}" method="post" id="form-">
         @csrf
         <div id="method"></div>
         <div class="modal fade" id="modal-md-tambah">
