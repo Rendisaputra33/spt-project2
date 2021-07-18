@@ -80,6 +80,16 @@
                             <input type="password" class="form-control" placeholder="Password" name="password" required>
                             <span class="text-dark"></span>
                         </div>
+                        <div class="form-group">
+                            <label for="level">Level</label>
+                            <select class="form-control" id="level">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
