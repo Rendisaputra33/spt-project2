@@ -5,7 +5,7 @@ const URL_ROOT = URL + '/user/';
 
 // declaration input form
 const FORM = {
-  close: document.getAnimations('close-modal'),
+  close: document.getElementById('close-modal'),
   action: document.getElementById('modal-md-tambah'),
   method: document.getElementById('method'),
   nama: document.querySelector('input[name=nama]'),
