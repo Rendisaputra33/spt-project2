@@ -13,10 +13,10 @@
                     </div>
                     <div class="auth-form-light text-left p-5">
                         <div class="brand-logo">
-                            <h2 class="">Login</h2>
+                            <h2 class="">Masuk</h2>
                         </div>
-                        <h4>Hello! let's get started</h4>
-                        <h6 class="font-weight-light">Sign in to continue.</h6>
+                        <h4>Selamat Datang..!</h4>
+                        <h6 class="font-weight-light">Masuk untuk melanjutkan</h6>
                         <form class="pt-3" action="{{ route('login') }}" method="POST">
                             @csrf
                             <div class="form-group">
@@ -26,7 +26,7 @@
                                 <input type="password" class="form-control form-control-lg" placeholder="Password" name="password">
                             </div>
                             <div class="mt-3">
-                                <button type="submit" class="btn btn-block btn-success  btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
+                                <button type="submit" class="btn btn-block btn-success  btn-lg font-weight-medium auth-form-btn">Masuk</button>
                             </div>
                         </form>
                     </div>
