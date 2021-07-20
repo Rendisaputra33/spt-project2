@@ -3,8 +3,8 @@
 <div class="main-panel">
   <div class="content-wrapper">
     <div class="col-lg-12 p-0 d-flex justify-content-between">
-      <h2>Data User</h2>
-      <button type="button" class="btn btn-success btn-icon" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
+      <h2>Data Transaksi</h2>
+      <button type="button" class="btn btn-success btn-icon" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal">
         <i class="mdi mdi-plus"></i>
       </button>
     </div>
@@ -53,8 +53,8 @@
 <!-- modal untuk tambah data -->
 <form action="/berangkat" method="post">
   @csrf
-  <div class="modal fade" id="modal-md-tambah">
-    <div class="modal-dialog modal-md">
+  <div class="modal fade" id="modal-lg-tambah">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h3 class="modal-title">Tambah Data User</h3>
@@ -62,16 +62,77 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        
         <div class="modal-body">
-          <div class="form-group" id="reg">
-            <label for="exampleInputPassword1">Nama</label>
-            <input type="text" class="form-control" placeholder="REG" name="reg" required>
-            <span class="text-dark"></span>
-          </div>
-          <div class="form-group" id="nama_pemilik">
-            <label for="exampleInputPassword1">Nama Pemilik</label>
-            <input type="text" class="form-control" placeholder="Nama Pemilik" name="nama_pemilik" required>
-            <span class="text-dark"></span>
+          <div class="col-lg-12 d-flex">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="level">Periode</label>
+                <select class="form-control" name="Periode" id="periode" required>
+                    <option selected value="">Pilih</option>
+                    <option>1</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="level">Masa Giling</label>
+                <select class="form-control" name="masa_giling" id="masa_giling" required>
+                    <option selected value="">Pilih</option>
+                    <option>1</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="level">REG</label>
+                <select class="form-control" name="reg" id="reg" required>
+                    <option selected value="">Pilih</option>
+                    <option>1</option>
+                </select>
+              </div>
+              <div class="form-group" id="nospta">
+                <label for="exampleInputPassword1">No SPTA</label>
+                <input type="text" class="form-control" name="nospta" required>
+                <span class="text-dark"></span>
+              </div>
+              <div class="form-group" id="nopol">
+                <label for="exampleInputPassword1">No POL</label>
+                <input type="text" class="form-control" name="nopol" required>
+                <span class="text-dark"></span>
+              </div>
+              <div class="form-group" id="bobot">
+                <label for="exampleInputPassword1">Bobot</label>
+                <input type="text" class="form-control" name="bobot" required>
+                <span class="text-dark"></span>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              
+              <div class="form-group" id="keterangan">
+                <label for="exampleInputPassword1">Keterangan</label>
+                <input type="text" class="form-control" name="keterangan" required>
+                <span class="text-dark"></span>
+              </div>
+              <div class="form-group" id="harga_beli">
+                <label for="exampleInputPassword1">Harga Beli</label>
+                <input type="text" class="form-control" name="harga_beli" required>
+                <span class="text-dark"></span>
+              </div>
+              <div class="form-group" id="hpp">
+                <label for="exampleInputPassword1">HPP</label>
+                <input type="text" class="form-control" name="hpp" required>
+                <span class="text-dark"></span>
+              </div>
+              <div class="form-group">
+                <label for="sisa">Sisa</label>
+                <select class="form-control" name="sisa" id="sisa" required>
+                    <option selected value="">Pilih</option>
+                    <option>1</option>
+                </select>
+              </div>
+              <div class="form-group" id="tanggal">
+                <label for="exampleInputPassword1">Tanggal</label>
+                <input type="text" class="form-control" name="tanggal" required>
+                <span class="text-dark"></span>
+              </div>
+            </div>
           </div>
         </div>
         <!-- /.card-body -->
