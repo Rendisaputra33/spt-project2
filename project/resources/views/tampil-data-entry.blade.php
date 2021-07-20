@@ -36,7 +36,6 @@
                   <button type="button" class="btn btn-sm btn-danger btn-icon-text">
                     <i class="mdi mdi-delete btn-icon-prepend"></i> Hapus </button>
                 </td>
-
               </tr>
             </tbody>
           </table>
