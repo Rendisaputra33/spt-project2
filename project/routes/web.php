@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\authcontroller;
+use App\Http\Controllers\entrycontroller;
 use App\Http\Controllers\pabrikcontroller;
 use App\Http\Controllers\petanicontroller;
 use App\Http\Controllers\redirectcontroller;
@@ -58,6 +59,10 @@ Route::prefix('pabrik')->group(function () {
     Route::prefix('json')->group(function () {
         Route::get('/{id}', [pabrikcontroller::class, 'getupMethod'])->middleware('authuser');
     });
+});
+
+Route::prefix('entry')->group(function () {
+    Route::get('/', [entrycontroller::class, 'indexMethod']);
 });
 
 
