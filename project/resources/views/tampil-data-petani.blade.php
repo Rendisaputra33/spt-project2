@@ -35,6 +35,7 @@
                                     <th>No</th>
                                     <th>No Induk</th>
                                     <th>Nama Petani</th>
+                                    <th>Pabrik</th>
                                     <th>Tanggal Masuk</th>
                                 </tr>
                             </thead>
@@ -45,6 +46,7 @@
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->reg }}</td>
                                         <td>{{ $item->nama_petani }}</td>
+                                        <td>{{ $item->nama_pabrik === null ? 'Pabrik Dihapus' : $item->nama_pabrik }}</td>
                                         <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-md-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_petani }}"> <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
