@@ -4,13 +4,27 @@
   <div class="content-wrapper">
     <div class="col-lg-12 p-0 d-flex justify-content-between">
       <h2>Data Transaksi</h2>
-      <button type="button" class="btn btn-success btn-icon" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal">
-        <i class="mdi mdi-plus"></i>
-      </button>
-    </div>
+      <div class="right d-flex align-items-center">
+          
+          <div class="search-field d-md-block">
+              <form class="d-flex align-items-center h-100" action="#">
+              <div class="input-group">
+                  <input type="text" class="form-control bg-light border-0" placeholder="Cari">
+              </div>
+              </form>
+          </div>
+          &nbsp; &nbsp;
+          <button type="button" class="btn btn-success btn-icon h-100" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
+              <i class="mdi mdi-plus"></i>
+          </button>
+          
+      </div>
+      
+  </div>
     <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
       <div class="card">
         <div class="card-body">
+          
           <table class="table table-hover">
             <thead>
               <tr>
@@ -31,10 +45,12 @@
                 <td>dummy</td>
                 <td>dummy</td>
                 <td>
+                  <button type="button" class="btn btn-sm btn-info btn-icon-text" data-target="#modal-lg-detail" id='tbh' data-toggle="modal">
+                    <i class="mdi mdi-information-outline btn-icon-prepend"></i> Detail </button>
                   <button type="button" class="btn btn-sm btn-warning btn-icon-text">
                     <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
                   <button type="button" class="btn btn-sm btn-danger btn-icon-text">
-                    <i class="mdi mdi-delete btn-icon-prepend"></i> Hapus </button>
+                    <i class="mdi mdi-delete-forever btn-icon-prepend"></i> Hapus </button>
                 </td>
               </tr>
             </tbody>
@@ -43,12 +59,12 @@
       </div>
     </div>
   </div>
-  <!-- <footer class="footer">
-            <div class="container-fluid clearfix">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
-            </div>
-        </footer> -->
+  <footer class="footer">
+    <div class="container-fluid clearfix">
+      <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+      <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
+    </div>
+  </footer>
 </div>
 <!-- modal untuk tambah data -->
 <form action="/berangkat" method="post">
@@ -145,5 +161,29 @@
   </div>
   <!-- /.modal-dialog -->
   </div>
-</form>
+  
+  <!-- modal untuk tambah data -->
+    <div class="modal fade" id="modal-lg-detail">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">Detail</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          
+          <div class="modal-body">
+            
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer">
+            <button type="submit" class="btn btn-success">Simpan</button>
+          </div>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+    </div>
 @endsection

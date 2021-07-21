@@ -5,19 +5,16 @@
         <div class="col-lg-12 p-0 d-flex justify-content-between">
             <h2>Data User</h2>
             <div class="right d-flex align-items-center">
-                
-                <div class="search-field d-md-block">
-                    <form class="d-flex align-items-center h-100" action="#">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0" placeholder="Cari">
-                    </div>
-                    </form>
+                <div class="input-group">
+                  <input type="text" class="form-control form-control-sm" placeholder="Cari Data User.." aria-label="Cari Data Petani.." aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <button class="btn btn-sm btn-gradient-success" type="button">Cari</button>
+                  </div>
                 </div>
-                &nbsp; &nbsp;
-                <button type="button" class="btn btn-success btn-icon h-100" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
-                    <i class="mdi mdi-plus"></i>
+                &nbsp;
+                <button type="button" class="btn btn-gradient-success btn-icon" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
+                  <i class="mdi mdi-plus"></i>
                 </button>
-                
             </div>
             
         </div>
@@ -112,7 +109,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-success">Simpan</button>
+                    <button type="submit" class="btn btn-gradient-success">Simpan</button>
                 </div>
             </div>
         </div>

@@ -36,7 +36,7 @@
                 </button>
             </div>
         </nav>
-        <div class="container-fluid page-body-wrapper p-0 bg-light">
+        <div class="container-fluid page-body-wrapper p-0">
             <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas pt-5" id="sidebar">
                 <ul class="nav">
@@ -78,6 +78,12 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="mdi mdi-file-chart menu-icon"></i>&nbsp;
+                            <span class="menu-title">Laporan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" id="log" href="#">
                             <i class="mdi mdi-logout-variant menu-icon"></i>
                             <span class="menu-title">Logout</span>
@@ -109,7 +115,7 @@
                     $this.addClass('active');
                 }
             })
-        })
+        });
     </script>
     {{-- end default js --}}
     @yield('specific-js')
