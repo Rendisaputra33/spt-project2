@@ -47,8 +47,7 @@
                                         <td>{{ $item->nama_petani }}</td>
                                         <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-md-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_petani }}">
-                                                <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
+                                            <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-md-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_petani }}"> <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
                                             <a class="btn btn-sm btn-danger btn-icon-text delete" href="{{ url('/petani') . '/' . $item->id_petani }}"> <i class="mdi mdi-delete btn-icon-prepend"></i> Hapus </a>
                                         </td>
                                     </tr>
@@ -97,13 +96,11 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-success">Simpan</button>
+                        <button type="submit" class="btn btn-gradient-success">Simpan</button>
                     </div>
                 </div>
             </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
+            <!-- /.modal-dialog -->
         </div>
     </form>
 @endsection
