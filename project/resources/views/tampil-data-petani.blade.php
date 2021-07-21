@@ -4,9 +4,22 @@
     <div class="content-wrapper">
         <div class="col-lg-12 p-0 d-flex justify-content-between">
             <h2>Data Petani</h2>
-            <button type="button" class="btn btn-success btn-icon" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
-                <i class="mdi mdi-plus"></i>
-            </button>
+            <div class="right d-flex align-items-center">
+                
+                <div class="search-field d-md-block">
+                    <form class="d-flex align-items-center h-100" action="#">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-light border-0" placeholder="Cari">
+                    </div>
+                    </form>
+                </div>
+                &nbsp; &nbsp;
+                <button type="button" class="btn btn-success btn-icon h-100" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
+                    <i class="mdi mdi-plus"></i>
+                </button>
+                
+            </div>
+            
         </div>
         <div class="msg mt-2">
             @if (session('sukses') !== null)
@@ -25,6 +38,7 @@
                                 <th>No</th>
                                 <th>No Induk</th>
                                 <th>Nama Petani</th>
+                                <th>Nama Pabrik</th>
                                 <th>Tanggal Masuk</th>
                             </tr>
                         </thead>
@@ -34,6 +48,7 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $item->reg }}</td>
+                                <td>{{ $item->nama_petani }}</td>
                                 <td>{{ $item->nama_petani }}</td>
                                 <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                 <td>
@@ -66,6 +81,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title">Tambah Data Barang</h3>
+                    
                     <button type="button" class="close" data-dismiss="modal" id="close-modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
