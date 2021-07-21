@@ -25,6 +25,7 @@
                                 <th>No</th>
                                 <th>No Induk</th>
                                 <th>Nama Petani</th>
+                                <th>Nama Pabrik</th>
                                 <th>Tanggal Masuk</th>
                             </tr>
                         </thead>
@@ -34,6 +35,7 @@
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $item->reg }}</td>
+                                <td>{{ $item->nama_petani }}</td>
                                 <td>{{ $item->nama_petani }}</td>
                                 <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                 <td>

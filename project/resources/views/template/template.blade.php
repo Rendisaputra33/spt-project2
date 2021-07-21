@@ -54,26 +54,26 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#data-master" aria-expanded="false" aria-controls="data-master">
                             <i class="mdi mdi-folder menu-icon"></i>&nbsp;
-                            <span class="menu-title">Data Master</span>
+                            <span class="menu-title">Master</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="data-master">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ url('/petani') }}">Data Petani</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ url('/pabrik') }}">Data PG</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ url('/user') }}">Data User</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ url('/petani') }}">Petani</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ url('/pabrik') }}">PG</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ url('/user') }}">User</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#data-transaksi" aria-expanded="false" aria-controls="data-transaksi">
                             <i class="mdi mdi-folder menu-icon"></i>&nbsp;
-                            <span class="menu-title">Data Transaksi</span>&nbsp;
+                            <span class="menu-title">Transaksi</span>&nbsp;
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="data-transaksi">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="">Data Transaksi</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="">Pengiriman Tebu</a></li>
                             </ul>
                         </div>
                     </li>
