@@ -3,6 +3,11 @@ const URL = document
   .getAttribute('aria-valuemin');
 const URL_ROOT = URL + '/user';
 
+// declaration element
+const ELEMENT = {
+  bodyTable: document.querySelector('#list'),
+};
+
 // declaration input form
 const FORM = {
   close: document.getElementById('tbh'),
@@ -12,6 +17,7 @@ const FORM = {
   password: document.querySelector('input[name=password]'),
   username: document.querySelector('input[name=username]'),
   level: document.querySelector('select[name=level]'),
+  seacrh: document.querySelector('#search'),
 };
 
 /**
@@ -78,6 +84,32 @@ const setFormUpdate = result => {
   FORM.level.value = result.level;
 };
 
+const uiSearch = (data, no) => {
+  return /*html*/ `
+    <tr>
+      <td>${no}</td>
+      <td>${data.nama}</td>
+      <td>${data.username}</td>
+      <td>${data.level}</td>
+      <td>${data.created_at}</td>
+    </tr>
+  `;
+};
+
+const setData = result => {
+  let html = '';
+  let no = 1;
+  result.map(data => (html += uiSearch(data, no++)));
+  ELEMENT.bodyTable.innerHTML = html;
+};
+
+const fetchSearch = async arg => {
+  await fetch(`${URL_ROOT}/json/search?s=${arg}`)
+    .then(res => res.json())
+    .then(result => setData(result.data))
+    .catch(err => err);
+};
+
 // global function execution here
 
 bindingUpdate();
@@ -86,3 +118,8 @@ listDelete();
 FORM.close.onclick = function () {
   clearForm();
 };
+
+FORM.seacrh.addEventListener('keyup', async function () {
+  const { value } = this;
+  await fetchSearch(value);
+});
