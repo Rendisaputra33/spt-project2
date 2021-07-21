@@ -73,7 +73,7 @@
                         </a>
                         <div class="collapse" id="data-transaksi">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="">Pengiriman Tebu</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ url('/entry') }}">Pengiriman Tebu</a></li>
                             </ul>
                         </div>
                     </li>
