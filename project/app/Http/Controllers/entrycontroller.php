@@ -10,7 +10,7 @@ class entrycontroller extends Controller
     public function indexMethod()
     {
         return view('tampil-data-entry', [
-            'data' => entry::get(),
+            'data' => entry::whereDate('created_at', now())->get(),
             'title' => 'Entry'
         ]);
     }

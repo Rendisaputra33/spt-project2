@@ -47,4 +47,11 @@ class pabrikcontroller extends Controller
             'data' => pabrik::where('id_pabrik', $id)->first()
         ]);
     }
+
+    public function searchMethod()
+    {
+        return response()->json([
+            'data' => pabrik::where('nama_pabrik', 'LIKE', '%' . request('s') . '%')->get()
+        ]);
+    }
 }
