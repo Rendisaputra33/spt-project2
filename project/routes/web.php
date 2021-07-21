@@ -60,7 +60,7 @@ Route::prefix('pabrik')->group(function () {
     // json handler
     Route::prefix('json')->group(function () {
         Route::get('/{id}', [pabrikcontroller::class, 'getupMethod'])->middleware('authuser');
-        Route::get('/search', [pabrikcontroller::class, 'searchMethod'])->middleware('authuser');
+        Route::get('/search/{s}', [pabrikcontroller::class, 'searchMethod'])->middleware('authuser');
     });
 });
 // routing master transaction
@@ -80,7 +80,7 @@ Route::prefix('entry')->group(function () {
 // routing master laporan
 Route::prefix('laporan')->group(function () {
     // default routing
-    Route::get('/', function(){
+    Route::get('/', function () {
         return view('laporan');
     });
     Route::post('/', [entrycontroller::class, 'addMethod']);

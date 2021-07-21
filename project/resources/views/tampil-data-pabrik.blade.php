@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     &nbsp;
-                    <button type="button" class="btn btn-gradient-success btn-icon" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
+                    <button type="button" class="btn btn-gradient-success btn-icon add" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
                         <i class="mdi mdi-plus"></i>
                     </button>
                 </div>
@@ -38,7 +38,7 @@
                                     <th>Tanggal Masuk</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="list">
                                 <?php $no = 1; ?>
                                 @foreach ($data as $item)
                                     <tr>
