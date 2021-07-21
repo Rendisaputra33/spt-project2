@@ -45,6 +45,10 @@
                     <h2>logo</h2>
                   </a>
               </li> --}}
+                    <li class="nav-item mb-4 d-flex align-items-center text-primary">
+                        <i class="mdi mdi-account-circle display-3"></i>&nbsp;
+                        <span class="menu-title display-5">USER</span>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/dashboard') }}">
                             <i class="mdi mdi-apps menu-icon"></i>&nbsp;

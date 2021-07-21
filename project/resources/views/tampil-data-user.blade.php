@@ -62,55 +62,63 @@
                     </div>
                 </div>
             </div>
+
         </div>
-        <!-- modal untuk tambah data -->
-        <form action="{{ url('/auth/register') }}" method="post" id="form-">
-            @csrf
-            <div id="method"></div>
-            <div class="modal fade" id="modal-md-tambah">
-                <div class="modal-dialog modal-md">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title">Tambah Data User</h3>
-                            <button type="button" class="close" data-dismiss="modal" id="close-modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+        <footer class="footer">
+            <div class="container-fluid clearfix">
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
+            </div>
+        </footer>
+    </div>
+    <!-- modal untuk tambah data -->
+    <form action="{{ url('/auth/register') }}" method="post" id="form-">
+        @csrf
+        <div id="method"></div>
+        <div class="modal fade" id="modal-md-tambah">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Tambah Data User</h3>
+                        <button type="button" class="close" data-dismiss="modal" id="close-modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Nama</label>
+                            <input type="text" class="form-control" placeholder="Nama" name="nama" required>
+                            <span class="text-dark"></span>
                         </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Nama</label>
-                                <input type="text" class="form-control" placeholder="Nama" name="nama" required>
-                                <span class="text-dark"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Username</label>
-                                <input type="text" class="form-control" placeholder="Username" name="username" required>
-                                <span class="text-dark"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" placeholder="Password" name="password" required>
-                                <span class="text-dark"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="level">Level</label>
-                                <select class="form-control" name="level" id="level">
-                                    <option selected value="">Pilih</option>
-                                    <option value="1">Admin</option>
-                                    <option value="2">Super Admin</option>
-                                </select>
-                            </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Username</label>
+                            <input type="text" class="form-control" placeholder="Username" name="username" required>
+                            <span class="text-dark"></span>
                         </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-success">Simpan</button>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" placeholder="Password" name="password" required>
+                            <span class="text-dark"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="level">Level</label>
+                            <select class="form-control" name="level" id="level">
+                                <option selected value="">Pilih</option>
+                                <option value="1">Admin</option>
+                                <option value="2">Super Admin</option>
+                            </select>
                         </div>
                     </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-success">Simpan</button>
+                    </div>
                 </div>
-                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-dialog -->
-    </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+        </div>
     </form>
 @endsection
 @section('specific-js')
