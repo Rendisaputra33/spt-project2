@@ -3,6 +3,10 @@ const URL = document
   .getAttribute('aria-valuemin');
 const URL_PETANI = URL + '/petani/';
 
+const ELEMENT = {
+  bodyTable: document.querySelector('#list'),
+};
+
 const INPUT = {
   action: document.getElementById('form-'),
   method: document.getElementById('method'),
@@ -10,6 +14,7 @@ const INPUT = {
   kode: document.querySelector('input[name=register]'),
   pabrik: document.querySelector('select[name=pabrik]'),
   close: document.getElementById('close-modal'),
+  seacrh: document.querySelector('#search'),
 };
 
 /**

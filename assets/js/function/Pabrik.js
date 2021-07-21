@@ -3,6 +3,10 @@ const URL = document
   .getAttribute('aria-valuemin');
 const URL_PABRIK = URL + '/pabrik';
 
+const ELEMENT = {
+  bodyTable: document.querySelector('#list'),
+};
+
 // declaration input form
 const INPUT = {
   close: document.querySelector('.add'),
@@ -10,6 +14,7 @@ const INPUT = {
   method: document.getElementById('method'),
   nama: document.querySelector('input[name=nama]'),
   kode: document.querySelector('input[name=kode]'),
+  seacrh: document.querySelector('#search'),
 };
 
 /**
@@ -72,8 +77,33 @@ const setFormUpdate = result => {
   INPUT.kode.value = result.kode_pabrik;
 };
 
+const uiSearch = (data, no) => {
+  return /*html*/ `
+    <tr>
+      <td>${no}</td>
+      <td>${data.nama_pabrik}</td>
+      <td>${data.kode_pabrik}</td>
+      <td>${data.created_at}</td>
+    </tr>
+  `;
+};
+
+const setData = result => {
+  let html = '';
+  let no = 1;
+  result.map(data => (html += uiSearch(data, no++)));
+  ELEMENT.bodyTable.innerHTML = html;
+};
+
+const fetchSearch = async arg => {
+  await fetch(`${URL_PABRIK}/json/search?s=${arg}`)
+    .then(res => res.json())
+    .then(result => setData(result.data))
+    .catch(err => err);
+};
+
 /**
- * @function execution here
+ * @function global execution here
  */
 
 bindingUpdate();
@@ -82,3 +112,8 @@ listDelete();
 INPUT.close.onclick = function () {
   clearForm();
 };
+
+INPUT.seacrh.addEventListener('keyup', async function () {
+  const { value } = this;
+  await fetchSearch(value);
+});

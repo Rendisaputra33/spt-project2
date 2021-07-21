@@ -8,11 +8,11 @@
                 <div class="input-group">
                   <input type="text" class="form-control form-control-sm" placeholder="Cari Data Petani.." aria-label="Cari Data Petani.." aria-describedby="basic-addon2">
                   <div class="input-group-append">
-                    <button class="btn btn-sm btn-success" type="button">Cari</button>
+                    <button class="btn btn-sm btn-gradient-success" type="button">Cari</button>
                   </div>
                 </div>
                 &nbsp;
-                <button type="button" class="btn btn-success btn-icon" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
+                <button type="button" class="btn btn-gradient-success btn-icon" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
                   <i class="mdi mdi-plus"></i>
                 </button>
             </div>
@@ -51,55 +51,59 @@
                                         <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
                                     <a class="btn btn-sm btn-danger btn-icon-text delete" href="{{ url('/petani') . '/' . $item->id_petani }}"> <i class="mdi mdi-delete btn-icon-prepend"></i> Hapus </a>
                                 </td>
-
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- <footer class="footer">
-            <div class="container-fluid clearfix">
-                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
-            </div>
-        </footer> -->
-</div>
-<!-- modal untuk tambah data -->
-<form action="{{ asset('/petani') }}" method="post" id="form-">
-    @csrf
-    <div id="method"></div>
-    <div class="modal fade" id="modal-md-tambah">
-        <div class="modal-dialog modal-md">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Tambah Data Barang</h3>
-                    
-                    <button type="button" class="close" data-dismiss="modal" id="close-modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+        <!-- <footer class="footer">
+                <div class="container-fluid clearfix">
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group" id="reg">
-                        <label for="exampleInputPassword1">REG</label>
-                        <input type="text" class="form-control" placeholder="REG" name="register" required>
-                        <span class="text-dark"></span>
+            </footer> -->
+    </div>
+    <!-- modal untuk tambah data -->
+    <form action="{{ asset('/petani') }}" method="post" id="form-">
+        @csrf
+        <div id="method"></div>
+        <div class="modal fade" id="modal-md-tambah">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Tambah Data Barang</h3>
+
+                        <button type="button" class="close" data-dismiss="modal" id="close-modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="form-group" id="nama_pemilik">
-                        <label for="exampleInputPassword1">Nama Pemilik</label>
-                        <input type="text" class="form-control" placeholder="Nama Pemilik" name="nama" required>
-                        <span class="text-dark"></span>
+                    <div class="modal-body">
+                        <div class="form-group" id="reg">
+                            <label for="exampleInputPassword1">REG</label>
+                            <input type="text" class="form-control" placeholder="REG" name="register" required>
+                            <span class="text-dark"></span>
+                        </div>
+                        <div class="form-group" id="nama_pemilik">
+                            <label for="exampleInputPassword1">Nama Pemilik</label>
+                            <input type="text" class="form-control" placeholder="Nama Pemilik" name="nama" required>
+                            <span class="text-dark"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="level">Pabrik</label>
+                            <select class="form-control" name="pabrik" id="level" required>
+                                <option selected value="">Pilih</option>
+                                @foreach ($pabrik as $item)
+                                    <option value="{{ $item->id_pabrik }}">{{ $item->nama_pabrik }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="level">Pabrik</label>
-                        <select class="form-control" name="pabrik" id="level" required>
-                            <option selected value="">Pilih</option>
-                            @foreach ($pabrik as $item)
-                            <option value="{{ $item->id_pabrik }}">{{ $item->nama_pabrik }}</option>
-                            @endforeach
-                        </select>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-success">Simpan</button>
                     </div>
                 </div>
                 <!-- /.card-body -->
@@ -107,13 +111,12 @@
                     <button type="submit" class="btn btn-gradient-success">Simpan</button>
                 </div>
             </div>
+            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-    </div>
-</form>
+        <!-- /.modal-dialog -->
+        </div>
+    </form>
 @endsection
 @section('specific-js')
-<script src="{{ asset('assets/js/function/Petani.js') }}"></script>
+    <script src="{{ asset('assets/js/function/Petani.js') }}"></script>
 @endsection

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\entry;
+use App\Models\type;
+use App\Models\variasi;
 use Illuminate\Http\Request;
 
 class entrycontroller extends Controller
@@ -10,7 +12,9 @@ class entrycontroller extends Controller
     public function indexMethod()
     {
         return view('tampil-data-entry', [
-            'data' => entry::get(),
+            'data' => entry::whereDate('created_at', now())->get(),
+            'type' => type::get(),
+            'variasi' => variasi::get(),
             'title' => 'Entry'
         ]);
     }
