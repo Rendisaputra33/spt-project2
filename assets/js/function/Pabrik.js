@@ -103,7 +103,7 @@ const fetchSearch = async arg => {
 };
 
 /**
- * @function execution here
+ * @function global execution here
  */
 
 bindingUpdate();
