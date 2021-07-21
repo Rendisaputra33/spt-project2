@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\authcontroller;
+use App\Http\Controllers\entrycontroller;
 use App\Http\Controllers\pabrikcontroller;
 use App\Http\Controllers\petanicontroller;
 use App\Http\Controllers\redirectcontroller;
@@ -59,11 +60,18 @@ Route::prefix('pabrik')->group(function () {
         Route::get('/{id}', [pabrikcontroller::class, 'getupMethod'])->middleware('authuser');
     });
 });
-
-
-// Route::get('/', function () {
-//     return view('dashboard', ['title' => 'Dashboard']);
-// });
+// routing master transaction
+Route::prefix('entry')->group(function () {
+    // default routing
+    Route::get('/', [entrycontroller::class, 'indexMethod']);
+    Route::post('/', [entrycontroller::class, 'addMethod']);
+    Route::put('/{id}', [entrycontroller::class, 'updateMethod']);
+    Route::get('/{id}', [entrycontroller::class, 'deleteMethod']);
+    // json handler
+    Route::prefix('json')->group(function () {
+        Route::get('/{id}', [pabrikcontroller::class, 'getupMethod'])->middleware('authuser');
+    });
+});
 
 Route::get('/', [redirectcontroller::class, 'indexMethod']);
 Route::get('dashboard', [redirectcontroller::class, 'dashMethod']);

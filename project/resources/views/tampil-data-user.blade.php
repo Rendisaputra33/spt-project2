@@ -4,9 +4,22 @@
     <div class="content-wrapper">
         <div class="col-lg-12 p-0 d-flex justify-content-between">
             <h2>Data User</h2>
-            <button type="button" class="btn btn-success btn-icon" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
-                <i class="mdi mdi-plus"></i>
-            </button>
+            <div class="right d-flex align-items-center">
+                
+                <div class="search-field d-md-block">
+                    <form class="d-flex align-items-center h-100" action="#">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-light border-0" placeholder="Cari">
+                    </div>
+                    </form>
+                </div>
+                &nbsp; &nbsp;
+                <button type="button" class="btn btn-success btn-icon h-100" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
+                    <i class="mdi mdi-plus"></i>
+                </button>
+                
+            </div>
+            
         </div>
         <div class="msg mt-2">
             @if (session('sukses') !== null)
