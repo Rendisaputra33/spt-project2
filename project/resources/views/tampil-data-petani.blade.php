@@ -29,7 +29,7 @@
             <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                 <div class="card">
                     <div class="card-body">
-                        <table class="table table-hover mt-5">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>No</th>
