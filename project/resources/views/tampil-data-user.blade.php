@@ -12,8 +12,8 @@
                         </div>
                     </div>
                     &nbsp;
-                    <button type="button" class="btn btn-gradient-success btn-icon" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
-                        <i class="mdi mdi-plus"></i>
+                    <button type="button" class="btn btn-gradient-success btn-icon-text d-flex" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
+                        <i class="mdi mdi-plus btn-icon-prepend"></i>Tambah
                     </button>
                 </div>
 
