@@ -6,7 +6,7 @@
                 <h2>Data Petani</h2>
                 <div class="right d-flex align-items-center">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" placeholder="Cari Data Petani.." aria-label="Cari Data Petani.." aria-describedby="basic-addon2">
+                        <input type="text" id="search" class="form-control form-control-sm" placeholder="Cari Data Petani.." aria-label="Cari Data Petani.." aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-sm btn-gradient-success" type="button">Cari</button>
                         </div>
@@ -29,7 +29,7 @@
             <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                 <div class="card">
                     <div class="card-body">
-                        <table class="table table-hover mt-5">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -38,7 +38,7 @@
                                     <th>Tanggal Masuk</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="list">
                                 <?php $no = 1; ?>
                                 @foreach ($data as $item)
                                     <tr>
@@ -47,8 +47,7 @@
                                         <td>{{ $item->nama_petani }}</td>
                                         <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-md-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_petani }}">
-                                                <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
+                                            <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-md-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_petani }}"> <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
                                             <a class="btn btn-sm btn-danger btn-icon-text delete" href="{{ url('/petani') . '/' . $item->id_petani }}"> <i class="mdi mdi-delete btn-icon-prepend"></i> Hapus </a>
                                         </td>
                                     </tr>
@@ -106,7 +105,6 @@
                         <button type="submit" class="btn btn-gradient-success">Simpan</button>
                     </div>
                 </div>
-                <!-- /.modal-content -->
             </div>
             <!-- /.modal-dialog -->
         </div>

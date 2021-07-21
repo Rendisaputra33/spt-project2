@@ -40,7 +40,7 @@
                                         <th>Tanggal Masuk</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="list">
                                     <?php $no = 1; ?>
                                     @foreach ($data as $item)
                                         <tr>

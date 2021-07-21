@@ -34,7 +34,7 @@ Route::prefix('user')->group(function () {
     // json handler
     Route::prefix('json')->group(function () {
         Route::get('/{id}', [usercontroller::class, 'getupMethod']);
-        Route::get('/search', [pabrikcontroller::class, 'searchMethod'])->middleware('authuser');
+        Route::get('/search/{s}', [pabrikcontroller::class, 'searchMethod'])->middleware('authuser');
     });
 });
 // routing master petani
@@ -47,7 +47,7 @@ Route::prefix('petani')->group(function () {
     // json handler
     Route::prefix('json')->group(function () {
         Route::get('/{id}', [petanicontroller::class, 'getupMethod'])->middleware('authuser');
-        Route::get('/search', [pabrikcontroller::class, 'searchMethod'])->middleware('authuser');
+        Route::get('/search/{s}', [pabrikcontroller::class, 'searchMethod'])->middleware('authuser');
     });
 });
 // routing master pabrik
@@ -60,7 +60,7 @@ Route::prefix('pabrik')->group(function () {
     // json handler
     Route::prefix('json')->group(function () {
         Route::get('/{id}', [pabrikcontroller::class, 'getupMethod'])->middleware('authuser');
-        Route::get('/search', [pabrikcontroller::class, 'searchMethod'])->middleware('authuser');
+        Route::get('/search/{s}', [pabrikcontroller::class, 'searchMethod'])->middleware('authuser');
     });
 });
 // routing master transaction
@@ -73,14 +73,14 @@ Route::prefix('entry')->group(function () {
     // json handler
     Route::prefix('json')->group(function () {
         Route::get('/{id}', [pabrikcontroller::class, 'getupMethod'])->middleware('authuser');
-        Route::get('/search', [pabrikcontroller::class, 'searchMethod'])->middleware('authuser');
+        Route::get('/search/{s}', [pabrikcontroller::class, 'searchMethod'])->middleware('authuser');
     });
 });
 
 // routing master laporan
 Route::prefix('laporan')->group(function () {
     // default routing
-    Route::get('/', function(){
+    Route::get('/', function () {
         return view('laporan');
     });
     Route::post('/', [entrycontroller::class, 'addMethod']);
