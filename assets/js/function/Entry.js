@@ -142,6 +142,8 @@ setPeriode();
 
 setTahun(generateTahun());
 
+bindingUpdate();
+
 INPUT.masa.value = new Date().getFullYear();
 
 if (INPUT.periode.getAttribute('data-change') === 'add') {

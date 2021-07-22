@@ -72,7 +72,7 @@
         </footer>
     </div>
     <!-- modal untuk tambah data -->
-    <form action="{{ url('/auth/register') }}" method="post" id="form-">
+    <form action="{{ url('/auth') }}" method="post" id="form-">
         @csrf
         <div id="method"></div>
         <div class="modal fade" id="modal-md-tambah">
