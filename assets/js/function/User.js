@@ -55,7 +55,7 @@ const bindingUpdate = () => {
 };
 // clearing form
 const clearForm = () => {
-  FORM.action.setAttribute('action', URL_ROOT);
+  FORM.action.setAttribute('action', URL + '/auth/register');
   FORM.method.innerHTML = '';
   FORM.nama.value = '';
   FORM.username.value = '';

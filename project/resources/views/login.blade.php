@@ -20,10 +20,10 @@
                             <form class="pt-3" action="{{ route('login') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" placeholder="Username" name="username">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Username" name="username" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" placeholder="Password" name="password">
+                                    <input type="password" class="form-control form-control-lg" placeholder="Password" name="password" required>
                                 </div>
                                 <div class="mt-3">
                                     <button type="submit" class="btn btn-block btn-success  btn-lg font-weight-medium auth-form-btn">Masuk</button>
