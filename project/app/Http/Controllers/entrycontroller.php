@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\entry;
 use App\Models\type;
+use App\Models\petani;
 use App\Models\variasi;
 use Illuminate\Http\Request;
 

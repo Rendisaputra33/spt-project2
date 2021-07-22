@@ -66,13 +66,13 @@
         </footer>
     </div>
     <!-- modal untuk tambah data -->
-    <form action="/berangkat" method="post">
+    <form action="{{ url('/entry') }}" method="post">
         @csrf
         <div class="modal fade" id="modal-lg-tambah">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title">Tambah Data User</h3>
+                        <h3 class="modal-title">Tambah Data Entry</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -83,7 +83,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="level">Periode</label>
-                                    <select class="form-control" name="Periode" id="periode" required>
+                                    <select class="form-control" name="periode" id="periode" required>
                                         <option selected value="">Pilih</option>
                                         <option>1</option>
                                     </select>
@@ -96,55 +96,67 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="level">REG</label>
-                                    <select class="form-control" name="reg" id="reg" required>
+                                    <label for="reg">REG</label>
+                                    <input type="text" class="form-control" placeholder="REG" name="reg" required>
+                                    <span class="text-dark"></span>
+                                    {{-- <select class="form-control" name="reg" id="reg" required>
                                         <option selected value="">Pilih</option>
                                         <option>1</option>
-                                    </select>
+                                    </select> --}}
                                 </div>
                                 <div class="form-group" id="nospta">
                                     <label for="exampleInputPassword1">No SPTA</label>
-                                    <input type="text" class="form-control" name="nospta" required>
+                                    <input type="text" class="form-control" placeholder="No SPTA" name="nospta" required>
                                     <span class="text-dark"></span>
                                 </div>
-                                <div class="form-group" id="nopol">
-                                    <label for="exampleInputPassword1">No POL</label>
-                                    <input type="text" class="form-control" name="nopol" required>
-                                    <span class="text-dark"></span>
+                                <div class="form-group">
+                                    <label for="level">Variasi</label>
+                                    <select class="form-control" name="variasi" id="reg" required>
+                                        <option selected value="">Pilih</option>
+                                        @foreach ($variasi as $item)
+                                            <option value="{{ $item->id_variasi }}">{{ $item->variasi }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                                <div class="form-group" id="bobot">
-                                    <label for="exampleInputPassword1">Bobot</label>
-                                    <input type="text" class="form-control" name="bobot" required>
-                                    <span class="text-dark"></span>
+                                <div class="form-group">
+                                    <label for="level">Type</label>
+                                    <select class="form-control" name="type" id="reg" required>
+                                        <option selected value="">Pilih</option>
+                                        @foreach ($type as $item)
+                                            <option value="{{ $item->id_type }}">{{ $item->type }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-6">
-
-                                <div class="form-group" id="keterangan">
-                                    <label for="exampleInputPassword1">Keterangan</label>
-                                    <input type="text" class="form-control" name="keterangan" required>
+                                <div class="form-group" id="nopol">
+                                    <label for="exampleInputPassword1">No POL</label>
+                                    <input type="text" class="form-control" placeholder="Nopol" name="nopol" required>
                                     <span class="text-dark"></span>
                                 </div>
-                                <div class="form-group" id="harga_beli">
-                                    <label for="exampleInputPassword1">Harga Beli</label>
-                                    <input type="text" class="form-control" name="harga_beli" required>
+                                <div class="form-group" id="keterangan">
+                                    <label for="exampleInputPassword1">Keterangan</label>
+                                    <input type="text" class="form-control" placeholder="Keterangan" name="keterangan" required>
                                     <span class="text-dark"></span>
                                 </div>
                                 <div class="form-group" id="hpp">
                                     <label for="exampleInputPassword1">HPP</label>
-                                    <input type="text" class="form-control" name="hpp" required>
+                                    <input type="text" class="form-control" placeholder="Hpp" name="hpp" required>
+                                    <span class="text-dark"></span>
+                                </div>
+                                <div class="form-group" id="harga_beli">
+                                    <label for="exampleInputPassword1">Harga Beli</label>
+                                    <input type="text" class="form-control" placeholder="Harga Beli" name="harga_beli" required>
+                                    <span class="text-dark"></span>
+                                </div>
+                                <div class="form-group" id="bobot">
+                                    <label for="exampleInputPassword1">Bobot</label>
+                                    <input type="text" class="form-control" placeholder="Bobot" name="bobot" required>
                                     <span class="text-dark"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="sisa">Sisa</label>
-                                    <select class="form-control" name="sisa" id="sisa" required>
-                                        <option selected value="">Pilih</option>
-                                        <option>1</option>
-                                    </select>
-                                </div>
-                                <div class="form-group" id="tanggal">
-                                    <label for="exampleInputPassword1">Tanggal</label>
-                                    <input type="text" class="form-control" name="tanggal" required>
+                                    <input type="text" class="form-control" placeholder="Sisa" name="sisa" readonly required>
                                     <span class="text-dark"></span>
                                 </div>
                             </div>
@@ -185,4 +197,7 @@
     </div>
     <!-- /.modal-dialog -->
     </div>
+@endsection
+@section('specific-js')
+    <script src="{{ asset('assets/js/function/Entry.js') }}"></script>
 @endsection

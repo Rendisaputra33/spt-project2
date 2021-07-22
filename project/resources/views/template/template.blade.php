@@ -88,7 +88,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="log" href="#">
+                        <a class="nav-link" id="log">
                             <i class="mdi mdi-logout-variant menu-icon"></i>
                             <span class="menu-title">Logout</span>
                         </a>

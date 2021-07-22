@@ -53,7 +53,7 @@ const bindingUpdate = () => {
     };
   }
 };
-
+// clearing form
 const clearForm = () => {
   FORM.action.setAttribute('action', URL_ROOT);
   FORM.method.innerHTML = '';
@@ -62,7 +62,7 @@ const clearForm = () => {
   FORM.password.value = '';
   FORM.level.value = '';
 };
-
+// request data update to backend
 const fetchUpdate = async THIS => {
   await fetch(`${URL_ROOT}/json/${THIS.getAttribute('data-id')}`)
     .then(res => res.json())
@@ -95,7 +95,7 @@ const swalDelete = param => {
     result.isConfirmed ? (window.location.href = param) : '';
   });
 };
-
+// setter form update
 const setFormUpdate = result => {
   FORM.action.setAttribute('action', URL_ROOT + '/' + result.id_user);
   FORM.method.innerHTML = '<input type="hidden" name="_method" value="PUT" />';
@@ -104,7 +104,7 @@ const setFormUpdate = result => {
   FORM.password.value = result.password;
   FORM.level.value = result.level;
 };
-
+// generate ui search
 const uiSearch = (data, no) => {
   return /*html*/ `
     <tr>
@@ -120,17 +120,17 @@ const uiSearch = (data, no) => {
     </tr>
   `;
 };
-
+// parsing data timestamp to date localsting
 const timeTodate = tgl => {
   const date = new Date(tgl);
   return date.toLocaleDateString();
 };
-
+// generate format tanggal indonesia
 const formatTanggal = tgl => {
   const month = tgl.split('/');
   return `${month[1]}/${listMonth[parseInt(month[0]) - 1]}/${month[2]}`;
 };
-
+// set data resultset fetch search
 const setData = result => {
   let html = '';
   let no = 1;
