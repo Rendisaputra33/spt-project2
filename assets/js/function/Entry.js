@@ -6,6 +6,8 @@ const URL = document
   .querySelector('meta[name=baseurl]')
   .getAttribute('aria-valuemin');
 
+const URL_ROOT = URL + '/entry';
+
 const periode = [
   '001',
   '002',
@@ -40,8 +42,10 @@ const periode = [
 ];
 
 const INPUT = {
+  action: document.querySelector('#form-'),
+  method: document.querySelector('#method'),
   periode: document.querySelector('select[name=periode]'),
-  masa: document.querySelector('select[name=masa_giling]'),
+  masa: document.querySelector('select[name=masa]'),
   reg: document.querySelector('input[name=reg]'),
   nospta: document.querySelector('input[name=nospta]'),
   variasi: document.querySelector('input[name=variasi]'),
@@ -58,6 +62,70 @@ const INPUT = {
  * @function definition here
  */
 
+const bindingUpdate = () => {
+  const up = document.querySelectorAll('.update');
+  for (let i = 0; i < up.length; i++) {
+    up[i].onclick = async function () {
+      await fetchUpdate(this);
+    };
+  }
+};
+
+const setFormUpdate = result => {
+  INPUT.periode.setAttribute('data-change', 'update');
+  INPUT.action.setAttribute('action', URL_ROOT + '/' + result.id_entry);
+  INPUT.method.innerHTML = '<input type="hidden" name="_method" value="PUT" />';
+  INPUT.periode.value = result.periode;
+  INPUT.masa.value = result.masa_giling;
+  INPUT.reg.value = result.reg;
+  INPUT.nospta.value = result.nospta;
+  INPUT.nopol.value = result.nopol;
+  INPUT.variasi.value = result.variasi;
+  INPUT.type.value = result.type;
+  INPUT.keterangan.value = result.keterangan;
+  INPUT.harga.value = result.harga;
+  INPUT.hpp.value = result.hpp;
+  INPUT.bobot.value = result.bobot;
+};
+
+const clearForm = () => {
+  INPUT.action.setAttribute('action', URL_ROOT);
+  INPUT.periode.value = '';
+  INPUT.masa.value = '';
+  INPUT.reg.value = '';
+  INPUT.nospta.value = '';
+  INPUT.nopol.value = '';
+  INPUT.variasi.value = '';
+  INPUT.type.value = '';
+  INPUT.keterangan.value = '';
+  INPUT.harga.value = '';
+  INPUT.hpp.value = '';
+  INPUT.bobot.value = '';
+};
+
+const fetchUpdate = async THIS => {
+  await fetch(`${URL_ROOT}/json/${THIS.getAttribute('data-id')}`)
+    .then(res => res.json())
+    .then(result => setFormUpdate(result.data))
+    .catch(error => console.log(error));
+};
+
+const generateTahun = () => {
+  let start = new Date('2021');
+  return {
+    start: start.getFullYear(),
+    end: new Date(start.getTime() + 31622400000 * 20).getFullYear(),
+  };
+};
+
+const setTahun = async d => {
+  let peri = '<option value="">Pilih</option>';
+  for (let i = d.start; i <= d.end; i++) {
+    peri += /*html*/ `<option value="${i}">${i}</option>`;
+  }
+  INPUT.masa.innerHTML = peri;
+};
+
 const setPeriode = () => {
   let peri = '<option value="">Pilih</option>';
   for (let i = 0; i < periode.length; i++) {
@@ -72,10 +140,15 @@ const setPeriode = () => {
 
 setPeriode();
 
-INPUT.periode.addEventListener('change', function () {
-  console.log('ok');
-  window.localStorage.setItem('periode', this.value);
-});
+setTahun(generateTahun());
+
+INPUT.masa.value = new Date().getFullYear();
+
+if (INPUT.periode.getAttribute('data-change') === 'add') {
+  INPUT.periode.onchange = function () {
+    window.localStorage.setItem('periode', this.value);
+  };
+}
 
 INPUT.periode.value =
   window.localStorage.getItem('periode') === null

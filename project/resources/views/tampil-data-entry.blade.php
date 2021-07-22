@@ -66,8 +66,9 @@
         </footer>
     </div>
     <!-- modal untuk tambah data -->
-    <form action="{{ url('/entry') }}" method="post">
+    <form action="{{ url('/entry') }}" method="post" id="form-">
         @csrf
+        <div id="method"></div>
         <div class="modal fade" id="modal-lg-tambah">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -82,15 +83,15 @@
                         <div class="col-lg-12 d-flex">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="level">Periode</label>
-                                    <select class="form-control" name="periode" id="periode" required>
+                                    <label for="periode">Periode</label>
+                                    <select class="form-control" name="periode" id="periode" data-change="add" required>
                                         <option selected value="">Pilih</option>
                                         <option>1</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="level">Masa Giling</label>
-                                    <select class="form-control" name="masa_giling" id="masa_giling" required>
+                                    <label for="masa">Masa Giling</label>
+                                    <select class="form-control" name="masa" id="masa" required>
                                         <option selected value="">Pilih</option>
                                         <option>1</option>
                                     </select>
@@ -99,10 +100,6 @@
                                     <label for="reg">REG</label>
                                     <input type="text" class="form-control" placeholder="REG" name="reg" required>
                                     <span class="text-dark"></span>
-                                    {{-- <select class="form-control" name="reg" id="reg" required>
-                                        <option selected value="">Pilih</option>
-                                        <option>1</option>
-                                    </select> --}}
                                 </div>
                                 <div class="form-group" id="nospta">
                                     <label for="exampleInputPassword1">No SPTA</label>
@@ -110,8 +107,8 @@
                                     <span class="text-dark"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="level">Variasi</label>
-                                    <select class="form-control" name="variasi" id="reg" required>
+                                    <label for="variasi">Variasi</label>
+                                    <select class="form-control" name="variasi" id="variasi" required>
                                         <option selected value="">Pilih</option>
                                         @foreach ($variasi as $item)
                                             <option value="{{ $item->id_variasi }}">{{ $item->variasi }}</option>
@@ -119,8 +116,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="level">Type</label>
-                                    <select class="form-control" name="type" id="reg" required>
+                                    <label for="type">Type</label>
+                                    <select class="form-control" name="type" id="type" required>
                                         <option selected value="">Pilih</option>
                                         @foreach ($type as $item)
                                             <option value="{{ $item->id_type }}">{{ $item->type }}</option>

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\entry;
+use App\Models\pabrik;
 use App\Models\type;
-use App\Models\petani;
 use App\Models\variasi;
 use Illuminate\Http\Request;
 
@@ -16,6 +16,7 @@ class entrycontroller extends Controller
             'data' => entry::whereDate('created_at', now())->get(),
             'type' => type::get(),
             'variasi' => variasi::get(),
+            'pabrik' => pabrik::select('id_pabrik', 'nama_pabrik')->get(),
             'title' => 'Entry'
         ]);
     }
@@ -24,7 +25,7 @@ class entrycontroller extends Controller
     {
         return entry::insert([
             'periode' => $req->periode,
-            'masa_giling' => $req->masa_giling,
+            'masa_giling' => $req->masa,
             'id_pabrik' => $req->id_pabrik,
             'reg' => $req->reg,
             'nospta' => $req->nospta,
