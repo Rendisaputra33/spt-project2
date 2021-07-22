@@ -82,7 +82,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ url('/laporan') }}">
                             <i class="mdi mdi-file-chart menu-icon"></i>&nbsp;
                             <span class="menu-title">Laporan</span>
                         </a>
