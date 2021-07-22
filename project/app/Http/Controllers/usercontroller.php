@@ -56,4 +56,14 @@ class usercontroller extends Controller
             'data' => user::where('id_user', $id)->first()
         ]);
     }
+
+    public function searchMethod($s)
+    {
+        return response()->json([
+            'data' => user::where('nama', 'LIKE', '%' . $s . '%')
+                ->orWhere('username', 'LIKE', '%' . $s . '%')
+                ->orWhere('level', 'LIKE', '%' . $s . '%')
+                ->get()
+        ]);
+    }
 }

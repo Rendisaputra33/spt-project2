@@ -51,7 +51,9 @@ class pabrikcontroller extends Controller
     public function searchMethod($s)
     {
         return response()->json([
-            'data' => pabrik::where('nama_pabrik', 'LIKE', '%' . $s . '%')->get()
+            'data' => pabrik::where('nama_pabrik', 'LIKE', '%' . $s . '%')
+                ->orWhere('kode_pabrik', 'LIKE', '%' . $s . '%')
+                ->get()
         ]);
     }
 }

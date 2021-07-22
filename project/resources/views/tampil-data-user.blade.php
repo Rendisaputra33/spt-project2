@@ -48,7 +48,7 @@
                                             <td>{{ $item->nama }}</td>
                                             <td>{{ $item->username }}</td>
                                             <td>{{ $item->level === 1 ? 'Admin' : 'Super Admin' }}</td>
-                                            <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
+                                            <td>{{ date('d/M/Y', strtotime($item->created_at)) }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-md-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_user }}">
                                                     <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>

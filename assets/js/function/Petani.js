@@ -1,7 +1,28 @@
 const URL = document
   .querySelector('meta[name=baseurl]')
   .getAttribute('aria-valuemin');
-const URL_PETANI = URL + '/petani/';
+const URL_PETANI = URL + '/petani';
+
+const listMonth = [
+  'Januari',
+  'Februari',
+  'Maret',
+  'April',
+  'Mei',
+  'Juni',
+  'Juli',
+  'Agustus',
+  'September',
+  'November',
+  'Desember',
+];
+
+const C = {
+  u: `type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-md-tambah" id='tbh' data-toggle="modal"`,
+  iconU: `<i class="mdi mdi-lead-pencil btn-icon-prepend"></i>`,
+  d: `class="btn btn-sm btn-danger btn-icon-text delete"`,
+  iconD: `<i class="mdi mdi-delete btn-icon-prepend"></i>`,
+};
 
 const ELEMENT = {
   bodyTable: document.querySelector('#list'),
@@ -39,7 +60,7 @@ const clearForm = () => {
 };
 
 const fetchUpdate = async THIS => {
-  await fetch(`${URL_PETANI}json/${THIS.getAttribute('data-id')}`)
+  await fetch(`${URL_PETANI}/json/${THIS.getAttribute('data-id')}`)
     .then(res => res.json())
     .then(result => setFormUpdate(result.data))
     .catch(error => console.log(error));
@@ -79,6 +100,47 @@ const setFormUpdate = result => {
   INPUT.pabrik.value = result.id_pabrik;
 };
 
+const uiSearch = (data, no) => {
+  return /*html*/ `
+    <tr>
+      <td>${no}</td>
+      <td>${data.reg}</td>
+      <td>${data.nama_petani}</td>
+      <td>${data.nama_pabrik}</td>
+      <td>${formatTanggal(timeTodate(data.created_at))}</td>
+      <td>
+        <button ${C.u} data-id="${data.id_petani}">${C.iconU} Ubah </button>
+        <a ${C.d} href="${URL_PETANI}/${data.id_petani}">${C.iconD} Hapus </a>
+      </td>
+    </tr>
+  `;
+};
+
+const timeTodate = tgl => {
+  const date = new Date(tgl);
+  return date.toLocaleDateString();
+};
+
+const formatTanggal = tgl => {
+  const month = tgl.split('/');
+  return `${month[1]}/${listMonth[parseInt(month[0]) - 1]}/${month[2]}`;
+};
+
+const setData = result => {
+  let html = '';
+  let no = 1;
+  result.map(data => (html += uiSearch(data, no++)));
+  ELEMENT.bodyTable.innerHTML = html;
+  bindingUpdate();
+};
+
+const fetchSearch = async arg => {
+  await fetch(`${URL_PETANI}/json/search/${arg}`)
+    .then(res => res.json())
+    .then(result => setData(result.data))
+    .catch(err => err);
+};
+
 // function execution here
 
 bindingUpdate();
@@ -87,3 +149,8 @@ listDelete();
 INPUT.close.onclick = function () {
   clearForm();
 };
+
+INPUT.seacrh.addEventListener('keyup', async function () {
+  const { value } = this;
+  await fetchSearch(value);
+});

@@ -45,7 +45,7 @@
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->nama_pabrik }}</td>
                                         <td>{{ $item->kode_pabrik }}</td>
-                                        <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
+                                        <td>{{ date('d/M/Y', strtotime($item->created_at)) }}</td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-md-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_pabrik }}">
                                                 <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>

@@ -25,30 +25,33 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama</th>
-                                    <th>Username</th>
-                                    <th>Password</th>
-                                    <th>level</th>
+                                    <th>Masa Giling</th>
+                                    <th>Periode</th>
+                                    <th>Tanggal</th>
+                                    <th>REG</th>
                                     <th>Tanggal Masuk</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>dummy</td>
-                                    <td>dummy</td>
-                                    <td>dummy</td>
-                                    <td>dummy</td>
-                                    <td>dummy</td>
-                                    <td>
-                                        <button type="button" class="btn btn-sm btn-info btn-icon-text" data-target="#modal-lg-detail" id='tbh' data-toggle="modal">
-                                            <i class="mdi mdi-information-outline btn-icon-prepend"></i> Detail </button>
-                                        <button type="button" class="btn btn-sm btn-warning btn-icon-text">
-                                            <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
-                                        <button type="button" class="btn btn-sm btn-danger btn-icon-text">
-                                            <i class="mdi mdi-delete-forever btn-icon-prepend"></i> Hapus </button>
-                                    </td>
-                                </tr>
+                                <?php $no = 1; ?>
+                                @foreach ($data as $item)
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $item->masa_giling }}</td>
+                                        <td>{{ $item->periode }}</td>
+                                        <td>{{ date('d/M/Y', strtotime($item->created_at)) }}</td>
+                                        <td>{{ $item->reg }}</td>
+                                        <td>{{ $item->nospta }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-info btn-icon-text" data-target="#modal-lg-detail" id='tbh' data-toggle="modal">
+                                                <i class="mdi mdi-information-outline btn-icon-prepend"></i> Detail </button>
+                                            <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-id="{{ $item->id_entry }}">
+                                                <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
+                                            <a href="{{ url('/entry') . '/' . $item->id_entry }}" class="btn btn-sm btn-danger btn-icon-text">
+                                                <i class="mdi mdi-delete-forever btn-icon-prepend"></i> Hapus </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

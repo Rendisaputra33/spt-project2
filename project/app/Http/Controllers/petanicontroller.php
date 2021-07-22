@@ -52,4 +52,15 @@ class petanicontroller extends Controller
             'data' => petani::where('id_petani', $id)->first()
         ]);
     }
+
+    public function searchMethod($s)
+    {
+        return response()->json([
+            'data' => petani::rightJoin('mstr_pabrik', 'mstr_petani.id_pabrik', '=', 'mstr_pabrik.id_pabrik')
+                ->where('nama_petani', 'LIKE', '%' . $s . '%')
+                ->orWhere('reg', 'LIKE', '%' . $s . '%')
+                ->orWhere('nama_pabrik', 'LIKE', '%' . $s . '%')
+                ->get()
+        ]);
+    }
 }
