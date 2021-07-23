@@ -42,6 +42,7 @@ const periode = [
 ];
 
 const INPUT = {
+  close: document.querySelector('.add'),
   action: document.querySelector('#form-'),
   method: document.querySelector('#method'),
   periode: document.querySelector('select[name=periode]'),
@@ -93,8 +94,8 @@ const setFormUpdate = result => {
 const clearForm = () => {
   INPUT.action.setAttribute('action', URL_ROOT);
   INPUT.periode.setAttribute('data-change', 'add');
-  INPUT.periode.value = '';
-  INPUT.masa.value = '';
+  INPUT.periode.value = window.localStorage.getItem('periode');
+  INPUT.masa.value = new Date().getFullYear();
   INPUT.reg.value = '';
   INPUT.nospta.value = '';
   INPUT.nopol.value = '';
@@ -145,6 +146,32 @@ function isNumber(evt) {
   return true;
 }
 
+// funtion binding update interacted delete button
+const listDelete = () => {
+  const del = document.querySelectorAll('.delete');
+  for (let i = 0; i < del.length; i++) {
+    del[i].onclick = function (e) {
+      e.preventDefault();
+      swalDelete(this.getAttribute('href'));
+    };
+  }
+};
+// swal definition
+const swalDelete = param => {
+  Swal.fire({
+    title: 'Yakin ingin Menghapus?',
+    text: 'Data akan di hapus secara permanent!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Ya',
+    cancelButtonText: 'Batal',
+  }).then(result => {
+    result.isConfirmed ? (window.location.href = param) : '';
+  });
+};
+
 /**
  * global @function execution
  */
@@ -156,6 +183,10 @@ setTahun(generateTahun());
 bindingUpdate();
 
 INPUT.masa.value = new Date().getFullYear();
+
+INPUT.close.onclick = function () {
+  clearForm();
+};
 
 if (INPUT.periode.getAttribute('data-change') === 'add') {
   INPUT.periode.onchange = function () {
