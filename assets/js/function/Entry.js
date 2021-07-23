@@ -213,6 +213,6 @@ INPUT.harga.addEventListener('keyup', function () {
 
 INPUT.bobot.addEventListener('keyup', function () {
   INPUT.sisa.value =
-    parseInt(INPUT.hpp.value) -
-    parseInt(INPUT.harga.value) * parseInt(this.value);
+    (parseInt(INPUT.hpp.value) - parseInt(INPUT.harga.value)) *
+    parseInt(this.value);
 });

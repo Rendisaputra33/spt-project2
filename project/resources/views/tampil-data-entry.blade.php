@@ -47,7 +47,7 @@
                                                 <i class="mdi mdi-information-outline btn-icon-prepend"></i> Detail </button>
                                             <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
                                                 <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
-                                            <a href="{{ url('/entry') . '/' . $item->id_entry }}" class="btn btn-sm btn-danger btn-icon-text">
+                                            <a href="{{ url('/entry') . '/' . $item->id_entry }}" class="btn btn-sm btn-danger btn-icon-text delete">
                                                 <i class="mdi mdi-delete-forever btn-icon-prepend"></i> Hapus </a>
                                         </td>
                                     </tr>
