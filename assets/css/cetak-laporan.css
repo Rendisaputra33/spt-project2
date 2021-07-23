@@ -1,0 +1,9 @@
+tr>td:not(:first-child) {
+    background-color: rgb(200, 202, 250);
+}
+
+@media print {
+    @page {
+        size: landscape;
+    }
+}

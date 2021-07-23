@@ -91,6 +91,8 @@ Route::prefix('laporan')->group(function () {
         Route::get('/{id}', [pabrikcontroller::class, 'getupMethod'])->middleware('authuser');
     });
 });
-
+Route::get('/cetak-laporan', function () {
+    return view('cetak-laporan', ['title' => 'cetak']);
+});
 Route::get('/', [redirectcontroller::class, 'indexMethod']);
 Route::get('dashboard', [redirectcontroller::class, 'dashMethod']);

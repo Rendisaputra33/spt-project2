@@ -15,6 +15,7 @@
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alerts-css@1.0.2/assets/css/alerts-css.min.css">
     <link rel="stylesheet" href="{{ asset('assets/plugins/icon/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/cetak-laporan.css') }}">
     @yield('specific-css')
 </head>
 
@@ -28,18 +29,7 @@
     <script src="{{ asset('assets/js/misc.js') }}"></script>
     <script src="{{ asset('assets/plugins/icon/js/fontawesome.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/alerts-css@1.0.1/assets/js/alerts.min.js"></script>
-    <script>
-        $(function() {
-            var current = location.pathname;
-            $(' li a').each(function() {
-                var $this = $(this);
-                // if the current path is like this link, make it active
-                if ($this.attr('href').indexOf(current) !== -1) {
-                    $this.addClass('active');
-                }
-            })
-        })
-    </script>
+
     {{-- end default js --}}
     @yield('specific-js')
 </body>

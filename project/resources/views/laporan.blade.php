@@ -10,7 +10,7 @@
                         <i class="mdi mdi-filter-outline"></i>Filter
                     </button>
                     &nbsp;
-                    <button type="button" class="btn btn-gradient-success btn-icon-text d-flex" data-target="#modal-md-filter" id='tbh' data-toggle="modal">
+                    <button type="button" class="btn btn-gradient-success btn-icon-text d-flex">
                         <i class="mdi mdi-printer"></i>Cetak
                     </button>
                     {{-- &nbsp; &nbsp;
