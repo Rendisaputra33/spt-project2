@@ -29,7 +29,7 @@ class usercontroller extends Controller
             if ($data->username === $req->username && $data->id_user === (int) $id) {
                 return $this->saveUpdate($req, $id);
             } elseif ($data->id_user !== (int) $id) {
-                return redirect()->back()->with('gagal', 'username telah dipakai');
+                return redirect()->back()->with('error', 'username telah dipakai');
             } else {
                 return $this->saveUpdate($req, $id);
             }

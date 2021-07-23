@@ -67,10 +67,10 @@ Route::prefix('pabrik')->group(function () {
 // routing master transaction
 Route::prefix('entry')->group(function () {
     // default routing
-    Route::get('/', [entrycontroller::class, 'indexMethod']);
-    Route::post('/', [entrycontroller::class, 'addMethod']);
-    Route::put('/{id}', [entrycontroller::class, 'updateMethod']);
-    Route::get('/{id}', [entrycontroller::class, 'deleteMethod']);
+    Route::get('/', [entrycontroller::class, 'indexMethod'])->middleware('authuser');
+    Route::post('/', [entrycontroller::class, 'addMethod'])->middleware('authuser');
+    Route::put('/{id}', [entrycontroller::class, 'updateMethod'])->middleware('authuser');
+    Route::get('/{id}', [entrycontroller::class, 'deleteMethod'])->middleware('authuser');
     // json handler
     Route::prefix('json')->group(function () {
         Route::get('/{id}', [entrycontroller::class, 'getupMethod'])->middleware('authuser');
