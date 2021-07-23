@@ -46,7 +46,7 @@ const INPUT = {
   action: document.querySelector('#form-'),
   method: document.querySelector('#method'),
   periode: document.querySelector('select[name=periode]'),
-  masa: document.querySelector('select[name=masa]'),
+  masa: document.querySelector('input[name=masa]'),
   reg: document.querySelector('select[name=reg]'),
   nospta: document.querySelector('input[name=nospta]'),
   variasi: document.querySelector('select[name=variasi]'),
@@ -58,6 +58,14 @@ const INPUT = {
   bobot: document.querySelector('input[name=bobot]'),
   sisa: document.querySelector('input[name=sisa]'),
   pabrik: document.querySelector('select[name=pabrik]'),
+};
+
+/**
+ * @state definition here
+ */
+
+const state = {
+  sisa: 0,
 };
 
 /**
@@ -85,7 +93,7 @@ const setFormUpdate = result => {
   INPUT.variasi.value = result.variasi;
   INPUT.type.value = result.type;
   INPUT.keterangan.value = result.keterangan;
-  INPUT.harga.value = result.harga;
+  INPUT.harga.value = result.harga_beli;
   INPUT.hpp.value = result.hpp;
   INPUT.bobot.value = result.bobot;
   INPUT.sisa.value = result.sisa;
@@ -178,7 +186,7 @@ const swalDelete = param => {
 
 setPeriode();
 
-setTahun(generateTahun());
+// setTahun(generateTahun());
 
 bindingUpdate();
 
@@ -203,18 +211,14 @@ INPUT.periode.value =
     ? ''
     : window.localStorage.getItem('periode');
 
-INPUT.hpp.addEventListener('keyup', function () {
-  INPUT.sisa.value = parseInt(this.value);
-});
-
-INPUT.harga.addEventListener('keyup', function () {
-  INPUT.sisa.value = parseInt(INPUT.hpp.value) - parseInt(this.value);
-});
-
 INPUT.bobot.addEventListener('keyup', function () {
-  INPUT.sisa.value =
-    (parseInt(INPUT.hpp.value) - parseInt(INPUT.harga.value)) *
-    parseInt(this.value);
+  if (this.value === '') {
+    INPUT.sisa.value = '';
+  } else {
+    INPUT.sisa.value =
+      (parseInt(INPUT.hpp.value) - parseInt(INPUT.harga.value)) *
+      parseInt(this.value);
+  }
 });
 
 listDelete();

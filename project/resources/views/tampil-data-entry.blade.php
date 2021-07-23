@@ -102,10 +102,8 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="masa">Masa Giling</label>
-                                    <select class="form-control" name="masa" id="masa" required>
-                                        <option selected value="">Pilih</option>
-                                        <option>1</option>
-                                    </select>
+                                    <input type="text" class="form-control" placeholder="Masa Giling" name="masa" required>
+                                    <span class="text-dark"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="periode">Periode</label>

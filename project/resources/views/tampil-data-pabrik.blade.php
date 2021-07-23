@@ -18,14 +18,6 @@
                 </div>
 
             </div>
-            <div class="msg mt-2">
-                @if (session('sukses') !== null)
-                    <x-alert type="success" message="{{ session('sukses') }}" icon="fas fa-check-circle" />
-                @endif
-                @if (session('error') !== null)
-                    <x-alert type="danger" message="{{ session('error') }}" />
-                @endif
-            </div>
             <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                 <div class="card">
                     <div class="card-body">
