@@ -72,8 +72,8 @@ Route::prefix('entry')->group(function () {
     Route::get('/{id}', [entrycontroller::class, 'deleteMethod']);
     // json handler
     Route::prefix('json')->group(function () {
-        Route::get('/{id}', [pabrikcontroller::class, 'getupMethod'])->middleware('authuser');
-        Route::get('/search/{s}', [pabrikcontroller::class, 'searchMethod'])->middleware('authuser');
+        Route::get('/{id}', [entrycontroller::class, 'getupMethod'])->middleware('authuser');
+        Route::get('/search/{s}', [entrycontroller::class, 'searchMethod'])->middleware('authuser');
     });
 });
 

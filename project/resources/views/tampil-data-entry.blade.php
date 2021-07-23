@@ -29,7 +29,7 @@
                                     <th>Periode</th>
                                     <th>Tanggal</th>
                                     <th>REG</th>
-                                    <th>Tanggal Masuk</th>
+                                    <th>No SPTA</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -80,6 +80,17 @@
                     </div>
 
                     <div class="modal-body">
+                        <div class="col-md-12" style="padding-left: 40px; padding-right: 40px;">
+                            <div class="form-group">
+                                <label for="pabrik">Pabrik</label>
+                                <select class="form-control" name="pabrik" id="pabrik" data-change="add" required>
+                                    <option selected value="">Pilih</option>
+                                    @foreach ($pabrik as $item)
+                                        <option value="{{ $item->id_pabrik }}">{{ $item->nama_pabrik }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-lg-12 d-flex">
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -143,17 +154,17 @@
                                 </div>
                                 <div class="form-group" id="harga_beli">
                                     <label for="exampleInputPassword1">Harga Beli</label>
-                                    <input type="text" class="form-control" placeholder="Harga Beli" name="harga_beli" required>
+                                    <input type="text" onkeypress="return isNumber(event)" class="form-control" placeholder="Harga Beli" name="harga_beli" required>
                                     <span class="text-dark"></span>
                                 </div>
                                 <div class="form-group" id="bobot">
                                     <label for="exampleInputPassword1">Bobot</label>
-                                    <input type="text" class="form-control" placeholder="Bobot" name="bobot" required>
+                                    <input type="text" onkeypress="return isNumber(event)" class="form-control" placeholder="Bobot" name="bobot" required>
                                     <span class="text-dark"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="sisa">Sisa</label>
-                                    <input type="text" class="form-control" placeholder="Sisa" name="sisa" readonly required>
+                                    <input type="text" onchange="return isNumber(event)" class="form-control" placeholder="Sisa" name="sisa" readonly required>
                                     <span class="text-dark"></span>
                                 </div>
                             </div>

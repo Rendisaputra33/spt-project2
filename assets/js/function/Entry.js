@@ -48,14 +48,15 @@ const INPUT = {
   masa: document.querySelector('select[name=masa]'),
   reg: document.querySelector('input[name=reg]'),
   nospta: document.querySelector('input[name=nospta]'),
-  variasi: document.querySelector('input[name=variasi]'),
-  type: document.querySelector('input[name=type]'),
+  variasi: document.querySelector('select[name=variasi]'),
+  type: document.querySelector('select[name=type]'),
   nopol: document.querySelector('input[name=nopol]'),
   keterangan: document.querySelector('input[name=keterangan]'),
   hpp: document.querySelector('input[name=hpp]'),
   harga: document.querySelector('input[name=harga_beli]'),
   bobot: document.querySelector('input[name=bobot]'),
   sisa: document.querySelector('input[name=sisa]'),
+  pabrik: document.querySelector('select[name=pabrik]'),
 };
 
 /**
@@ -90,6 +91,7 @@ const setFormUpdate = result => {
 
 const clearForm = () => {
   INPUT.action.setAttribute('action', URL_ROOT);
+  INPUT.periode.setAttribute('data-change', 'add');
   INPUT.periode.value = '';
   INPUT.masa.value = '';
   INPUT.reg.value = '';
@@ -129,10 +131,18 @@ const setTahun = async d => {
 const setPeriode = () => {
   let peri = '<option value="">Pilih</option>';
   for (let i = 0; i < periode.length; i++) {
-    peri += /*html*/ `<option value="${periode[i]}">${periode[i]}</option>`;
+    peri += /*html*/ `<option value="${parseInt(periode[i])}">${
+      periode[i]
+    }</option>`;
   }
   INPUT.periode.innerHTML = peri;
 };
+
+function isNumber(evt) {
+  var charCode = evt.which ? evt.which : event.keyCode;
+  if (charCode > 31 && (charCode < 48 || charCode > 57)) return false;
+  return true;
+}
 
 /**
  * global @function execution
@@ -148,7 +158,11 @@ INPUT.masa.value = new Date().getFullYear();
 
 if (INPUT.periode.getAttribute('data-change') === 'add') {
   INPUT.periode.onchange = function () {
-    window.localStorage.setItem('periode', this.value);
+    window.localStorage.setItem('periode', parseInt(this.value));
+  };
+} else {
+  INPUT.periode.onchange = function () {
+    window.localStorage.setItem('periode-update', parseInt(this.value));
   };
 }
 
