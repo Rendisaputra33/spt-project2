@@ -87,6 +87,7 @@ const setFormUpdate = result => {
   INPUT.harga.value = result.harga;
   INPUT.hpp.value = result.hpp;
   INPUT.bobot.value = result.bobot;
+  INPUT.sisa.value = result.sisa;
 };
 
 const clearForm = () => {
@@ -170,3 +171,15 @@ INPUT.periode.value =
   window.localStorage.getItem('periode') === null
     ? ''
     : window.localStorage.getItem('periode');
+
+INPUT.hpp.addEventListener('keyup', function () {
+  INPUT.sisa.value = parseInt(this.value);
+});
+
+INPUT.harga.addEventListener('keyup', function () {
+  INPUT.sisa.value = parseInt(INPUT.hpp.value) - parseInt(this.value);
+});
+
+INPUT.bobot.addEventListener('keyup', function () {
+  INPUT.sisa.value = parseInt(INPUT.sisa.value) * parseInt(this.value);
+});

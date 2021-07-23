@@ -43,9 +43,9 @@
                                         <td>{{ $item->reg }}</td>
                                         <td>{{ $item->nospta }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-sm btn-info btn-icon-text" data-target="#modal-lg-detail" id='tbh' data-toggle="modal">
+                                            <button type="button" class="btn btn-sm btn-info btn-icon-text">
                                                 <i class="mdi mdi-information-outline btn-icon-prepend"></i> Detail </button>
-                                            <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-id="{{ $item->id_entry }}">
+                                            <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
                                                 <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
                                             <a href="{{ url('/entry') . '/' . $item->id_entry }}" class="btn btn-sm btn-danger btn-icon-text">
                                                 <i class="mdi mdi-delete-forever btn-icon-prepend"></i> Hapus </a>
