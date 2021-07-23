@@ -97,6 +97,10 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="pabrik">Tanggal</label>
+                                <input type="date" class="form-control" name="tanggal" value="{{ date('Y-m-d') }}" required>
+                            </div>
                         </div>
                         <div class="col-lg-12 d-flex">
                             <div class="col-lg-6">
