@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\authcontroller;
 use App\Http\Controllers\entrycontroller;
+use App\Http\Controllers\laporancontroller;
 use App\Http\Controllers\pabrikcontroller;
 use App\Http\Controllers\petanicontroller;
 use App\Http\Controllers\redirectcontroller;
@@ -80,9 +81,7 @@ Route::prefix('entry')->group(function () {
 // routing master laporan
 Route::prefix('laporan')->group(function () {
     // default routing
-    Route::get('/', function () {
-        return view('laporan');
-    });
+    Route::get('/', [laporancontroller::class, 'indexMethod']);
     Route::post('/', [entrycontroller::class, 'addMethod']);
     Route::put('/{id}', [entrycontroller::class, 'updateMethod']);
     Route::get('/{id}', [entrycontroller::class, 'deleteMethod']);
