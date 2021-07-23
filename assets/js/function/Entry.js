@@ -47,7 +47,7 @@ const INPUT = {
   method: document.querySelector('#method'),
   periode: document.querySelector('select[name=periode]'),
   masa: document.querySelector('select[name=masa]'),
-  reg: document.querySelector('input[name=reg]'),
+  reg: document.querySelector('select[name=reg]'),
   nospta: document.querySelector('input[name=nospta]'),
   variasi: document.querySelector('select[name=variasi]'),
   type: document.querySelector('select[name=type]'),
@@ -216,3 +216,5 @@ INPUT.bobot.addEventListener('keyup', function () {
     (parseInt(INPUT.hpp.value) - parseInt(INPUT.harga.value)) *
     parseInt(this.value);
 });
+
+listDelete();

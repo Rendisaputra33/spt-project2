@@ -16,7 +16,14 @@
                         <i class="mdi mdi-plus btn-icon-prepend"></i>Tambah
                     </button>
                 </div>
-
+            </div>
+            <div class="msg mt-2">
+                @if (session('sukses') !== null)
+                    <x-alert type="success" message="{{ session('sukses') }}" icon="fas fa-check-circle" />
+                @endif
+                @if (session('error') !== null)
+                    <x-alert type="danger" message="{{ session('error') }}" />
+                @endif
             </div>
             <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                 <div class="card">
@@ -121,6 +128,11 @@
                                     <input type="text" class="form-control" placeholder="No SPTA" name="nospta" required>
                                     <span class="text-dark"></span>
                                 </div>
+                                <div class="form-group" id="nopol">
+                                    <label for="exampleInputPassword1">No POL</label>
+                                    <input type="text" class="form-control" placeholder="Nopol" name="nopol" required>
+                                    <span class="text-dark"></span>
+                                </div>
                                 <div class="form-group">
                                     <label for="variasi">Variasi</label>
                                     <select class="form-control" name="variasi" id="variasi" required>
@@ -130,6 +142,8 @@
                                         @endforeach
                                     </select>
                                 </div>
+                            </div>
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="type">Type</label>
                                     <select class="form-control" name="type" id="type" required>
@@ -139,13 +153,6 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group" id="nopol">
-                                    <label for="exampleInputPassword1">No POL</label>
-                                    <input type="text" class="form-control" placeholder="Nopol" name="nopol" required>
-                                    <span class="text-dark"></span>
-                                </div>
                                 <div class="form-group" id="keterangan">
                                     <label for="exampleInputPassword1">Keterangan</label>
                                     <input type="text" class="form-control" placeholder="Keterangan" name="keterangan" required>
@@ -153,7 +160,7 @@
                                 </div>
                                 <div class="form-group" id="hpp">
                                     <label for="exampleInputPassword1">HPP</label>
-                                    <input type="text" class="form-control" placeholder="Hpp" name="hpp" required>
+                                    <input type="text" class="form-control" onkeypress="return isNumber(event)" placeholder="Hpp" name="hpp" required>
                                     <span class="text-dark"></span>
                                 </div>
                                 <div class="form-group" id="harga_beli">
