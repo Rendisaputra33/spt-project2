@@ -35,21 +35,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>dummy</td>
-                                    <td>dummy</td>
-                                    <td>dummy</td>
-                                    <td>dummy</td>
-                                    <td>
-                                        {{-- <button type="button" class="btn btn-sm btn-info btn-icon-text" data-target="#modal-lg-detail" id='tbh' data-toggle="modal">
+                                <?php $no = 1; ?>
+                                @foreach ($data as $item)
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $item->keterangan }}</td>
+                                        <td>{{ $item->harga_beli }}</td>
+                                        <td>{{ $item->hpp }}</td>
+                                        <td>{{ $item->sisa }}</td>
+                                        <td>
+                                            {{-- <button type="button" class="btn btn-sm btn-info btn-icon-text" data-target="#modal-lg-detail" id='tbh' data-toggle="modal">
                     <i class="mdi mdi-information-outline btn-icon-prepend"></i> Detail </button> --}}
-                                        <button type="button" class="btn btn-sm btn-warning btn-icon-text">
-                                            <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
-                                        <button type="button" class="btn btn-sm btn-danger btn-icon-text">
-                                            <i class="mdi mdi-delete-forever btn-icon-prepend"></i> Hapus </button>
-                                    </td>
-                                </tr>
+                                            <button type="button" class="btn btn-sm btn-warning btn-icon-text">
+                                                <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
+                                            <button type="button" class="btn btn-sm btn-danger btn-icon-text">
+                                                <i class="mdi mdi-delete-forever btn-icon-prepend"></i> Hapus </button>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
