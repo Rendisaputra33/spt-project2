@@ -108,9 +108,13 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="reg">REG</label>
-                                    <input type="text" class="form-control" placeholder="REG" name="reg" required>
-                                    <span class="text-dark"></span>
+                                    <label for="reg">Reg</label>
+                                    <select class="form-control" name="reg" id="reg" data-change="add" required>
+                                        <option selected value="">Pilih</option>
+                                        @foreach ($petani as $item)
+                                            <option value="{{ $item->reg }}">{{ $item->nama_petani }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group" id="nospta">
                                     <label for="exampleInputPassword1">No SPTA</label>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\entry;
 use App\Models\pabrik;
+use App\Models\petani;
 use App\Models\type;
 use App\Models\variasi;
 use Illuminate\Http\Request;
@@ -16,6 +17,7 @@ class entrycontroller extends Controller
             'data' => entry::whereDate('created_at', now())->get(),
             'type' => type::get(),
             'variasi' => variasi::get(),
+            'petani' => petani::get(),
             'pabrik' => pabrik::select('id_pabrik', 'nama_pabrik')->get(),
             'title' => 'Entry'
         ]);
