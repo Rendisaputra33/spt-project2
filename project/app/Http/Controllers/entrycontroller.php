@@ -76,4 +76,11 @@ class entrycontroller extends Controller
             'data' => entry::where('id_entry', $id)->first()
         ]);
     }
+
+    public function serachMethod($s)
+    {
+        return response()->json([
+            'data' => entry::where('')->get()
+        ]);
+    }
 }
