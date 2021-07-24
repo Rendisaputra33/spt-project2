@@ -93,10 +93,10 @@ const setFormUpdate = result => {
   INPUT.variasi.value = result.variasi;
   INPUT.type.value = result.type;
   INPUT.keterangan.value = result.keterangan;
-  INPUT.harga.value = result.harga_beli;
-  INPUT.hpp.value = result.hpp;
+  INPUT.harga.value = formatRupiah(result.harga_beli.toString(), 'Rp. ');
+  INPUT.hpp.value = formatRupiah(result.hpp.toString(), 'Rp. ');
   INPUT.bobot.value = result.bobot;
-  INPUT.sisa.value = result.sisa;
+  INPUT.sisa.value = formatRupiah(result.sisa.toString(), 'Rp. ');
   INPUT.pabrik.value = result.id_pabrik;
 };
 

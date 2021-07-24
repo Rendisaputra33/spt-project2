@@ -49,7 +49,7 @@ class entrycontroller extends Controller
         return entry::where('id_entry', $id)->update([
             'periode' => $req->periode,
             'masa_giling' => $req->masa,
-            'id_pabrik' => $req->id_pabrik,
+            'id_pabrik' => $req->pabrik,
             'reg' => $req->reg,
             'nospta' => $req->nospta,
             'nopol' => $req->nopol,
