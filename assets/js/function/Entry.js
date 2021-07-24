@@ -212,15 +212,16 @@ const setFormUpdate = result => {
 
 const setDetail = data => {
   Detail.bobot.innerHTML = data.bobot;
-  Detail.harga.innerHTML = data.harga_beli;
-  Detail.hpp.innerHTML = data.hpp;
+  Detail.harga.innerHTML = formatRupiah(data.harga_beli.toString());
+  Detail.hpp.innerHTML = formatRupiah(data.hpp.toString());
   Detail.ket.innerHTML = data.keterangan;
   Detail.masa.innerHTML = data.masa_giling;
   Detail.nopol.innerHTML = data.nopol;
   Detail.periode.innerHTML = data.periode;
   Detail.reg.innerHTML = data.reg;
-  Detail.sisa.innerHTML = data.sisa;
+  Detail.sisa.innerHTML = formatRupiah(data.sisa.toString(), 'Rp. ');
   Detail.nospta.innerHTML = data.nospta;
+  Detail.tanggal.innerHTML = data.created_at;
 };
 
 const clearForm = () => {
