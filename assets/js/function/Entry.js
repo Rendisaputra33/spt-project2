@@ -74,6 +74,7 @@ const state = {
 
 const bindingUpdate = () => {
   const up = document.querySelectorAll('.update');
+  binddingPeriode();
   for (let i = 0; i < up.length; i++) {
     up[i].onclick = async function () {
       await fetchUpdate(this);
@@ -199,36 +200,38 @@ function formatRupiah(angka, prefix) {
   return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
 }
 
+const binddingPeriode = () => {
+  if (INPUT.periode.getAttribute('data-change') === 'add') {
+    INPUT.periode.onchange = function () {
+      window.localStorage.setItem('periode', parseInt(this.value));
+    };
+  } else {
+    INPUT.periode.onchange = function () {
+      window.localStorage.setItem('periode-update', parseInt(this.value));
+    };
+  }
+};
+
 const parseRupiah = str => parseInt(str.split(' ')[1].split('.').join(''));
 
 /**
  * global @function execution
  */
-
+// set form periode
 setPeriode();
-
 // setTahun(generateTahun());
-
 bindingUpdate();
-
+// binding action change input periode
+binddingPeriode();
+// set default input massa giling
 INPUT.masa.value = new Date().getFullYear();
-
+// bindding event after update
 INPUT.close.onclick = function () {
   clearForm();
 };
 
-if (INPUT.periode.getAttribute('data-change') === 'add') {
-  INPUT.periode.onchange = function () {
-    window.localStorage.setItem('periode', parseInt(this.value));
-  };
-} else {
-  INPUT.periode.onchange = function () {
-    window.localStorage.setItem('periode-update', parseInt(this.value));
-  };
-}
-
 INPUT.periode.value =
-  window.localStorage.getItem('periode') === null
+  window.localStorage.getItem('periode') === undefined
     ? ''
     : window.localStorage.getItem('periode');
 
