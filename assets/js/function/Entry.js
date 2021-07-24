@@ -17,6 +17,10 @@ const A = {
   idel: `<i class="mdi mdi-delete-forever btn-icon-prepend"></i>`,
 };
 
+const ELEMENT = {
+  tableBody: document.querySelector('#list'),
+};
+
 const periode = [
   '001',
   '002',
@@ -138,8 +142,15 @@ const fetchUpdate = async THIS => {
 const fetchSearch = async THIS => {
   await fetch(`${URL_ROOT}/json/search/${THIS.value}`)
     .then(res => res.json())
-    .then(result => setFormUpdate(result.data))
+    .then(result => setSearch(result.data))
     .catch(error => console.log(error));
+};
+
+const setSearch = data => {
+  let html = '';
+  let no = 1;
+  data.map(data => uiSearch(data, no++));
+  ELEMENT.tableBody.innerHTML = html;
 };
 
 const generateTahun = () => {
