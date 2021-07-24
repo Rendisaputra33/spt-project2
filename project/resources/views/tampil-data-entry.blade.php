@@ -50,7 +50,7 @@
                                         <td>{{ $item->reg }}</td>
                                         <td>{{ $item->nospta }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-sm btn-info btn-icon-text" data-target="#modal-lg-detail" id='tbh' data-toggle="modal">
+                                            <button type="button" class="btn btn-sm btn-info btn-icon-text detail" data-target="#modal-lg-detail" id='tbh' data-id="{{ $item->id_entry }}" data-toggle="modal">
                                                 <i class="mdi mdi-information-outline btn-icon-prepend"></i> Detail </button>
                                             <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
                                                 <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
@@ -209,8 +209,6 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>No</th>
-
                                 <th>Periode</th>
                                 <th>Masa Giling</th>
                                 <th>Tanggal</th>
@@ -226,18 +224,17 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
+                                <td class="periode">dummy</td>
+                                <td class="masa">dummy</td>
+                                <td class="tanggal">dummy</td>
+                                <td class="reg">dummy</td>
+                                <td class="nospta">dummy</td>
+                                <td class="nopol">dummy</td>
+                                <td class="bobot">dummy</td>
+                                <td class="ket">dummy</td>
+                                <td class="harga">dummy</td>
+                                <td class="hpp">dummy</td>
+                                <td class="sisa">dummy</td>
                             </tr>
                         </tbody>
                     </table>

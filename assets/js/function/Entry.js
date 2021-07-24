@@ -17,6 +17,20 @@ const A = {
   idel: `<i class="mdi mdi-delete-forever btn-icon-prepend"></i>`,
 };
 
+const Detail = {
+  periode: document.querySelector('td[class=periode]'),
+  masa: document.querySelector('td[class=masa]'),
+  tanggal: document.querySelector('td[class=tanggal]'),
+  reg: document.querySelector('td[class=reg]'),
+  nospta: document.querySelector('td[class=nospta]'),
+  nopol: document.querySelector('td[class=nopol]'),
+  bobot: document.querySelector('td[class=bobot]'),
+  ket: document.querySelector('td[class=ket]'),
+  hpp: document.querySelector('td[class=hpp]'),
+  sisa: document.querySelector('td[class=sisa]'),
+  harga: document.querySelector('td[class=harga]'),
+};
+
 const ELEMENT = {
   tableBody: document.querySelector('#list'),
 };
@@ -95,47 +109,26 @@ const bindingUpdate = () => {
   }
 };
 
-const setFormUpdate = result => {
-  INPUT.periode.setAttribute('data-change', 'update');
-  INPUT.action.setAttribute('action', URL_ROOT + '/' + result.id_entry);
-  binddingPeriode();
-  INPUT.method.innerHTML = '<input type="hidden" name="_method" value="PUT" />';
-  INPUT.periode.value = result.periode;
-  INPUT.masa.value = result.masa_giling;
-  INPUT.reg.value = result.reg;
-  INPUT.nospta.value = result.nospta;
-  INPUT.nopol.value = result.nopol;
-  INPUT.variasi.value = result.variasi;
-  INPUT.type.value = result.type;
-  INPUT.keterangan.value = result.keterangan;
-  INPUT.harga.value = formatRupiah(result.harga_beli.toString(), 'Rp. ');
-  INPUT.hpp.value = formatRupiah(result.hpp.toString(), 'Rp. ');
-  INPUT.bobot.value = result.bobot;
-  INPUT.sisa.value = formatRupiah(result.sisa.toString(), 'Rp. ');
-  INPUT.pabrik.value = result.id_pabrik;
-};
-
-const clearForm = () => {
-  INPUT.action.setAttribute('action', URL_ROOT);
-  INPUT.periode.setAttribute('data-change', 'add');
-  binddingPeriode();
-  INPUT.periode.value = window.localStorage.getItem('periode');
-  INPUT.masa.value = new Date().getFullYear();
-  INPUT.reg.value = '';
-  INPUT.nospta.value = '';
-  INPUT.nopol.value = '';
-  INPUT.variasi.value = '';
-  INPUT.type.value = '';
-  INPUT.keterangan.value = '';
-  INPUT.harga.value = '';
-  INPUT.hpp.value = '';
-  INPUT.bobot.value = '';
+const binddingDetail = () => {
+  const de = document.querySelectorAll('.detail');
+  for (let i = 0; i < de.length; i++) {
+    de[i].onclick = async function () {
+      await fetchDetail(this);
+    };
+  }
 };
 // fetch get data update
 const fetchUpdate = async THIS => {
   await fetch(`${URL_ROOT}/json/${THIS.getAttribute('data-id')}`)
     .then(res => res.json())
     .then(result => setFormUpdate(result.data))
+    .catch(error => console.log(error));
+};
+// fetch get data update
+const fetchDetail = async THIS => {
+  await fetch(`${URL_ROOT}/json/${THIS.getAttribute('data-id')}`)
+    .then(res => res.json())
+    .then(result => setDetail(result.data))
     .catch(error => console.log(error));
 };
 // fetch get data search
@@ -195,6 +188,56 @@ const listDelete = () => {
       swalDelete(this.getAttribute('href'));
     };
   }
+};
+
+const setFormUpdate = result => {
+  INPUT.periode.setAttribute('data-change', 'update');
+  INPUT.action.setAttribute('action', URL_ROOT + '/' + result.id_entry);
+  binddingPeriode();
+  INPUT.method.innerHTML = '<input type="hidden" name="_method" value="PUT" />';
+  INPUT.periode.value = result.periode;
+  INPUT.masa.value = result.masa_giling;
+  INPUT.reg.value = result.reg;
+  INPUT.nospta.value = result.nospta;
+  INPUT.nopol.value = result.nopol;
+  INPUT.variasi.value = result.variasi;
+  INPUT.type.value = result.type;
+  INPUT.keterangan.value = result.keterangan;
+  INPUT.harga.value = formatRupiah(result.harga_beli.toString(), 'Rp. ');
+  INPUT.hpp.value = formatRupiah(result.hpp.toString(), 'Rp. ');
+  INPUT.bobot.value = result.bobot;
+  INPUT.sisa.value = formatRupiah(result.sisa.toString(), 'Rp. ');
+  INPUT.pabrik.value = result.id_pabrik;
+};
+
+const setDetail = data => {
+  Detail.bobot.innerHTML = data.bobot;
+  Detail.harga.innerHTML = data.harga_beli;
+  Detail.hpp.innerHTML = data.hpp;
+  Detail.ket.innerHTML = data.keterangan;
+  Detail.masa.innerHTML = data.masa_giling;
+  Detail.nopol.innerHTML = data.nopol;
+  Detail.periode.innerHTML = data.periode;
+  Detail.reg.innerHTML = data.reg;
+  Detail.sisa.innerHTML = data.sisa;
+  Detail.nospta.innerHTML = data.nospta;
+};
+
+const clearForm = () => {
+  INPUT.action.setAttribute('action', URL_ROOT);
+  INPUT.periode.setAttribute('data-change', 'add');
+  binddingPeriode();
+  INPUT.periode.value = window.localStorage.getItem('periode');
+  INPUT.masa.value = new Date().getFullYear();
+  INPUT.reg.value = '';
+  INPUT.nospta.value = '';
+  INPUT.nopol.value = '';
+  INPUT.variasi.value = '';
+  INPUT.type.value = '';
+  INPUT.keterangan.value = '';
+  INPUT.harga.value = '';
+  INPUT.hpp.value = '';
+  INPUT.bobot.value = '';
 };
 // swal definition
 const swalDelete = param => {
@@ -273,6 +316,8 @@ bindingUpdate();
 binddingPeriode();
 // binding event delete
 listDelete();
+// binding click detail button
+binddingDetail();
 // set default input massa gilings
 INPUT.masa.value = new Date().getFullYear();
 // bindding event after
