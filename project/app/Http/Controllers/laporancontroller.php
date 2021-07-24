@@ -9,7 +9,7 @@ class laporancontroller extends Controller
 {
     public function indexMethod()
     {
-        return view('laporan', [
+        return view('tampil-data-laporan', [
             'data' => entry::get(),
             'title' => 'Laporan'
         ]);
@@ -22,7 +22,7 @@ class laporancontroller extends Controller
 
     public function cetakMethod($parameter)
     {
-        return view('laporan', [
+        return view('cetak-laporan', [
             'data' => entry::whereIn('id_entry', $parameter)->get()
         ]);
     }
