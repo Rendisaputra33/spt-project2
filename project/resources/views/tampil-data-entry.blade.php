@@ -90,7 +90,7 @@
                         <div class="col-md-12" style="padding-left: 40px; padding-right: 40px;">
                             <div class="form-group">
                                 <label for="pabrik">Pabrik</label>
-                                <select class="form-control" name="pabrik" id="pabrik" data-change="add" required>
+                                <select class="form-control" name="pabrik" id="pabrik" required>
                                     <option selected value="">Pilih</option>
                                     @foreach ($pabrik as $item)
                                         <option value="{{ $item->id_pabrik }}">{{ $item->nama_pabrik }}</option>
@@ -177,7 +177,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="sisa">Sisa</label>
-                                    <input type="text" onchange="return isNumber(event)" class="form-control" placeholder="Sisa" name="sisa" readonly required>
+                                    <input type="text" class="form-control" placeholder="Sisa" name="sisa" readonly required>
                                     <span class="text-dark"></span>
                                 </div>
                             </div>

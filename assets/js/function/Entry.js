@@ -97,6 +97,7 @@ const setFormUpdate = result => {
   INPUT.hpp.value = result.hpp;
   INPUT.bobot.value = result.bobot;
   INPUT.sisa.value = result.sisa;
+  INPUT.pabrik.value = result.id_pabrik;
 };
 
 const clearForm = () => {
@@ -180,6 +181,26 @@ const swalDelete = param => {
   });
 };
 
+/* Fungsi formatRupiah */
+function formatRupiah(angka, prefix) {
+  var number_string = angka.replace(/[^,\d]/g, '').toString(),
+    split = number_string.split(','),
+    sisa = split[0].length % 3,
+    rupiah = split[0].substr(0, sisa),
+    ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+  // tambahkan titik jika yang di input sudah menjadi angka ribuan
+  if (ribuan) {
+    separator = sisa ? '.' : '';
+    rupiah += separator + ribuan.join('.');
+  }
+
+  rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+  return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
+}
+
+const parseRupiah = str => parseInt(str.split(' ')[1].split('.').join(''));
+
 /**
  * global @function execution
  */
@@ -211,13 +232,22 @@ INPUT.periode.value =
     ? ''
     : window.localStorage.getItem('periode');
 
+INPUT.harga.addEventListener('keyup', function () {
+  this.value = formatRupiah(this.value, 'Rp. ');
+});
+
+INPUT.hpp.addEventListener('keyup', function () {
+  this.value = formatRupiah(this.value, 'Rp. ');
+});
+
 INPUT.bobot.addEventListener('keyup', function () {
   if (this.value === '') {
     INPUT.sisa.value = '';
   } else {
-    INPUT.sisa.value =
-      (parseInt(INPUT.hpp.value) - parseInt(INPUT.harga.value)) *
+    const total =
+      (parseRupiah(INPUT.hpp.value) - parseRupiah(INPUT.harga.value)) *
       parseInt(this.value);
+    INPUT.sisa.value = formatRupiah(total.toString(), 'Rp. ');
   }
 });
 
