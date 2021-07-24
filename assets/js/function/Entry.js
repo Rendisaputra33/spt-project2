@@ -74,7 +74,6 @@ const state = {
 
 const bindingUpdate = () => {
   const up = document.querySelectorAll('.update');
-  binddingPeriode();
   for (let i = 0; i < up.length; i++) {
     up[i].onclick = async function () {
       await fetchUpdate(this);
@@ -85,6 +84,7 @@ const bindingUpdate = () => {
 const setFormUpdate = result => {
   INPUT.periode.setAttribute('data-change', 'update');
   INPUT.action.setAttribute('action', URL_ROOT + '/' + result.id_entry);
+  binddingPeriode();
   INPUT.method.innerHTML = '<input type="hidden" name="_method" value="PUT" />';
   INPUT.periode.value = result.periode;
   INPUT.masa.value = result.masa_giling;
@@ -104,6 +104,7 @@ const setFormUpdate = result => {
 const clearForm = () => {
   INPUT.action.setAttribute('action', URL_ROOT);
   INPUT.periode.setAttribute('data-change', 'add');
+  binddingPeriode();
   INPUT.periode.value = window.localStorage.getItem('periode');
   INPUT.masa.value = new Date().getFullYear();
   INPUT.reg.value = '';
@@ -225,7 +226,7 @@ bindingUpdate();
 binddingPeriode();
 // set default input massa giling
 INPUT.masa.value = new Date().getFullYear();
-// bindding event after update
+// bindding event after
 INPUT.close.onclick = function () {
   clearForm();
 };
