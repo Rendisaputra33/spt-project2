@@ -58,6 +58,7 @@ const INPUT = {
   bobot: document.querySelector('input[name=bobot]'),
   sisa: document.querySelector('input[name=sisa]'),
   pabrik: document.querySelector('select[name=pabrik]'),
+  search: document.querySelector('#search'),
 };
 
 /**
@@ -117,9 +118,16 @@ const clearForm = () => {
   INPUT.hpp.value = '';
   INPUT.bobot.value = '';
 };
-
+// fetch get data update
 const fetchUpdate = async THIS => {
   await fetch(`${URL_ROOT}/json/${THIS.getAttribute('data-id')}`)
+    .then(res => res.json())
+    .then(result => setFormUpdate(result.data))
+    .catch(error => console.log(error));
+};
+// fetch get data search
+const fetchSearch = async THIS => {
+  await fetch(`${URL_ROOT}/json/search/${THIS.value}`)
     .then(res => res.json())
     .then(result => setFormUpdate(result.data))
     .catch(error => console.log(error));
@@ -224,26 +232,28 @@ setPeriode();
 bindingUpdate();
 // binding action change input periode
 binddingPeriode();
+// binding event delete
+listDelete();
 // set default input massa giling
 INPUT.masa.value = new Date().getFullYear();
 // bindding event after
 INPUT.close.onclick = function () {
   clearForm();
 };
-
+// set dafault input periode
 INPUT.periode.value =
   window.localStorage.getItem('periode') === undefined
     ? ''
     : window.localStorage.getItem('periode');
-
+// binding format input harga beli
 INPUT.harga.addEventListener('keyup', function () {
   this.value = formatRupiah(this.value, 'Rp. ');
 });
-
+// binding format input hpp
 INPUT.hpp.addEventListener('keyup', function () {
   this.value = formatRupiah(this.value, 'Rp. ');
 });
-
+// binding format input bobot & sisa
 INPUT.bobot.addEventListener('keyup', function () {
   if (this.value === '') {
     INPUT.sisa.value = '';
@@ -254,5 +264,7 @@ INPUT.bobot.addEventListener('keyup', function () {
     INPUT.sisa.value = formatRupiah(total.toString(), 'Rp. ');
   }
 });
-
-listDelete();
+// binding event search
+INPUT.search.onkeyup = async function () {
+  await fetchSearch(this);
+};
