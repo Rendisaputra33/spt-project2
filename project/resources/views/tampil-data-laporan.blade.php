@@ -90,37 +90,35 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group" id="tanggal">
+                            <div class="form-group">
                                 <label for="exampleInputPassword1">Tanggal Awal</label>
-                                <input type="date" class="form-control" name="tanggal" required>
+                                <input type="date" class="form-control" name="tanggal" id="taw" readonly>
                                 <span class="text-dark"></span>
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="form-group" id="tanggal">
+                            <div class="form-group">
                                 <label for="exampleInputPassword1">Tanggal Akhir</label>
-                                <input type="date" class="form-control" name="tanggal" required>
+                                <input type="date" class="form-control" name="tanggal" id="tak" readonly>
                                 <span class="text-dark"></span>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group" id="pg">
+                    <div class="form-group">
                         <label for="exampleInputPassword1">PG</label>
-                        <input type="text" class="form-control" name="pg" required>
+                        <input type="text" class="form-control" name="pg" id="pabrik" readonly>
                         <span class="text-dark"></span>
                     </div>
-                    <div class="form-group" id="periode">
+                    <div class="form-group">
                         <label for="exampleInputPassword1">Periode</label>
-                        <input type="text" class="form-control" name="periode" required>
+                        <input type="text" class="form-control" name="periode" id="periode" readonly>
                         <span class="text-dark"></span>
                     </div>
-                    <div class="form-group" id="type_tebu">
+                    <div class="form-group">
                         <label for="exampleInputPassword1">Type Tebu</label>
-                        <input type="text" class="form-control" name="type_tebu" required>
+                        <input type="text" class="form-control" name="type_tebu" id="type" readonly>
                         <span class="text-dark"></span>
                     </div>
-
-
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
@@ -132,5 +130,7 @@
     </div>
     <!-- /.modal-dialog -->
     </div>
-
+@endsection
+@section('specific-js')
+    <script src="{{ asset('assets/js/function/Laporan.js') }}"></script>
 @endsection

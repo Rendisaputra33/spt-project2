@@ -11,16 +11,7 @@
                     </button>
                     &nbsp;
                     <a href="{{ url('/cetak-laporan') }}" class="btn btn-gradient-success btn-icon-text d-flex"><i class="mdi mdi-printer"></i>Cetak</a>
-
-
-
-                    {{-- &nbsp; &nbsp;
-          <button type="button" class="btn btn-success btn-icon h-100" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
-              <i class="mdi mdi-plus"></i>
-          </button> --}}
-
                 </div>
-
             </div>
             <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                 <div class="card">
@@ -87,41 +78,38 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group" id="tanggal">
+                            <div class="form-group">
                                 <label for="exampleInputPassword1">Tanggal Awal</label>
-                                <input type="date" class="form-control" name="tanggal" required>
+                                <input type="date" class="form-control" name="tanggal" id="taw" disabled>
                                 <span class="text-dark"></span>
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="form-group" id="tanggal">
+                            <div class="form-group">
                                 <label for="exampleInputPassword1">Tanggal Akhir</label>
-                                <input type="date" class="form-control" name="tanggal" required>
+                                <input type="date" class="form-control" name="tanggal" id="tak" disabled>
                                 <span class="text-dark"></span>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group" id="pg">
+                    <div class="form-group">
                         <label for="exampleInputPassword1">PG</label>
-                        <input type="text" class="form-control" name="pg" required>
+                        <input type="text" class="form-control" name="pg" id="pabrik" disabled>
                         <span class="text-dark"></span>
                     </div>
-                    <div class="form-group" id="periode">
+                    <div class="form-group">
                         <label for="exampleInputPassword1">Periode</label>
-                        <input type="text" class="form-control" name="periode" required>
+                        <input type="text" class="form-control" name="periode" id="periode" disabled>
                         <span class="text-dark"></span>
                     </div>
-                    <div class="form-group" id="type_tebu">
+                    <div class="form-group">
                         <label for="exampleInputPassword1">Type Tebu</label>
-                        <input type="text" class="form-control" name="type_tebu" required>
+                        <input type="text" class="form-control" name="type_tebu" id="type" disabled>
                         <span class="text-dark"></span>
                     </div>
-
-
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

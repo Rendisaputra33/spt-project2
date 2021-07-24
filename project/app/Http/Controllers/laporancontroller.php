@@ -15,9 +15,12 @@ class laporancontroller extends Controller
         ]);
     }
 
-    public function fetchMethod(Request $req)
+    public function fetchMethod()
     {
-        # code...
+        // switch(request('f')) {
+        //     case:
+        //         return 
+        // }
     }
 
     public function cetakMethod($parameter)
