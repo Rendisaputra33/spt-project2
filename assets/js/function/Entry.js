@@ -8,6 +8,20 @@ const URL = document
 
 const URL_ROOT = URL + '/entry';
 
+const listMonth = [
+  'Januari',
+  'Februari',
+  'Maret',
+  'April',
+  'Mei',
+  'Juni',
+  'Juli',
+  'Agustus',
+  'September',
+  'November',
+  'Desember',
+];
+
 const A = {
   d: `class="btn btn-sm btn-info btn-icon-text"`,
   id: `<i class="mdi mdi-information-outline btn-icon-prepend"></i>`,
@@ -163,6 +177,16 @@ const setTahun = async d => {
   INPUT.masa.innerHTML = peri;
 };
 
+const timeTodate = tgl => {
+  const date = new Date(tgl);
+  return date.toLocaleDateString();
+};
+
+const formatTanggal = tgl => {
+  const month = tgl.split('/');
+  return `${month[1]}/${listMonth[parseInt(month[0]) - 1]}/${month[2]}`;
+};
+
 const setPeriode = () => {
   let peri = '<option value="">Pilih</option>';
   for (let i = 0; i < periode.length; i++) {
@@ -221,7 +245,7 @@ const setDetail = data => {
   Detail.reg.innerHTML = data.reg;
   Detail.sisa.innerHTML = formatRupiah(data.sisa.toString(), 'Rp. ');
   Detail.nospta.innerHTML = data.nospta;
-  Detail.tanggal.innerHTML = data.created_at;
+  Detail.tanggal.innerHTML = formatTanggal(timeTodate(data.created_at));
 };
 
 const clearForm = () => {
