@@ -18,6 +18,7 @@ const listMonth = [
 
 const ELEMENT = {
   bodyTable: document.querySelector('#list'),
+  title: document.querySelector('.modal-title'),
 };
 
 const C = {
@@ -78,6 +79,7 @@ const swalDelete = param => {
 // function clear form after update data
 const clearForm = () => {
   INPUT.action.setAttribute('action', URL_PABRIK);
+  ELEMENT.title.innerHTML = 'Tambah Data Pabrik';
   INPUT.method.innerHTML = '';
   INPUT.nama.value = '';
   INPUT.kode.value = '';
@@ -93,6 +95,7 @@ const fetchUpdate = async THIS => {
 const setFormUpdate = result => {
   INPUT.action.setAttribute('action', URL_PABRIK + '/' + result.id_pabrik);
   INPUT.method.innerHTML = '<input type="hidden" name="_method" value="PUT" />';
+  ELEMENT.title.innerHTML = 'Edit Data Pabrik';
   INPUT.nama.value = result.nama_pabrik;
   INPUT.kode.value = result.kode_pabrik;
 };
