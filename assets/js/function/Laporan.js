@@ -8,6 +8,7 @@ const ELEMEN = {
   periode: document.getElementById('periode'),
   pabrik: document.getElementById('pabrik'),
   type: document.getElementById('type'),
+  filter: document.getElementById('filter'),
 };
 
 ELEMEN.tanggalak.onclick = function (e) {
@@ -67,4 +68,8 @@ ELEMEN.periode.onclick = function (e) {
   ELEMEN.pabrik.value = '';
   ELEMEN.tanggalak.value = '';
   ELEMEN.type.value = '';
+};
+
+ELEMEN.tanggalaw.onchange = function () {
+  ELEMEN.filter.setAttribute('href', `${URL}/laporan?f=${this.value}`);
 };

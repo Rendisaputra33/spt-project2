@@ -13,11 +13,6 @@
                     <button type="button" class="btn btn-gradient-success btn-icon-text d-flex">
                         <i class="mdi mdi-printer"></i>Cetak
                     </button>
-                    {{-- &nbsp; &nbsp;
-          <button type="button" class="btn btn-success btn-icon h-100" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
-              <i class="mdi mdi-plus"></i>
-          </button> --}}
-
                 </div>
 
             </div>
@@ -122,7 +117,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-gradient-success">Cari</button>
+                    <a href="" id="filter" class="btn btn-gradient-success">Cari</a>
                 </div>
             </div>
         </div>

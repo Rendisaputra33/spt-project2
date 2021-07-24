@@ -58,6 +58,7 @@ const bindingUpdate = () => {
 const clearForm = () => {
   FORM.action.setAttribute('action', URL + '/auth/register');
   ELEMENT.title.innerHTML = 'Tambah Data User';
+  FORM.username.readOnly = false;
   FORM.method.innerHTML = '';
   FORM.nama.value = '';
   FORM.username.value = '';
@@ -102,6 +103,7 @@ const setFormUpdate = result => {
   FORM.action.setAttribute('action', URL_ROOT + '/' + result.id_user);
   FORM.method.innerHTML = '<input type="hidden" name="_method" value="PUT" />';
   ELEMENT.title.innerHTML = 'Edit Data User';
+  FORM.username.readOnly = true;
   FORM.nama.value = result.nama;
   FORM.username.value = result.username;
   FORM.password.value = result.password;
