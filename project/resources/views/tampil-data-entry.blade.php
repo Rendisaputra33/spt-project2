@@ -50,7 +50,7 @@
                                         <td>{{ $item->reg }}</td>
                                         <td>{{ $item->nospta }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-sm btn-info btn-icon-text">
+                                            <button type="button" class="btn btn-sm btn-info btn-icon-text" data-target="#modal-lg-detail" id='tbh' data-toggle="modal">
                                                 <i class="mdi mdi-information-outline btn-icon-prepend"></i> Detail </button>
                                             <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
                                                 <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
@@ -206,18 +206,51 @@
                 </div>
 
                 <div class="modal-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>No</th>
 
+                                <th>Periode</th>
+                                <th>Masa Giling</th>
+                                <th>Tanggal</th>
+                                <th>REG</th>
+                                <th>No SPTA</th>
+                                <th>No POL</th>
+                                <th>Bobot</th>
+                                <th>Ket</th>
+                                <th>Harga Beli</th>
+                                <th>HPP</th>
+                                <th>Sisa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>dummy</td>
+                                <td>dummy</td>
+                                <td>dummy</td>
+                                <td>dummy</td>
+                                <td>dummy</td>
+                                <td>dummy</td>
+                                <td>dummy</td>
+                                <td>dummy</td>
+                                <td>dummy</td>
+                                <td>dummy</td>
+                                <td>dummy</td>
+                                <td>dummy</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-success">Simpan</button>
+                    <button type="submit" class="btn btn-gradient-danger" data-dismiss="modal" aria-label="Close">Close</button>
                 </div>
             </div>
         </div>
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
-    </div>
 @endsection
 @section('specific-js')
     <script src="{{ asset('assets/js/function/Entry.js') }}"></script>

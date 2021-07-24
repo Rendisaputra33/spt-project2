@@ -15,6 +15,26 @@
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alerts-css@1.0.2/assets/css/alerts-css.min.css">
     <link rel="stylesheet" href="{{ asset('assets/plugins/icon/css/all.min.css') }}">
+    <style>
+        @media print and (color) {
+            @page {
+                size: A4 landscape;
+                size: 287mm 210mm;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            tr>td:not(:first-child) {
+                background-color: rgb(162, 164, 218);
+            }
+
+
+        }
+
+    </style>
     @yield('specific-css')
 </head>
 

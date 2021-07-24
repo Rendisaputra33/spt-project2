@@ -1,7 +1,7 @@
-@extends('template.loginlayout')
+@extends('template.cetaklayout')
 @section('content')
     <div class="main-panel mx-auto">
-        <div class="content-wrapper bg-light">
+        <div class="content-wrapper bg-white px-0">
             <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                 <table class="table">
                     <thead>
