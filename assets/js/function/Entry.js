@@ -144,12 +144,13 @@ const fetchSearch = async THIS => {
     .then(res => res.json())
     .then(result => setSearch(result.data))
     .catch(error => console.log(error));
+  bindingUpdate();
 };
 
 const setSearch = data => {
   let html = '';
   let no = 1;
-  data.map(data => uiSearch(data, no++));
+  data.map(data => (html += uiSearch(data, no++)));
   ELEMENT.tableBody.innerHTML = html;
 };
 

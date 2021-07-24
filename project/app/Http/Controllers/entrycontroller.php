@@ -79,10 +79,17 @@ class entrycontroller extends Controller
         ]);
     }
 
-    public function serachMethod($s)
+    public function searchMethod($s)
     {
         return response()->json([
-            'data' => entry::where('')->get()
+            'data' => entry::where('periode', 'LIKE', '%' . $s . '%')
+                ->orWhere('masa_giling', 'LIKE', '%' . $s . '%')
+                ->orWhere('reg', 'LIKE', '%' . $s . '%')
+                ->orWhere('nospta', 'LIKE', '%' . $s . '%')
+                ->orWhere('nopol', 'LIKE', '%' . $s . '%')
+                ->orWhere('variasi', 'LIKE', '%' . $s . '%')
+                ->orWhere('type', 'LIKE', '%' . $s . '%')
+                ->get()
         ]);
     }
 }
