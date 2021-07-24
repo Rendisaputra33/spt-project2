@@ -272,7 +272,7 @@ bindingUpdate();
 binddingPeriode();
 // binding event delete
 listDelete();
-// set default input massa giling
+// set default input massa gilings
 INPUT.masa.value = new Date().getFullYear();
 // bindding event after
 INPUT.close.onclick = function () {
