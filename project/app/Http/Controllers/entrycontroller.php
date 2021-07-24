@@ -48,7 +48,7 @@ class entrycontroller extends Controller
     {
         return entry::where('id_entry', $id)->update([
             'periode' => $req->periode,
-            'masa_giling' => $req->masa_giling,
+            'masa_giling' => $req->masa,
             'id_pabrik' => $req->id_pabrik,
             'reg' => $req->reg,
             'nospta' => $req->nospta,
@@ -57,9 +57,9 @@ class entrycontroller extends Controller
             'variasi' => $req->variasi,
             'type' => $req->type,
             'keterangan' => $req->keterangan,
-            'harga_beli' => $req->harga_beli,
-            'hpp' => $req->hpp,
-            'sisa' => $req->sisa,
+            'harga_beli' => str_replace('.', '', explode(' ', $req->harga_beli)[1]),
+            'hpp' => str_replace('.', '', explode(' ', $req->hpp)[1]),
+            'sisa' => str_replace('.', '', explode(' ', $req->sisa)[1]),
         ])
             ? redirect()->back()->with('sukses', 'data berhasil ditambahkan')
             : redirect()->back()->with('error', 'data gagal ditambahkan');

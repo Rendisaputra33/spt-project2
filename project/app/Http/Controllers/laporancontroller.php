@@ -14,4 +14,16 @@ class laporancontroller extends Controller
             'title' => 'Laporan'
         ]);
     }
+
+    public function fetchMethod(Request $req)
+    {
+        # code...
+    }
+
+    public function cetakMethod($parameter)
+    {
+        return view('laporan', [
+            'data' => entry::whereIn('id_entry', $parameter)->get()
+        ]);
+    }
 }
