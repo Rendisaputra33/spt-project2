@@ -8,6 +8,19 @@ const URL = document
 
 const URL_ROOT = URL + '/entry';
 
+const A = {
+  d: `class="btn btn-sm btn-info btn-icon-text"`,
+  id: `<i class="mdi mdi-information-outline btn-icon-prepend"></i>`,
+  u: `class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal"`,
+  iu: `<i class="mdi mdi-lead-pencil btn-icon-prepend"></i>`,
+  del: `class="btn btn-sm btn-danger btn-icon-text delete"`,
+  idel: `<i class="mdi mdi-delete-forever btn-icon-prepend"></i>`,
+};
+
+const ELEMENT = {
+  tableBody: document.querySelector('#list'),
+};
+
 const periode = [
   '001',
   '002',
@@ -58,6 +71,7 @@ const INPUT = {
   bobot: document.querySelector('input[name=bobot]'),
   sisa: document.querySelector('input[name=sisa]'),
   pabrik: document.querySelector('select[name=pabrik]'),
+  search: document.querySelector('#search'),
 };
 
 /**
@@ -84,6 +98,7 @@ const bindingUpdate = () => {
 const setFormUpdate = result => {
   INPUT.periode.setAttribute('data-change', 'update');
   INPUT.action.setAttribute('action', URL_ROOT + '/' + result.id_entry);
+  binddingPeriode();
   INPUT.method.innerHTML = '<input type="hidden" name="_method" value="PUT" />';
   INPUT.periode.value = result.periode;
   INPUT.masa.value = result.masa_giling;
@@ -93,15 +108,17 @@ const setFormUpdate = result => {
   INPUT.variasi.value = result.variasi;
   INPUT.type.value = result.type;
   INPUT.keterangan.value = result.keterangan;
-  INPUT.harga.value = result.harga_beli;
-  INPUT.hpp.value = result.hpp;
+  INPUT.harga.value = formatRupiah(result.harga_beli.toString(), 'Rp. ');
+  INPUT.hpp.value = formatRupiah(result.hpp.toString(), 'Rp. ');
   INPUT.bobot.value = result.bobot;
-  INPUT.sisa.value = result.sisa;
+  INPUT.sisa.value = formatRupiah(result.sisa.toString(), 'Rp. ');
+  INPUT.pabrik.value = result.id_pabrik;
 };
 
 const clearForm = () => {
   INPUT.action.setAttribute('action', URL_ROOT);
   INPUT.periode.setAttribute('data-change', 'add');
+  binddingPeriode();
   INPUT.periode.value = window.localStorage.getItem('periode');
   INPUT.masa.value = new Date().getFullYear();
   INPUT.reg.value = '';
@@ -114,12 +131,27 @@ const clearForm = () => {
   INPUT.hpp.value = '';
   INPUT.bobot.value = '';
 };
-
+// fetch get data update
 const fetchUpdate = async THIS => {
   await fetch(`${URL_ROOT}/json/${THIS.getAttribute('data-id')}`)
     .then(res => res.json())
     .then(result => setFormUpdate(result.data))
     .catch(error => console.log(error));
+};
+// fetch get data search
+const fetchSearch = async THIS => {
+  await fetch(`${URL_ROOT}/json/search/${THIS.value}`)
+    .then(res => res.json())
+    .then(result => setSearch(result.data))
+    .catch(error => console.log(error));
+  bindingUpdate();
+};
+
+const setSearch = data => {
+  let html = '';
+  let no = 1;
+  data.map(data => (html += uiSearch(data, no++)));
+  ELEMENT.tableBody.innerHTML = html;
 };
 
 const generateTahun = () => {
@@ -180,45 +212,98 @@ const swalDelete = param => {
   });
 };
 
+/* Fungsi formatRupiah */
+function formatRupiah(angka, prefix) {
+  var number_string = angka.replace(/[^,\d]/g, '').toString(),
+    split = number_string.split(','),
+    sisa = split[0].length % 3,
+    rupiah = split[0].substr(0, sisa),
+    ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+  // tambahkan titik jika yang di input sudah menjadi angka ribuan
+  if (ribuan) {
+    separator = sisa ? '.' : '';
+    rupiah += separator + ribuan.join('.');
+  }
+
+  rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+  return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
+}
+
+const binddingPeriode = () => {
+  if (INPUT.periode.getAttribute('data-change') === 'add') {
+    INPUT.periode.onchange = function () {
+      window.localStorage.setItem('periode', parseInt(this.value));
+    };
+  } else {
+    INPUT.periode.onchange = function () {
+      window.localStorage.setItem('periode-update', parseInt(this.value));
+    };
+  }
+};
+
+const uiSearch = (data, no) => {
+  return /*html*/ `
+      <tr>
+          <td>${no}</td>
+          <td>${data.masa_giling}</td>
+          <td>${data.periode}</td>
+          <td>${data.created_at}</td>
+          <td>${data.reg}</td>
+          <td>${data.nospta}</td>
+          <td>
+              <button type="button" ${A.d}>${A.id} Detail </button>
+              <button type="button" ${A.u} data-id="${data.id_entry}">${A.iu} Ubah </button>
+              <a href="${URL_ROOT}/${data.id_entry}" ${A.del}>${A.idel} Hapus </a>
+          </td>
+    </tr>
+  `;
+};
+
+const parseRupiah = str => parseInt(str.split(' ')[1].split('.').join(''));
+
 /**
  * global @function execution
  */
-
+// set form periode
 setPeriode();
-
 // setTahun(generateTahun());
-
 bindingUpdate();
-
+// binding action change input periode
+binddingPeriode();
+// binding event delete
+listDelete();
+// set default input massa gilings
 INPUT.masa.value = new Date().getFullYear();
-
+// bindding event after
 INPUT.close.onclick = function () {
   clearForm();
 };
-
-if (INPUT.periode.getAttribute('data-change') === 'add') {
-  INPUT.periode.onchange = function () {
-    window.localStorage.setItem('periode', parseInt(this.value));
-  };
-} else {
-  INPUT.periode.onchange = function () {
-    window.localStorage.setItem('periode-update', parseInt(this.value));
-  };
-}
-
+// set dafault input periode
 INPUT.periode.value =
-  window.localStorage.getItem('periode') === null
+  window.localStorage.getItem('periode') === undefined
     ? ''
     : window.localStorage.getItem('periode');
-
+// binding format input harga beli
+INPUT.harga.addEventListener('keyup', function () {
+  this.value = formatRupiah(this.value, 'Rp. ');
+});
+// binding format input hpp
+INPUT.hpp.addEventListener('keyup', function () {
+  this.value = formatRupiah(this.value, 'Rp. ');
+});
+// binding format input bobot & sisa
 INPUT.bobot.addEventListener('keyup', function () {
   if (this.value === '') {
     INPUT.sisa.value = '';
   } else {
-    INPUT.sisa.value =
-      (parseInt(INPUT.hpp.value) - parseInt(INPUT.harga.value)) *
+    const total =
+      (parseRupiah(INPUT.hpp.value) - parseRupiah(INPUT.harga.value)) *
       parseInt(this.value);
+    INPUT.sisa.value = formatRupiah(total.toString(), 'Rp. ');
   }
 });
-
-listDelete();
+// binding event search
+INPUT.search.onkeyup = async function () {
+  await fetchSearch(this);
+};

@@ -36,9 +36,9 @@ class entrycontroller extends Controller
             'variasi' => $req->variasi,
             'type' => $req->type,
             'keterangan' => $req->keterangan,
-            'harga_beli' => $req->harga_beli,
-            'hpp' => $req->hpp,
-            'sisa' => $req->sisa,
+            'harga_beli' => str_replace('.', '', explode(' ', $req->harga_beli)[1]),
+            'hpp' => str_replace('.', '', explode(' ', $req->hpp)[1]),
+            'sisa' => str_replace('.', '', explode(' ', $req->sisa)[1]),
         ])
             ? redirect()->back()->with('sukses', 'data berhasil ditambahkan')
             : redirect()->back()->with('error', 'data gagal ditambahkan');
@@ -48,8 +48,8 @@ class entrycontroller extends Controller
     {
         return entry::where('id_entry', $id)->update([
             'periode' => $req->periode,
-            'masa_giling' => $req->masa_giling,
-            'id_pabrik' => $req->id_pabrik,
+            'masa_giling' => $req->masa,
+            'id_pabrik' => $req->pabrik,
             'reg' => $req->reg,
             'nospta' => $req->nospta,
             'nopol' => $req->nopol,
@@ -57,9 +57,9 @@ class entrycontroller extends Controller
             'variasi' => $req->variasi,
             'type' => $req->type,
             'keterangan' => $req->keterangan,
-            'harga_beli' => $req->harga_beli,
-            'hpp' => $req->hpp,
-            'sisa' => $req->sisa,
+            'harga_beli' => str_replace('.', '', explode(' ', $req->harga_beli)[1]),
+            'hpp' => str_replace('.', '', explode(' ', $req->hpp)[1]),
+            'sisa' => str_replace('.', '', explode(' ', $req->sisa)[1]),
         ])
             ? redirect()->back()->with('sukses', 'data berhasil ditambahkan')
             : redirect()->back()->with('error', 'data gagal ditambahkan');
@@ -79,10 +79,17 @@ class entrycontroller extends Controller
         ]);
     }
 
-    public function serachMethod($s)
+    public function searchMethod($s)
     {
         return response()->json([
-            'data' => entry::where('')->get()
+            'data' => entry::where('periode', 'LIKE', '%' . $s . '%')
+                ->orWhere('masa_giling', 'LIKE', '%' . $s . '%')
+                ->orWhere('reg', 'LIKE', '%' . $s . '%')
+                ->orWhere('nospta', 'LIKE', '%' . $s . '%')
+                ->orWhere('nopol', 'LIKE', '%' . $s . '%')
+                ->orWhere('variasi', 'LIKE', '%' . $s . '%')
+                ->orWhere('type', 'LIKE', '%' . $s . '%')
+                ->get()
         ]);
     }
 }
