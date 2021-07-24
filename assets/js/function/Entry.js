@@ -8,6 +8,15 @@ const URL = document
 
 const URL_ROOT = URL + '/entry';
 
+const A = {
+  d: `class="btn btn-sm btn-info btn-icon-text"`,
+  id: `<i class="mdi mdi-information-outline btn-icon-prepend"></i>`,
+  u: `class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal"`,
+  iu: `<i class="mdi mdi-lead-pencil btn-icon-prepend"></i>`,
+  del: `class="btn btn-sm btn-danger btn-icon-text delete"`,
+  idel: `<i class="mdi mdi-delete-forever btn-icon-prepend"></i>`,
+};
+
 const periode = [
   '001',
   '002',
@@ -219,6 +228,24 @@ const binddingPeriode = () => {
       window.localStorage.setItem('periode-update', parseInt(this.value));
     };
   }
+};
+
+const uiSearch = (data, no) => {
+  return /*html*/ `
+      <tr>
+          <td>${no}</td>
+          <td>${data.masa_giling}</td>
+          <td>${data.periode}</td>
+          <td>${data.created_at}</td>
+          <td>${data.reg}</td>
+          <td>${data.nospta}</td>
+          <td>
+              <button type="button" ${A.d}>${A.id} Detail </button>
+              <button type="button" ${A.u} data-id="${data.id_entry}">${A.iu} Ubah </button>
+              <a href="${URL_ROOT}/${data.id_entry}" ${A.del}>${A.idel} Hapus </a>
+          </td>
+    </tr>
+  `;
 };
 
 const parseRupiah = str => parseInt(str.split(' ')[1].split('.').join(''));
