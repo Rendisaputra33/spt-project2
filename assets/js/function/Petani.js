@@ -95,7 +95,7 @@ const swalDelete = param => {
 };
 
 const setFormUpdate = result => {
-  INPUT.action.setAttribute('action', URL_PETANI + result.id_petani);
+  INPUT.action.setAttribute('action', URL_PETANI + '/' + result.id_petani);
   INPUT.method.innerHTML = '<input type="hidden" name="_method" value="PUT" />';
   INPUT.nama.value = result.nama_petani;
   INPUT.kode.value = result.reg;
