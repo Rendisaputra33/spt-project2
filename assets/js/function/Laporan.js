@@ -70,6 +70,63 @@ ELEMEN.periode.onclick = function (e) {
   ELEMEN.type.value = '';
 };
 
+const periode = [
+  '001',
+  '002',
+  '003',
+  '004',
+  '005',
+  '006',
+  '007',
+  '008',
+  '009',
+  '010',
+  '011',
+  '012',
+  '013',
+  '014',
+  '015',
+  '016',
+  '017',
+  '018',
+  '019',
+  '020',
+  '021',
+  '022',
+  '023',
+  '024',
+  '025',
+  '026',
+  '027',
+  '028',
+  '029',
+  '030',
+];
+
+const setPeriode = () => {
+  let peri = '<option value="">Pilih</option>';
+  for (let i = 0; i < periode.length; i++) {
+    peri += /*html*/ `<option value="${parseInt(periode[i])}">${
+      periode[i]
+    }</option>`;
+  }
+  ELEMEN.periode.innerHTML = peri;
+};
+
+setPeriode();
+
 ELEMEN.tanggalaw.onchange = function () {
+  ELEMEN.filter.setAttribute('href', `${URL}/laporan?f=${this.value}`);
+};
+
+ELEMEN.pabrik.onchange = function () {
+  ELEMEN.filter.setAttribute('href', `${URL}/laporan?f=${this.value}`);
+};
+
+ELEMEN.type.onchange = function () {
+  ELEMEN.filter.setAttribute('href', `${URL}/laporan?f=${this.value}`);
+};
+
+ELEMEN.periode.onchange = function () {
   ELEMEN.filter.setAttribute('href', `${URL}/laporan?f=${this.value}`);
 };

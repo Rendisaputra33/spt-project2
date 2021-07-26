@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\entry;
+use App\Models\pabrik;
+use App\Models\type;
 use Illuminate\Http\Request;
 
 class laporancontroller extends Controller
@@ -15,6 +17,8 @@ class laporancontroller extends Controller
             if (count($data) === 2) {
                 return view('tampil-data-laporan', [
                     'data' => entry::whereBetween('created_at', [$data[0], $data[1]])->get(),
+                    'pabrik' => pabrik::get(),
+                    'type' => type::get(),
                     'title' => 'Laporan'
                 ]);
             } else {
@@ -23,12 +27,16 @@ class laporancontroller extends Controller
                         ->orWhere('periode', $query)
                         ->orWhere('type', $query)
                         ->get(),
+                    'pabrik' => pabrik::get(),
+                    'type' => type::get(),
                     'title' => 'Laporan'
                 ]);
             }
         } else {
             return view('tampil-data-laporan', [
                 'data' => entry::get(),
+                'pabrik' => pabrik::get(),
+                'type' => type::get(),
                 'title' => 'Laporan'
             ]);
         }

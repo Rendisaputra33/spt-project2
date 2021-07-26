@@ -100,19 +100,29 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">PG</label>
-                        <input type="text" class="form-control" name="pg" id="pabrik" readonly>
-                        <span class="text-dark"></span>
+                        <label for="pabrik">Pabrik</label>
+                        <select class="form-control" name="pabrik" id="pabrik" required>
+                            <option selected value="">Pilih</option>
+                            @foreach ($pabrik as $item)
+                                <option value="{{ $item->id_pabrik }}">{{ $item->nama_pabrik }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Periode</label>
-                        <input type="text" class="form-control" name="periode" id="periode" readonly>
-                        <span class="text-dark"></span>
+                        <label for="periode">Periode</label>
+                        <select class="form-control" name="periode" id="periode" data-change="add" required>
+                            <option selected value="">Pilih</option>
+                            <option>1</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Type Tebu</label>
-                        <input type="text" class="form-control" name="type_tebu" id="type" readonly>
-                        <span class="text-dark"></span>
+                        <select class="form-control" name="type" id="type" required>
+                            <option selected value="">Pilih</option>
+                            @foreach ($type as $item)
+                                <option value="{{ $item->id_type }}">{{ $item->type }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <!-- /.card-body -->
