@@ -119,6 +119,13 @@ ELEMEN.tanggalaw.onchange = function () {
   ELEMEN.filter.setAttribute('href', `${URL}/laporan?f=${this.value}`);
 };
 
+ELEMEN.tanggalak.onchange = function () {
+  ELEMEN.filter.setAttribute(
+    'href',
+    `${URL}/laporan?f=${ELEMEN.tanggalaw.value}/${this.value}`
+  );
+};
+
 ELEMEN.pabrik.onchange = function () {
   ELEMEN.filter.setAttribute('href', `${URL}/laporan?f=${this.value}`);
 };

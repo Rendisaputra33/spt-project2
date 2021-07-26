@@ -111,7 +111,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="periode">Periode</label>
-                                    <select class="form-control" name="periode" id="periode" data-change="add" required>
+                                    <select class="form-control" name="periode" id="periode" data-change="add" aria-readonly="true" required>
                                         <option selected value="">Pilih</option>
                                         <option>1</option>
                                     </select>
