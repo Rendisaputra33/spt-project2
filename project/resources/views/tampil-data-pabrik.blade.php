@@ -85,7 +85,7 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <button href="" class="btn btn-gradient-success">Simpan</button>
+                        <button type="submit" class="btn btn-gradient-success">Simpan</button>
                     </div>
                 </div>
             </div>
