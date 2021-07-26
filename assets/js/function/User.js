@@ -117,7 +117,6 @@ const uiSearch = (data, no) => {
       <td>${data.nama}</td>
       <td>${data.username}</td>
       <td>${data.level === 1 ? 'Admin' : 'Super Admin'}</td>
-      <td>${formatTanggal(timeTodate(data.created_at))}</td>
       <td>
         <button ${C.u} data-id="${data.id_user}">${C.iconU} Ubah </button>
         <a ${C.d} href="${URL_ROOT}/${data.id_user}">${C.iconD} Hapus </a>

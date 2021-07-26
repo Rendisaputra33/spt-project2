@@ -109,7 +109,6 @@ const uiSearch = (data, no) => {
       <td>${data.reg}</td>
       <td>${data.nama_petani}</td>
       <td>${data.nama_pabrik}</td>
-      <td>${formatTanggal(timeTodate(data.created_at))}</td>
       <td>
         <button ${C.u} data-id="${data.id_petani}">${C.iconU} Ubah </button>
         <a ${C.d} href="${URL_PETANI}/${data.id_petani}">${C.iconD} Hapus </a>
