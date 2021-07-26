@@ -32,7 +32,7 @@ const ELEMENT = {
 
 // declaration input form
 const FORM = {
-  close: document.getElementById('tbh'),
+  close: document.querySelector('.add'),
   action: document.getElementById('form-'),
   method: document.getElementById('method'),
   nama: document.querySelector('input[name=nama]'),
