@@ -10,9 +10,9 @@
                         <i class="mdi mdi-filter-outline"></i>Filter
                     </button>
                     &nbsp;
-                    <button type="button" class="btn btn-gradient-success btn-icon-text d-flex">
+                    <a class="btn btn-gradient-success btn-icon-text d-flex" href="{{ url('/') . '/laporan/cetak/' }}{{ isset($_GET['f']) ? $_GET['f'] : '' }}">
                         <i class="mdi mdi-printer"></i>Cetak
-                    </button>
+                    </a>
                 </div>
 
             </div>
@@ -76,7 +76,7 @@
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title">Filter {{ isset($_GET['f']) ? $_GET['f'] : '' }}</h3>
+                    <h3 class="modal-title">Filter</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -87,14 +87,14 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Tanggal Awal</label>
-                                <input type="date" class="form-control" name="tanggal" id="taw" readonly>
+                                <input type="date" class="form-control" name="tanggal" id="taw">
                                 <span class="text-dark"></span>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Tanggal Akhir</label>
-                                <input type="date" class="form-control" name="tanggal" id="tak" readonly>
+                                <input type="date" class="form-control" name="tanggal" id="tak">
                                 <span class="text-dark"></span>
                             </div>
                         </div>

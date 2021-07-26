@@ -22,21 +22,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="text-uppercase text-center">
-                            <td>01</td>
-                            <td>dummy</td>
-                            <td>dummy</td>
-                            <td>dummy</td>
-                            <td>dummy</td>
-                            <td>dummy</td>
-                            <td>dummy</td>
-                            <td>dummy</td>
-                            <td>dummy</td>
-                            <td>dummy</td>
-                            <td>dummy</td>
-                            <td>dummy</td>
-                            <td>dummy</td>
-                        </tr>
+                        <?php $no = 1; ?>
+                        @foreach ($data as $item)
+                            <tr class="text-uppercase text-center">
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $item->masa_giling }}</td>
+                                <td>{{ date('d/M/Y', strtotime($item->created_at)) }}</td>
+                                <td>{{ $item->reg }}</td>
+                                <td>{{ $item->nospta }}</td>
+                                <td>{{ $item->nopol }}</td>
+                                <td>{{ $item->bobot }}</td>
+                                <td>{{ $item->variasi }}</td>
+                                <td>{{ $item->type }}</td>
+                                <td>{{ $item->keterangan }}</td>
+                                <td>{{ $item->harga_beli }}</td>
+                                <td>{{ $item->hpp }}</td>
+                                <td>{{ $item->sisa }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
 

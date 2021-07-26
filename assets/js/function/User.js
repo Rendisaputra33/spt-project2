@@ -106,7 +106,7 @@ const setFormUpdate = result => {
   FORM.username.readOnly = true;
   FORM.nama.value = result.nama;
   FORM.username.value = result.username;
-  FORM.password.value = result.password;
+  FORM.password.value = 'defau';
   FORM.level.value = result.level;
 };
 // generate ui search
@@ -119,8 +119,8 @@ const uiSearch = (data, no) => {
       <td>${data.level === 1 ? 'Admin' : 'Super Admin'}</td>
       <td>${formatTanggal(timeTodate(data.created_at))}</td>
       <td>
-        <button ${C.u} data-id="${data.id_petani}">${C.iconU} Ubah </button>
-        <a ${C.d} href="${URL_ROOT}/${data.id_petani}">${C.iconD} Hapus </a>
+        <button ${C.u} data-id="${data.id_user}">${C.iconU} Ubah </button>
+        <a ${C.d} href="${URL_ROOT}/${data.id_user}">${C.iconD} Hapus </a>
       </td>
     </tr>
   `;
@@ -142,6 +142,7 @@ const setData = result => {
   result.map(data => (html += uiSearch(data, no++)));
   ELEMENT.bodyTable.innerHTML = html;
   bindingUpdate();
+  listDelete();
 };
 
 const fetchSearch = async arg => {

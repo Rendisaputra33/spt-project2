@@ -92,7 +92,7 @@ ELEMEN.tanggalaw.onchange = function () {
 ELEMEN.tanggalak.onchange = function () {
   ELEMEN.filter.setAttribute(
     'href',
-    `${URL}/laporan?f=${ELEMEN.tanggalaw.value}/${this.value}`
+    `${URL}/laporan?f=${ELEMEN.tanggalaw.value}|${this.value}`
   );
 };
 

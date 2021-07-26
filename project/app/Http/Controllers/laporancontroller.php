@@ -13,7 +13,7 @@ class laporancontroller extends Controller
     {
         $query = request('f');
         if (isset($query)) {
-            $data = explode('/', request('f'));
+            $data = explode('|', request('f'));
             if (count($data) === 2) {
                 return view('tampil-data-laporan', [
                     'data' => entry::whereBetween('created_at', [$data[0], $data[1]])->get(),
@@ -38,6 +38,26 @@ class laporancontroller extends Controller
                 'pabrik' => pabrik::get(),
                 'type' => type::get(),
                 'title' => 'Laporan'
+            ]);
+        }
+    }
+
+    public function filterMethod($f)
+    {
+        $query = $f;
+        $data = explode('|', $f);
+        if (count($data) === 2) {
+            return view('cetak-laporan', [
+                'data' => entry::whereBetween('created_at', [$data[0], $data[1]])->get(),
+                'title' => 'Cetak Laporan'
+            ]);
+        } else {
+            return view('cetak-laporan', [
+                'data' => entry::where('id_pabrik', request('f'))
+                    ->orWhere('periode', $query)
+                    ->orWhere('type', $query)
+                    ->get(),
+                'title' => 'Cetak Laporan'
             ]);
         }
     }

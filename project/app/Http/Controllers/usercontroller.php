@@ -40,6 +40,15 @@ class usercontroller extends Controller
     // method save update
     public function saveUpdate($req, $id)
     {
+        if ($req->password === 'defau') {
+            return user::where('id_user', $id)->update([
+                'nama' => $req->nama,
+                'username' => $req->username,
+                'level' => $req->level
+            ])
+                ? redirect('/user')->with('sukses', 'data berhasil di update')
+                : redirect()->back()->with('error', 'data gagal di update');
+        }
         return user::where('id_user', $id)->update([
             'nama' => $req->nama,
             'username' => $req->username,
