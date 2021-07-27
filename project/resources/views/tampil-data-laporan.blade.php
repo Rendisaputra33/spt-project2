@@ -41,7 +41,7 @@
                             <tbody>
                                 <?php $no = 1; ?>
                                 @foreach ($data as $item)
-                                    <tr>
+                                    <tr style="height: 52px;">
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->masa_giling }}</td>
                                         <td>{{ date('d/M/Y', strtotime($item->created_at)) }}</td>
@@ -56,11 +56,6 @@
                                         <td>Rp. {{ number_format($item->harga_beli, 0, ',', '.') }}</td>
                                         <td>Rp. {{ number_format($item->hpp, 0, ',', '.') }}</td>
                                         <td>Rp. {{ number_format($item->sisa, 0, ',', '.') }}</td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-gradient-danger btn-icon">
-                                                <i class="mdi mdi-delete"></i>
-                                            </button>
-                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
