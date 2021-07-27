@@ -34,7 +34,7 @@ class laporancontroller extends Controller
             }
         } else {
             return view('tampil-data-laporan', [
-                'data' => entry::get(),
+                'data' => entry::whereMonth('created_at', date('m'))->get(),
                 'pabrik' => pabrik::get(),
                 'type' => type::get(),
                 'title' => 'Laporan'
