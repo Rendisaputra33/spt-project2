@@ -1,7 +1,7 @@
 @extends('template.template')
 @section('content')
     <div class="main-panel">
-        <div class="content-wrapper">
+        <div class="content-wrapper px-2 ">
             <div class="col-lg-12 p-0 d-flex justify-content-between">
                 <h2>Data Laporan</h2>
                 <div class="right d-flex align-items-center">
@@ -19,7 +19,7 @@
             <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                 <div class="card">
                     <div class="card-body">
-                        <table class="table table-hover" style="text-align:center;">
+                        <table class="table table-sm table-hover">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -41,7 +41,7 @@
                             <tbody>
                                 <?php $no = 1; ?>
                                 @foreach ($data as $item)
-                                    <tr>
+                                    <tr style="height: 52px;">
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->masa_giling }}</td>
                                         <td>{{ date('d/M/Y', strtotime($item->created_at)) }}</td>

@@ -13,7 +13,7 @@
     <meta name="baseurl" aria-valuemin="{{ url('/') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/devcss.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/devcss.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('assets/plugins/icon/css/all.min.css') }}">
     <!-- online style -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alerts-css@1.0.2/assets/css/alerts-css.min.css">

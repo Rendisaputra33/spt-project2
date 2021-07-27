@@ -16,7 +16,7 @@
             <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                 <div class="card">
                     <div class="card-body px-0">
-                        <table class="table table-hover" style="text-align:center;">
+                        <table class="table table-hover" style="">
                             <thead>
                                 <tr>
                                     <th>No</th>
