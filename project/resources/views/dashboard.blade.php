@@ -9,8 +9,8 @@
 
             <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                 <div class="card">
-                    <div class="card-body px-0">
-                        <table class="table table-hover" style="text-align:center;">
+                    <div class="card-body">
+                        <table class="table table-sm table-hover">
                             <thead>
                                 <tr>
                                     <th>NO</th>
@@ -32,7 +32,7 @@
                             <tbody>
                                 <?php $no = 1; ?>
                                 @foreach ($data as $item)
-                                    <tr>
+                                    <tr style="height: 52px">
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->masa_giling }}</td>
                                         <td>{{ date('d/M/Y', strtotime($item->created_at)) }}</td>
