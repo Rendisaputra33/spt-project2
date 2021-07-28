@@ -12,7 +12,7 @@ class petanicontroller extends Controller
     public function indexMethod()
     {
         return view('tampil-data-petani', [
-            'data' => petani::rightJoin('mstr_pabrik', 'mstr_petani.id_pabrik', '=', 'mstr_pabrik.id_pabrik')->get(),
+            'data' => petani::join('mstr_pabrik', 'mstr_petani.id_pabrik', '=', 'mstr_pabrik.id_pabrik')->get(),
             'pabrik' => pabrik::get(),
             'title' => 'Petani'
         ]);
