@@ -152,6 +152,8 @@ const fetchSearch = async THIS => {
     .then(result => setSearch(result.data))
     .catch(error => console.log(error));
   bindingUpdate();
+  binddingDetail();
+  listDelete();
 };
 
 const setSearch = data => {
@@ -310,6 +312,21 @@ const binddingPeriode = () => {
   }
 };
 
+const setReg = async parameter => {
+  await fetch(URL + '/petani/pabrik/' + parameter)
+    .then(res => res.json())
+    .then(res => uiReg(res.data))
+    .catch(err => err);
+};
+
+const uiReg = data => {
+  let html = `<option selected value="">Pilih</option>`;
+  data.map(da => {
+    html += /*html*/ `<option value="${da.reg}">${da.reg}</option>`;
+  });
+  INPUT.reg.innerHTML = html;
+};
+
 const uiSearch = (data, no) => {
   return /*html*/ `
       <tr>
@@ -376,4 +393,8 @@ INPUT.bobot.addEventListener('keyup', function () {
 // binding event search
 INPUT.search.onkeyup = async function () {
   await fetchSearch(this);
+};
+
+INPUT.pabrik.onchange = async function () {
+  await setReg(this.value);
 };

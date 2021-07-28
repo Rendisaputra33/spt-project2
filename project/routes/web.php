@@ -46,6 +46,7 @@ Route::prefix('petani')->group(function () {
     Route::post('/', [petanicontroller::class, 'addMethod'])->middleware('authuser');
     Route::put('/{id}', [petanicontroller::class, 'updateMethod'])->middleware('authuser');
     Route::get('/{id}', [petanicontroller::class, 'deleteMethod'])->middleware('authuser');
+    Route::get('/pabrik/{id}', [petanicontroller::class, 'findMethod'])->middleware('authuser');
     // json handler
     Route::prefix('json')->group(function () {
         Route::get('/{id}', [petanicontroller::class, 'getupMethod'])->middleware('authuser');

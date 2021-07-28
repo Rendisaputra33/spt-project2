@@ -63,4 +63,11 @@ class petanicontroller extends Controller
                 ->get()
         ]);
     }
+
+    public function findMethod($id)
+    {
+        return response()->json([
+            'data' => petani::where('id_pabrik', $id)->get()
+        ]);
+    }
 }
