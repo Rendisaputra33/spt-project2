@@ -333,13 +333,19 @@ const uiSearch = (data, no) => {
           <td>${no}</td>
           <td>${data.masa_giling}</td>
           <td>${data.periode}</td>
-          <td>${data.created_at}</td>
+          <td>${formatTanggal(timeTodate(data.created_at))}</td>
           <td>${data.reg}</td>
           <td>${data.nospta}</td>
           <td>
-              <button type="button" ${A.d} data-id="${data.id_entry}">${A.id} Detail </button>
-              <button type="button" ${A.u} data-id="${data.id_entry}">${A.iu} Ubah </button>
-              <a href="${URL_ROOT}/${data.id_entry}" ${A.del}>${A.idel} Hapus </a>
+              <button type="button" ${A.d} data-id="${data.id_entry}">${
+    A.id
+  } Detail </button>
+              <button type="button" ${A.u} data-id="${data.id_entry}">${
+    A.iu
+  } Ubah </button>
+              <a href="${URL_ROOT}/${data.id_entry}" ${A.del}>${
+    A.idel
+  } Hapus </a>
           </td>
     </tr>
   `;
