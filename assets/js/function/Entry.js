@@ -23,7 +23,7 @@ const listMonth = [
 ];
 
 const A = {
-  d: `class="btn btn-sm btn-info btn-icon-text"`,
+  d: `class="btn btn-sm btn-info btn-icon-text detail"`,
   id: `<i class="mdi mdi-information-outline btn-icon-prepend"></i>`,
   u: `class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal"`,
   iu: `<i class="mdi mdi-lead-pencil btn-icon-prepend"></i>`,
@@ -149,11 +149,13 @@ const fetchDetail = async THIS => {
 const fetchSearch = async THIS => {
   await fetch(`${URL_ROOT}/json/search/${THIS.value}`)
     .then(res => res.json())
-    .then(result => setSearch(result.data))
+    .then(result => {
+      setSearch(result.data);
+      bindingUpdate();
+      binddingDetail();
+      listDelete();
+    })
     .catch(error => console.log(error));
-  bindingUpdate();
-  binddingDetail();
-  listDelete();
 };
 
 const setSearch = data => {

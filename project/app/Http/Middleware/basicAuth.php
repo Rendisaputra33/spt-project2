@@ -18,6 +18,6 @@ class basicAuth
     {
         return session('username') !== null
             ? $next($request)
-            : redirect()->back()->with('unauthorize');
+            : redirect('/')->with('session-expired', 'karena tidak ada aktivitas dalam 3 jam harus login kembali');
     }
 }
