@@ -23,7 +23,7 @@ const listMonth = [
 ];
 
 const A = {
-  d: `class="btn btn-sm btn-info btn-icon-text detail"`,
+  d: `class="btn btn-sm btn-info btn-icon-text detail" data-target="#modal-lg-detail" id='tbh' data-toggle="modal"`,
   id: `<i class="mdi mdi-information-outline btn-icon-prepend"></i>`,
   u: `class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal"`,
   iu: `<i class="mdi mdi-lead-pencil btn-icon-prepend"></i>`,
@@ -149,13 +149,11 @@ const fetchDetail = async THIS => {
 const fetchSearch = async THIS => {
   await fetch(`${URL_ROOT}/json/search/${THIS.value}`)
     .then(res => res.json())
-    .then(result => {
-      setSearch(result.data);
-      bindingUpdate();
-      binddingDetail();
-      listDelete();
-    })
+    .then(result => setSearch(result.data))
     .catch(error => console.log(error));
+  bindingUpdate();
+  binddingDetail();
+  listDelete();
 };
 
 const setSearch = data => {
@@ -339,7 +337,7 @@ const uiSearch = (data, no) => {
           <td>${data.reg}</td>
           <td>${data.nospta}</td>
           <td>
-              <button type="button" ${A.d}>${A.id} Detail </button>
+              <button type="button" ${A.d} data-id="${data.id_entry}">${A.id} Detail </button>
               <button type="button" ${A.u} data-id="${data.id_entry}">${A.iu} Ubah </button>
               <a href="${URL_ROOT}/${data.id_entry}" ${A.del}>${A.idel} Hapus </a>
           </td>

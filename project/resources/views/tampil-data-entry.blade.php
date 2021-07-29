@@ -50,7 +50,7 @@
                                         <td>{{ $item->reg }}</td>
                                         <td>{{ $item->nospta }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-sm btn-info btn-icon-text detail" data-target="#modal-lg-detail" id='tbh' data-id="{{ $item->id_entry }}" data-toggle="modal">
+                                            <button type="button" class="btn btn-sm btn-info btn-icon-text detail" data-target="#modal-lg-detail" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
                                                 <i class="mdi mdi-information-outline btn-icon-prepend"></i> Detail </button>
                                             <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
                                                 <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
