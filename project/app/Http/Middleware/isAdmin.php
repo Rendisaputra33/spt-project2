@@ -16,6 +16,12 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if (session('username') !== null) {
+            if (session('role') === 2) {
+                return $next($request);
+            } else {
+                return abort(401);
+            }
+        }
     }
 }

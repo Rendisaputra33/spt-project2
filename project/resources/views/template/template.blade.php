@@ -55,20 +55,22 @@
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#data-master" aria-expanded="false" aria-controls="data-master">
-                            <i class="mdi mdi-folder menu-icon"></i>&nbsp;
-                            <span class="menu-title">Master</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="data-master">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ url('/petani') }}">Petani</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ url('/pabrik') }}">PG</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ url('/user') }}">User</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                    @if (session('role') === 2)
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#data-master" aria-expanded="false" aria-controls="data-master">
+                                <i class="mdi mdi-folder menu-icon"></i>&nbsp;
+                                <span class="menu-title">Master</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="collapse" id="data-master">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item"> <a class="nav-link" href="{{ url('/petani') }}">Petani</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="{{ url('/pabrik') }}">PG</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="{{ url('/user') }}">User</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#data-transaksi" aria-expanded="false" aria-controls="data-transaksi">
                             <i class="mdi mdi-folder menu-icon"></i>&nbsp;
