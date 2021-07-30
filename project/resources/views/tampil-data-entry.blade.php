@@ -217,12 +217,14 @@
                                 <th>Masa Giling</th>
                                 <th>Tanggal</th>
                                 <th>REG</th>
+                                <th>Petani</th>
                                 <th>No SPTA</th>
                                 <th>No POL</th>
 
                             </tr>
                         </thead>
                         <tr class="col-sm d-flex flex-column">
+                            <td>:</td>
                             <td>:</td>
                             <td>:</td>
                             <td>:</td>
@@ -237,6 +239,7 @@
                                 <td class="masa">dummy</td>
                                 <td class="tanggal">dummy</td>
                                 <td class="reg">dummy</td>
+                                <td class="petani"></td>
                                 <td class="nospta">dummy</td>
                                 <td class="nopol">dummy</td>
 
@@ -244,10 +247,12 @@
                         </tbody>
                         <thead>
                             <tr class="col-sm d-flex flex-column">
+                                <th>Variasi Tebu</th>
+                                <th>Type Tebu</th>
                                 <th>Bobot</th>
-                                <th>Ket</th>
-                                <th>Harga Beli</th>
+                                <th>Keterangan</th>
                                 <th>HPP</th>
+                                <th>Harga Beli</th>
                                 <th>Sisa</th>
                             </tr>
                         </thead>
@@ -256,14 +261,18 @@
                             <td>:</td>
                             <td>:</td>
                             <td>:</td>
-
+                            <td>:</td>
+                            <td>:</td>
+                            <td>:</td>
                         </tr>
                         <tbody>
                             <tr class="col-sm d-flex flex-column">
+                                <td class="variasi">dummy</td>
+                                <td class="type">dummy</td>
                                 <td class="bobot">dummy</td>
                                 <td class="ket">dummy</td>
-                                <td class="harga">dummy</td>
                                 <td class="hpp">dummy</td>
+                                <td class="harga">dummy</td>
                                 <td class="sisa">dummy</td>
                             </tr>
                         </tbody>
