@@ -29,7 +29,8 @@ class entrycontroller extends Controller
         return entry::insert([
             'periode' => $req->periode,
             'masa_giling' => $req->masa,
-            'id_pabrik' => $req->pabrik,
+            'id_pabrik' => explode(' | ', $req->pabrik)[0],
+            'pabrik' => explode(' | ', $req->pabrik)[1],
             'reg' => explode(' | ', $req->reg)[0],
             'petani' => $req->petani,
             'nospta' => $req->nospta,
@@ -61,7 +62,8 @@ class entrycontroller extends Controller
         return entry::where('id_entry', $id)->update([
             'periode' => $req->periode,
             'masa_giling' => $req->masa,
-            'id_pabrik' => $req->pabrik,
+            'id_pabrik' => explode(' | ', $req->pabrik)[0],
+            'pabrik' => explode(' | ', $req->pabrik)[1],
             'reg' => explode(' | ', $req->reg)[0],
             'petani' => $req->petani,
             'nospta' => $req->nospta,

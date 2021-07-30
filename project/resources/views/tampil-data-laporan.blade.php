@@ -48,7 +48,7 @@
                                         <td>{{ $item->masa_giling }}</td>
                                         <td>{{ $item->periode }}</td>
                                         <td>{{ date('d/M/Y', strtotime($item->created_at)) }}</td>
-                                        <td>{{ $item->reg }}</td>
+                                        <td>{{ $item->pabrik }}</td>
                                         <td>{{ $item->reg }}</td>
                                         <td>{{ $item->petani }}</td>
                                         <td>{{ $item->nospta }}</td>

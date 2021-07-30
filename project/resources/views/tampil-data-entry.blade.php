@@ -93,7 +93,7 @@
                                 <select class="form-control" name="pabrik" id="pabrik" required>
                                     <option selected value="">Pilih</option>
                                     @foreach ($pabrik as $item)
-                                        <option value="{{ $item->id_pabrik }}">{{ $item->nama_pabrik }}</option>
+                                        <option value="{{ $item->id_pabrik }} | {{ $item->nama_pabrik }}">{{ $item->nama_pabrik }}</option>
                                     @endforeach
                                 </select>
                             </div>

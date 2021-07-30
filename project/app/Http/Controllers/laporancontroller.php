@@ -21,7 +21,6 @@ class laporancontroller extends Controller
 
     public function addMethod(Request $req)
     {
-        dd($req);
         $kondisi1 = $req->tanggalaw != '' && $req->tanggalak != '' && $req->periode == '' && $req->type == '' && $req->pabrik == '';
         $kondisi2 = $req->tanggalaw == '' && $req->tanggalak == '' && $req->periode != '' && $req->type == '' && $req->pabrik == '';
         $kondisi3 = $req->tanggalaw == '' && $req->tanggalak == '' && $req->periode == '' && $req->type != '' && $req->pabrik == '';

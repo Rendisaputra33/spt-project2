@@ -18,6 +18,7 @@ class Entry extends Migration
             $table->integer('periode');
             $table->integer('masa_giling');
             $table->integer('id_pabrik');
+            $table->string('pabrik');
             $table->string('reg');
             $table->string('petani');
             $table->string('nospta');
