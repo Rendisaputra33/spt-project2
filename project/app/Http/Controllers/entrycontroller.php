@@ -31,7 +31,7 @@ class entrycontroller extends Controller
             'masa_giling' => $req->masa,
             'id_pabrik' => $req->pabrik,
             'reg' => $req->reg,
-            'petani' => $map['petani'],
+            'petani' => $req->petani,
             'nospta' => $req->nospta,
             'nopol' => $req->nopol,
             'bobot' => $req->bobot,
@@ -52,8 +52,7 @@ class entrycontroller extends Controller
     {
         $variasi = variasi::select('variasi')->where('id_variasi', $req->variasi)->first();
         $type = type::select('type')->where('id_variasi', $req->type)->first();
-        $petani = petani::select('nama_petani')->where('reg', $req->reg)->first();
-        return ['petani' => $petani['nama_petani'], 'variasi' => $variasi['variasi'], 'type' => $type['type']];
+        return ['variasi' => $variasi['variasi'], 'type' => $type['type']];
     }
 
     public function updateMethod(Request $req, $id)

@@ -320,9 +320,9 @@ const setReg = async parameter => {
 };
 
 const uiReg = data => {
-  let html = `<option selected value="">Pilih</option>`;
+  let html = ``;
   data.map(da => {
-    html += /*html*/ `<option value="${da.reg}" data-petani="${da.nama_petani}">${da.reg}</option>`;
+    html += /*html*/ `<option value="${da.reg} | ${da.nama_petani}">${da.reg}</option>`;
   });
   INPUT.reg.innerHTML = html;
 };
@@ -403,4 +403,9 @@ INPUT.search.onkeyup = async function () {
 
 INPUT.pabrik.onchange = async function () {
   await setReg(this.value);
+};
+
+INPUT.reg.onchange = function () {
+  let data = this.value.split(' | ')[1];
+  document.querySelector('input[name=petani]').value = data;
 };
