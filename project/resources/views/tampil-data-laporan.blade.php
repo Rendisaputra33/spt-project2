@@ -81,53 +81,55 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Tanggal Awal</label>
-                                <input type="date" class="form-control" name="tanggal" id="taw">
-                                <span class="text-dark"></span>
+                <form action="{{ url('/laporan') }}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Tanggal Awal</label>
+                                    <input type="date" class="form-control" name="tanggalaw" id="taw">
+                                    <span class="text-dark"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Tanggal Akhir</label>
+                                    <input type="date" class="form-control" name="tanggalak" id="tak">
+                                    <span class="text-dark"></span>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Tanggal Akhir</label>
-                                <input type="date" class="form-control" name="tanggal" id="tak">
-                                <span class="text-dark"></span>
-                            </div>
+                        <div class="form-group">
+                            <label for="pabrik">Pabrik</label>
+                            <select class="form-control" name="pabrik" id="pabrik" required>
+                                <option selected value="">Pilih</option>
+                                @foreach ($pabrik as $item)
+                                    <option value="{{ $item->id_pabrik }}">{{ $item->nama_pabrik }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="periode">Periode</label>
+                            <select class="form-control" name="periode" id="periode" data-change="add" required>
+                                <option selected value="">Pilih</option>
+                                <option>1</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Type Tebu</label>
+                            <select class="form-control" name="type" id="type" required>
+                                <option selected value="">Pilih</option>
+                                @foreach ($type as $item)
+                                    <option value="{{ $item->type }}">{{ $item->type }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="pabrik">Pabrik</label>
-                        <select class="form-control" name="pabrik" id="pabrik" required>
-                            <option selected value="">Pilih</option>
-                            @foreach ($pabrik as $item)
-                                <option value="{{ $item->id_pabrik }}">{{ $item->nama_pabrik }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="periode">Periode</label>
-                        <select class="form-control" name="periode" id="periode" data-change="add" required>
-                            <option selected value="">Pilih</option>
-                            <option>1</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Type Tebu</label>
-                        <select class="form-control" name="type" id="type" required>
-                            <option selected value="">Pilih</option>
-                            @foreach ($type as $item)
-                                <option value="{{ $item->id_type }}">{{ $item->type }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
+                </form>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <a href="" id="filter" class="btn btn-gradient-success">Cari</a>
+                    <button type="submit" id="filter" class="btn btn-gradient-success">Cari</button>
                 </div>
             </div>
         </div>

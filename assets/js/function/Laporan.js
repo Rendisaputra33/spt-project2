@@ -11,35 +11,6 @@ const ELEMEN = {
   filter: document.getElementById('filter'),
 };
 
-ELEMEN.tanggalak.onclick = function (e) {
-  ELEMEN.pabrik.value = '';
-  ELEMEN.periode.value = '';
-  ELEMEN.type.value = '';
-};
-ELEMEN.type.onclick = function (e) {
-  ELEMEN.tanggalaw.value = '';
-  ELEMEN.pabrik.value = '';
-  ELEMEN.periode.value = '';
-  ELEMEN.tanggalak.value = '';
-};
-ELEMEN.tanggalaw.onclick = function (e) {
-  ELEMEN.pabrik.value = '';
-  ELEMEN.periode.value = '';
-  ELEMEN.type.value = '';
-};
-ELEMEN.pabrik.onclick = function (e) {
-  ELEMEN.tanggalaw.value = '';
-  ELEMEN.tanggalak.value = '';
-  ELEMEN.periode.value = '';
-  ELEMEN.type.value = '';
-};
-ELEMEN.periode.onclick = function (e) {
-  ELEMEN.tanggalaw.value = '';
-  ELEMEN.pabrik.value = '';
-  ELEMEN.tanggalak.value = '';
-  ELEMEN.type.value = '';
-};
-
 const periode = [
   '001',
   '002',
@@ -84,26 +55,3 @@ const setPeriode = () => {
 };
 
 setPeriode();
-
-ELEMEN.tanggalaw.onchange = function () {
-  ELEMEN.filter.setAttribute('href', `${URL}/laporan?f=${this.value}`);
-};
-
-ELEMEN.tanggalak.onchange = function () {
-  ELEMEN.filter.setAttribute(
-    'href',
-    `${URL}/laporan?f=${ELEMEN.tanggalaw.value}|${this.value}`
-  );
-};
-
-ELEMEN.pabrik.onchange = function () {
-  ELEMEN.filter.setAttribute('href', `${URL}/laporan?f=${this.value}`);
-};
-
-ELEMEN.type.onchange = function () {
-  ELEMEN.filter.setAttribute('href', `${URL}/laporan?f=${this.value}`);
-};
-
-ELEMEN.periode.onchange = function () {
-  ELEMEN.filter.setAttribute('href', `${URL}/laporan?f=${this.value}`);
-};

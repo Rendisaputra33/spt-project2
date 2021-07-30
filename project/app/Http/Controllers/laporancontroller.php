@@ -42,6 +42,12 @@ class laporancontroller extends Controller
         }
     }
 
+    public function addMethod(Request $req)
+    {
+        $kondisi1 = $req->tanggalaw != '' && $req->tanggalak != '' && $req->periode == '' && $req->type == '' && $req->pabrik == '';
+        dd($kondisi1);
+    }
+
     public function filterMethod($f)
     {
         $query = $f;

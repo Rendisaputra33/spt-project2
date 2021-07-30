@@ -85,7 +85,7 @@ Route::prefix('laporan')->group(function () {
     // default routing
     Route::get('/', [laporancontroller::class, 'indexMethod']);
     Route::post('/', [entrycontroller::class, 'addMethod']);
-    Route::put('/{id}', [entrycontroller::class, 'updateMethod']);
+    Route::put('/{id}', [laporancontroller::class, 'updateMethod']);
     Route::get('/{id}', [entrycontroller::class, 'deleteMethod']);
     Route::get('/cetak/{f}', [laporancontroller::class, 'filterMethod']);
     // json handler
