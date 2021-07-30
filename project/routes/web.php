@@ -87,7 +87,7 @@ Route::prefix('laporan')->group(function () {
     Route::post('/', [laporancontroller::class, 'addMethod']);
     Route::put('/{id}', [laporancontroller::class, 'updateMethod']);
     Route::get('/{id}', [entrycontroller::class, 'deleteMethod']);
-    Route::get('/cetak/{f}', [laporancontroller::class, 'filterMethod']);
+    Route::get('/cetak', [laporancontroller::class, 'filterMethod']);
     // json handler
     Route::prefix('json')->group(function () {
         Route::get('/{id}', [pabrikcontroller::class, 'getupMethod'])->middleware('authuser');

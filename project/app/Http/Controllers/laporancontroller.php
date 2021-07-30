@@ -96,23 +96,46 @@ class laporancontroller extends Controller
         return redirect()->back();
     }
 
-    public function filterMethod($f)
+    public function filterMethod()
     {
-        $query = $f;
-        $data = explode('|', $f);
-        if (count($data) === 2) {
+        if (request('range') != null) {
+            $parameter = explode('&', request('range'));
             return view('cetak-laporan', [
-                'data' => entry::whereBetween('created_at', [$data[0], $data[1]])->get(),
+                'data' => entry::whereBetween('created_at', [$parameter[0], $parameter[1]])->get(),
                 'title' => 'Cetak Laporan'
             ]);
-        } else {
+        } elseif (request('periode') != null) {
             return view('cetak-laporan', [
-                'data' => entry::where('id_pabrik', request('f'))
-                    ->orWhere('periode', $query)
-                    ->orWhere('type', $query)
+                'data' => entry::where('periode', request('periode'))->get(),
+                'title' => 'Cetak Laporan'
+            ]);
+        } elseif (request('pabrik') != null) {
+            return view('cetak-laporan', [
+                'data' => entry::where('id_pabrik', request('pabrik'))->get(),
+                'title' => 'Cetak Laporan'
+            ]);
+        } elseif (request('type') != null) {
+            return view('cetak-laporan', [
+                'data' => entry::where('type_', request('periode'))->get(),
+                'title' => 'Cetak Laporan'
+            ]);
+        } elseif (request('all') != null) {
+            $parameter = explode('&', request('all'));
+            return view('cetak-laporan', [
+                'data' => entry::whereBetween('created_at', [$parameter[0], $parameter[1]])
+                    ->where('periode', $parameter[2])
+                    ->where('id_pabrik', $parameter[3])
+                    ->where('type_', $parameter[4])
                     ->get(),
                 'title' => 'Cetak Laporan'
             ]);
+        } elseif (request('month') != null) {
+            return view('cetak-laporan', [
+                'data' => entry::whereMonth('created_at', date('m'))->get(),
+                'title' => 'Cetak Laporan'
+            ]);
+        } else {
+            return redirect()->back();
         }
     }
 
