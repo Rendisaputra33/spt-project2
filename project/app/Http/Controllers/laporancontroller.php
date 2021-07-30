@@ -11,35 +11,12 @@ class laporancontroller extends Controller
 {
     public function indexMethod()
     {
-        $query = request('f');
-        if (isset($query)) {
-            $data = explode('|', request('f'));
-            if (count($data) === 2) {
-                return view('tampil-data-laporan', [
-                    'data' => entry::whereBetween('created_at', [$data[0], $data[1]])->get(),
-                    'pabrik' => pabrik::get(),
-                    'type' => type::get(),
-                    'title' => 'Laporan'
-                ]);
-            } else {
-                return view('tampil-data-laporan', [
-                    'data' => entry::where('id_pabrik', request('f'))
-                        ->orWhere('periode', $query)
-                        ->orWhere('type', $query)
-                        ->get(),
-                    'pabrik' => pabrik::get(),
-                    'type' => type::get(),
-                    'title' => 'Laporan'
-                ]);
-            }
-        } else {
-            return view('tampil-data-laporan', [
-                'data' => entry::whereMonth('created_at', date('m'))->get(),
-                'pabrik' => pabrik::get(),
-                'type' => type::get(),
-                'title' => 'Laporan'
-            ]);
-        }
+        return view('tampil-data-laporan', [
+            'data' => entry::whereMonth('created_at', date('m'))->get(),
+            'pabrik' => pabrik::get(),
+            'type' => type::get(),
+            'title' => 'Laporan'
+        ]);
     }
 
     public function addMethod(Request $req)
@@ -55,6 +32,10 @@ class laporancontroller extends Controller
                 'data' => entry::whereBetween('created_at', [$req->tanggalaw, $req->tanggalak])->get(),
                 'pabrik' => pabrik::get(),
                 'type' => type::get(),
+                'filter' => [
+                    'type' => 'range',
+                    'data' => [$req->tanggalaw, $req->tanggalak]
+                ],
                 'title' => 'Laporan'
             ]);
         }
@@ -64,6 +45,10 @@ class laporancontroller extends Controller
                 'data' => entry::where('periode', $req->periode)->get(),
                 'pabrik' => pabrik::get(),
                 'type' => type::get(),
+                'filter' => [
+                    'type' => 'periode',
+                    'data' => [$req->periode]
+                ],
                 'title' => 'Laporan'
             ]);
         }
