@@ -30,7 +30,7 @@ class entrycontroller extends Controller
             'periode' => $req->periode,
             'masa_giling' => $req->masa,
             'id_pabrik' => $req->pabrik,
-            'reg' => $req->reg,
+            'reg' => explode(' | ', $req->reg)[0],
             'petani' => $req->petani,
             'nospta' => $req->nospta,
             'nopol' => $req->nopol,
@@ -51,7 +51,7 @@ class entrycontroller extends Controller
     public function mappingData($req)
     {
         $variasi = variasi::select('variasi')->where('id_variasi', $req->variasi)->first();
-        $type = type::select('type')->where('id_variasi', $req->type)->first();
+        $type = type::select('type')->where('id_type', $req->type)->first();
         return ['variasi' => $variasi['variasi'], 'type' => $type['type']];
     }
 

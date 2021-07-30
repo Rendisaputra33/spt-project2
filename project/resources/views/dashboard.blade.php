@@ -23,9 +23,9 @@
                                     <th>BOBOT</th>
                                     <th>RF</th>
                                     <th>TEBANGAN</th>
-                                    <th>KET</th>
-                                    <th>BELI</th>
+                                    <th>KETERANGAN</th>
                                     <th>HPP</th>
+                                    <th>BELI</th>
                                     <th>SISA</th>
                                 </tr>
                             </thead>
@@ -37,16 +37,16 @@
                                         <td>{{ $item->masa_giling }}</td>
                                         <td>{{ date('d/M/Y', strtotime($item->created_at)) }}</td>
                                         <td>{{ $item->reg }}</td>
-                                        <td>{{ $item->reg }}</td>
+                                        <td>{{ $item->petani }}</td>
                                         <td>{{ $item->nospta }}</td>
                                         <td>{{ $item->nopol }}</td>
                                         <td>{{ $item->bobot }}</td>
-                                        <td>{{ $item->variasi }}</td>
-                                        <td>{{ $item->type }}</td>
+                                        <td>{{ $item->variasi_ }}</td>
+                                        <td>{{ $item->type_ }}</td>
                                         <td>{{ $item->keterangan }}</td>
-                                        <td>{{ $item->harga_beli }}</td>
-                                        <td>{{ $item->hpp }}</td>
-                                        <td>{{ $item->sisa }}</td>
+                                        <td>Rp {{ number_format($item->hpp, 0, ',', '.') }}</td>
+                                        <td>Rp {{ number_format($item->harga_beli, 0, ',', '.') }}</td>
+                                        <td>Rp {{ number_format($item->sisa, 0, ',', '.') }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
