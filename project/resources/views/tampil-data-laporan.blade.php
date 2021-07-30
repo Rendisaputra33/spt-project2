@@ -54,8 +54,8 @@
                                         <td>{{ $item->nospta }}</td>
                                         <td>{{ $item->nopol }}</td>
                                         <td>{{ $item->bobot }}</td>
-                                        <td>{{ $item->variasi }}</td>
-                                        <td>{{ $item->type }}</td>
+                                        <td>{{ $item->variasi_ }}</td>
+                                        <td>{{ $item->type_ }}</td>
                                         <td>{{ $item->keterangan }}</td>
                                         <td>Rp. {{ number_format($item->harga_beli, 0, ',', '.') }}</td>
                                         <td>Rp. {{ number_format($item->hpp, 0, ',', '.') }}</td>
