@@ -25,16 +25,20 @@ class entrycontroller extends Controller
 
     public function addMethod(Request $req)
     {
+        $map = $this->mappingData($req);
         return entry::insert([
             'periode' => $req->periode,
             'masa_giling' => $req->masa,
             'id_pabrik' => $req->pabrik,
             'reg' => $req->reg,
+            'petani' => $map['petani'],
             'nospta' => $req->nospta,
             'nopol' => $req->nopol,
             'bobot' => $req->bobot,
             'variasi' => $req->variasi,
+            'variasi_' => $map['variasi'],
             'type' => $req->type,
+            'type_' => $map['type'],
             'keterangan' => $req->keterangan,
             'harga_beli' => str_replace('.', '', explode(' ', $req->harga_beli)[1]),
             'hpp' => str_replace('.', '', explode(' ', $req->hpp)[1]),
@@ -42,6 +46,14 @@ class entrycontroller extends Controller
         ])
             ? redirect()->back()->with('sukses', 'data berhasil ditambahkan')
             : redirect()->back()->with('error', 'data gagal ditambahkan');
+    }
+
+    public function mappingData($req)
+    {
+        $variasi = variasi::select('variasi')->where('id_variasi', $req->variasi)->first();
+        $type = type::select('type')->where('id_variasi', $req->type)->first();
+        $petani = petani::select('nama_petani')->where('reg', $req->reg)->first();
+        return ['petani' => $petani['nama_petani'], 'variasi' => $variasi['variasi'], 'type' => $type['type']];
     }
 
     public function updateMethod(Request $req, $id)

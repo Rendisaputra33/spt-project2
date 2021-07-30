@@ -19,11 +19,14 @@ class Entry extends Migration
             $table->integer('masa_giling');
             $table->integer('id_pabrik');
             $table->string('reg');
+            $table->string('petani');
             $table->string('nospta');
             $table->string('nopol');
             $table->integer('bobot');
             $table->integer('variasi');
+            $table->string('variasi_');
             $table->integer('type');
+            $table->string('type_');
             $table->text('keterangan');
             $table->double('harga_beli');
             $table->double('hpp');
