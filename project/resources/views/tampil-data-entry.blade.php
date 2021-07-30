@@ -193,6 +193,7 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
@@ -208,11 +209,37 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+=======
+    </form>
+    <!-- modal untuk tambah data -->
+    <div class="modal fade" id="modal-lg-detail">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Detail</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <table class="table table-hover d-flex flex-row justify-content-lg-around">
+                        <thead>
+                            <tr class="col-sm d-flex flex-column">
+                                <th>Periode</th>
+                                <th>Masa Giling</th>
+                                <th>Tanggal</th>
+                                <th>REG</th>
+                                <th>Petani</th>
+                                <th>No SPTA</th>
+                                <th>No POL</th>
+>>>>>>> d62da6dacb36c91d3cb24e09791e1e99e472d763
 
             <div class="modal-body">
                 <table class="table table-hover d-flex flex-row justify-content-lg-around">
                     <thead>
                         <tr class="col-sm d-flex flex-column">
+<<<<<<< HEAD
                             <th>Periode</th>
                             <th>Masa Giling</th>
                             <th>Tanggal</th>
@@ -272,6 +299,66 @@
             <!-- /.card-body -->
             <div class="card-footer">
                 <button type="submit" class="btn btn-gradient-danger" data-dismiss="modal" aria-label="Close">Close</button>
+=======
+                            <td>:</td>
+                            <td>:</td>
+                            <td>:</td>
+                            <td>:</td>
+                            <td>:</td>
+                            <td>:</td>
+                            <td>:</td>
+
+                        </tr>
+                        <tbody>
+                            <tr class="col-sm d-flex flex-column">
+                                <td class="periode">dummy</td>
+                                <td class="masa">dummy</td>
+                                <td class="tanggal">dummy</td>
+                                <td class="reg">dummy</td>
+                                <td class="petani"></td>
+                                <td class="nospta">dummy</td>
+                                <td class="nopol">dummy</td>
+
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr class="col-sm d-flex flex-column">
+                                <th>Variasi Tebu</th>
+                                <th>Type Tebu</th>
+                                <th>Bobot</th>
+                                <th>Keterangan</th>
+                                <th>HPP</th>
+                                <th>Harga Beli</th>
+                                <th>Sisa</th>
+                            </tr>
+                        </thead>
+                        <tr class="col-sm d-flex flex-column">
+                            <td>:</td>
+                            <td>:</td>
+                            <td>:</td>
+                            <td>:</td>
+                            <td>:</td>
+                            <td>:</td>
+                            <td>:</td>
+                        </tr>
+                        <tbody>
+                            <tr class="col-sm d-flex flex-column">
+                                <td class="variasi">dummy</td>
+                                <td class="type">dummy</td>
+                                <td class="bobot">dummy</td>
+                                <td class="ket">dummy</td>
+                                <td class="hpp">dummy</td>
+                                <td class="harga">dummy</td>
+                                <td class="sisa">dummy</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-gradient-danger" data-dismiss="modal" aria-label="Close">Close</button>
+                </div>
+>>>>>>> d62da6dacb36c91d3cb24e09791e1e99e472d763
             </div>
         </div>
     </div>

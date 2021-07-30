@@ -30,7 +30,7 @@ class entrycontroller extends Controller
             'periode' => $req->periode,
             'masa_giling' => $req->masa,
             'id_pabrik' => $req->pabrik,
-            'reg' => $req->reg,
+            'reg' => explode(' | ', $req->reg)[0],
             'petani' => $req->petani,
             'nospta' => $req->nospta,
             'nopol' => $req->nopol,
@@ -51,22 +51,26 @@ class entrycontroller extends Controller
     public function mappingData($req)
     {
         $variasi = variasi::select('variasi')->where('id_variasi', $req->variasi)->first();
-        $type = type::select('type')->where('id_variasi', $req->type)->first();
+        $type = type::select('type')->where('id_type', $req->type)->first();
         return ['variasi' => $variasi['variasi'], 'type' => $type['type']];
     }
 
     public function updateMethod(Request $req, $id)
     {
+        $map = $this->mappingData($req);
         return entry::where('id_entry', $id)->update([
             'periode' => $req->periode,
             'masa_giling' => $req->masa,
             'id_pabrik' => $req->pabrik,
-            'reg' => $req->reg,
+            'reg' => explode(' | ', $req->reg)[0],
+            'petani' => $req->petani,
             'nospta' => $req->nospta,
             'nopol' => $req->nopol,
             'bobot' => $req->bobot,
             'variasi' => $req->variasi,
+            'variasi_' => $map['variasi'],
             'type' => $req->type,
+            'type_' => $map['type'],
             'keterangan' => $req->keterangan,
             'harga_beli' => str_replace('.', '', explode(' ', $req->harga_beli)[1]),
             'hpp' => str_replace('.', '', explode(' ', $req->hpp)[1]),
@@ -98,8 +102,8 @@ class entrycontroller extends Controller
                 ->orWhere('reg', 'LIKE', '%' . $s . '%')
                 ->orWhere('nospta', 'LIKE', '%' . $s . '%')
                 ->orWhere('nopol', 'LIKE', '%' . $s . '%')
-                ->orWhere('variasi', 'LIKE', '%' . $s . '%')
-                ->orWhere('type', 'LIKE', '%' . $s . '%')
+                ->orWhere('variasi_', 'LIKE', '%' . $s . '%')
+                ->orWhere('type_', 'LIKE', '%' . $s . '%')
                 ->get()
         ]);
     }

@@ -43,12 +43,12 @@
                                         <td>{{ $item->masa_giling }}</td>
                                         <td>{{ date('d/M/Y', strtotime($item->created_at)) }}</td>
                                         <td>{{ $item->reg }}</td>
-                                        <td>{{ $item->reg }}</td>
+                                        <td>{{ $item->petani }}</td>
                                         <td>{{ $item->nospta }}</td>
                                         <td>{{ $item->nopol }}</td>
                                         <td>{{ $item->bobot }}</td>
-                                        <td>{{ $item->variasi }}</td>
-                                        <td>{{ $item->type }}</td>
+                                        <td>{{ $item->variasi_ }}</td>
+                                        <td>{{ $item->type_ }}</td>
                                         <td>{{ $item->keterangan }}</td>
                                         <td>{{ $item->harga_beli }}</td>
                                         <td>{{ $item->hpp }}</td>

@@ -43,6 +43,9 @@ const Detail = {
   hpp: document.querySelector('td[class=hpp]'),
   sisa: document.querySelector('td[class=sisa]'),
   harga: document.querySelector('td[class=harga]'),
+  petani: document.querySelector('td[class=petani]'),
+  type: document.querySelector('td[class=type]'),
+  variasi: document.querySelector('td[class=variasi]'),
 };
 
 const ELEMENT = {
@@ -233,6 +236,7 @@ const setFormUpdate = result => {
   INPUT.bobot.value = result.bobot;
   INPUT.sisa.value = formatRupiah(result.sisa.toString(), 'Rp. ');
   INPUT.pabrik.value = result.id_pabrik;
+  document.querySelector('input[name=petani]').value = result.petani;
 };
 
 const setDetail = data => {
@@ -247,6 +251,9 @@ const setDetail = data => {
   Detail.sisa.innerHTML = formatRupiah(data.sisa.toString(), 'Rp. ');
   Detail.nospta.innerHTML = data.nospta;
   Detail.tanggal.innerHTML = formatTanggal(timeTodate(data.created_at));
+  Detail.petani.innerHTML = data.petani;
+  Detail.type.innerHTML = data.type_;
+  Detail.variasi.innerHTML = data.variasi_;
 };
 
 const clearForm = () => {
