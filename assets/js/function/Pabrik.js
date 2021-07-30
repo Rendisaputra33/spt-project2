@@ -65,7 +65,7 @@ const listDelete = () => {
 const swalDelete = param => {
   Swal.fire({
     title: 'Yakin ingin Menghapus?',
-    text: 'Data akan di hapus secara permanent!',
+    text: 'Menghapus data pabrik akan secara otomatis menghapus seluruh data petani dipabrik tersebut',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',

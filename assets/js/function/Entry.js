@@ -192,9 +192,8 @@ const formatTanggal = tgl => {
 const setPeriode = () => {
   let peri = '<option value="">Pilih</option>';
   for (let i = 0; i < periode.length; i++) {
-    peri += /*html*/ `<option value="${parseInt(periode[i])}">${
-      periode[i]
-    }</option>`;
+    peri += /*html*/ `<option value="${parseInt(periode[i])}">${periode[i]
+      }</option>`;
   }
   INPUT.periode.innerHTML = peri;
 };
@@ -238,8 +237,8 @@ const setFormUpdate = result => {
 
 const setDetail = data => {
   Detail.bobot.innerHTML = data.bobot;
-  Detail.harga.innerHTML = formatRupiah(data.harga_beli.toString());
-  Detail.hpp.innerHTML = formatRupiah(data.hpp.toString());
+  Detail.harga.innerHTML = formatRupiah(data.harga_beli.toString(), 'Rp. ');
+  Detail.hpp.innerHTML = formatRupiah(data.hpp.toString(), 'Rp. ');
   Detail.ket.innerHTML = data.keterangan;
   Detail.masa.innerHTML = data.masa_giling;
   Detail.nopol.innerHTML = data.nopol;
@@ -337,15 +336,12 @@ const uiSearch = (data, no) => {
           <td>${data.reg}</td>
           <td>${data.nospta}</td>
           <td>
-              <button type="button" ${A.d} data-id="${data.id_entry}">${
-    A.id
-  } Detail </button>
-              <button type="button" ${A.u} data-id="${data.id_entry}">${
-    A.iu
-  } Ubah </button>
-              <a href="${URL_ROOT}/${data.id_entry}" ${A.del}>${
-    A.idel
-  } Hapus </a>
+              <button type="button" ${A.d} data-id="${data.id_entry}">${A.id
+    } Detail </button>
+              <button type="button" ${A.u} data-id="${data.id_entry}">${A.iu
+    } Ubah </button>
+              <a href="${URL_ROOT}/${data.id_entry}" ${A.del}>${A.idel
+    } Hapus </a>
           </td>
     </tr>
   `;
