@@ -74,15 +74,16 @@
     <!-- modal untuk tambah data -->
     <div class="modal fade" id="modal-md-filter">
         <div class="modal-dialog modal-md">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Filter</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="{{ url('/laporan') }}" method="post">
-                    @csrf
+            <form action="{{ url('/laporan') }}" method="post">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Filter</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-6">
@@ -102,7 +103,7 @@
                         </div>
                         <div class="form-group">
                             <label for="pabrik">Pabrik</label>
-                            <select class="form-control" name="pabrik" id="pabrik" required>
+                            <select class="form-control" name="pabrik" id="pabrik">
                                 <option selected value="">Pilih</option>
                                 @foreach ($pabrik as $item)
                                     <option value="{{ $item->id_pabrik }}">{{ $item->nama_pabrik }}</option>
@@ -111,14 +112,14 @@
                         </div>
                         <div class="form-group">
                             <label for="periode">Periode</label>
-                            <select class="form-control" name="periode" id="periode" data-change="add" required>
+                            <select class="form-control" name="periode" id="periode" data-change="add">
                                 <option selected value="">Pilih</option>
                                 <option>1</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Type Tebu</label>
-                            <select class="form-control" name="type" id="type" required>
+                            <select class="form-control" name="type" id="type">
                                 <option selected value="">Pilih</option>
                                 @foreach ($type as $item)
                                     <option value="{{ $item->type }}">{{ $item->type }}</option>
@@ -126,14 +127,15 @@
                             </select>
                         </div>
                     </div>
-                </form>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                    <button type="submit" id="filter" class="btn btn-gradient-success">Cari</button>
-                </div>
-            </div>
+
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <button type="submit" id="filter" class="btn btn-gradient-success">Cari</button>
+                    </div>
+            </form>
         </div>
-        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
     </div>
