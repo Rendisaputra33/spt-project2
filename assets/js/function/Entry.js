@@ -195,9 +195,8 @@ const formatTanggal = tgl => {
 const setPeriode = () => {
   let peri = '<option value="">Pilih</option>';
   for (let i = 0; i < periode.length; i++) {
-    peri += /*html*/ `<option value="${parseInt(periode[i])}">${
-      periode[i]
-    }</option>`;
+    peri += /*html*/ `<option value="${parseInt(periode[i])}">${periode[i]
+      }</option>`;
   }
   INPUT.periode.innerHTML = peri;
 };
@@ -344,15 +343,12 @@ const uiSearch = (data, no) => {
           <td>${data.reg}</td>
           <td>${data.nospta}</td>
           <td>
-              <button type="button" ${A.d} data-id="${data.id_entry}">${
-    A.id
-  } Detail </button>
-              <button type="button" ${A.u} data-id="${data.id_entry}">${
-    A.iu
-  } Ubah </button>
-              <a href="${URL_ROOT}/${data.id_entry}" ${A.del}>${
-    A.idel
-  } Hapus </a>
+              <button type="button" ${A.d} data-id="${data.id_entry}">${A.id
+    } Detail </button>
+              <button type="button" ${A.u} data-id="${data.id_entry}">${A.iu
+    } Ubah </button>
+              <a href="${URL_ROOT}/${data.id_entry}" ${A.del}>${A.idel
+    } Hapus </a>
           </td>
     </tr>
   `;
