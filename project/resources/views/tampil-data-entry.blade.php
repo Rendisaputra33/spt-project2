@@ -121,9 +121,13 @@
                                     <select class="form-control" name="reg" id="reg" data-change="add" required>
                                         <option selected value="">Pilih</option>
                                         @foreach ($petani as $item)
-                                            <option value="{{ $item->reg }}">{{ $item->nama_petani }}</option>
+                                            <option value="{{ $item->reg }}" data-petani="{{ $item->nama_petani }}">{{ $item->reg }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="petani">Petani</label>
+                                    <input type="text" class="form-control" placeholder="Petani" name="petani" readonly required>
                                 </div>
                                 <div class="form-group" id="nospta">
                                     <label for="exampleInputPassword1">No SPTA</label>

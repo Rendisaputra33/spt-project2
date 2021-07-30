@@ -322,7 +322,7 @@ const setReg = async parameter => {
 const uiReg = data => {
   let html = `<option selected value="">Pilih</option>`;
   data.map(da => {
-    html += /*html*/ `<option value="${da.reg}">${da.reg}</option>`;
+    html += /*html*/ `<option value="${da.reg}" data-petani="${da.nama_petani}">${da.reg}</option>`;
   });
   INPUT.reg.innerHTML = html;
 };
