@@ -7,7 +7,6 @@
 
         </div>
 
-<<<<<<< HEAD
         <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
             <div class="card">
                 <div class="card-body">
@@ -56,53 +55,6 @@
                             @endforeach
                         </tbody>
                     </table>
-=======
-            <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
-                <div class="card">
-                    <div class="card-body">
-                        <table class="table table-sm table-hover">
-                            <thead>
-                                <tr>
-                                    <th>NO</th>
-                                    <th>MASA GILING</th>
-                                    <th>TANGGAL</th>
-                                    <th>REG</th>
-                                    <th>PETANI</th>
-                                    <th>NO SPTA</th>
-                                    <th>NO TRUK</th>
-                                    <th>BOBOT</th>
-                                    <th>RF</th>
-                                    <th>TEBANGAN</th>
-                                    <th>KETERANGAN</th>
-                                    <th>HPP</th>
-                                    <th>BELI</th>
-                                    <th>SISA</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $no = 1; ?>
-                                @foreach ($data as $item)
-                                    <tr style="height: 52px">
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $item->masa_giling }}</td>
-                                        <td>{{ date('d/M/Y', strtotime($item->created_at)) }}</td>
-                                        <td>{{ $item->reg }}</td>
-                                        <td>{{ $item->petani }}</td>
-                                        <td>{{ $item->nospta }}</td>
-                                        <td>{{ $item->nopol }}</td>
-                                        <td>{{ $item->bobot }}</td>
-                                        <td>{{ $item->variasi_ }}</td>
-                                        <td>{{ $item->type_ }}</td>
-                                        <td>{{ $item->keterangan }}</td>
-                                        <td>Rp {{ number_format($item->hpp, 0, ',', '.') }}</td>
-                                        <td>Rp {{ number_format($item->harga_beli, 0, ',', '.') }}</td>
-                                        <td>Rp {{ number_format($item->sisa, 0, ',', '.') }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
->>>>>>> d62da6dacb36c91d3cb24e09791e1e99e472d763
                 </div>
             </div>
         </div>

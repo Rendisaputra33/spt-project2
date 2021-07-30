@@ -14,7 +14,6 @@
                     <i class="mdi mdi-printer"></i>Cetak
                 </a>
             </div>
-<<<<<<< HEAD
 
         </div>
         <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
@@ -65,58 +64,10 @@
                             @endforeach
                         </tbody>
                     </table>
-=======
-            <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
-                <div class="card">
-                    <div class="card-body">
-                        <table class="table table-sm table-hover">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>MASA GILING</th>
-                                    <th>TANGGAL</th>
-                                    <th>REG</th>
-                                    <th>PETANI</th>
-                                    <th>NO SPTA</th>
-                                    <th>NO TRUK</th>
-                                    <th>BOBOT</th>
-                                    <th>RF</th>
-                                    <th>TEBANGAN</th>
-                                    <th>KET</th>
-                                    <th>BELI</th>
-                                    <th>HPP</th>
-                                    <th>SISA</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $no = 1; ?>
-                                @foreach ($data as $item)
-                                    <tr style="height: 52px;">
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $item->masa_giling }}</td>
-                                        <td>{{ date('d/M/Y', strtotime($item->created_at)) }}</td>
-                                        <td>{{ $item->reg }}</td>
-                                        <td>{{ $item->petani }}</td>
-                                        <td>{{ $item->nospta }}</td>
-                                        <td>{{ $item->nopol }}</td>
-                                        <td>{{ $item->bobot }}</td>
-                                        <td>{{ $item->variasi_ }}</td>
-                                        <td>{{ $item->type_ }}</td>
-                                        <td>{{ $item->keterangan }}</td>
-                                        <td>Rp. {{ number_format($item->harga_beli, 0, ',', '.') }}</td>
-                                        <td>Rp. {{ number_format($item->hpp, 0, ',', '.') }}</td>
-                                        <td>Rp. {{ number_format($item->sisa, 0, ',', '.') }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
->>>>>>> d62da6dacb36c91d3cb24e09791e1e99e472d763
                 </div>
             </div>
         </div>
     </div>
-<<<<<<< HEAD
     <footer class=" footer">
         <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
@@ -142,65 +93,8 @@
                             <label for="exampleInputPassword1">Tanggal Awal</label>
                             <input type="date" class="form-control" name="tanggal" id="taw">
                             <span class="text-dark"></span>
-=======
-    <!-- modal untuk tambah data -->
-    <div class="modal fade" id="modal-md-filter">
-        <div class="modal-dialog modal-md">
-            <form action="{{ url('/laporan') }}" method="post">
-                @csrf
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title">Filter</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Tanggal Awal</label>
-                                    <input type="date" class="form-control" name="tanggalaw" id="taw">
-                                    <span class="text-dark"></span>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Tanggal Akhir</label>
-                                    <input type="date" class="form-control" name="tanggalak" id="tak">
-                                    <span class="text-dark"></span>
-                                </div>
-                            </div>
->>>>>>> d62da6dacb36c91d3cb24e09791e1e99e472d763
-                        </div>
-                        <div class="form-group">
-                            <label for="pabrik">Pabrik</label>
-                            <select class="form-control" name="pabrik" id="pabrik">
-                                <option selected value="">Pilih</option>
-                                @foreach ($pabrik as $item)
-                                    <option value="{{ $item->id_pabrik }}">{{ $item->nama_pabrik }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="periode">Periode</label>
-                            <select class="form-control" name="periode" id="periode" data-change="add">
-                                <option selected value="">Pilih</option>
-                                <option>1</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Type Tebu</label>
-                            <select class="form-control" name="type" id="type">
-                                <option selected value="">Pilih</option>
-                                @foreach ($type as $item)
-                                    <option value="{{ $item->type }}">{{ $item->type }}</option>
-                                @endforeach
-                            </select>
                         </div>
                     </div>
-<<<<<<< HEAD
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="exampleInputPassword1">Tanggal Akhir</label>
@@ -240,19 +134,6 @@
                 <a href="" id="filter" class="btn btn-gradient-success">Cari</a>
             </div>
         </div>
-=======
-
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        <button type="submit" id="filter" class="btn btn-gradient-success">Cari</button>
-                    </div>
-            </form>
-        </div>
-    </div>
-    <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
->>>>>>> d62da6dacb36c91d3cb24e09791e1e99e472d763
     </div>
     <!-- /.modal-content -->
 </div>
