@@ -57,6 +57,10 @@ class laporancontroller extends Controller
                 'data' => entry::where('type_', $req->type)->get(),
                 'pabrik' => pabrik::get(),
                 'type' => type::get(),
+                'filter' => [
+                    'type' => 'type',
+                    'data' => [$req->type]
+                ],
                 'title' => 'Laporan'
             ]);
         }
@@ -65,6 +69,10 @@ class laporancontroller extends Controller
                 'data' => entry::where('id_pabrik', $req->pabrik)->get(),
                 'pabrik' => pabrik::get(),
                 'type' => type::get(),
+                'filter' => [
+                    'type' => 'pabrik',
+                    'data' => [$req->pabrik]
+                ],
                 'title' => 'Laporan'
             ]);
         }
@@ -77,6 +85,10 @@ class laporancontroller extends Controller
                     ->get(),
                 'pabrik' => pabrik::get(),
                 'type' => type::get(),
+                'filter' => [
+                    'type' => 'all',
+                    'data' => [$req->periode, $req->tanggalaw, $req->tanggalak, $req->type, $req->pabrik]
+                ],
                 'title' => 'Laporan'
             ]);
         }
