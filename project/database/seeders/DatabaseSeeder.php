@@ -16,7 +16,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             userseed::class,
             varseed::class,
-            typeseed::class
+            typeseed::class,
+            pabrikseed::class,
+            petaniseed::class
         ]);
     }
 }
