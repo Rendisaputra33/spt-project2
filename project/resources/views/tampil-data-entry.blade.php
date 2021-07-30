@@ -206,15 +206,40 @@
                 </div>
 
                 <div class="modal-body">
-                    <table class="table table-hover">
+                    <table class="table table-hover d-flex flex-row justify-content-lg-around">
                         <thead>
-                            <tr>
+                            <tr class="col-sm d-flex flex-column">
                                 <th>Periode</th>
                                 <th>Masa Giling</th>
                                 <th>Tanggal</th>
                                 <th>REG</th>
                                 <th>No SPTA</th>
                                 <th>No POL</th>
+
+                            </tr>
+                        </thead>
+                        <tr class="col-sm d-flex flex-column">
+                            <td>:</td>
+                            <td>:</td>
+                            <td>:</td>
+                            <td>:</td>
+                            <td>:</td>
+                            <td>:</td>
+
+                        </tr>
+                        <tbody>
+                            <tr class="col-sm d-flex flex-column">
+                                <td class="periode">dummy</td>
+                                <td class="masa">dummy</td>
+                                <td class="tanggal">dummy</td>
+                                <td class="reg">dummy</td>
+                                <td class="nospta">dummy</td>
+                                <td class="nopol">dummy</td>
+
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr class="col-sm d-flex flex-column">
                                 <th>Bobot</th>
                                 <th>Ket</th>
                                 <th>Harga Beli</th>
@@ -222,14 +247,15 @@
                                 <th>Sisa</th>
                             </tr>
                         </thead>
+                        <tr class="col-sm d-flex flex-column">
+                            <td>:</td>
+                            <td>:</td>
+                            <td>:</td>
+                            <td>:</td>
+
+                        </tr>
                         <tbody>
-                            <tr>
-                                <td class="periode">dummy</td>
-                                <td class="masa">dummy</td>
-                                <td class="tanggal">dummy</td>
-                                <td class="reg">dummy</td>
-                                <td class="nospta">dummy</td>
-                                <td class="nopol">dummy</td>
+                            <tr class="col-sm d-flex flex-column">
                                 <td class="bobot">dummy</td>
                                 <td class="ket">dummy</td>
                                 <td class="harga">dummy</td>
@@ -252,3 +278,82 @@
 @section('specific-js')
     <script src="{{ asset('assets/js/function/Entry.js') }}"></script>
 @endsection
+{{-- <table id="tabel_detail" class="table table-borderless mt-3" style=" display: flex; flex-direction: row; justify-content: space-evenly;">
+    <thead>
+        <tr class="col-sm" style="display: flex; flex-direction: column;">
+            <th>Tanggal Keberangkatan</th>
+            <th>Tanggal Bongkar</th>
+            <th>No Sp</th>
+            <th>Nama Pemilik</th>
+            <th>Tujuan</th>
+            <th>No Truk</th>
+            <th>Berat Timbang</th>
+            <th>Netto</th>
+            <th>Berat Pulang</th>
+            <th>Berat Bersih</th>
+        </tr>
+    </thead>
+    <tr class="col-sm" style="display: flex; flex-direction: column;">
+        <td>:</td>
+        <td>:</td>
+        <td>:</td>
+        <td>:</td>
+        <td>:</td>
+        <td>:</td>
+        <td>:</td>
+        <td>:</td>
+        <td>:</td>
+        <td>:</td>
+    </tr>
+    <tbody id="detail1">
+        <tr class="col-sm" style="display: flex; flex-direction: column;">
+            <td>dummy</td>
+            <td>dummy</td>
+            <td>dummy</td>
+            <td>dummy</td>
+            <td>dummy</td>
+            <td>dummy</td>
+            <td>dummy</td>
+            <td>dummy</td>
+            <td>dummy</td>
+            <td>dummy</td>
+        </tr>
+    </tbody>
+    <thead>
+        <tr class="col-sm" style="display: flex; flex-direction: column;">
+            <th>Tanggal Kepulangan</th>
+            <th>Tipe</th>
+            <th>No Induk</th>
+            <th>Nama Petani</th>
+            <th>Wilayah</th>
+            <th>Sangu</th>
+            <th>Tara</th>
+            <th>Harga</th>
+            <th>Refaksi</th>
+        </tr>
+    </thead>
+    <tr class="col-sm" style="display: flex; flex-direction: column;">
+        <td>:</td>
+        <td>:</td>
+        <td>:</td>
+        <td>:</td>
+        <td>:</td>
+        <td>:</td>
+        <td>:</td>
+        <td>:</td>
+        <td>:</td>
+    </tr>
+    <tbody id="detail2">
+        <tr class="col-sm" style="display: flex; flex-direction: column;">
+            <td>dummy</td>
+            <td>dummy</td>
+            <td>dummy</td>
+            <td>dummy</td>
+            <td>dummy</td>
+            <td>dummy</td>
+            <td>dummy</td>
+            <td>dummy</td>
+
+        </tr>
+    </tbody>
+</table> --}}
