@@ -5,7 +5,6 @@
             <div class="col-lg-12 p-0 d-flex justify-content-between">
                 <h2>Data Laporan</h2>
                 <div class="right d-flex align-items-center">
-
                     <button type="button" class="btn btn-gradient-success btn-icon-text d-flex" data-target="#modal-md-filter" id='tbh' data-toggle="modal">
                         <i class="mdi mdi-filter-outline"></i>Filter
                     </button>
@@ -14,7 +13,6 @@
                         <i class="mdi mdi-printer"></i>Cetak
                     </a>
                 </div>
-
             </div>
             <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                 <div class="card">

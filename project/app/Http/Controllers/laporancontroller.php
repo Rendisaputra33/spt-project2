@@ -130,7 +130,7 @@ class laporancontroller extends Controller
                     ->get(),
                 'title' => 'Cetak Laporan'
             ]);
-        } elseif ($param[0] == 'month') {
+        } elseif ($f == 'month') {
             return view('cetak-laporan', [
                 'data' => entry::whereMonth('created_at', date('m'))->get(),
                 'title' => 'Cetak Laporan'
