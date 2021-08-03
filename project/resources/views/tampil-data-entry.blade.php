@@ -51,11 +51,11 @@
                                         <td>{{ $item->nospta }}</td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-info btn-icon-text detail" data-target="#modal-lg-detail" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
-                                                <i class="mdi mdi-information-outline btn-icon-prepend"></i> Detail </button>
+                                                <i class="mdi mdi-information-outline btn-icon-prepend"></i>Detail </button>
                                             <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
-                                                <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
+                                                <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>Ubah </button>
                                             <a href="{{ url('/entry') . '/' . $item->id_entry }}" class="btn btn-sm btn-danger btn-icon-text delete">
-                                                <i class="mdi mdi-delete-forever btn-icon-prepend"></i> Hapus </a>
+                                                <i class="mdi mdi-delete-forever btn-icon-prepend"></i>Hapus </a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -201,7 +201,7 @@
     <!-- modal untuk tambah data -->
     <div class="modal fade" id="modal-lg-detail">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content">
+            <div class="modal-content modal-">
                 <div class="modal-header">
                     <h3 class="modal-title">Detail</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -210,7 +210,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <table class="table table-hover d-flex flex-row justify-content-lg-around">
+                    <table class="table table-hover d-flex flex-row justify-content-lg-evenly">
                         <thead>
                             <tr class="col-sm d-flex flex-column">
                                 <th>Periode</th>
@@ -220,10 +220,12 @@
                                 <th>Petani</th>
                                 <th>No SPTA</th>
                                 <th>No POL</th>
+                                <th>Pabrik</th>
 
                             </tr>
                         </thead>
                         <tr class="col-sm d-flex flex-column">
+                            <td>:</td>
                             <td>:</td>
                             <td>:</td>
                             <td>:</td>
@@ -239,6 +241,7 @@
                                 <td class="masa">dummy</td>
                                 <td class="tanggal">dummy</td>
                                 <td class="reg">dummy</td>
+                                <td class="pabrik">dummy</td>
                                 <td class="petani"></td>
                                 <td class="nospta">dummy</td>
                                 <td class="nopol">dummy</td>
