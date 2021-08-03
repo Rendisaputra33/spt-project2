@@ -93,7 +93,7 @@
                         </div>
                         <div class="form-group">
                             <label for="level">Pabrik</label>
-                            <select class="form-control" name="pabrik" id="level" required>
+                            <select class="form-control text-dark" name="pabrik" id="level" required>
                                 <option selected value="">Pilih</option>
                                 @foreach ($pabrik as $item)
                                     <option value="{{ $item->id_pabrik }}">{{ $item->nama_pabrik }}</option>

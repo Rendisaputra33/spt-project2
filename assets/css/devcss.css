@@ -17,8 +17,8 @@ nav.navbar.default-layout-navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row 
   font-size: 13px !important;
   font-weight: normal;
 }
-.modal-content-auto{
-  width: 800px !important;
+.modal-md-custom{
+  width: 60% !important;
 }
 @media only screen and (max-width: 576px) {
   nav.navbar.default-layout-navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row {

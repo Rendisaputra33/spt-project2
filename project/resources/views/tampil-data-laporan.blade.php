@@ -91,21 +91,21 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Tanggal Awal</label>
-                                    <input type="date" class="form-control" name="tanggalaw" id="taw">
+                                    <input type="date" class="form-control text-dark" name="tanggalaw" id="taw">
                                     <span class="text-dark"></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Tanggal Akhir</label>
-                                    <input type="date" class="form-control" name="tanggalak" id="tak">
+                                    <input type="date" class="form-control text-dark" name="tanggalak" id="tak">
                                     <span class="text-dark"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="pabrik">Pabrik</label>
-                            <select class="form-control" name="pabrik" id="pabrik">
+                            <select class="form-control text-dark" name="pabrik" id="pabrik">
                                 <option selected value="">Pilih</option>
                                 @foreach ($pabrik as $item)
                                     <option value="{{ $item->id_pabrik }}">{{ $item->nama_pabrik }}</option>
@@ -114,14 +114,14 @@
                         </div>
                         <div class="form-group">
                             <label for="periode">Periode</label>
-                            <select class="form-control" name="periode" id="periode" data-change="add">
+                            <select class="form-control text-dark" name="periode" id="periode" data-change="add">
                                 <option selected value="">Pilih</option>
                                 <option>1</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Type Tebu</label>
-                            <select class="form-control" name="type" id="type">
+                            <select class="form-control text-dark" name="type" id="type">
                                 <option selected value="">Pilih</option>
                                 @foreach ($type as $item)
                                     <option value="{{ $item->type }}">{{ $item->type }}</option>

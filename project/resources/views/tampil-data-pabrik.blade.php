@@ -6,7 +6,7 @@
                 <h2>Data Pabrik</h2>
                 <div class="right d-flex align-items-center">
                     <div class="input-group">
-                        <input type="text" id="search" class="form-control form-control-sm" placeholder="Cari Data Pabrik.." aria-label="Cari Data Petani.." aria-describedby="basic-addon2">
+                        <input type="text" id="search" class="form-control text-dark form-control text-dark-sm" placeholder="Cari Data Pabrik.." aria-label="Cari Data Petani.." aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-sm btn-gradient-success" type="button">Cari</button>
                         </div>
@@ -81,12 +81,12 @@
                     <div class="modal-body">
                         <div class="form-group" id="nama_pg">
                             <label for="exampleInputPassword1">Nama PG</label>
-                            <input type="text" class="form-control" placeholder="Nama PG" name="nama" required>
+                            <input type="text" class="form-control text-dark" placeholder="Nama PG" name="nama" required>
                             <span class="text-dark"></span>
                         </div>
                         <div class="form-group" id="kode_PG">
                             <label for="exampleInputPassword1">Kode PG</label>
-                            <input type="text" class="form-control" placeholder="Kode PG" name="kode" required>
+                            <input type="text" class="form-control text-dark" placeholder="Kode PG" name="kode" required>
                             <span class="text-dark"></span>
                         </div>
                     </div>
