@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\entry;
 use App\Models\pabrik;
 use App\Models\type;
+use Facade\FlareClient\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View as ViewView;
 
 class laporancontroller extends Controller
 {

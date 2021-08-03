@@ -77,6 +77,7 @@ Route::prefix('entry')->group(function () {
     Route::prefix('json')->group(function () {
         Route::get('/{id}', [entrycontroller::class, 'getupMethod'])->middleware('authuser');
         Route::get('/search/{s}', [entrycontroller::class, 'searchMethod'])->middleware('authuser');
+        Route::get('/filter/{tgl}', [entrycontroller::class, 'filterMethod'])->middleware('authuser');
     });
 });
 
