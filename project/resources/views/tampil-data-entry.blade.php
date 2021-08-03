@@ -1,3 +1,11 @@
+@php
+function formatTanggal($tgl)
+{
+    $data = explode('-', $tgl);
+    $month = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+    return "{$data[2]}/{$month[(int) $data[1] - 1]}/{$data[0]}";
+}
+@endphp
 @extends('template.template')
 @section('content')
     <div class="main-panel">
@@ -46,7 +54,7 @@
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->masa_giling }}</td>
                                         <td>{{ $item->periode }}</td>
-                                        <td>{{ date('d/M/Y', strtotime($item->created_at)) }}</td>
+                                        <td>{{ formatTanggal(date('Y-m-d', strtotime($item->created_at))) }}</td>
                                         <td>{{ $item->reg }}</td>
                                         <td>{{ $item->nospta }}</td>
                                         <td>
@@ -116,13 +124,10 @@
                                         <option>1</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" id="reg-petani" style="display: none;">
                                     <label for="reg">Reg</label>
                                     <select class="form-control" name="reg" id="reg" data-change="add" required>
                                         <option selected value="">Pilih</option>
-                                        @foreach ($petani as $item)
-                                            <option value="{{ $item->reg }}" data-petani="{{ $item->nama_petani }}">{{ $item->reg }}</option>
-                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">

@@ -324,6 +324,9 @@ const setReg = async parameter => {
     .then(res => res.json())
     .then(res => uiReg(res.data))
     .catch(err => err);
+  parameter === ''
+    ? (document.querySelector('#reg-petani').style.display = 'none')
+    : (document.querySelector('#reg-petani').style.display = 'block');
 };
 
 const uiReg = data => {
@@ -410,6 +413,7 @@ INPUT.search.onkeyup = async function () {
 
 INPUT.pabrik.onchange = async function () {
   await setReg(this.value);
+  document.querySelector('input[name=petani]').value = '';
 };
 
 INPUT.reg.onchange = function () {
