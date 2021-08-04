@@ -20,7 +20,7 @@ function formatTanggal($tgl)
                     <table class="table table-borderless d-flex flex-row justify-content-start">
                         <thead>
                             <tr class="col-sm d-flex flex-column pl-0">
-                                <th class="p-2">Tanggal</th>
+                                <th class="p-2">Transaksi Tanggal</th>
                                 <th class="p-2">Pabrik</th>
                                 <th class="p-2">Periode</th>
                                 <th class="p-2">Tipe Tebu</th>
@@ -34,7 +34,7 @@ function formatTanggal($tgl)
                         </tr>
                         <tbody>
                             <tr class="col-sm d-flex flex-column p-0">
-                                <td class="p-2">{{ !isset($tanggal) ? 'Semua Tanggal' : $tanggal[0] . '-' . $tanggal[1] }}</td>
+                                <td class="p-2">{{ !isset($tanggal) ? 'Semua Tanggal' : formatTanggal($tanggal[0]) . ' - ' . formatTanggal($tanggal[1]) }}</td>
                                 <td class="p-2">{{ !isset($pabrik) ? 'Semua Pabrik' : $pabrik }}</td>
                                 <td class="p-2">{{ !isset($periode) ? 'Semua Periode' : $periode }}</td>
                                 <td class="p-2">{{ !isset($type) ? 'Semua Type Tebu' : $type }}</td>
@@ -46,7 +46,7 @@ function formatTanggal($tgl)
                     <table class="table table-borderless d-flex flex-row justify-content-end">
                         <thead>
                             <tr class="col-sm d-flex flex-column">
-                                <th class="p-2">Tanggal</th>
+                                <th class="p-2">Tanggal Cetak</th>
                             </tr>
                         </thead>
                         <tr class="col-sm d-flex flex-column p-0">
@@ -54,7 +54,7 @@ function formatTanggal($tgl)
                         </tr>
                         <tbody>
                             <tr class="col-sm d-flex flex-column p-0">
-                                <td class="p-2">dummy</td>
+                                <td class="p-2">{{ formatTanggal(date('Y-m-d')) }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -80,27 +80,33 @@ function formatTanggal($tgl)
                         </thead>
                         <tbody>
                             <?php $no = 1; ?>
+                            <?php $sisa = 0; ?>
+                            <?php $bobot = 0; ?>
                             @foreach ($data as $item)
+                                <?php $sisa += $item->sisa; ?>
+                                <?php $bobot += $item->bobot; ?>
                                 <tr class="text-capitalize text-center">
                                     <td class="pb-5">{{ $no++ }}</td>
                                     <td class="pb-5">{{ $item->masa_giling }}</td>
                                     <td class="pb-5">{{ date('d/M/Y', strtotime($item->created_at)) }}</td>
-                                    <td class="pb-5">{{ $item->pabrik }}</td>
                                     <td class="pb-5">{{ $item->reg }}</td>
+                                    <td class="pb-5">{{ $item->nospta }}</td>
                                     <td class="pb-5">{{ $item->nopol }}</td>
                                     <td class="pb-5">{{ $item->bobot }}</td>
                                     <td class="pb-5">{{ $item->variasi_ }}</td>
                                     <td class="pb-5">{{ $item->type_ }}</td>
                                     <td class="pb-5">{{ $item->keterangan }}</td>
-                                    <td class="pb-5">{{ $item->harga_beli }}</td>
-                                    <td class="pb-5">{{ $item->hpp }}</td>
-                                    <td class="pb-5">{{ $item->sisa }}</td>
+                                    <td class="pb-5">Rp. {{ number_format($item->harga_beli, 0, ',', '.') }}</td>
+                                    <td class="pb-5">Rp. {{ number_format($item->hpp, 0, ',', '.') }}</td>
+                                    <td class="pb-5">Rp. {{ number_format($item->sisa, 0, ',', '.') }}</td>
                                 </tr>
                             @endforeach
                             <tr class="border border-top-2 border-dark">
                                 <td colspan="7" class=""></td>
-                                <td colspan="3" class="">Total : Bobot</td>
-                                <td colspan="3" class="">Total : Sisa</td>
+                                <td colspan="3" class="">
+                                    Total Bobot : {{ $bobot }} Kwintal
+                                </td>
+                                <td colspan="3" class="">Total Sisa : Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
 
                             </tr>
                         </tbody>
