@@ -1,3 +1,11 @@
+@php
+function formatTanggal($tgl)
+{
+    $data = explode('-', $tgl);
+    $month = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+    return "{$data[2]}/{$month[(int) $data[1] - 1]}/{$data[0]}";
+}
+@endphp
 @extends('template.cetaklayout')
 @section('content')
     <div class="main-panel mx-auto">
@@ -26,10 +34,10 @@
                         </tr>
                         <tbody>
                             <tr class="col-sm d-flex flex-column p-0">
-                                <td class="p-2">dummy</td>
-                                <td class="p-2">dummy</td>
-                                <td class="p-2">dummy</td>
-                                <td class="p-2">dummy</td>
+                                <td class="p-2">{{ !isset($tanggal) ? 'Semua Tanggal' : $tanggal[0] . '-' . $tanggal[1] }}</td>
+                                <td class="p-2">{{ !isset($pabrik) ? 'Semua Pabrik' : $pabrik }}</td>
+                                <td class="p-2">{{ !isset($periode) ? 'Semua Periode' : $periode }}</td>
+                                <td class="p-2">{{ !isset($type) ? 'Semua Type Tebu' : $type }}</td>
                             </tr>
                         </tbody>
                     </table>
