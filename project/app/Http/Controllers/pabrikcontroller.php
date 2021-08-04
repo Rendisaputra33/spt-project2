@@ -22,6 +22,9 @@ class pabrikcontroller extends Controller
         if ($data !== null) {
             return redirect()->back()->with('error', "gagal!, kode $req->kode telah dipakai");
         }
+        if (pabrik::where('nama_pabrik', $req->nama)->first() !== null) {
+            return redirect()->back()->with('error', "gagal!, nama pabrik $req->nama telah dipakai");
+        }
         return pabrik::insert([
             'nama_pabrik' => $req->nama,
             'kode_pabrik' => $req->kode
@@ -32,15 +35,31 @@ class pabrikcontroller extends Controller
     public function updateMethod(Request $req, $id)
     {
         $data = pabrik::where('kode_pabrik', $req->kode)->first();
+        $data1 = pabrik::where('nama_pabrik', $req->nama)->first();
         if ($data !== null) {
-            if ($data->kode_pabrik === $req->kode && $data->id_pabrik === (int) $id) {
-                return $this->saveUpdate($req, $id);
+            if ($data->kode_pabrik == $req->kode && $data->id_pabrik == (int) $id) {
+                if ($data1 !== null) {
+                    if ($data1->nama_pabrik == $req->nama && $data1->id_pabrik == (int) $id) {
+                        return $this->saveUpdate($req, $id);
+                    } else {
+                        return redirect()->back()->with('error', 'nama pabrik ' . $req->nama . ' telah terdaftar');
+                    }
+                } else {
+                    return $this->saveUpdate($req, $id);
+                }
             } elseif ($data->id_pabrik !== (int) $id) {
                 return redirect()->back()->with('error', 'kode pabrik ' . $req->kode . ' telah terdaftar');
             } else {
                 return $this->saveUpdate($req, $id);
             }
         } else {
+            if ($data1 !== null) {
+                if ($data1->nama_pabrik == $req->nama && $data1->id_pabrik == (int) $id) {
+                    return $this->saveUpdate($req, $id);
+                } else {
+                    return redirect()->back()->with('error', 'nama pabrik ' . $req->nama . ' telah terdaftar');
+                }
+            }
             return $this->saveUpdate($req, $id);
         }
     }

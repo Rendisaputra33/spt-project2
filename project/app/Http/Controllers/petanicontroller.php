@@ -20,6 +20,10 @@ class petanicontroller extends Controller
     // add method for add data petani
     public function addMethod(Request $req)
     {
+        $data = petani::where('reg', $req->register)->first();
+        if ($data !== null) {
+            return redirect()->back()->with('error', "gagal!, reg petani $req->register telah terdaftar");
+        }
         return petani::insert([
             'nama_petani' => $req->nama,
             'reg' => $req->register,
@@ -30,6 +34,22 @@ class petanicontroller extends Controller
     }
     // update method for update data petani
     public function updateMethod(Request $req, $id)
+    {
+        $data = petani::where('reg', $req->register)->first();
+        if ($data !== null) {
+            if ($data->reg === $req->register && $data->id_petani === (int) $id) {
+                return $this->saveUpdate($req, $id);
+            } elseif ($data->id_petani !== (int) $id) {
+                return redirect()->back()->with('error', 'no reg ' . $req->register . ' telah terdaftar');
+            } else {
+                return $this->saveUpdate($req, $id);
+            }
+        } else {
+            return $this->saveUpdate($req, $id);
+        }
+    }
+
+    private function saveUpdate($req, $id)
     {
         return petani::where('id_petani', $id)->update([
             'nama_petani' => $req->nama,
