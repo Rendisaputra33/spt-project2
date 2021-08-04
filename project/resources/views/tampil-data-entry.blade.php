@@ -20,7 +20,7 @@ function formatTanggal($tgl)
                         </div>
                     </div>
                     &nbsp;
-                    <button type="button" class="btn btn-gradient-success btn-icon-text d-flex add" data-target="#modal-md-filter" id='tbh' data-toggle="modal">
+                    <button type="button" class="btn btn-gradient-success btn-icon-text d-flex" data-target="#modal-md-filter" id='tbh' data-toggle="modal">
                         <i class="mdi mdi-plus btn-icon-prepend"></i>Filter
                     </button>
                     &nbsp;
@@ -54,14 +54,19 @@ function formatTanggal($tgl)
                             </thead>
                             <tbody id="list">
                                 <?php $no = 1; ?>
+                                <?php $sisa = 0; ?>
+                                <?php $bobot = 0; ?>
                                 @foreach ($data as $item)
                                     <tr class="">
+                                        <?php $sisa += $item->sisa; ?>
+                                        <?php $bobot += $item->bobot; ?>
+                                    <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->periode }}</td>
                                         <td>{{ formatTanggal(date('Y-m-d', strtotime($item->created_at))) }}</td>
                                         <td>{{ $item->reg }}</td>
                                         <td>{{ $item->nospta }}</td>
-                                        <td>{{ $item->truk }}</td>
+                                        <td>{{ $item->nopol }}</td>
                                         <td>{{ $item->pabrik }}</td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-info btn-icon-text detail" data-target="#modal-lg-detail" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
@@ -261,7 +266,6 @@ function formatTanggal($tgl)
                                 <td class="nospta">dummy</td>
                                 <td class="nopol">dummy</td>
                                 <td class="pabrik">dummy</td>
-
                             </tr>
                         </tbody>
                         <thead>
@@ -320,15 +324,15 @@ function formatTanggal($tgl)
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Tanggal Awal</label>
-                                <input type="date" class="form-control text-dark" name="tanggal" id="taw">
+                                <label for="tgl1">Tanggal Awal</label>
+                                <input type="date" class="form-control text-dark" name="tanggalawal" id="tgl1">
                                 <span class="text-dark"></span>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Tanggal Akhir</label>
-                                <input type="date" class="form-control text-dark" name="tanggal" id="tak">
+                                <label for="tgl2">Tanggal Akhir</label>
+                                <input type="date" class="form-control text-dark" name="tanggalakhir" id="tgl2">
                                 <span class="text-dark"></span>
                             </div>
                         </div>
@@ -336,7 +340,7 @@ function formatTanggal($tgl)
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-gradient-success">Cari</button>
+                    <a href="{{ url('/entry') }}" class="btn btn-gradient-success filter">Cari</a>
                 </div>
             </div>
         </div>

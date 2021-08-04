@@ -11,8 +11,19 @@ use Illuminate\Http\Request;
 
 class entrycontroller extends Controller
 {
-    public function indexMethod()
+    public function indexMethod(Request $req)
     {
+        if ($req->query('tgl') !== null) {
+            $tgl = explode('|', $req->query('tgl'));
+            return view('tampil-data-entry', [
+                'data' => entry::whereBetween('created_at', [$tgl[0], $tgl[1]])->get(),
+                'type' => type::get(),
+                'variasi' => variasi::get(),
+                'petani' => petani::get(),
+                'pabrik' => pabrik::select('id_pabrik', 'nama_pabrik')->get(),
+                'title' => 'Entry'
+            ]);
+        }
         return view('tampil-data-entry', [
             'data' => entry::whereDate('created_at', now())->get(),
             'type' => type::get(),

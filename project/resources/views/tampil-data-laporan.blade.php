@@ -113,6 +113,10 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="masa">Pabrik</label>
+                            <input type="text" name="masa" value="{{ date('Y') }}" id="masa" class="form-control texk-dark">
+                        </div>
+                        <div class="form-group">
                             <label for="periode">Periode</label>
                             <select class="form-control text-dark" name="periode" id="periode" data-change="add">
                                 <option selected value="">Pilih</option>
