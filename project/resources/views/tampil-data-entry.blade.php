@@ -85,7 +85,7 @@ function formatTanggal($tgl)
                         <div class="row mt-5">
                             <div class="col-md-12 pt-2">
                                 <table class="table table-dark w-100">
-                                    <tbody>
+                                    <tbody id="total_">
                                         <tr class="bg-dark">
                                             <td></td>
                                             <td>Total Bobot</td>

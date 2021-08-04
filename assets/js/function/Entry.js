@@ -170,19 +170,19 @@ const setSearch = data => {
     sisa += data.sisa;
     bobot += data.bobot;
   });
-  console.log(sisa);
-  console.log(bobot);
-  ELEMENT.tableBody.innerHTML =
-    html += `<tr class="" style="background-color: #bfbfbf; font-weight: bold;">
-                <td colspan="6"></td>
-                <td>Total Bobot &nbsp;:</td>
-                <td>${bobot} KW</td>
-              </tr>
-              <tr class="" style="background-color: gray; color: white; font-weight: bold;">
-                <td colspan="6"></td>
-                <td>Total Sisa &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</td>
-                <td>Rp. ${formatRupiah(sisa.toString(), 'Rp. ')}</td>
-              </tr>`;
+  ELEMENT.tableBody.innerHTML = html;
+  document.getElementById('total_').innerHTML = `<tr class="bg-dark">
+  <td></td>
+  <td>Total Bobot</td>
+  <td>:</td>
+  <td>${bobot} KW</td>
+</tr>
+<tr>
+  <td></td>
+  <td>Total Sisa</td>
+  <td>:</td>
+  <td>${formatRupiah(sisa.toString(), 'Rp. ')}</td>
+</tr>`;
 };
 
 const generateTahun = () => {
