@@ -40,7 +40,11 @@
                             </thead>
                             <tbody>
                                 <?php $no = 1; ?>
+                                <?php $sisa = 0; ?>
+                                <?php $bobot = 0; ?>
                                 @foreach ($data as $item)
+                                    <?php $sisa += $item->sisa; ?>
+                                    <?php $bobot += $item->bobot; ?>
                                     <tr style="height: 52px;">
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->masa_giling }}</td>
@@ -60,6 +64,16 @@
                                         <td>Rp. {{ number_format($item->sisa, 0, ',', '.') }}</td>
                                     </tr>
                                 @endforeach
+                                <tr class="" style="background-color: #bfbfbf; font-weight: bold;">
+                                    <td colspan="14"></td>
+                                    <td>Total Bobot &nbsp;:</td>
+                                    <td>{{ $bobot }} KW</td>
+                                </tr>
+                                <tr class="" style="background-color: gray; color: white; font-weight: bold;">
+                                    <td colspan="14"></td>
+                                    <td>Total Sisa &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</td>
+                                    <td>Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

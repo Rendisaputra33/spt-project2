@@ -79,9 +79,15 @@ function formatTanggal($tgl)
                                     </tr>
                                 @endforeach
 
-                                <tr class="">
-                                    <td class="pt-6" colspan="6"></td>
-                                    <td class="pt-6">Total :</td>
+                                <tr class="" style="background-color: #bfbfbf; font-weight: bold;">
+                                    <td colspan="6"></td>
+                                    <td>Total Bobot &nbsp;:</td>
+                                    <td>{{ $bobot }} KW</td>
+                                </tr>
+                                <tr class="" style="background-color: gray; color: white; font-weight: bold;">
+                                    <td colspan="6"></td>
+                                    <td>Total Sisa &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</td>
+                                    <td>Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
                                 </tr>
                             </tbody>
                         </table>
