@@ -117,6 +117,7 @@ class entrycontroller extends Controller
                 ->orWhere('nopol', 'LIKE', '%' . $s . '%')
                 ->orWhere('variasi_', 'LIKE', '%' . $s . '%')
                 ->orWhere('type_', 'LIKE', '%' . $s . '%')
+                ->orWhere('pabrik', 'LIKE', '%' . $s . '%')
                 ->get()
         ]);
     }
