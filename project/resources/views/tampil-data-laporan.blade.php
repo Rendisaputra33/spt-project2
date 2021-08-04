@@ -66,7 +66,28 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="row mt-5" style="border-top: 1px #515151 solid !important;">
+                        <div class="row mt-5">
+                            <div class="col-md-12 pt-2">
+                                <table class="table table-dark w-100">
+                                    <tbody>
+                                        <tr class="bg-dark">
+                                            <td></td>
+                                            <td>Total Bobot</td>
+                                            <td>:</td>
+                                            <td>{{ $bobot }} KW</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Total Sisa</td>
+                                            <td>:</td>
+                                            <td>Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                        {{-- <div class="row mt-5" style="border-top: 1px #515151 solid !important;">
                             <div class="col-md-6"></div>
                             <div class="col-md-6 pt-2">
                                 <table class="w-100">
@@ -88,7 +109,7 @@
 
                                 </table>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

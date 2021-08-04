@@ -82,22 +82,20 @@ function formatTanggal($tgl)
 
                             </tbody>
                         </table>
-                        <div class="row mt-5" style="border-top: 1px #515151 solid !important;">
-                            <div class="col-md-6"></div>
-                            <div class="col-md-6 pt-2">
-                                <table class="w-100">
-                                    <tbody class="d-flex flex-row">
-                                        <tr class="col-sm-3 d-flex flex-column px-0">
+                        <div class="row mt-5">
+                            <div class="col-md-12 pt-2">
+                                <table class="table table-dark w-100">
+                                    <tbody>
+                                        <tr class="bg-dark">
+                                            <td></td>
                                             <td>Total Bobot</td>
-                                            <td>Total Sisa</td>
-                                        </tr>
-                                        <tr class="col-sm-7 d-flex flex-column px-0">
                                             <td>:</td>
-                                            <td>:</td>
-
-                                        </tr>
-                                        <tr class="col-sm-2 d-flex flex-column px-0">
                                             <td>{{ $bobot }} KW</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>Total Sisa</td>
+                                            <td>:</td>
                                             <td>Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
                                         </tr>
                                     </tbody>
