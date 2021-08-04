@@ -15,23 +15,9 @@
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alerts-css@1.0.2/assets/css/alerts-css.min.css">
     <link rel="stylesheet" href="{{ asset('assets/plugins/icon/css/all.min.css') }}">
-    <style>
-        @media print and (color) {
-            @page {
-                size: A4 landscape;
-                size: 287mm 210mm;
-            }
-
-            * {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            tr>td:not(:first-child) {
-                background-color: rgb(162, 164, 218);
-            }
-
-
+    <style type="text/css" media="print">
+        @page {
+            size: landscape;
         }
 
     </style>
@@ -48,7 +34,15 @@
     <script src="{{ asset('assets/js/misc.js') }}"></script>
     <script src="{{ asset('assets/plugins/icon/js/fontawesome.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/alerts-css@1.0.1/assets/js/alerts.min.js"></script>
-
+    <script>
+        function printContent(el) {
+            var restorepage = document.body.innerHTML;
+            var printcontent = document.getElementById(el).innerHTML;
+            document.body.innerHTML = printcontent;
+            window.print();
+            document.body.innerHTML = restorepage;
+        }
+    </script>
     {{-- end default js --}}
     @yield('specific-js')
 </body>
