@@ -18,14 +18,34 @@ class pabrikcontroller extends Controller
     // add method for add data pabrik
     public function addMethod(Request $req)
     {
+        $data = pabrik::where('kode_pabrik', $req->kode)->first();
+        if ($data !== null) {
+            return redirect()->back()->with('error', "gagal!, kode $req->kode telah dipakai");
+        }
         return pabrik::insert([
             'nama_pabrik' => $req->nama,
             'kode_pabrik' => $req->kode
-        ]) ? redirect()->back()->with('sukses', 'data berhasil di tambahkan')
-            : redirect()->back()->with('error', 'data gagal di tambahkan');
+        ]) ? redirect()->back()->with('sukses', 'data pabrik berhasil di tambahkan')
+            : redirect()->back()->with('error', 'data pabrik gagal di tambahkan');
     }
     // update method for update data pabrik
     public function updateMethod(Request $req, $id)
+    {
+        $data = pabrik::where('kode_pabrik', $req->kode)->first();
+        if ($data !== null) {
+            if ($data->kode_pabrik === $req->kode && $data->id_pabrik === (int) $id) {
+                return $this->saveUpdate($req, $id);
+            } elseif ($data->id_pabrik !== (int) $id) {
+                return redirect()->back()->with('error', 'kode pabrik ' . $req->kode . ' telah terdaftar');
+            } else {
+                return $this->saveUpdate($req, $id);
+            }
+        } else {
+            return $this->saveUpdate($req, $id);
+        }
+    }
+    // saving method for updating data
+    private function saveUpdate($req, $id)
     {
         return pabrik::where('id_pabrik', $id)->update([
             'nama_pabrik' => $req->nama,
@@ -33,6 +53,7 @@ class pabrikcontroller extends Controller
         ]) ? redirect()->back()->with('sukses', 'data berhasil di ubah')
             : redirect()->back()->with('error', 'data gagal di ubah');
     }
+
     // delete method for delete data pabrik
     public function deleteMethod($id)
     {
