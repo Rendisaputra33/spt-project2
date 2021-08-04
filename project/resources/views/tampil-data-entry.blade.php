@@ -55,7 +55,7 @@ function formatTanggal($tgl)
                             <tbody id="list">
                                 <?php $no = 1; ?>
                                 @foreach ($data as $item)
-                                    <tr>
+                                    <tr class="">
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->periode }}</td>
                                         <td>{{ formatTanggal(date('Y-m-d', strtotime($item->created_at))) }}</td>
@@ -73,6 +73,11 @@ function formatTanggal($tgl)
                                         </td>
                                     </tr>
                                 @endforeach
+
+                                <tr class="">
+                                    <td class="pt-6" colspan="6"></td>
+                                    <td class="pt-6">Total :</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
