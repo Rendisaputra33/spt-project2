@@ -54,7 +54,11 @@ function formatTanggal($tgl)
                             </thead>
                             <tbody id="list">
                                 <?php $no = 1; ?>
+                                <?php $sisa = 0; ?>
+                                <?php $bobot = 0; ?>
                                 @foreach ($data as $item)
+                                    <?php $sisa += $item->sisa; ?>
+                                    <?php $bobot += $item->bobot; ?>
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->periode }}</td>
