@@ -64,18 +64,31 @@
                                         <td>Rp. {{ number_format($item->sisa, 0, ',', '.') }}</td>
                                     </tr>
                                 @endforeach
-                                <tr class="" style="background-color: #bfbfbf; font-weight: bold;">
-                                    <td colspan="14"></td>
-                                    <td>Total Bobot &nbsp;:</td>
-                                    <td>{{ $bobot }} KW</td>
-                                </tr>
-                                <tr class="" style="background-color: gray; color: white; font-weight: bold;">
-                                    <td colspan="14"></td>
-                                    <td>Total Sisa &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</td>
-                                    <td>Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
-                                </tr>
                             </tbody>
                         </table>
+                        <div class="row mt-5" style="border-top: 1px #515151 solid !important;">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6 pt-2">
+                                <table class="w-100">
+                                    <tbody class="d-flex flex-row">
+                                        <tr class="col-sm-3 d-flex flex-column px-0">
+                                            <td>Total Bobot</td>
+                                            <td>Total Sisa</td>
+                                        </tr>
+                                        <tr class="col-sm-7 d-flex flex-column px-0">
+                                            <td>:</td>
+                                            <td>:</td>
+
+                                        </tr>
+                                        <tr class="col-sm-2 d-flex flex-column px-0">
+                                            <td>{{ $bobot }} KW</td>
+                                            <td>Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
