@@ -163,8 +163,24 @@ const fetchSearch = async THIS => {
 const setSearch = data => {
   let html = '';
   let no = 1;
-  data.map(data => (html += uiSearch(data, no++)));
-  ELEMENT.tableBody.innerHTML = html;
+  let sisa = 0;
+  let bobot = 0;
+  data.map(data => {
+    html += uiSearch(data, no++);
+    sisa += data.sisa;
+    bobot += data.bobot;
+  });
+  ELEMENT.tableBody.innerHTML =
+    html += `<tr class="" style="background-color: #bfbfbf; font-weight: bold;">
+                <td colspan="6"></td>
+                <td>Total Bobot &nbsp;:</td>
+                <td>${bobot} KW</td>
+              </tr>
+              <tr class="" style="background-color: gray; color: white; font-weight: bold;">
+                <td colspan="6"></td>
+                <td>Total Sisa &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</td>
+                <td>Rp. ${formatRupiah(sisa, 'Rp. ')}</td>
+              </tr>`;
 };
 
 const generateTahun = () => {
