@@ -20,7 +20,7 @@ function formatTanggal($tgl)
                         </div>
                     </div>
                     &nbsp;
-                    <button type="button" class="btn btn-gradient-success btn-icon-text d-flex add" data-target="#modal-md-filter" id='tbh' data-toggle="modal">
+                    <button type="button" class="btn btn-gradient-success btn-icon-text d-flex" data-target="#modal-md-filter" id='tbh' data-toggle="modal">
                         <i class="mdi mdi-plus btn-icon-prepend"></i>Filter
                     </button>
                     &nbsp;
@@ -61,7 +61,7 @@ function formatTanggal($tgl)
                                         <td>{{ formatTanggal(date('Y-m-d', strtotime($item->created_at))) }}</td>
                                         <td>{{ $item->reg }}</td>
                                         <td>{{ $item->nospta }}</td>
-                                        <td>{{ $item->truk }}</td>
+                                        <td>{{ $item->nopol }}</td>
                                         <td>{{ $item->pabrik }}</td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-info btn-icon-text detail" data-target="#modal-lg-detail" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
@@ -256,7 +256,6 @@ function formatTanggal($tgl)
                                 <td class="nospta">dummy</td>
                                 <td class="nopol">dummy</td>
                                 <td class="pabrik">dummy</td>
-
                             </tr>
                         </tbody>
                         <thead>

@@ -46,6 +46,7 @@ const Detail = {
   petani: document.querySelector('td[class=petani]'),
   type: document.querySelector('td[class=type]'),
   variasi: document.querySelector('td[class=variasi]'),
+  pabrik: document.querySelector('td[class=pabrik]'),
 };
 
 const ELEMENT = {
@@ -236,7 +237,7 @@ const setFormUpdate = result => {
   INPUT.hpp.value = formatRupiah(result.hpp.toString(), 'Rp. ');
   INPUT.bobot.value = result.bobot;
   INPUT.sisa.value = formatRupiah(result.sisa.toString(), 'Rp. ');
-  INPUT.pabrik.value = result.id_pabrik;
+  INPUT.pabrik.value = `${result.id_pabrik} | ${result.pabrik}`;
   document.querySelector('input[name=petani]').value = result.petani;
 };
 
@@ -255,6 +256,7 @@ const setDetail = data => {
   Detail.petani.innerHTML = data.petani;
   Detail.type.innerHTML = data.type_;
   Detail.variasi.innerHTML = data.variasi_;
+  Detail.pabrik.innerHTML = data.pabrik;
 };
 
 const clearForm = () => {
@@ -272,6 +274,8 @@ const clearForm = () => {
   INPUT.harga.value = '';
   INPUT.hpp.value = '';
   INPUT.bobot.value = '';
+  INPUT.pabrik.value = '';
+  document.querySelector('input[name=petani]').value = '';
 };
 // swal definition
 const swalDelete = param => {
