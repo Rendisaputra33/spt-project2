@@ -315,15 +315,15 @@ function formatTanggal($tgl)
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Tanggal Awal</label>
-                                <input type="date" class="form-control text-dark" name="tanggal" id="taw">
+                                <label for="tgl1">Tanggal Awal</label>
+                                <input type="date" class="form-control text-dark" name="tanggalawal" id="tgl1">
                                 <span class="text-dark"></span>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Tanggal Akhir</label>
-                                <input type="date" class="form-control text-dark" name="tanggal" id="tak">
+                                <label for="tgl2">Tanggal Akhir</label>
+                                <input type="date" class="form-control text-dark" name="tanggalakhir" id="tgl2">
                                 <span class="text-dark"></span>
                             </div>
                         </div>
@@ -331,7 +331,7 @@ function formatTanggal($tgl)
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-gradient-success">Cari</button>
+                    <a href="{{ url('/entry') }}" class="btn btn-gradient-success filter">Cari</a>
                 </div>
             </div>
         </div>

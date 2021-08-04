@@ -420,3 +420,16 @@ INPUT.reg.onchange = function () {
   let data = this.value.split(' | ')[1];
   document.querySelector('input[name=petani]').value = data;
 };
+
+document.querySelector('input[name=tanggalawal]').onchange = function () {
+  document
+    .querySelector('.filter')
+    .setAttribute('href', URL_ROOT + `?tgl=${this.value}`);
+};
+
+document.querySelector('input[name=tanggalakhir]').onchange = function () {
+  const uri = document.querySelector('.filter').getAttribute('href');
+  document
+    .querySelector('.filter')
+    .setAttribute('href', uri + `|${this.value}`);
+};
