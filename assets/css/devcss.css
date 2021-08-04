@@ -20,6 +20,9 @@ nav.navbar.default-layout-navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row 
 .modal-md-custom{
   width: 60% !important;
 }
+/* .pb-5-c{
+  padding-bottom: 200px !important;
+} */
 @media only screen and (max-width: 576px) {
   nav.navbar.default-layout-navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row {
     display: flex !important;
