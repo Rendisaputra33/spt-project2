@@ -6,6 +6,23 @@ function formatTanggal($tgl)
     return "{$data[2]}/{$month[(int) $data[1] - 1]}/{$data[0]}";
 }
 @endphp
+<style>
+    td,
+    th {
+        font-size: 0.75rem !important;
+    }
+
+    td.small,
+    th.small {
+        width: 2rem;
+    }
+
+    td.medium,
+    th.medium {
+        width: 3.8rem;
+    }
+
+</style>
 @extends('template.cetaklayout')
 @section('content')
     <div class="main-panel mx-auto">
@@ -60,22 +77,25 @@ function formatTanggal($tgl)
                     </table>
                 </div>
                 <div class="col-md-12 pt-3">
-                    <table class="table table-borderless border border-5 border-dark">
+                    <table class="table table-sm table-borderless border border-5 border-dark w-100" style="table-layout: fixed;">
                         <thead>
-                            <tr class="text-bold text-center border border-bottom-2 border-dark">
-                                <th>No</th>
-                                <th>Periode</th>
-                                <th>Tanggal</th>
-                                <th>REG</th>
-                                <th>No SPTA</th>
-                                <th>No TRUK</th>
-                                <th>Bobot</th>
-                                <th>RF</th>
-                                <th>Tebangan</th>
-                                <th>Ket</th>
-                                <th>Beli</th>
-                                <th>HPP</th>
-                                <th>Sisa</th>
+                            <tr class="text-bold text-center border border-bottom-2 border-dark w-auto">
+                                <th class="small py-2 px-0">NO</th>
+                                <th class="small py-2 px-0">MG</th>
+                                <th class="medium py-2 px-0">PERIODE</th>
+                                <th class="py-2 px-0">TGL</th>
+                                <th class="medium py-2 px-0">PABRIK</th>
+                                <th class="medium py-2 px-0">REG</th>
+                                <th class="py-2 px-0">PETANI</th>
+                                <th class="medium py-2 px-0">NO SPTA</th>
+                                <th class="medium py-2 px-0">NO TRUK</th>
+                                <th class="medium py-2 px-0">BOBOT</th>
+                                <th class="small py-2 px-0">VAR</th>
+                                <th class="small py-2 px-0">TYPE</th>
+                                <th class="small py-2 px-0">KET</th>
+                                <th class="py-2 px-0">BELI</th>
+                                <th class="py-2 px-0">HPP</th>
+                                <th class="py-2 px-0">SISA</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -85,28 +105,32 @@ function formatTanggal($tgl)
                             @foreach ($data as $item)
                                 <?php $sisa += $item->sisa; ?>
                                 <?php $bobot += $item->bobot; ?>
-                                <tr class="text-capitalize text-center">
-                                    <td class="pb-5">{{ $no++ }}</td>
-                                    <td class="pb-5">{{ $item->masa_giling }}</td>
-                                    <td class="pb-5">{{ date('d/M/Y', strtotime($item->created_at)) }}</td>
-                                    <td class="pb-5">{{ $item->reg }}</td>
-                                    <td class="pb-5">{{ $item->nospta }}</td>
-                                    <td class="pb-5">{{ $item->nopol }}</td>
-                                    <td class="pb-5">{{ $item->bobot }}</td>
-                                    <td class="pb-5">{{ $item->variasi_ }}</td>
-                                    <td class="pb-5">{{ $item->type_ }}</td>
-                                    <td class="pb-5">{{ $item->keterangan }}</td>
-                                    <td class="pb-5">Rp. {{ number_format($item->harga_beli, 0, ',', '.') }}</td>
-                                    <td class="pb-5">Rp. {{ number_format($item->hpp, 0, ',', '.') }}</td>
-                                    <td class="pb-5">Rp. {{ number_format($item->sisa, 0, ',', '.') }}</td>
+                                <tr class="text-capitalize text-center w-auto">
+                                    <td class="small px-0">{{ $no++ }}</td>
+                                    <td class="small px-0">{{ $item->masa_giling }}</td>
+                                    <td class="medium px-0">{{ $item->periode }}</td>
+                                    <td class="px-0">{{ date('d/M/Y', strtotime($item->created_at)) }}</td>
+                                    <td class="medium px-0">{{ $item->pabrik }}</td>
+                                    <td class="medium px-0">{{ $item->reg }}</td>
+                                    <td class="px-0">{{ $item->petani }}</td>
+                                    <td class="medium px-0">{{ $item->nospta }}</td>
+                                    <td class="medium px-0">{{ $item->nopol }}</td>
+                                    <td class="medium px-0">{{ $item->bobot }}</td>
+                                    <td class="small px-0">{{ $item->variasi_ }}</td>
+                                    <td class="small px-0">{{ $item->type_ }}</td>
+                                    <td class="small px-0">{{ $item->keterangan }}</td>
+                                    <td class="px-0">Rp. {{ number_format($item->harga_beli, 0, ',', '.') }}</td>
+                                    <td class="px-0">Rp. {{ number_format($item->hpp, 0, ',', '.') }}</td>
+                                    <td class="px-0">Rp. 3.000.000,00</td>
                                 </tr>
                             @endforeach
                             <tr class="border border-top-2 border-dark">
-                                <td colspan="7" class=""></td>
-                                <td colspan="3" class="">
+                                <td class="py-2" colspan="11" class=""></td>
+                                <td class="py-2" colspan="2" class="">
                                     Total Bobot : {{ $bobot }} Kwintal
                                 </td>
-                                <td colspan="3" class="">Total Sisa : Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
+                                <td class="py-2" colspan="1" class=""></td>
+                                <td class="py-2" colspan="2" class="">Total Sisa : Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
 
                             </tr>
                         </tbody>
