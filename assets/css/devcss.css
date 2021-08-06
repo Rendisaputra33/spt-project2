@@ -23,6 +23,10 @@ nav.navbar.default-layout-navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row 
 .pt-6{
   padding-top: 6rem !important;
 }
+td.cetak,
+th.cetak{
+  font-size: 0.75rem !important;
+}
 @media only screen and (max-width: 576px) {
   nav.navbar.default-layout-navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row {
     display: flex !important;
