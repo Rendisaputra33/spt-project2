@@ -110,7 +110,8 @@ class entrycontroller extends Controller
     public function searchMethod($s)
     {
         return response()->json([
-            'data' => entry::where('periode', 'LIKE', '%' . $s . '%')
+            'data' => entry::whereDate('created_at', now())
+                ->where('periode', 'LIKE', '%' . $s . '%')
                 ->orWhere('masa_giling', 'LIKE', '%' . $s . '%')
                 ->orWhere('reg', 'LIKE', '%' . $s . '%')
                 ->orWhere('nospta', 'LIKE', '%' . $s . '%')

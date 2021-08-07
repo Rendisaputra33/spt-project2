@@ -343,14 +343,14 @@ function formatTanggal($tgl)
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="tgl1">Tanggal Awal</label>
-                                <input type="date" class="form-control text-dark" name="tanggalawal" id="tgl1">
+                                <input type="date" value="{{ date('Y-m') }}-01" class="form-control text-dark" name="tanggalawal" id="tgl1">
                                 <span class="text-dark"></span>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="tgl2">Tanggal Akhir</label>
-                                <input type="date" class="form-control text-dark" name="tanggalakhir" id="tgl2">
+                                <input type="date" value="{{ date('Y-m-d') }}" class="form-control text-dark" name="tanggalakhir" id="tgl2">
                                 <span class="text-dark"></span>
                             </div>
                         </div>
