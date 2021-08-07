@@ -151,7 +151,9 @@ const fetchDetail = async THIS => {
 };
 // fetch get data search
 const fetchSearch = async THIS => {
-  await fetch(`${URL_ROOT}/json/search/${THIS.value}`)
+  const param = THIS.value === '' ? 'tidak-ada' : THIS.value;
+  console.log(param);
+  await fetch(`${URL_ROOT}/json/search/${param}`)
     .then(res => res.json())
     .then(result => setSearch(result.data))
     .catch(error => console.log(error));
@@ -214,9 +216,7 @@ const formatTanggal = tgl => {
 const setPeriode = () => {
   let peri = '<option value="">Pilih</option>';
   for (let i = 0; i < periode.length; i++) {
-    peri += /*html*/ `<option value="${parseInt(periode[i])}">${
-      periode[i]
-    }</option>`;
+    peri += /*html*/ `<option value="${periode[i]}">${periode[i]}</option>`;
   }
   INPUT.periode.innerHTML = peri;
 };
@@ -332,11 +332,11 @@ function formatRupiah(angka, prefix) {
 const binddingPeriode = () => {
   if (INPUT.periode.getAttribute('data-change') === 'add') {
     INPUT.periode.onchange = function () {
-      window.localStorage.setItem('periode', parseInt(this.value));
+      window.localStorage.setItem('periode', this.value);
     };
   } else {
     INPUT.periode.onchange = function () {
-      window.localStorage.setItem('periode-update', parseInt(this.value));
+      window.localStorage.setItem('periode-update', this.value);
     };
   }
 };

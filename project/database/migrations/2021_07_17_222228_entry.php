@@ -15,7 +15,7 @@ class Entry extends Migration
     {
         Schema::create('entry', function (Blueprint $table) {
             $table->integerIncrements('id_entry');
-            $table->integer('periode');
+            $table->string('periode');
             $table->integer('masa_giling');
             $table->integer('id_pabrik');
             $table->string('pabrik');

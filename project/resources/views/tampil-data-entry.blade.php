@@ -149,8 +149,13 @@ return "{$data[2]}/{$month[(int) $data[1] - 1]}/{$data[0]}";
                     <div class="col-lg-12 d-flex">
                         <div class="col-lg-6">
                             <div class="form-group">
+<<<<<<< HEAD
                                 <label for="masa">Masa Giling</label>
                                 <input type="text" class="form-control text-dark" placeholder="Masa Giling" name="masa" required>
+=======
+                                <label for="tgl1">Tanggal Awal</label>
+                                <input type="date" value="{{ date('Y-m') }}-01" class="form-control text-dark" name="tanggalawal" id="tgl1">
+>>>>>>> b443b5cf5d7c262464168e79f068f74b71f2a597
                                 <span class="text-dark"></span>
                             </div>
                             <div class="form-group">
@@ -192,6 +197,7 @@ return "{$data[2]}/{$month[(int) $data[1] - 1]}/{$data[0]}";
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
+<<<<<<< HEAD
                                 <label for="type">Type</label>
                                 <select class="form-control text-dark" name="type" id="type" required>
                                     <option selected value="">Pilih</option>
@@ -223,6 +229,10 @@ return "{$data[2]}/{$month[(int) $data[1] - 1]}/{$data[0]}";
                             <div class="form-group">
                                 <label for="sisa">Sisa</label>
                                 <input type="text" class="form-control text-dark" placeholder="Sisa" name="sisa" readonly required>
+=======
+                                <label for="tgl2">Tanggal Akhir</label>
+                                <input type="date" value="{{ date('Y-m-d') }}" class="form-control text-dark" name="tanggalakhir" id="tgl2">
+>>>>>>> b443b5cf5d7c262464168e79f068f74b71f2a597
                                 <span class="text-dark"></span>
                             </div>
                         </div>
