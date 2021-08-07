@@ -107,7 +107,7 @@ class entrycontroller extends Controller
         ]);
     }
 
-    public function searchMethod($s)
+    public function searchMethod($s = null)
     {
         return response()->json([
             'data' => entry::whereDate('created_at', now())
