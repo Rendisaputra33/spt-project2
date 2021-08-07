@@ -47,7 +47,7 @@ const periode = [
 const setPeriode = () => {
   let peri = '<option value="">Pilih</option>';
   for (let i = 0; i < periode.length; i++) {
-    peri += /*html*/ `<option value="${parseInt(periode[i])}">${
+    peri += /*html*/ `<option value="${periode[i]}">${
       periode[i]
     }</option>`;
   }

@@ -214,7 +214,7 @@ const formatTanggal = tgl => {
 const setPeriode = () => {
   let peri = '<option value="">Pilih</option>';
   for (let i = 0; i < periode.length; i++) {
-    peri += /*html*/ `<option value="${parseInt(periode[i])}">${
+    peri += /*html*/ `<option value="${periode[i]}">${
       periode[i]
     }</option>`;
   }
@@ -332,11 +332,11 @@ function formatRupiah(angka, prefix) {
 const binddingPeriode = () => {
   if (INPUT.periode.getAttribute('data-change') === 'add') {
     INPUT.periode.onchange = function () {
-      window.localStorage.setItem('periode', parseInt(this.value));
+      window.localStorage.setItem('periode', this.value);
     };
   } else {
     INPUT.periode.onchange = function () {
-      window.localStorage.setItem('periode-update', parseInt(this.value));
+      window.localStorage.setItem('periode-update', this.value);
     };
   }
 };
