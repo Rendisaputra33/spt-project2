@@ -51,7 +51,9 @@
                                             <td>
                                                 <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-md-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_user }}">
                                                     <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
-                                                <a class="btn btn-sm btn-danger btn-icon-text delete" href="{{ url('/user') }}/{{ $item->id_user }}"> <i class="mdi mdi-delete btn-icon-prepend"></i> Hapus </a>
+                                                @if ($item->username !== session('username'))
+                                                    <a class="btn btn-sm btn-danger btn-icon-text delete" href="{{ url('/user') }}/{{ $item->id_user }}"> <i class="mdi mdi-delete btn-icon-prepend"></i> Hapus </a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
