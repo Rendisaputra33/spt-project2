@@ -32,7 +32,7 @@ function formatTanggal($tgl)
                     <h3>Laporan Harian SPT</h3>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col-md-6">
                     <table class="table table-borderless d-flex flex-row justify-content-start">
                         <thead>
@@ -76,7 +76,7 @@ function formatTanggal($tgl)
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-12 pt-3">
+                <div class="col-md-12 mt-4">
                     <table class="table table-sm table-borderless border border-5 border-dark w-100" style="table-layout: fixed;">
                         <thead>
                             <tr class="text-bold text-center border border-bottom-2 border-dark w-auto">
@@ -121,7 +121,7 @@ function formatTanggal($tgl)
                                     <td class="small px-0">{{ $item->keterangan }}</td>
                                     <td class="px-0">Rp. {{ number_format($item->harga_beli, 0, ',', '.') }}</td>
                                     <td class="px-0">Rp. {{ number_format($item->hpp, 0, ',', '.') }}</td>
-                                    <td class="px-0">Rp. 3.000.000,00</td>
+                                    <td class="px-0">Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
                                 </tr>
                             @endforeach
                             <tr class="border border-top-2 border-dark">
