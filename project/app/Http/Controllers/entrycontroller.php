@@ -107,19 +107,26 @@ class entrycontroller extends Controller
         ]);
     }
 
-    public function searchMethod($s = null)
+    public function searchMethod($s)
     {
+        if ($s === 'tidak-ada') {
+            return response()->json([
+                'data' => entry::whereDate('created_at', now())->get(),
+            ]);
+        }
         return response()->json([
-            'data' => entry::whereDate('created_at', now())
-                ->where('periode', 'LIKE', '%' . $s . '%')
-                ->orWhere('masa_giling', 'LIKE', '%' . $s . '%')
-                ->orWhere('reg', 'LIKE', '%' . $s . '%')
-                ->orWhere('nospta', 'LIKE', '%' . $s . '%')
-                ->orWhere('nopol', 'LIKE', '%' . $s . '%')
-                ->orWhere('variasi_', 'LIKE', '%' . $s . '%')
-                ->orWhere('type_', 'LIKE', '%' . $s . '%')
-                ->orWhere('pabrik', 'LIKE', '%' . $s . '%')
-                ->get()
+            'data' => entry::search($s)
         ]);
     }
 }
+
+// entry::whereDate('created_at', now())
+//                 ->where('periode', 'LIKE', '%' . $s . '%')
+//                 ->orWhere('masa_giling', 'LIKE', '%' . $s . '%')
+//                 ->orWhere('reg', 'LIKE', '%' . $s . '%')
+//                 ->orWhere('nospta', 'LIKE', '%' . $s . '%')
+//                 ->orWhere('nopol', 'LIKE', '%' . $s . '%')
+//                 ->orWhere('variasi_', 'LIKE', '%' . $s . '%')
+//                 ->orWhere('type_', 'LIKE', '%' . $s . '%')
+//                 ->orWhere('pabrik', 'LIKE', '%' . $s . '%')
+//                 ->get()
