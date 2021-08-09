@@ -102,8 +102,10 @@ class entrycontroller extends Controller
 
     public function getupMethod($id)
     {
+        $data = entry::where('id_entry', $id)->first();
         return response()->json([
-            'data' => entry::where('id_entry', $id)->first()
+            'data' => $data,
+            'reg' => petani::where('id_pabrik', $data->id_pabrik)->get()
         ]);
     }
 

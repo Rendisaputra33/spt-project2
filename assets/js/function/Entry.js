@@ -139,7 +139,7 @@ const binddingDetail = () => {
 const fetchUpdate = async THIS => {
   await fetch(`${URL_ROOT}/json/${THIS.getAttribute('data-id')}`)
     .then(res => res.json())
-    .then(result => setFormUpdate(result.data))
+    .then(result => setFormUpdate(result))
     .catch(error => console.log(error));
 };
 // fetch get data update
@@ -239,24 +239,29 @@ const listDelete = () => {
 };
 
 const setFormUpdate = result => {
+  console.log(result);
+  document.querySelector('#reg-petani').style.display = 'block';
+  uiReg(result.reg);
   INPUT.periode.setAttribute('data-change', 'update');
-  INPUT.action.setAttribute('action', URL_ROOT + '/' + result.id_entry);
+  INPUT.action.setAttribute('action', URL_ROOT + '/' + result.data.id_entry);
   binddingPeriode();
   INPUT.method.innerHTML = '<input type="hidden" name="_method" value="PUT" />';
-  INPUT.periode.value = result.periode;
-  INPUT.masa.value = result.masa_giling;
-  INPUT.reg.value = result.reg;
-  INPUT.nospta.value = result.nospta;
-  INPUT.nopol.value = result.nopol;
-  INPUT.variasi.value = result.variasi;
-  INPUT.type.value = result.type;
-  INPUT.keterangan.value = result.keterangan;
-  INPUT.harga.value = formatRupiah(result.harga_beli.toString(), 'Rp. ');
-  INPUT.hpp.value = formatRupiah(result.hpp.toString(), 'Rp. ');
-  INPUT.bobot.value = result.bobot;
-  INPUT.sisa.value = formatRupiah(result.sisa.toString(), 'Rp. ');
-  INPUT.pabrik.value = `${result.id_pabrik} | ${result.pabrik}`;
-  document.querySelector('input[name=petani]').value = result.petani;
+  INPUT.periode.value = result.data.periode;
+  INPUT.masa.value = result.data.masa_giling;
+  INPUT.reg.value = `${result.data.reg} | ${
+    result.reg.filter(v => v.reg === result.data.reg)[0].nama_petani
+  }`;
+  INPUT.nospta.value = result.data.nospta;
+  INPUT.nopol.value = result.data.nopol;
+  INPUT.variasi.value = result.data.variasi;
+  INPUT.type.value = result.data.type;
+  INPUT.keterangan.value = result.data.keterangan;
+  INPUT.harga.value = formatRupiah(result.data.harga_beli.toString(), 'Rp. ');
+  INPUT.hpp.value = formatRupiah(result.data.hpp.toString(), 'Rp. ');
+  INPUT.bobot.value = result.data.bobot;
+  INPUT.sisa.value = formatRupiah(result.data.sisa.toString(), 'Rp. ');
+  INPUT.pabrik.value = `${result.data.id_pabrik} | ${result.data.pabrik}`;
+  document.querySelector('input[name=petani]').value = result.data.petani;
 };
 
 const setDetail = data => {
