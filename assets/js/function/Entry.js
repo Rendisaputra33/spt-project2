@@ -444,15 +444,31 @@ INPUT.reg.onchange = function () {
   document.querySelector('input[name=petani]').value = data;
 };
 
+document
+  .querySelector('.filter')
+  .setAttribute(
+    'href',
+    URL_ROOT +
+      `?tgl=${document.querySelector('input[name=tanggalawal]').value}|${
+        document.querySelector('input[name=tanggalakhir]').value
+      }`
+  );
+
 document.querySelector('input[name=tanggalawal]').onchange = function () {
   document
     .querySelector('.filter')
-    .setAttribute('href', URL_ROOT + `?tgl=${this.value}`);
+    .setAttribute(
+      'href',
+      URL_ROOT +
+        `?tgl=${this.value}|${
+          document.querySelector('input[name=tanggalakhir]').value
+        }`
+    );
 };
 
 document.querySelector('input[name=tanggalakhir]').onchange = function () {
   const uri = document.querySelector('.filter').getAttribute('href');
   document
     .querySelector('.filter')
-    .setAttribute('href', uri + `|${this.value}`);
+    .setAttribute('href', uri.split('|')[0] + `|${this.value}`);
 };
