@@ -14,7 +14,7 @@ function formatTanggal($tgl)
 
     td.small,
     th.small {
-        width: 2rem;
+        width: 2.4rem;
     }
 
     td.medium,
@@ -39,6 +39,26 @@ function formatTanggal($tgl)
                             <tr class="col-sm d-flex flex-column pl-0">
                                 <th class="p-2">Transaksi Tanggal</th>
                                 <th class="p-2">Pabrik</th>
+
+                            </tr>
+                        </thead>
+                        <tr class="col-sm d-flex flex-column p-0">
+                            <td class="p-2">:</td>
+                            <td class="p-2">:</td>
+
+                        </tr>
+                        <tbody>
+                            <tr class="col-sm d-flex flex-column p-0">
+                                <td class="p-2">{{ !isset($tanggal) ? 'Semua Tanggal' : formatTanggal($tanggal[0]) . ' - ' . formatTanggal($tanggal[1]) }}</td>
+                                <td class="p-2">{{ !isset($pabrik) ? 'Semua Pabrik' : $pabrik }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6 d-flex ">
+                    <table class="table table-borderless d-flex flex-row justify-content-end">
+                        <thead>
+                            <tr class="col-sm d-flex flex-column">
                                 <th class="p-2">Periode</th>
                                 <th class="p-2">Tipe Tebu</th>
                             </tr>
@@ -46,32 +66,12 @@ function formatTanggal($tgl)
                         <tr class="col-sm d-flex flex-column p-0">
                             <td class="p-2">:</td>
                             <td class="p-2">:</td>
-                            <td class="p-2">:</td>
-                            <td class="p-2">:</td>
                         </tr>
                         <tbody>
                             <tr class="col-sm d-flex flex-column p-0">
-                                <td class="p-2">{{ !isset($tanggal) ? 'Semua Tanggal' : formatTanggal($tanggal[0]) . ' - ' . formatTanggal($tanggal[1]) }}</td>
-                                <td class="p-2">{{ !isset($pabrik) ? 'Semua Pabrik' : $pabrik }}</td>
+
                                 <td class="p-2">{{ !isset($periode) ? 'Semua Periode' : $periode }}</td>
                                 <td class="p-2">{{ !isset($type) ? 'Semua Type Tebu' : $type }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-md-6 d-flex align-items-end">
-                    <table class="table table-borderless d-flex flex-row justify-content-end">
-                        <thead>
-                            <tr class="col-sm d-flex flex-column">
-                                <th class="p-2">Tanggal Cetak</th>
-                            </tr>
-                        </thead>
-                        <tr class="col-sm d-flex flex-column p-0">
-                            <td class="p-2">:</td>
-                        </tr>
-                        <tbody>
-                            <tr class="col-sm d-flex flex-column p-0">
-                                <td class="p-2">{{ formatTanggal(date('Y-m-d')) }}</td>
                             </tr>
                         </tbody>
                     </table>
