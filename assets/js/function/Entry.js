@@ -368,6 +368,7 @@ const uiSearch = (data, no) => {
   return /*html*/ `
       <tr>
           <td>${no}</td>
+          <td>${data.masa_giling}</td>
           <td>${data.periode}</td>
           <td>${formatTanggal(timeTodate(data.created_at))}</td>
           <td>${data.reg}</td>
