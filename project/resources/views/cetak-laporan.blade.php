@@ -121,7 +121,7 @@ function formatTanggal($tgl)
                                     <td class="small px-0">{{ $item->keterangan }}</td>
                                     <td class="px-0">Rp. {{ number_format($item->harga_beli, 0, ',', '.') }}</td>
                                     <td class="px-0">Rp. {{ number_format($item->hpp, 0, ',', '.') }}</td>
-                                    <td class="px-0">Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
+                                    <td class="px-0">Rp. {{ number_format($item->sisa, 0, ',', '.') }}</td>
                                 </tr>
                             @endforeach
                             <tr class="border border-top-2 border-dark">

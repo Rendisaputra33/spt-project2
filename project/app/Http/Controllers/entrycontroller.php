@@ -16,11 +16,12 @@ class entrycontroller extends Controller
         if ($req->query('tgl') !== null) {
             $tgl = explode('|', $req->query('tgl'));
             return view('tampil-data-entry', [
-                'data' => entry::whereBetween('created_at', [$tgl[0], $tgl[1]])->get(),
+                'data' => entry::whereBetween('created_at', [$tgl[0], $this->tanggal($tgl[1])])->get(),
                 'type' => type::get(),
                 'variasi' => variasi::get(),
                 'petani' => petani::get(),
                 'pabrik' => pabrik::select('id_pabrik', 'nama_pabrik')->get(),
+                'tanggal' => $req->query('tgl'),
                 'title' => 'Entry'
             ]);
         }
@@ -32,6 +33,12 @@ class entrycontroller extends Controller
             'pabrik' => pabrik::select('id_pabrik', 'nama_pabrik')->get(),
             'title' => 'Entry'
         ]);
+    }
+
+    private function tanggal($tgl)
+    {
+        $timefuture = strtotime($tgl) + 86400;
+        return date('Y-m-d', $timefuture);
     }
 
     public function addMethod(Request $req)
@@ -111,24 +118,38 @@ class entrycontroller extends Controller
 
     public function searchMethod($s)
     {
-        if ($s === 'tidak-ada') {
+        $param = explode('&', $s);
+        if (count($param) == 2) {
+            $tgl = explode('|', $param[1]);
+            if ($param[0] == 'tidak-ada') {
+                return response()->json([
+                    'data' => entry::whereBetween('created_at', [$tgl[0], $tgl[1]])->get(),
+                ]);
+            } else {
+                return response()->json([
+                    'data' => entry::searchBetwen($tgl[0], $tgl[1], $param[0])
+                ]);
+            }
+        } else {
+            if ($s === 'tidak-ada') {
+                return response()->json([
+                    'data' => entry::whereDate('created_at', now())->get(),
+                ]);
+            }
             return response()->json([
-                'data' => entry::whereDate('created_at', now())->get(),
+                'data' => entry::search($s)
             ]);
         }
-        return response()->json([
-            'data' => entry::search($s)
-        ]);
     }
 }
 
 // entry::whereDate('created_at', now())
-//                 ->where('periode', 'LIKE', '%' . $s . '%')
-//                 ->orWhere('masa_giling', 'LIKE', '%' . $s . '%')
-//                 ->orWhere('reg', 'LIKE', '%' . $s . '%')
-//                 ->orWhere('nospta', 'LIKE', '%' . $s . '%')
-//                 ->orWhere('nopol', 'LIKE', '%' . $s . '%')
-//                 ->orWhere('variasi_', 'LIKE', '%' . $s . '%')
-//                 ->orWhere('type_', 'LIKE', '%' . $s . '%')
-//                 ->orWhere('pabrik', 'LIKE', '%' . $s . '%')
-//                 ->get()
+                // ->where('periode', 'LIKE', '%' . $s . '%')
+                // ->orWhere('masa_giling', 'LIKE', '%' . $s . '%')
+                // ->orWhere('reg', 'LIKE', '%' . $s . '%')
+                // ->orWhere('nospta', 'LIKE', '%' . $s . '%')
+                // ->orWhere('nopol', 'LIKE', '%' . $s . '%')
+                // ->orWhere('variasi_', 'LIKE', '%' . $s . '%')
+                // ->orWhere('type_', 'LIKE', '%' . $s . '%')
+                // ->orWhere('pabrik', 'LIKE', '%' . $s . '%')
+                // ->get()

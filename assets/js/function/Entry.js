@@ -152,8 +152,21 @@ const fetchDetail = async THIS => {
 // fetch get data search
 const fetchSearch = async THIS => {
   const param = THIS.value === '' ? 'tidak-ada' : THIS.value;
-  console.log(param);
-  await fetch(`${URL_ROOT}/json/search/${param}`)
+
+  const final_param =
+    document
+      .querySelector('input[name=data-filter]')
+      .getAttribute('data-tanggal') !== 'null'
+      ? document
+          .querySelector('input[name=data-filter]')
+          .getAttribute('data-tanggal')
+      : null;
+
+  const uris = final_param
+    ? `${URL_ROOT}/json/search/${param}&${final_param}`
+    : `${URL_ROOT}/json/search/${param}`;
+
+  await fetch(uris)
     .then(res => res.json())
     .then(result => setSearch(result.data))
     .catch(error => console.log(error));

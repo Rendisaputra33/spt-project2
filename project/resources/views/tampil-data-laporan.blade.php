@@ -139,14 +139,14 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Tanggal Awal</label>
-                                    <input type="date" class="form-control text-dark" name="tanggalaw" id="taw">
+                                    <input type="date" value="{{ date('Y-m') }}-01" class="form-control text-dark" name="tanggalaw" id="taw">
                                     <span class="text-dark"></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Tanggal Akhir</label>
-                                    <input type="date" class="form-control text-dark" name="tanggalak" id="tak">
+                                    <input type="date" value="{{ date('Y-m-d') }}" class="form-control text-dark" name="tanggalak" id="tak">
                                     <span class="text-dark"></span>
                                 </div>
                             </div>

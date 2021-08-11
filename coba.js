@@ -19,3 +19,8 @@ const factorial = n => {
   return res;
 };
 console.log(factorial(8));
+
+// const current = new Date('8/11/2021').getTime();
+// const lusa = new Date('8/12/2021').getTime();
+const cobain = new Date('8/13/2021').getTime();
+console.log(cobain);

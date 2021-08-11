@@ -32,4 +32,25 @@ class entry extends Model
             created_at LIKE '%$now%' AND masa_giling LIKE '%$param%'
         )");
     }
+
+    public static function searchBetwen($tgl1, $tgl2, $param)
+    {
+        return DB::select("SELECT * FROM entry WHERE(
+            created_at BETWEEN '$tgl1' AND '$tgl2' AND periode LIKE '%$param%'
+            OR
+            created_at BETWEEN '$tgl1' AND '$tgl2' AND pabrik LIKE '%$param%'
+            OR
+            created_at BETWEEN '$tgl1' AND '$tgl2' AND type_ LIKE '%$param%'
+            OR
+            created_at BETWEEN '$tgl1' AND '$tgl2' AND variasi_ LIKE '%$param%'
+            OR
+            created_at BETWEEN '$tgl1' AND '$tgl2' AND nopol LIKE '%$param%'
+            OR
+            created_at BETWEEN '$tgl1' AND '$tgl2' AND nospta LIKE '%$param%'
+            OR
+            created_at BETWEEN '$tgl1' AND '$tgl2' AND reg LIKE '%$param%'
+            OR
+            created_at BETWEEN '$tgl1' AND '$tgl2' AND masa_giling LIKE '%$param%'
+        )");
+    }
 }
