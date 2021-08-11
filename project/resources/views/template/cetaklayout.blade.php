@@ -18,6 +18,12 @@
     <style type="text/css" media="print">
         @page {
             size: landscape;
+            margin: 0;
+            /* this affects the margin in the printer settings */
+        }
+
+        body {
+            padding: 2.4rem 1.6rem 0 !important;
         }
 
     </style>
