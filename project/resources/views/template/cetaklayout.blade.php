@@ -17,13 +17,21 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/icon/css/all.min.css') }}">
     <style type="text/css" media="print">
         @page {
-            size: landscape;
-            margin: 0;
+            size: landscape !important;
+            margin: 2rem 0 2rem 0;
             /* this affects the margin in the printer settings */
         }
 
         body {
-            padding: 2.4rem 1.6rem 0 !important;
+            margin: 0 1rem !important;
+        }
+
+        table.cetak>tbody>tr:nth-child(29) {
+            border-bottom: 0.10rem solid #515151;
+        }
+
+        table.cetak>tbody>tr:nth-child(30) {
+            border-top: 0.10rem solid #515151;
         }
 
     </style>
