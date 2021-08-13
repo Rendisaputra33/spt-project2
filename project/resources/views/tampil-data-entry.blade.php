@@ -7,6 +7,23 @@ function formatTanggal($tgl)
 }
 @endphp
 @extends('template.template')
+<style>
+    td.small,
+    th.small {
+        width: 2.4rem;
+    }
+
+    td.medium,
+    th.medium {
+        width: 4rem;
+    }
+
+    td.large,
+    th.large {
+        width: 7rem;
+    }
+
+</style>
 @section('content')
     <input type="hidden" name="data-filter" data-tanggal="{{ !isset($tanggal) ? 'null' : $tanggal }}">
     <div class="main-panel">
@@ -41,17 +58,17 @@ function formatTanggal($tgl)
             <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                 <div class="card">
                     <div class="card-body">
-                        <table class="table table-hover">
+                        <table class="table table-sm table-hover w-100" style="table-layout: fixed">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>MG</th>
-                                    <th>Periode</th>
-                                    <th>Tanggal</th>
-                                    <th>REG</th>
-                                    <th>No SPTA</th>
-                                    <th>No TRUK</th>
-                                    <th>Pabrik</th>
+                                    <th class="small">No</th>
+                                    <th class="small">MG</th>
+                                    <th class="medium">Periode</th>
+                                    <th class="large">Tanggal</th>
+                                    <th class="large">REG</th>
+                                    <th class="medium">No SPTA</th>
+                                    <th class="medium">No TRUK</th>
+                                    <th class="large">Pabrik</th>
                                 </tr>
                             </thead>
                             <tbody id="list">
@@ -63,15 +80,15 @@ function formatTanggal($tgl)
                                         <?php $sisa += $item->sisa; ?>
                                         <?php $bobot += $item->bobot; ?>
                                     <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $item->masa_giling }}</td>
-                                        <td>{{ $item->periode }}</td>
-                                        <td>{{ formatTanggal(date('Y-m-d', strtotime($item->created_at))) }}</td>
-                                        <td>{{ $item->reg }}</td>
-                                        <td>{{ $item->nospta }}</td>
-                                        <td>{{ $item->nopol }}</td>
-                                        <td>{{ $item->pabrik }}</td>
-                                        <td>
+                                        <td class="small">{{ $no++ }}</td>
+                                        <td class="small">{{ $item->masa_giling }}</td>
+                                        <td class="medium">{{ $item->periode }}</td>
+                                        <td class="large">{{ formatTanggal(date('Y-m-d', strtotime($item->created_at))) }}</td>
+                                        <td class="large">{{ $item->reg }}</td>
+                                        <td class="medium">{{ $item->nospta }}</td>
+                                        <td class="medium">{{ $item->nopol }}</td>
+                                        <td class="large">{{ $item->pabrik }}</td>
+                                        <td colspan="2">
                                             <button type="button" class="btn btn-sm btn-info btn-icon-text detail" data-target="#modal-lg-detail" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
                                                 <i class="mdi mdi-information-outline btn-icon-prepend"></i>Detail </button>
                                             <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
@@ -81,8 +98,6 @@ function formatTanggal($tgl)
                                         </td>
                                     </tr>
                                 @endforeach
-
-
                             </tbody>
                         </table>
                         <div class="row mt-5">

@@ -10,6 +10,11 @@ function formatTanggal($tgl)
     td,
     th {
         font-size: 0.75rem !important;
+
+    }
+
+    th {
+        font-weight: bold !important;
     }
 
     td.small,
@@ -20,7 +25,25 @@ function formatTanggal($tgl)
     td.medium,
     th.medium {
         width: 3.8rem;
+
     }
+
+    /* table {
+        page-break-inside: auto !important;
+    }
+
+    tbody {
+        page-break-inside: avoid !important;
+        page-break-after: auto !important;
+    }
+
+    thead {
+        display: table-header-group !important;
+    }
+
+    tfoot {
+        display: table-footer-group !important;
+    } */
 
 </style>
 @extends('template.cetaklayout')
@@ -77,27 +100,26 @@ function formatTanggal($tgl)
                     </table>
                 </div>
                 <div class="col-md-12 mt-4">
-                    <table class="table table-sm table-borderless border border-5 border-dark w-100" style="table-layout: fixed;">
-                        <thead>
-                            <tr class="text-bold text-center border border-bottom-2 border-dark w-auto">
-                                <th class="small py-2 px-0">NO</th>
-                                <th class="small py-2 px-0">MG</th>
-                                <th class="medium py-2 px-0">PERIODE</th>
-                                <th class="py-2 px-0">TGL</th>
-                                <th class="medium py-2 px-0">PABRIK</th>
-                                <th class="medium py-2 px-0">REG</th>
-                                <th class="py-2 px-0">PETANI</th>
-                                <th class="medium py-2 px-0">NO SPTA</th>
-                                <th class="medium py-2 px-0">NO TRUK</th>
-                                <th class="medium py-2 px-0">BOBOT</th>
-                                <th class="small py-2 px-0">VAR</th>
-                                <th class="small py-2 px-0">TYPE</th>
-                                <th class="small py-2 px-0">KET</th>
-                                <th class="py-2 px-0">BELI</th>
-                                <th class="py-2 px-0">HPP</th>
-                                <th class="py-2 px-0">SISA</th>
-                            </tr>
-                        </thead>
+                    <table class="cetak table table-sm table-borderless border border-5 border-dark w-100" style="table-layout: fixed; page-break-after:always;">
+
+                        <tr class="text-bold text-center border border-bottom-2 border-dark w-auto">
+                            <th class="small py-2 px-0">NO</th>
+                            <th class="small py-2 px-0">MG</th>
+                            <th class="medium py-2 px-0">PERIODE</th>
+                            <th class="py-2 px-0">TGL</th>
+                            <th class="medium py-2 px-0">PABRIK</th>
+                            <th class="medium py-2 px-0">REG</th>
+                            <th class="py-2 px-0">PETANI</th>
+                            <th class="medium py-2 px-0">NO SPTA</th>
+                            <th class="medium py-2 px-0">NO TRUK</th>
+                            <th class="medium py-2 px-0">BOBOT</th>
+                            <th class="small py-2 px-0">VAR</th>
+                            <th class="small py-2 px-0">TYPE</th>
+                            <th class="medium py-2 px-0">KET</th>
+                            <th class="py-2 px-0">BELI</th>
+                            <th class="py-2 px-0">HPP</th>
+                            <th class="py-2 px-0">SISA</th>
+                        </tr>
                         <tbody>
                             <?php $no = 1; ?>
                             <?php $sisa = 0; ?>
@@ -118,12 +140,13 @@ function formatTanggal($tgl)
                                     <td class="medium px-0">{{ $item->bobot }}</td>
                                     <td class="small px-0">{{ $item->variasi_ }}</td>
                                     <td class="small px-0">{{ $item->type_ }}</td>
-                                    <td class="small px-0">{{ $item->keterangan }}</td>
+                                    <td class="medium px-0">{{ $item->keterangan }}</td>
                                     <td class="px-0">Rp. {{ number_format($item->harga_beli, 0, ',', '.') }}</td>
                                     <td class="px-0">Rp. {{ number_format($item->hpp, 0, ',', '.') }}</td>
                                     <td class="px-0">Rp. {{ number_format($item->sisa, 0, ',', '.') }}</td>
                                 </tr>
                             @endforeach
+
                             <tr class="border border-top-2 border-dark">
                                 <td class="py-2" colspan="11" class=""></td>
                                 <td class="py-2" colspan="2" class="">
@@ -134,6 +157,7 @@ function formatTanggal($tgl)
 
                             </tr>
                         </tbody>
+
                     </table>
                 </div>
             </div>
@@ -146,4 +170,7 @@ function formatTanggal($tgl)
     @endsection
     @section('specific-js')
         <script src="{{ asset('assets/js/function/Entry.js') }}"></script>
+        <script>
+            functio
+        </script>
     @endsection
