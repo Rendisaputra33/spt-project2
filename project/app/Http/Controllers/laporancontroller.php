@@ -20,6 +20,12 @@ class laporancontroller extends Controller
         ]);
     }
 
+    private function tanggal($tgl)
+    {
+        $timefuture = strtotime($tgl) + 86400;
+        return date('Y-m-d', $timefuture);
+    }
+
     public function addMethod(Request $req)
     {
         $kondisi1 = $req->periode == '' && $req->type == '' && $req->pabrik == '';
@@ -27,18 +33,21 @@ class laporancontroller extends Controller
         $kondisi3 = $req->periode == '' && $req->type != '' && $req->pabrik == '';
         $kondisi4 = $req->periode == '' && $req->type == '' && $req->pabrik != '';
         $kondisi5 = $req->periode != '' && $req->type != '' && $req->pabrik != '';
+        $kondisi6 = $req->periode != '' && $req->type != '' && $req->pabrik == '';
+        $kondisi7 = $req->periode != '' && $req->type == '' && $req->pabrik != '';
+        $kondisi8 = $req->periode == '' && $req->type != '' && $req->pabrik != '';
 
         if ($req->masa !== null) {
             if ($kondisi1) {
                 return view('tampil-data-laporan', [
-                    'data' => entry::whereBetween('created_at', [$req->tanggalaw, $req->tanggalak])
+                    'data' => entry::whereBetween('created_at', [$req->tanggalaw, $this->tanggal($req->tanggalak)])
                         ->where('masa_giling', $req->masa)
                         ->get(),
                     'pabrik' => pabrik::get(),
                     'type' => type::get(),
                     'filter' => [
                         'type' => 'range',
-                        'data' => "$req->tanggalaw&$req->tanggalak"
+                        'data' => "$req->tanggalaw&$req->tanggalak&&$req->masa"
                     ],
                     'title' => 'Laporan',
 
@@ -47,43 +56,45 @@ class laporancontroller extends Controller
 
             if ($kondisi2) {
                 return view('tampil-data-laporan', [
-                    'data' => entry::where('periode', $req->periode)
+                    'data' => entry::whereBetween('created_at', [$req->tanggalaw, $this->tanggal($req->tanggalak)])
+                        ->where('periode', $req->periode)
                         ->where('masa_giling', $req->masa)
                         ->get(),
                     'pabrik' => pabrik::get(),
                     'type' => type::get(),
                     'filter' => [
                         'type' => 'periode',
-                        'data' => "$req->periode"
+                        'data' => "$req->tanggalaw&$req->tanggalak&$req->periode&&$req->masa"
                     ],
                     'title' => 'Laporan',
-                    'periode' => "$req->periode"
                 ]);
             }
             if ($kondisi3) {
                 return view('tampil-data-laporan', [
-                    'data' => entry::where('type_', $req->type)
+                    'data' => entry::whereBetween('created_at', [$req->tanggalaw, $this->tanggal($req->tanggalak)])
+                        ->where('type_', $req->type)
                         ->where('masa_giling', $req->masa)
                         ->get(),
                     'pabrik' => pabrik::get(),
                     'type' => type::get(),
                     'filter' => [
                         'type' => 'type',
-                        'data' => "$req->type"
+                        'data' => "$req->tanggalaw&$req->tanggalak&$req->type&&$req->masa"
                     ],
                     'title' => 'Laporan'
                 ]);
             }
             if ($kondisi4) {
                 return view('tampil-data-laporan', [
-                    'data' => entry::where('id_pabrik', $req->pabrik)
+                    'data' => entry::whereBetween('created_at', [$req->tanggalaw, $this->tanggal($req->tanggalak)])
+                        ->where('id_pabrik', $req->pabrik)
                         ->where('masa_giling', $req->masa)
                         ->get(),
                     'pabrik' => pabrik::get(),
                     'type' => type::get(),
                     'filter' => [
                         'type' => 'pabrik',
-                        'data' => "$req->pabrik"
+                        'data' => "$req->tanggalaw&$req->tanggalak&$req->pabrik&&$req->masa"
                     ],
                     'title' => 'Laporan'
                 ]);
@@ -93,13 +104,65 @@ class laporancontroller extends Controller
                     'data' => entry::where('id_pabrik', $req->pabrik)
                         ->where('periode', $req->periode)
                         ->where('type_', $req->type)
-                        ->whereBetween('created_at', [$req->tanggalaw, $req->tanggalak])
+                        ->where('masa_giling', $req->masa)
+                        ->whereBetween('created_at', [$req->tanggalaw, $this->tanggal($req->tanggalak)])
                         ->get(),
                     'pabrik' => pabrik::get(),
                     'type' => type::get(),
                     'filter' => [
                         'type' => 'all',
-                        'data' => "$req->tanggalaw&$req->tanggalak&$req->periode&$req->pabrik&$req->type"
+                        'data' => "$req->tanggalaw&$req->tanggalak&$req->periode&$req->pabrik&$req->type&&$req->masa"
+                    ],
+                    'title' => 'Laporan'
+                ]);
+            }
+
+            if ($kondisi6) {
+                return view('tampil-data-laporan', [
+                    'data' => entry::where('periode', $req->periode)
+                        ->where('type_', $req->type)
+                        ->where('masa_giling', $req->masa)
+                        ->whereBetween('created_at', [$req->tanggalaw, $this->tanggal($req->tanggalak)])
+                        ->get(),
+                    'pabrik' => pabrik::get(),
+                    'type' => type::get(),
+                    'filter' => [
+                        'type' => 'periodeandtype',
+                        'data' => "$req->tanggalaw&$req->tanggalak&$req->periode&$req->type&&$req->masa"
+                    ],
+                    'title' => 'Laporan'
+                ]);
+            }
+
+            if ($kondisi7) {
+                return view('tampil-data-laporan', [
+                    'data' => entry::where('periode', $req->periode)
+                        ->where('id_pabrik', $req->pabrik)
+                        ->where('masa_giling', $req->masa)
+                        ->whereBetween('created_at', [$req->tanggalaw, $this->tanggal($req->tanggalak)])
+                        ->get(),
+                    'pabrik' => pabrik::get(),
+                    'type' => type::get(),
+                    'filter' => [
+                        'type' => 'periodeandpabrik',
+                        'data' => "$req->tanggalaw&$req->tanggalak&$req->periode&$req->pabrik&&$req->masa"
+                    ],
+                    'title' => 'Laporan'
+                ]);
+            }
+
+            if ($kondisi8) {
+                return view('tampil-data-laporan', [
+                    'data' => entry::where('type_', $req->type)
+                        ->where('id_pabrik', $req->pabrik)
+                        ->where('masa_giling', $req->masa)
+                        ->whereBetween('created_at', [$req->tanggalaw, $this->tanggal($req->tanggalak)])
+                        ->get(),
+                    'pabrik' => pabrik::get(),
+                    'type' => type::get(),
+                    'filter' => [
+                        'type' => 'typeandpabrik',
+                        'data' => "$req->tanggalaw&$req->tanggalak&$req->type&$req->pabrik&&$req->masa"
                     ],
                     'title' => 'Laporan'
                 ]);
@@ -109,13 +172,13 @@ class laporancontroller extends Controller
         } else {
             if ($kondisi1) {
                 return view('tampil-data-laporan', [
-                    'data' => entry::whereBetween('created_at', [$req->tanggalaw, $req->tanggalak])
+                    'data' => entry::whereBetween('created_at', [$req->tanggalaw, $this->tanggal($req->tanggalak)])
                         ->get(),
                     'pabrik' => pabrik::get(),
                     'type' => type::get(),
                     'filter' => [
                         'type' => 'range',
-                        'data' => "$req->tanggalaw&$req->tanggalak"
+                        'data' => "$req->tanggalaw&$req->tanggalak&$req->tanggalaw&$req->tanggalak"
                     ],
                     'title' => 'Laporan',
                 ]);
@@ -124,12 +187,13 @@ class laporancontroller extends Controller
             if ($kondisi2) {
                 return view('tampil-data-laporan', [
                     'data' => entry::where('periode', $req->periode)
+                        ->whereBetween('created_at', [$req->tanggalaw, $this->tanggal($req->tanggalak)])
                         ->get(),
                     'pabrik' => pabrik::get(),
                     'type' => type::get(),
                     'filter' => [
                         'type' => 'periode',
-                        'data' => "$req->periode"
+                        'data' => "$req->tanggalaw&$req->tanggalak&$req->periode"
                     ],
                     'title' => 'Laporan',
                     'periode' => "$req->periode"
@@ -138,12 +202,13 @@ class laporancontroller extends Controller
             if ($kondisi3) {
                 return view('tampil-data-laporan', [
                     'data' => entry::where('type_', $req->type)
+                        ->whereBetween('created_at', [$req->tanggalaw, $this->tanggal($req->tanggalak)])
                         ->get(),
                     'pabrik' => pabrik::get(),
                     'type' => type::get(),
                     'filter' => [
                         'type' => 'type',
-                        'data' => "$req->type"
+                        'data' => "$req->tanggalaw&$req->tanggalak&$req->type"
                     ],
                     'title' => 'Laporan'
                 ]);
@@ -151,12 +216,13 @@ class laporancontroller extends Controller
             if ($kondisi4) {
                 return view('tampil-data-laporan', [
                     'data' => entry::where('id_pabrik', $req->pabrik)
+                        ->whereBetween('created_at', [$req->tanggalaw, $this->tanggal($req->tanggalak)])
                         ->get(),
                     'pabrik' => pabrik::get(),
                     'type' => type::get(),
                     'filter' => [
                         'type' => 'pabrik',
-                        'data' => "$req->pabrik"
+                        'data' => "$req->tanggalaw&$req->tanggalak&$req->pabrik"
                     ],
                     'title' => 'Laporan'
                 ]);
@@ -166,13 +232,61 @@ class laporancontroller extends Controller
                     'data' => entry::where('id_pabrik', $req->pabrik)
                         ->where('periode', $req->periode)
                         ->where('type_', $req->type)
-                        ->whereBetween('created_at', [$req->tanggalaw, $req->tanggalak])
+                        ->whereBetween('created_at', [$req->tanggalaw, $this->tanggal($req->tanggalak)])
                         ->get(),
                     'pabrik' => pabrik::get(),
                     'type' => type::get(),
                     'filter' => [
                         'type' => 'all',
                         'data' => "$req->tanggalaw&$req->tanggalak&$req->periode&$req->pabrik&$req->type"
+                    ],
+                    'title' => 'Laporan'
+                ]);
+            }
+
+            if ($kondisi6) {
+                return view('tampil-data-laporan', [
+                    'data' => entry::where('periode', $req->periode)
+                        ->where('type_', $req->type)
+                        ->whereBetween('created_at', [$req->tanggalaw, $this->tanggal($req->tanggalak)])
+                        ->get(),
+                    'pabrik' => pabrik::get(),
+                    'type' => type::get(),
+                    'filter' => [
+                        'type' => 'periodeandtype',
+                        'data' => "$req->tanggalaw&$req->tanggalak&$req->periode&$req->type"
+                    ],
+                    'title' => 'Laporan'
+                ]);
+            }
+
+            if ($kondisi7) {
+                return view('tampil-data-laporan', [
+                    'data' => entry::where('periode', $req->periode)
+                        ->where('id_pabrik', $req->pabrik)
+                        ->whereBetween('created_at', [$req->tanggalaw, $this->tanggal($req->tanggalak)])
+                        ->get(),
+                    'pabrik' => pabrik::get(),
+                    'type' => type::get(),
+                    'filter' => [
+                        'type' => 'periodeandpabrik',
+                        'data' => "$req->tanggalaw&$req->tanggalak&$req->periode&$req->pabrik"
+                    ],
+                    'title' => 'Laporan'
+                ]);
+            }
+
+            if ($kondisi8) {
+                return view('tampil-data-laporan', [
+                    'data' => entry::where('type_', $req->type)
+                        ->where('id_pabrik', $req->pabrik)
+                        ->whereBetween('created_at', [$req->tanggalaw, $this->tanggal($req->tanggalak)])
+                        ->get(),
+                    'pabrik' => pabrik::get(),
+                    'type' => type::get(),
+                    'filter' => [
+                        'type' => 'typeandpabrik',
+                        'data' => "$req->tanggalaw&$req->tanggalak&$req->type&$req->pabrik"
                     ],
                     'title' => 'Laporan'
                 ]);
@@ -185,53 +299,231 @@ class laporancontroller extends Controller
     public function filterMethod($f)
     {
         $param = explode('=', $f);
-        if ($param[0] == 'range') {
-            $parameter = explode('&', $param[1]);
-            return view('cetak-laporan', [
-                'data' => entry::whereBetween('created_at', [$parameter[0], $parameter[1]])->get(),
-                'title' => 'Cetak Laporan',
-                'tanggal' => [$parameter[0], $parameter[1]],
-            ]);
-        } elseif ($param[0] == 'periode') {
-            return view('cetak-laporan', [
-                'data' => entry::where('periode', $param[1])->get(),
-                'title' => 'Cetak Laporan',
-                'periode' => $param[1],
-            ]);
-        } elseif ($param[0] == 'pabrik') {
-            $query = entry::where('id_pabrik', $param[1]);
-            return view('cetak-laporan', [
-                'data' => $query->get(),
-                'title' => 'Cetak Laporan',
-                'pabrik' => $query->first()['pabrik'],
-            ]);
-        } elseif ($param[0] == 'type') {
-            return view('cetak-laporan', [
-                'data' => entry::where('type_', $param[1])->get(),
-                'title' => 'Cetak Laporan',
-                'type' => "$param[1]"
-            ]);
-        } elseif ($param[0] == 'all') {
-            $parameter = explode('&', $param[1]);
-            return view('cetak-laporan', [
-                'data' => entry::whereBetween('created_at', [$parameter[0], $parameter[1]])
-                    ->where('periode', $parameter[2])
-                    ->where('id_pabrik', $parameter[3])
-                    ->where('type_', $parameter[4])
-                    ->get(),
-                'title' => 'Cetak Laporan',
-                'tanggal' => [$parameter[0], $parameter[1]],
-                'periode' => $parameter[2],
-                'pabrik' => pabrik::select('nama_pabrik')->where('id_pabrik', $parameter[3])->first()['nama_pabrik'],
-                'type' => $parameter[4]
-            ]);
-        } elseif ($f == 'month') {
-            return view('cetak-laporan', [
-                'data' => entry::whereMonth('created_at', date('m'))->get(),
-                'title' => 'Cetak Laporan'
-            ]);
+        $isMasa = preg_match('/&&/', $f);
+        if ($isMasa) {
+            if ($param[0] == 'range') {
+                $data = explode('&', $param[1]);
+                return view('cetak-laporan', [
+                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                        ->where('masa_giling', array_pop($data))
+                        ->get(),
+                    'title' => 'Cetak Laporan',
+                    'tanggal' => [$data[0], $data[1]],
+                ]);
+            }
+            if ($param[0] == 'periode') {
+                $data = explode('&', $param[1]);
+                return view('cetak-laporan', [
+                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                        ->where('periode', $data[2])
+                        ->where('masa_giling', array_pop($data))
+                        ->get(),
+                    'title' => 'Cetak Laporan',
+                    'tanggal' => [$data[0], $data[1]],
+                    'periode' => $data[2]
+                ]);
+            }
+            if ($param[0] == 'type') {
+                $data = explode('&', $param[1]);
+                return view('cetak-laporan', [
+                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                        ->where('type_', $data[3])
+                        ->where('masa_giling', array_pop($data))
+                        ->get(),
+                    'title' => 'Cetak Laporan',
+                    'tanggal' => [$data[0], $data[1]],
+                ]);
+            }
+            if ($param[0] == 'pabrik') {
+                $data = explode('&', $param[1]);
+                $query = entry::select('pabrik')->where('id_pabrik', $data[3]);
+                return view('cetak-laporan', [
+                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                        ->where('id_pabrik', $data[3])
+                        ->where('masa_giling', array_pop($data))
+                        ->get(),
+                    'title' => 'Cetak Laporan',
+                    'tanggal' => [$data[0], $data[1]],
+                    'pabrik' => $query->first()['pabrik']
+                ]);
+            }
+            if ($param[0] == 'all') {
+                $data = explode('&', $param[1]);
+                $query = entry::select('pabrik')->where('id_pabrik', $data[3]);
+                return view('cetak-laporan', [
+                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                        ->where('masa_giling', array_pop($data))
+                        ->where('periode', $data[2])
+                        ->where('id_pabrik', $data[3])
+                        ->where('type_', $data[4])
+                        ->get(),
+                    'title' => 'Cetak Laporan',
+                    'tanggal' => [$data[0], $data[1]],
+                    'periode' => $data[2],
+                    'pabrik' => $query->first()['nama_pabrik'],
+                    'type' => $data[4]
+                ]);
+            }
+            if ($param[0] == 'periodeandtype') {
+                $data = explode('&', $param[1]);
+                return view('cetak-laporan', [
+                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                        ->where('periode', $data[2])
+                        ->where('type_', $data[3])
+                        ->where('masa_giling', array_pop($data))
+                        ->get(),
+                    'title' => 'Cetak Laporan',
+                    'tanggal' => [$data[0], $data[1]],
+                    'periode' => $data[2],
+                    'type' => $data[3]
+                ]);
+            }
+            if ($param[0] == 'periodeandpabrik') {
+                $data = explode('&', $param[1]);
+                $query = entry::select('pabrik')->where('id_pabrik', $data[3]);
+                return view('cetak-laporan', [
+                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                        ->where('periode', $data[2])
+                        ->where('id_pabrik', $data[3])
+                        ->where('masa_giling', array_pop($data))
+                        ->get(),
+                    'title' => 'Cetak Laporan',
+                    'tanggal' => [$data[0], $data[1]],
+                    'pabrik' => $query->first()['nama_pabrik'],
+                    'periode' => $data[2]
+                ]);
+            }
+            if ($param[0] == 'typeandpabrik') {
+                $data = explode('&', $param[1]);
+                $query = entry::select('pabrik')->where('id_pabrik', $data[3]);
+                return view('cetak-laporan', [
+                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                        ->where('id_pabrik', $data[3])
+                        ->where('type_', $data[2])
+                        ->where('masa_giling', array_pop($data))
+                        ->get(),
+                    'title' => 'Cetak Laporan',
+                    'tanggal' => [$data[0], $data[1]],
+                    'pabrik' => $query->first()['nama_pabrik'],
+                    'type' => $data[2]
+                ]);
+            }
+
+            if ($param[0] == 'month') {
+                return view('cetak-laporan', [
+                    'data' => entry::whereMonth('created_at', date('m'))->get(),
+                    'title' => 'Cetak Laporan',
+                    'tanggal' => [date('Y-m') . '-01', date('Y-m-d')]
+                ]);
+            }
         } else {
-            return redirect()->back();
+            if ($param[0] == 'range') {
+                $data = explode('&', $param[1]);
+                return view('cetak-laporan', [
+                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                        ->get(),
+                    'title' => 'Cetak Laporan',
+                    'tanggal' => [$data[0], $data[1]],
+                ]);
+            }
+            if ($param[0] == 'periode') {
+                $data = explode('&', $param[1]);
+                return view('cetak-laporan', [
+                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                        ->where('periode', $data[2])
+                        ->get(),
+                    'title' => 'Cetak Laporan',
+                    'tanggal' => [$data[0], $data[1]],
+                    'periode' => $data[2]
+                ]);
+            }
+            if ($param[0] == 'type') {
+                $data = explode('&', $param[1]);
+                return view('cetak-laporan', [
+                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                        ->where('type_', $data[3])
+                        ->get(),
+                    'title' => 'Cetak Laporan',
+                    'tanggal' => [$data[0], $data[1]],
+                ]);
+            }
+            if ($param[0] == 'pabrik') {
+                $data = explode('&', $param[1]);
+                $query = entry::select('pabrik')->where('id_pabrik', $data[3]);
+                return view('cetak-laporan', [
+                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                        ->where('id_pabrik', $data[3])
+                        ->get(),
+                    'title' => 'Cetak Laporan',
+                    'tanggal' => [$data[0], $data[1]],
+                    'pabrik' => $query->first()['nama_pabrik']
+                ]);
+            }
+            if ($param[0] == 'all') {
+                $data = explode('&', $param[1]);
+                $query = entry::select('pabrik')->where('id_pabrik', $data[3]);
+                return view('cetak-laporan', [
+                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                        ->where('periode', $data[2])
+                        ->where('id_pabrik', $data[3])
+                        ->where('type_', $data[4])
+                        ->get(),
+                    'title' => 'Cetak Laporan',
+                    'tanggal' => [$data[0], $data[1]],
+                    'periode' => $data[2],
+                    'pabrik' => $query->first()['nama_pabrik'],
+                    'type' => $data[4]
+                ]);
+            }
+            if ($param[0] == 'periodeandtype') {
+                $data = explode('&', $param[1]);
+                return view('cetak-laporan', [
+                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                        ->where('periode', $data[2])
+                        ->where('type_', $data[3])
+                        ->get(),
+                    'title' => 'Cetak Laporan',
+                    'tanggal' => [$data[0], $data[1]],
+                    'periode' => $data[2],
+                    'type' => $data[3]
+                ]);
+            }
+            if ($param[0] == 'periodeandpabrik') {
+                $data = explode('&', $param[1]);
+                $query = entry::select('pabrik')->where('id_pabrik', $data[3]);
+                return view('cetak-laporan', [
+                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                        ->where('periode', $data[2])
+                        ->where('id_pabrik', $data[3])
+                        ->get(),
+                    'title' => 'Cetak Laporan',
+                    'tanggal' => [$data[0], $data[1]],
+                    'pabrik' => $query->first()['nama_pabrik'],
+                    'periode' => $data[2]
+                ]);
+            }
+            if ($param[0] == 'typeandpabrik') {
+                $data = explode('&', $param[1]);
+                $query = entry::select('pabrik')->where('id_pabrik', $data[3]);
+                return view('cetak-laporan', [
+                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                        ->where('id_pabrik', $data[3])
+                        ->where('type_', $data[2])
+                        ->get(),
+                    'title' => 'Cetak Laporan',
+                    'tanggal' => [$data[0], $data[1]],
+                    'pabrik' => $query->first()['nama_pabrik'],
+                    'type' => $data[2]
+                ]);
+            }
+
+            if ($f == 'month') {
+                return view('cetak-laporan', [
+                    'data' => entry::whereMonth('created_at', date('m'))->get(),
+                    'title' => 'Cetak Laporan',
+                    'tanggal' => [date('Y-m') . '-01', date('Y-m-d')]
+                ]);
+            }
         }
     }
 
