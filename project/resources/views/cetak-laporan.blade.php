@@ -28,23 +28,6 @@ function formatTanggal($tgl)
 
     }
 
-    /* table {
-        page-break-inside: auto !important;
-    }
-
-    tbody {
-        page-break-inside: avoid !important;
-        page-break-after: auto !important;
-    }
-
-    thead {
-        display: table-header-group !important;
-    }
-
-    tfoot {
-        display: table-footer-group !important;
-    } */
-
 </style>
 @extends('template.cetaklayout')
 @section('content')
@@ -100,7 +83,7 @@ function formatTanggal($tgl)
                     </table>
                 </div>
                 <div class="col-md-12 mt-4">
-                    <table class="cetak table table-sm table-borderless border border-5 border-dark w-100" style="table-layout: fixed; page-break-after:always;">
+                    <table cel class="cetak table table-sm table-borderless border border-5 border-dark w-100" style="table-layout: fixed;">
 
                         <tr class="text-bold text-center border border-bottom-2 border-dark w-auto">
                             <th class="small py-2 px-0">NO</th>
