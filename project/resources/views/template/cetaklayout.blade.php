@@ -19,6 +19,8 @@
         @page {
             size: landscape !important;
             margin: 2rem 0 2rem 0;
+            margin: 3.20rem 0 2rem 0;
+            /* this affects the margin in the printer settings */
         }
 
         body {
@@ -26,11 +28,7 @@
         }
 
         table.cetak>tbody>tr:nth-child(29) {
-            border-bottom: 0.10rem solid #515151;
-        }
-
-        table.cetak>tbody>tr:nth-child(30) {
-            border-top: 0.10rem solid #515151;
+            border-top: 0.16rem solid #515151;
         }
 
     </style>

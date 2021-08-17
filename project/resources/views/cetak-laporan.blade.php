@@ -19,18 +19,23 @@ function formatTanggal($tgl)
 
     td.small,
     th.small {
-        width: 2.4rem;
+        width: 2.1rem;
     }
 
     td.medium,
     th.medium {
-        width: 3.8rem;
+        width: 4.2rem;
 
     }
 
     @media print {
         .pageBreak {
             page-break-after: always;
+        }
+
+        td.large,
+        th.large {
+            width: 4.8rem;
         }
     }
 
@@ -89,7 +94,7 @@ function formatTanggal($tgl)
                     </table>
                 </div>
                 <div class="col-md-12 mt-4">
-                    <table class="cetak table table-sm table-borderless border border-5 border-dark w-100" style="table-layout: fixed; page-break-after:always;">
+                    <table cel class="cetak table table-sm table-borderless border border-5 border-dark w-100" style="table-layout: fixed;">
 
                         <tr class="text-bold text-center border border-bottom-2 border-dark w-auto">
                             <th class="small py-2 px-0">NO</th>

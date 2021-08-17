@@ -1,4 +1,25 @@
 @extends('template.template')
+<style>
+    td,
+    th {
+        font-size: 0.75rem !important;
+        text-align: center !important;
+
+    }
+
+
+    td.small,
+    th.small {
+        width: 2rem;
+    }
+
+    td.medium,
+    th.medium {
+        width: 4rem;
+
+    }
+
+</style>
 @section('content')
     <div class="main-panel">
         <div class="content-wrapper px-2 ">
@@ -17,25 +38,25 @@
             <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                 <div class="card">
                     <div class="card-body">
-                        <table class="table table-sm table-hover">
+                        <table class="table table-sm table-hover w-100" style="table-layout: fixed">
                             <thead>
-                                <tr>
-                                    <th>NO</th>
-                                    <th>MG</th>
-                                    <th>PERIODE</th>
-                                    <th>TANGGAL</th>
-                                    <th>PABRIK</th>
-                                    <th>REG</th>
-                                    <th>PETANI</th>
-                                    <th>NO SPTA</th>
-                                    <th>NO TRUK</th>
-                                    <th>BOBOT</th>
-                                    <th>VAR</th>
-                                    <th>TYPE</th>
-                                    <th>KET</th>
-                                    <th>BELI</th>
-                                    <th>HPP</th>
-                                    <th>SISA</th>
+                                <tr class=" w-auto">
+                                    <th class="small py-2 px-0">NO</th>
+                                    <th class="small py-2 px-0">MG</th>
+                                    <th class="medium py-2 px-0">PERIODE</th>
+                                    <th class="py-2 px-0">TGL</th>
+                                    <th class="medium py-2 px-0">PABRIK</th>
+                                    <th class="medium py-2 px-0">REG</th>
+                                    <th class="py-2 px-0">PETANI</th>
+                                    <th class="medium py-2 px-0">NO SPTA</th>
+                                    <th class="medium py-2 px-0">NO TRUK</th>
+                                    <th class="medium py-2 px-0">BOBOT</th>
+                                    <th class="small py-2 px-0">VAR</th>
+                                    <th class="small py-2 px-0">TYPE</th>
+                                    <th class="medium py-2 px-0">KET</th>
+                                    <th class="py-2 px-0">BELI</th>
+                                    <th class="py-2 px-0">HPP</th>
+                                    <th class="py-2 px-0">SISA</th>
                                 </tr>
                             </thead>
                             <tbody>
