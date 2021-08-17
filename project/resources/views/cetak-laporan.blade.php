@@ -28,22 +28,11 @@ function formatTanggal($tgl)
 
     }
 
-    /* table {
-        page-break-inside: auto !important;
+    @media print {
+        .pageBreak {
+            page-break-after: always;
+        }
     }
-
-    tbody {
-        page-break-inside: avoid !important;
-        page-break-after: auto !important;
-    }
-
-    thead {
-        display: table-header-group !important;
-    }
-
-    tfoot {
-        display: table-footer-group !important;
-    } */
 
 </style>
 @extends('template.cetaklayout')
@@ -145,6 +134,9 @@ function formatTanggal($tgl)
                                     <td class="px-0">Rp. {{ number_format($item->hpp, 0, ',', '.') }}</td>
                                     <td class="px-0">Rp. {{ number_format($item->sisa, 0, ',', '.') }}</td>
                                 </tr>
+                                @if ($no % 26 === 0)
+                                    <span class="pageBreak"></span>
+                                @endif
                             @endforeach
 
                             <tr class="border border-top-2 border-dark">
@@ -170,7 +162,4 @@ function formatTanggal($tgl)
     @endsection
     @section('specific-js')
         <script src="{{ asset('assets/js/function/Entry.js') }}"></script>
-        <script>
-            functio
-        </script>
     @endsection

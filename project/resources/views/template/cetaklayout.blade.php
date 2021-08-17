@@ -19,7 +19,6 @@
         @page {
             size: landscape !important;
             margin: 2rem 0 2rem 0;
-            /* this affects the margin in the printer settings */
         }
 
         body {
