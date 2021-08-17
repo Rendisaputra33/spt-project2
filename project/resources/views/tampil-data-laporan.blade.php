@@ -10,12 +10,12 @@
 
     td.small,
     th.small {
-        width: 2.4rem;
+        width: 2rem;
     }
 
     td.medium,
     th.medium {
-        width: 3.8rem;
+        width: 4rem;
 
     }
 

@@ -19,13 +19,18 @@ function formatTanggal($tgl)
 
     td.small,
     th.small {
-        width: 2.4rem;
+        width: 2.1rem;
     }
 
     td.medium,
     th.medium {
-        width: 3.8rem;
+        width: 4.2rem;
 
+    }
+
+    td.large,
+    th.large {
+        width: 4.8rem;
     }
 
 </style>
