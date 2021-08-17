@@ -47,7 +47,7 @@
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $item->username }}</td>
                                             <td>{{ $item->nama }}</td>
-                                            <td>{{ $item->level === 1 ? 'Admin' : 'Super Admin' }}</td>
+                                            <td>{{ $item->level === 1 ? 'Petugas' : 'Admin' }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-md-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_user }}">
                                                     <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
