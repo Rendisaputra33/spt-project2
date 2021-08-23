@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\authcontroller;
+use App\Http\Controllers\dashboardcontroller;
 use App\Http\Controllers\entrycontroller;
 use App\Http\Controllers\laporancontroller;
 use App\Http\Controllers\pabrikcontroller;
@@ -94,4 +95,11 @@ Route::get('/cetak-laporan', function () {
     return view('cetak-laporan', ['title' => 'cetak']);
 });
 Route::get('/', [redirectcontroller::class, 'indexMethod']);
-Route::get('dashboard', [redirectcontroller::class, 'dashMethod']);
+Route::prefix('dashboard')->group(function () {
+    // default routing
+    Route::get('/', [dashboardcontroller::class, 'indexMethod']);
+    // json handler
+    Route::prefix('json')->group(function () {
+        Route::get('/{id}', [pabrikcontroller::class, 'getupMethod'])->middleware('authuser');
+    });
+});
