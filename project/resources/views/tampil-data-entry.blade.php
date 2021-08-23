@@ -94,15 +94,15 @@
                         <div class="col-lg-12 d-flex">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="periode">Periode</label>
-                                    <select class="form-control" name="periode" id="periode" data-change="add" required>
+                                    <label for="masa">Masa Giling</label>
+                                    <select class="form-control" name="masa" id="masa" required>
                                         <option selected value="">Pilih</option>
                                         <option>1</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="masa">Masa Giling</label>
-                                    <select class="form-control" name="masa" id="masa" required>
+                                    <label for="periode">Periode</label>
+                                    <select class="form-control" name="periode" id="periode" data-change="add" required>
                                         <option selected value="">Pilih</option>
                                         <option>1</option>
                                     </select>
