@@ -112,7 +112,3 @@ Route::prefix('pengirim')->group(function () {
     Route::post('/{id}', [pengirimcontroller::class, 'update'])->middleware('authuser');
     Route::get('/{id}', [pengirimcontroller::class, 'delete'])->middleware('authuser');
 });
-
-Route::get('/pengirim', function () {
-    return view('tampil-data-pengirim');
-});

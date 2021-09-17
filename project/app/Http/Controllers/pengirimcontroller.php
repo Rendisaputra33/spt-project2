@@ -33,7 +33,7 @@ class pengirimcontroller extends Controller
             return redirect()->back();
         endif;
 
-        $adddata = pengirim::insert($req->all());
+        $adddata = pengirim::insert(['nama_pengirim' => $req->nama]);
         return $adddata ? redirect()->back()->with('sukses', 'berhasil menambah data!') : redirect()->back()->with('error', 'gagal menambah data!');
     }
     // method delete data pengirim
