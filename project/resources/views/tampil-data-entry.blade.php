@@ -22,11 +22,11 @@ function formatTanggal($tgl)
     th.large {
         width: 8rem;
     }
+
     td.v-large,
     th.v-large {
         width: 15rem;
     }
-    
 
 </style>
 @section('content')
@@ -82,7 +82,7 @@ function formatTanggal($tgl)
                                 <?php $sisa = 0; ?>
                                 <?php $bobot = 0; ?>
                                 @foreach ($data as $item)
-                                    <tr class="">
+                                    <tr class="___class_+?26___">
                                         <?php $sisa += $item->sisa; ?>
                                         <?php $bobot += $item->bobot; ?>
                                     <tr>
@@ -207,15 +207,7 @@ function formatTanggal($tgl)
                                     <input type="text" class="form-control text-dark" placeholder="Nopol" name="nopol" required>
                                     <span class="text-dark"></span>
                                 </div>
-                                <div class="form-group">
-                                    <label for="variasi">Variasi</label>
-                                    <select class="form-control text-dark" name="variasi" id="variasi" required>
-                                        <option selected value="">Pilih</option>
-                                        @foreach ($variasi as $item)
-                                            <option value="{{ $item->id_variasi }}">{{ $item->variasi }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -237,20 +229,29 @@ function formatTanggal($tgl)
                                     <input type="text" class="form-control text-dark" onkeypress="return isNumber(event)" placeholder="Hpp" name="hpp" required>
                                     <span class="text-dark"></span>
                                 </div>
-                                <div class="form-group" id="harga_beli">
+                                {{-- <div class="form-group" id="harga_beli">
                                     <label for="exampleInputPassword1">Harga Beli</label>
                                     <input type="text" onkeypress="return isNumber(event)" class="form-control text-dark" placeholder="Harga Beli" name="harga_beli" required>
                                     <span class="text-dark"></span>
-                                </div>
+                                </div> --}}
                                 <div class="form-group" id="bobot">
                                     <label for="exampleInputPassword1">Bobot</label>
                                     <input type="text" onkeypress="return isNumber(event)" class="form-control text-dark" placeholder="Bobot" name="bobot" required>
                                     <span class="text-dark"></span>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="sisa">Sisa</label>
                                     <input type="text" class="form-control text-dark" placeholder="Sisa" name="sisa" readonly required>
                                     <span class="text-dark"></span>
+                                </div> --}}
+                                <div class="form-group">
+                                    <label for="variasi">Variasi</label>
+                                    <select class="form-control text-dark" name="variasi" id="variasi" required>
+                                        <option selected value="">Pilih</option>
+                                        @foreach ($variasi as $item)
+                                            <option value="{{ $item->id_variasi }}">{{ $item->variasi }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>
