@@ -5,6 +5,7 @@ use App\Http\Controllers\dashboardcontroller;
 use App\Http\Controllers\entrycontroller;
 use App\Http\Controllers\laporancontroller;
 use App\Http\Controllers\pabrikcontroller;
+use App\Http\Controllers\pengirimcontroller;
 use App\Http\Controllers\petanicontroller;
 use App\Http\Controllers\redirectcontroller;
 use App\Http\Controllers\usercontroller;
@@ -93,7 +94,7 @@ Route::prefix('laporan')->group(function () {
     });
 });
 Route::get('/cetak-laporan', function () {
-    return view('cetak-laporan', ['title' => 'cetak'])->middleware('authuser');
+    return view('cetak-laporan', ['title' => 'cetak']);
 });
 Route::get('/', [redirectcontroller::class, 'indexMethod']);
 Route::prefix('dashboard')->group(function () {
@@ -105,7 +106,10 @@ Route::prefix('dashboard')->group(function () {
     });
 });
 
-Route::get('/pengirim', function () {
-    return view('/tampil-data-pengirim');
+Route::prefix('pengirim')->group(function () {
+    Route::get('/', [pengirimcontroller::class, 'index'])->middleware('authuser');
+    Route::post('/', [pengirimcontroller::class, 'add'])->middleware('authuser');
+    Route::post('/{id}', [pengirimcontroller::class, 'update'])->middleware('authuser');
+    Route::get('/{id}', [pengirimcontroller::class, 'delete'])->middleware('authuser');
+    Route::get('/json/{id}', [pengirimcontroller::class, 'getupdate'])->middleware('authuser');
 });
-
