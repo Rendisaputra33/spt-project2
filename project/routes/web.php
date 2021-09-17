@@ -111,4 +111,5 @@ Route::prefix('pengirim')->group(function () {
     Route::post('/', [pengirimcontroller::class, 'add'])->middleware('authuser');
     Route::post('/{id}', [pengirimcontroller::class, 'update'])->middleware('authuser');
     Route::get('/{id}', [pengirimcontroller::class, 'delete'])->middleware('authuser');
+    Route::get('/json/{id}', [pengirimcontroller::class, 'getupdate'])->middleware('authuser');
 });

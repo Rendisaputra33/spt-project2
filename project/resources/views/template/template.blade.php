@@ -73,6 +73,7 @@
                                     <li class="nav-item"> <a class="nav-link" href="{{ url('/petani') }}">Petani</a></li>
                                     <li class="nav-item"> <a class="nav-link" href="{{ url('/pabrik') }}">PG</a></li>
                                     <li class="nav-item"> <a class="nav-link" href="{{ url('/user') }}">User</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="{{ url('/pengirim') }}">Pengirim</a></li>
                                 </ul>
                             </div>
                         </li>

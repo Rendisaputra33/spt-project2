@@ -42,4 +42,11 @@ class pengirimcontroller extends Controller
         $delete = pengirim::where('id_pengirim', $id)->delete();
         return $delete ? redirect()->back()->with('sukses', 'berhasil menghapus data!') : redirect()->back()->with('error', 'gagal menghapus data!');
     }
+    // method getter update data
+    public function getupdate($id)
+    {
+        return response()->json([
+            'data' => pengirim::where('id_pengirim', $id)->first()
+        ]);
+    }
 }
