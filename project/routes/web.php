@@ -104,3 +104,8 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/{id}', [pabrikcontroller::class, 'getupMethod'])->middleware('authuser');
     });
 });
+
+Route::get('/pengirim', function () {
+    return view('/tampil-data-pengirim');
+});
+

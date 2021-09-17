@@ -21,9 +21,10 @@
     <!-- specific styling -->
     @yield('specific-css')
     <style>
-        #log:hover{
+        #log:hover {
             cursor: pointer;
         }
+
     </style>
 </head>
 
@@ -92,6 +93,12 @@
                         <a class="nav-link" href="{{ url('/laporan') }}">
                             <i class="mdi mdi-file-chart menu-icon"></i>&nbsp;
                             <span class="menu-title">Laporan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/pemgirim') }}">
+                            <i class="mdi mdi-file-chart menu-icon"></i>&nbsp;
+                            <span class="menu-title">Pengirim</span>
                         </a>
                     </li>
                     <li class="nav-item">
