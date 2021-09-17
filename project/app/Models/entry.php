@@ -51,6 +51,6 @@ class entry extends Model
             created_at BETWEEN '$tgl1' AND '$tgl2' AND reg LIKE '%$param%'
             OR
             created_at BETWEEN '$tgl1' AND '$tgl2' AND masa_giling LIKE '%$param%'
-        )");
+        ) ORDER BY id_entry DESC");
     }
 }

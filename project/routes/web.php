@@ -35,7 +35,7 @@ Route::prefix('user')->group(function () {
     Route::get('/{id}', [usercontroller::class, 'deleteMethod'])->middleware('authuser');
     // json handler
     Route::prefix('json')->group(function () {
-        Route::get('/{id}', [usercontroller::class, 'getupMethod']);
+        Route::get('/{id}', [usercontroller::class, 'getupMethod'])->middleware('authuser');
         Route::get('/search/{s}', [usercontroller::class, 'searchMethod'])->middleware('authuser');
     });
 });
@@ -84,21 +84,21 @@ Route::prefix('entry')->group(function () {
 // routing master laporan
 Route::prefix('laporan')->group(function () {
     // default routing
-    Route::get('/', [laporancontroller::class, 'indexMethod']);
-    Route::post('/', [laporancontroller::class, 'addMethod']);
-    Route::get('/cetak/{f}', [laporancontroller::class, 'filterMethod']);
+    Route::get('/', [laporancontroller::class, 'indexMethod'])->middleware('authuser');
+    Route::post('/', [laporancontroller::class, 'addMethod'])->middleware('authuser');
+    Route::get('/cetak/{f}', [laporancontroller::class, 'filterMethod'])->middleware('authuser');
     // json handler
     Route::prefix('json')->group(function () {
         Route::get('/{id}', [pabrikcontroller::class, 'getupMethod'])->middleware('authuser');
     });
 });
 Route::get('/cetak-laporan', function () {
-    return view('cetak-laporan', ['title' => 'cetak']);
+    return view('cetak-laporan', ['title' => 'cetak'])->middleware('authuser');
 });
 Route::get('/', [redirectcontroller::class, 'indexMethod']);
 Route::prefix('dashboard')->group(function () {
     // default routing
-    Route::get('/', [dashboardcontroller::class, 'indexMethod']);
+    Route::get('/', [dashboardcontroller::class, 'indexMethod'])->middleware('authuser');
     // json handler
     Route::prefix('json')->group(function () {
         Route::get('/{id}', [pabrikcontroller::class, 'getupMethod'])->middleware('authuser');

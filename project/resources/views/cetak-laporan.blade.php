@@ -6,6 +6,8 @@ function formatTanggal($tgl)
     return "{$data[2]}/{$month[(int) $data[1] - 1]}/{$data[0]}";
 }
 @endphp
+
+@extends('template.cetaklayout')
 <style>
     td,
     th {
@@ -28,22 +30,31 @@ function formatTanggal($tgl)
 
     }
 
-    @media print {
-        .pageBreak {
-            page-break-after: always;
-        }
-
-        td.large,
-        th.large {
-            width: 4.8rem;
-        }
+    
+    p.tglcetak{
+        display: none;
+        font-size: 0.75rem !important;
+        
     }
-
+    /*.page-break {*/
+    /*    page-break-before: auto !important;*/
+    /*}*/
+    /*tr.firstrow {*/
+	   /* page-break-inside: avoid !important;*/
+    /*}*/
 </style>
-@extends('template.cetaklayout')
 @section('content')
     <div class="main-panel mx-auto">
         <div class="content-wrapper bg-white px-0" id="print">
+            <div class="row">
+                <div class="col-md-12 text-left">
+                    <p class="tglcetak">
+                        <?php
+                            echo date("d/m/Y");
+                        ?>
+                    </p>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h3>Laporan Harian SPT</h3>
@@ -72,7 +83,7 @@ function formatTanggal($tgl)
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-6 d-flex ">
+                <div class="col-md-6">
                     <table class="table table-borderless d-flex flex-row justify-content-end">
                         <thead>
                             <tr class="col-sm d-flex flex-column">
@@ -94,9 +105,8 @@ function formatTanggal($tgl)
                     </table>
                 </div>
                 <div class="col-md-12 mt-4">
-                    <table cel class="cetak table table-sm table-borderless border border-5 border-dark w-100" style="table-layout: fixed;">
-
-                        <tr class="text-bold text-center border border-bottom-2 border-dark w-auto">
+                    <table class="cetak table table-sm table-borderless border border-5 border-dark w-100" style="table-layout: fixed;">
+                        <tr class=" text-bold text-center border border-bottom-2 border-dark w-100" id="header">
                             <th class="small py-2 px-0">NO</th>
                             <th class="small py-2 px-0">MG</th>
                             <th class="medium py-2 px-0">PERIODE</th>
@@ -125,7 +135,7 @@ function formatTanggal($tgl)
                                     <td class="small px-0">{{ $no++ }}</td>
                                     <td class="small px-0">{{ $item->masa_giling }}</td>
                                     <td class="medium px-0">{{ $item->periode }}</td>
-                                    <td class="px-0">{{ date('d/M/Y', strtotime($item->created_at)) }}</td>
+                                    <td class="px-0">{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                     <td class="medium px-0">{{ $item->pabrik }}</td>
                                     <td class="medium px-0">{{ $item->reg }}</td>
                                     <td class="px-0">{{ $item->petani }}</td>
@@ -139,9 +149,6 @@ function formatTanggal($tgl)
                                     <td class="px-0">Rp. {{ number_format($item->hpp, 0, ',', '.') }}</td>
                                     <td class="px-0">Rp. {{ number_format($item->sisa, 0, ',', '.') }}</td>
                                 </tr>
-                                @if ($no % 26 === 0)
-                                    <span class="pageBreak"></span>
-                                @endif
                             @endforeach
 
                             <tr class="border border-top-2 border-dark">
@@ -153,8 +160,7 @@ function formatTanggal($tgl)
                                 <td class="py-2" colspan="2" class="">Total Sisa : Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
 
                             </tr>
-                        </tbody>
-
+                            </tbody>
                     </table>
                 </div>
             </div>

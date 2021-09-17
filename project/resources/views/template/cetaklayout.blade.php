@@ -18,19 +18,27 @@
     <style type="text/css" media="print">
         @page {
             size: landscape !important;
-            margin: 2rem 0 2rem 0;
-            margin: 3.20rem 0 2rem 0;
+            margin: 1.5rem 0;
             /* this affects the margin in the printer settings */
         }
 
         body {
-            margin: 0 1rem !important;
+            margin: 0 1.5rem !important;
         }
-
-        table.cetak>tbody>tr:nth-child(29) {
-            border-top: 0.16rem solid #515151;
+    
+        table {
+            border-collapse: collapse !important; 
+            border-spacing: 0 !important;
         }
-
+        /*tr.firstrow{*/
+        /*    page-break-before: always !important;*/
+        /*}*/
+        /*.page-break {*/
+        /*    page-break-before: always !important;*/
+        /*}*/
+        p.tglcetak{
+            display: flex !important;
+        }
     </style>
     @yield('specific-css')
 </head>

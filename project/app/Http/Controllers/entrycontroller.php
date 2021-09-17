@@ -16,7 +16,7 @@ class entrycontroller extends Controller
         if ($req->query('tgl') !== null) {
             $tgl = explode('|', $req->query('tgl'));
             return view('tampil-data-entry', [
-                'data' => entry::whereBetween('created_at', [$tgl[0], $this->tanggal($tgl[1])])->get(),
+                'data' => entry::whereBetween('created_at', [$tgl[0], $this->tanggal($tgl[1])])->orderBy('id_entry','DESC')->get(),
                 'type' => type::get(),
                 'variasi' => variasi::get(),
                 'petani' => petani::get(),
@@ -26,7 +26,7 @@ class entrycontroller extends Controller
             ]);
         }
         return view('tampil-data-entry', [
-            'data' => entry::whereDate('created_at', now())->get(),
+            'data' => entry::whereDate('created_at', now())->orderBy('id_entry','DESC')->get(),
             'type' => type::get(),
             'variasi' => variasi::get(),
             'petani' => petani::get(),
@@ -123,11 +123,11 @@ class entrycontroller extends Controller
             $tgl = explode('|', $param[1]);
             if ($param[0] == 'tidak-ada') {
                 return response()->json([
-                    'data' => entry::whereBetween('created_at', [$tgl[0], $tgl[1]])->get(),
+                    'data' => entry::whereBetween('created_at', [$tgl[0], $this->tanggal($tgl[1])])->get(),
                 ]);
             } else {
                 return response()->json([
-                    'data' => entry::searchBetwen($tgl[0], $tgl[1], $param[0])
+                    'data' => entry::searchBetwen($tgl[0],$this->tanggal($tgl[1]), $param[0])
                 ]);
             }
         } else {
@@ -141,6 +141,7 @@ class entrycontroller extends Controller
             ]);
         }
     }
+    
 }
 
 // entry::whereDate('created_at', now())

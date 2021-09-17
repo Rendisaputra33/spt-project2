@@ -226,6 +226,13 @@ const formatTanggal = tgl => {
   return `${month[1]}/${listMonth[parseInt(month[0]) - 1]}/${month[2]}`;
 };
 
+const formatTanggalNew = tgl => {
+	const tanggal = tgl.split("/");
+	const bulan = parseInt(tanggal[0]) <= 9 ? "0" + tanggal[0] : tanggal[0];
+	const hari = parseInt(tanggal[1]) <= 9 ? "0" + tanggal[1] : tanggal[1];
+	return `${hari}/${bulan}/${tanggal[2]}`;
+};
+
 const setPeriode = () => {
   let peri = '<option value="">Pilih</option>';
   for (let i = 0; i < periode.length; i++) {
@@ -252,7 +259,6 @@ const listDelete = () => {
 };
 
 const setFormUpdate = result => {
-  console.log(result);
   document.querySelector('#reg-petani').style.display = 'block';
   uiReg(result.reg);
   INPUT.periode.setAttribute('data-change', 'update');
@@ -288,7 +294,7 @@ const setDetail = data => {
   Detail.reg.innerHTML = data.reg;
   Detail.sisa.innerHTML = formatRupiah(data.sisa.toString(), 'Rp. ');
   Detail.nospta.innerHTML = data.nospta;
-  Detail.tanggal.innerHTML = formatTanggal(timeTodate(data.created_at));
+  Detail.tanggal.innerHTML = formatTanggalNew(timeTodate(data.created_at));
   Detail.petani.innerHTML = data.petani;
   Detail.type.innerHTML = data.type_;
   Detail.variasi.innerHTML = data.variasi_;
@@ -383,7 +389,7 @@ const uiSearch = (data, no) => {
           <td>${no}</td>
           <td>${data.masa_giling}</td>
           <td>${data.periode}</td>
-          <td>${formatTanggal(timeTodate(data.created_at))}</td>
+          <td>${formatTanggalNew(timeTodate(data.created_at))}</td>
           <td>${data.reg}</td>
           <td>${data.nospta}</td>
           <td>${data.nopol}</td>

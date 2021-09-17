@@ -336,10 +336,10 @@ class laporancontroller extends Controller
             }
             if ($param[0] == 'pabrik') {
                 $data = explode('&', $param[1]);
-                $query = entry::select('pabrik')->where('id_pabrik', $data[3]);
+                $query = entry::select('pabrik')->where('id_pabrik', $data[2]);
                 return view('cetak-laporan', [
                     'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
-                        ->where('id_pabrik', $data[3])
+                        ->where('id_pabrik', $data[2])
                         ->where('masa_giling', array_pop($data))
                         ->get(),
                     'title' => 'Cetak Laporan',
@@ -360,7 +360,7 @@ class laporancontroller extends Controller
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
                     'periode' => $data[2],
-                    'pabrik' => $query->first()['nama_pabrik'],
+                    'pabrik' => $query->first()['pabrik'],
                     'type' => $data[4]
                 ]);
             }
@@ -389,7 +389,7 @@ class laporancontroller extends Controller
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
-                    'pabrik' => $query->first()['nama_pabrik'],
+                    'pabrik' => $query->first()['pabrik'],
                     'periode' => $data[2]
                 ]);
             }
@@ -404,7 +404,7 @@ class laporancontroller extends Controller
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
-                    'pabrik' => $query->first()['nama_pabrik'],
+                    'pabrik' => $query->first()['pabrik'],
                     'type' => $data[2]
                 ]);
             }
@@ -471,7 +471,7 @@ class laporancontroller extends Controller
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
                     'periode' => $data[2],
-                    'pabrik' => $query->first()['nama_pabrik'],
+                    'pabrik' => $query->first()['pabrik'],
                     'type' => $data[4]
                 ]);
             }
@@ -498,7 +498,7 @@ class laporancontroller extends Controller
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
-                    'pabrik' => $query->first()['nama_pabrik'],
+                    'pabrik' => $query->first()['pabrik'],
                     'periode' => $data[2]
                 ]);
             }
@@ -512,7 +512,7 @@ class laporancontroller extends Controller
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
-                    'pabrik' => $query->first()['nama_pabrik'],
+                    'pabrik' => $query->first()['pabrik'],
                     'type' => $data[2]
                 ]);
             }

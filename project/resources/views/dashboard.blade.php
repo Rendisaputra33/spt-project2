@@ -10,12 +10,12 @@
 
     td.small,
     th.small {
-        width: 2rem;
+        width: 1.7rem;
     }
 
     td.medium,
     th.medium {
-        width: 4rem;
+        width: 4.8rem;
 
     }
 
@@ -37,19 +37,19 @@
                                     <th class="small py-2 px-0">NO</th>
                                     <th class="small py-2 px-0">MG</th>
                                     <th class="medium py-2 px-0">PERIODE</th>
-                                    <th class="py-2 px-0">TGL</th>
+                                    <th class="medium py-2 px-0">TGL</th>
                                     <th class="medium py-2 px-0">PABRIK</th>
                                     <th class="medium py-2 px-0">REG</th>
-                                    <th class="py-2 px-0">PETANI</th>
+                                    <th class="medium py-2 px-0">PETANI</th>
                                     <th class="medium py-2 px-0">NO SPTA</th>
                                     <th class="medium py-2 px-0">NO TRUK</th>
-                                    <th class="medium py-2 px-0">BOBOT</th>
+                                    <th class="small py-2 px-0">BBT</th>
                                     <th class="small py-2 px-0">VAR</th>
                                     <th class="small py-2 px-0">TYPE</th>
                                     <th class="medium py-2 px-0">KET</th>
-                                    <th class="py-2 px-0">BELI</th>
-                                    <th class="py-2 px-0">HPP</th>
-                                    <th class="py-2 px-0">SISA</th>
+                                    <th class="medium py-2 px-0">BELI</th>
+                                    <th class="medium py-2 px-0">HPP</th>
+                                    <th class="medium py-2 px-0">SISA</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -59,7 +59,7 @@
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->masa_giling }}</td>
                                         <td>{{ $item->periode }}</td>
-                                        <td>{{ date('d/M/Y', strtotime($item->created_at)) }}</td>
+                                        <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                         <td>{{ $item->pabrik }}</td>
                                         <td>{{ $item->reg }}</td>
                                         <td>{{ $item->petani }}</td>
