@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Variasi extends Migration
+class Pengirim extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class Variasi extends Migration
      */
     public function up()
     {
-        Schema::create('variasi', function (Blueprint $table) {
-            $table->integerIncrements('id_variasi');
-            $table->string('variasi')->default('-');
+        Schema::create('mstr_pengirim', function (Blueprint $table) {
+            $table->integerIncrements('id_pengirim');
+            $table->string('nama_pengirim');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
@@ -28,6 +28,6 @@ class Variasi extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('variasi');
+        Schema::dropIfExists('mstr_pengirim');
     }
 }
