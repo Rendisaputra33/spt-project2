@@ -30,7 +30,7 @@
                             <tbody id="list">
                                 @foreach ($pengirim as $item)
                                     <tr>
-                                        <td>{{ '1' }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->nama_pengirim }}</td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-md-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_pengirim }}"> <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Ubah </button>
@@ -67,7 +67,7 @@
                     <div class="modal-body">
                         <div class="form-group" id="reg">
                             <label for="exampleInputPassword1">Nama Pengirim</label>
-                            <input type="text" class="form-control" placeholder="Nama Pengirim" name="nama" required>
+                            <input type="text" autocomplete="off" class="form-control" placeholder="Nama Pengirim" name="nama" required>
                             <span class="text-dark"></span>
                         </div>
                     </div>
