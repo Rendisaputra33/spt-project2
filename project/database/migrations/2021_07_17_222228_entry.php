@@ -28,10 +28,9 @@ class Entry extends Migration
             $table->string('variasi_');
             $table->integer('type');
             $table->string('type_');
-            $table->text('keterangan');
-            $table->double('harga_beli');
-            $table->double('hpp');
-            $table->double('sisa');
+            $table->text('keterangan')->nullable();
+            $table->double('harga_beli')->nullable();
+            $table->double('hpp')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
