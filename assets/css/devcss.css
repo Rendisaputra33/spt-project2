@@ -1,4 +1,5 @@
 
+
 .menu-icon {
   margin: 0 1rem 0 0 !important;
 }
@@ -25,6 +26,13 @@ td.cetak,
 th.cetak{
   font-size: 0.75rem !important;
 }
+/* body.modal-open .supreme-container{
+  -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -o-filter: blur(1px);
+  -ms-filter: blur(1px);
+  filter: blur(1px);
+} */
 @media only screen and (max-width: 576px) {
   nav.navbar.default-layout-navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row {
     display: flex !important;
