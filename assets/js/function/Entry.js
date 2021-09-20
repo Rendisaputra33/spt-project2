@@ -353,8 +353,28 @@ const fetchHpp = async () => {
 };
 
 const setHpp = data => {
-	console.log(data);
+	let html = "";
+	let no = 1;
+	data.map(d => {
+		html += documentHpp(d, no++);
+	});
+	document.getElementById("list-hpp").innerHTML = html;
 };
+
+const documentHpp = (data, no) => /*html*/ `
+	<td>${no}</td>
+	<td>${data.masa_giling}</td>
+	<td>${data.periode}</td>
+	<td>${data.created_at}</td>
+	<td>${data.reg}</td>
+	<td>${data.nospta}</td>
+	<td>${data.nopol}</td>
+	<td>${data.pabrik}</td>
+	<td>
+		<button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal" data-id="${data.id_entry}">
+			<i class="mdi mdi-lead-pencil btn-icon-prepend"></i>Ubah </button>
+	</td>
+`;
 
 const parseRupiah = str => parseInt(str.split(" ")[1].split(".").join(""));
 

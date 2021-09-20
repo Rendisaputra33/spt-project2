@@ -82,7 +82,6 @@ function formatTanggal($tgl)
                                 </tr>
                             </thead>
                             <tbody id="list">
-                                <?php $no = 1; ?>
                                 <?php $sisa = 0; ?>
                                 <?php $bobot = 0; ?>
                                 @foreach ($data as $item)
@@ -90,7 +89,7 @@ function formatTanggal($tgl)
                                         <?php $sisa += $item->sisa; ?>
                                         <?php $bobot += $item->bobot; ?>
                                     <tr>
-                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->masa_giling }}</td>
                                         <td>{{ $item->periode }}</td>
                                         <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
@@ -428,30 +427,7 @@ function formatTanggal($tgl)
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody id="list">
-                                <?php $no = 1; ?>
-                                <?php $sisa = 0; ?>
-                                <?php $bobot = 0; ?>
-                                @foreach ($data as $item)
-                                    <tr class="___class_+?26___">
-                                        <?php $sisa += $item->sisa; ?>
-                                        <?php $bobot += $item->bobot; ?>
-                                    <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $item->masa_giling }}</td>
-                                        <td>{{ $item->periode }}</td>
-                                        <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
-                                        <td>{{ $item->reg }}</td>
-                                        <td>{{ $item->nospta }}</td>
-                                        <td>{{ $item->nopol }}</td>
-                                        <td>{{ $item->pabrik }}</td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-warning btn-icon-text detail" data-target="#modal-md-edit-hpp" id='tbh' data-toggle="modal" data-id="">
-                                                <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>Ubah </button>
-                                        </td>
-                                    </tr>
-                                @endforeach
-
+                            <tbody id="list-hpp">
 
                             </tbody>
                         </table>
