@@ -43,8 +43,12 @@ function formatTanggal($tgl)
                         </div>
                     </div>
                     &nbsp;
+                    <button type="button" class="btn btn-gradient-success btn-icon-text d-flex" data-target="#modal-md-hpp" id='tbh' data-toggle="modal">
+                        <i class="mdi mdi-clipboard-text btn-icon-prepend"></i>HPP
+                    </button>
+                    &nbsp;
                     <button type="button" class="btn btn-gradient-success btn-icon-text d-flex" data-target="#modal-md-filter" id='tbh' data-toggle="modal">
-                        <i class="mdi mdi-plus btn-icon-prepend"></i>Filter
+                        <i class="mdi mdi-filter-outline btn-icon-prepend"></i>Filter
                     </button>
                     &nbsp;
                     <button type="button" class="btn btn-gradient-success btn-icon-text d-flex add" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal">
@@ -395,6 +399,90 @@ function formatTanggal($tgl)
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
+    <div class="modal fade" id="modal-md-hpp">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">List Transaksi Yang Belum Ada HPP</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12" style="padding: 0 2rem 2rem 2rem;">
+                        <table class="table table-bordered table-sm w-100" style="table-layout: fixed;">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>MG</th>
+                                    <th>Periode</th>
+                                    <th>Tanggal</th>
+                                    <th>REG</th>
+                                    <th>No SPTA</th>
+                                    <th>No TRUK</th>
+                                    <th>Pabrik</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="list">
+                                <?php $no = 1; ?>
+                                <?php $sisa = 0; ?>
+                                <?php $bobot = 0; ?>
+                                @foreach ($data as $item)
+                                    <tr class="___class_+?26___">
+                                        <?php $sisa += $item->sisa; ?>
+                                        <?php $bobot += $item->bobot; ?>
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $item->masa_giling }}</td>
+                                        <td>{{ $item->periode }}</td>
+                                        <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
+                                        <td>{{ $item->reg }}</td>
+                                        <td>{{ $item->nospta }}</td>
+                                        <td>{{ $item->nopol }}</td>
+                                        <td>{{ $item->pabrik }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-warning btn-icon-text detail" data-target="#modal-md-edit-hpp" id='tbh' data-toggle="modal" data-id="">
+                                                <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>Ubah </button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+    {{-- <div class="modal fade" id="modal-md-edit-hpp">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Ubah HPP</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="tgl1">HPP</label>
+                        <input type="text" value="" class="form-control text-dark" name="ubah_hpp" id="ubah_hpp">
+                        <span class="text-dark"></span>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <a href="" class="btn btn-gradient-success">Simpan</a>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div> --}}
 @endsection
 @section('specific-js')
     <script src="{{ asset('assets/js/function/Entry.js') }}"></script>
