@@ -7,6 +7,7 @@ use App\Models\pabrik;
 use App\Models\petani;
 use App\Models\type;
 use App\Models\variasi;
+use App\Models\pengirim;
 use Illuminate\Http\Request;
 
 class entrycontroller extends Controller
@@ -16,20 +17,22 @@ class entrycontroller extends Controller
         if ($req->query('tgl') !== null) {
             $tgl = explode('|', $req->query('tgl'));
             return view('tampil-data-entry', [
-                'data' => entry::whereBetween('created_at', [$tgl[0], $this->tanggal($tgl[1])])->orderBy('id_entry','DESC')->get(),
+                'data' => entry::whereBetween('created_at', [$tgl[0], $this->tanggal($tgl[1])])->orderBy('id_entry', 'DESC')->get(),
                 'type' => type::get(),
                 'variasi' => variasi::get(),
                 'petani' => petani::get(),
                 'pabrik' => pabrik::select('id_pabrik', 'nama_pabrik')->get(),
+                'pengirim' => pengirim::get(),
                 'tanggal' => $req->query('tgl'),
                 'title' => 'Entry'
             ]);
         }
         return view('tampil-data-entry', [
-            'data' => entry::whereDate('created_at', now())->orderBy('id_entry','DESC')->get(),
+            'data' => entry::whereDate('created_at', now())->orderBy('id_entry', 'DESC')->get(),
             'type' => type::get(),
             'variasi' => variasi::get(),
             'petani' => petani::get(),
+            'pengirim' => pengirim::get(),
             'pabrik' => pabrik::select('id_pabrik', 'nama_pabrik')->get(),
             'title' => 'Entry'
         ]);
@@ -127,7 +130,7 @@ class entrycontroller extends Controller
                 ]);
             } else {
                 return response()->json([
-                    'data' => entry::searchBetwen($tgl[0],$this->tanggal($tgl[1]), $param[0])
+                    'data' => entry::searchBetwen($tgl[0], $this->tanggal($tgl[1]), $param[0])
                 ]);
             }
         } else {
@@ -141,7 +144,6 @@ class entrycontroller extends Controller
             ]);
         }
     }
-    
 }
 
 // entry::whereDate('created_at', now())
