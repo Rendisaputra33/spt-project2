@@ -43,7 +43,7 @@ function formatTanggal($tgl)
                         </div>
                     </div>
                     &nbsp;
-                    <button type="button" class="btn btn-gradient-success btn-icon-text d-flex" data-target="#modal-md-hpp" id='tbh' data-toggle="modal">
+                    <button type="button" class="hpp btn btn-gradient-success btn-icon-text d-flex" data-target="#modal-md-hpp" id='tbh' data-toggle="modal">
                         <i class="mdi mdi-clipboard-text btn-icon-prepend"></i>HPP
                     </button>
                     &nbsp;
@@ -225,16 +225,16 @@ function formatTanggal($tgl)
                                 </div>
                                 <div class="form-group">
                                     <label for="type">Keterangan</label>
-                                    <select class="form-control text-dark" name="ket" id="ket" required>
+                                    <select class="form-control text-dark" name="keterangan" id="ket">
                                         <option selected value="">Pilih</option>
-                                        {{-- @foreach ($type as $ket)
-                                            <option value="{{ $item->id_type }}">{{ $item->type }}</option>
-                                        @endforeach --}}
+                                        @foreach ($pengirim as $item)
+                                            <option value="{{ $item->id_pengirim }}">{{ $item->nama_pengirim }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group" id="hpp">
                                     <label for="exampleInputPassword1">HPP</label>
-                                    <input type="text" class="form-control text-dark" onkeypress="return isNumber(event)" placeholder="Hpp" name="hpp" required>
+                                    <input type="text" class="form-control text-dark" onkeypress="return isNumber(event)" placeholder="Hpp" name="hpp">
                                     <span class="text-dark"></span>
                                 </div>
                                 {{-- <div class="form-group" id="harga_beli">

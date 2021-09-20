@@ -36,7 +36,8 @@ const Detail = {
 };
 
 const ELEMENT = {
-	tableBody: document.querySelector("#list")
+	tableBody: document.querySelector("#list"),
+	btnHpp: document.querySelector(".hpp")
 };
 
 const periode = ["001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011", "012", "013", "014", "015", "016", "017", "018", "019", "020", "021", "022", "023", "024", "025", "026", "027", "028", "029", "030"];
@@ -52,7 +53,7 @@ const INPUT = {
 	variasi: document.querySelector("select[name=variasi]"),
 	type: document.querySelector("select[name=type]"),
 	nopol: document.querySelector("input[name=nopol]"),
-	keterangan: document.querySelector("input[name=keterangan]"),
+	keterangan: document.querySelector("select[name=keterangan]"),
 	hpp: document.querySelector("input[name=hpp]"),
 	// harga: document.querySelector("input[name=harga_beli]"),
 	bobot: document.querySelector("input[name=bobot]"),
@@ -345,6 +346,16 @@ const uiSearch = (data, no) => {
   `;
 };
 
+const fetchHpp = async () => {
+	const request = await fetch(`${URL_ROOT}/get/hpp`).then(res => res.json());
+	const data = await request.data;
+	setHpp(data);
+};
+
+const setHpp = data => {
+	console.log(data);
+};
+
 const parseRupiah = str => parseInt(str.split(" ")[1].split(".").join(""));
 
 /**
@@ -401,6 +412,10 @@ INPUT.reg.onchange = function () {
 	let data = this.value.split(" | ")[1];
 	document.querySelector("input[name=petani]").value = data;
 };
+
+ELEMENT.btnHpp.addEventListener("click", async function () {
+	await fetchHpp();
+});
 
 document.querySelector(".filter").setAttribute("href", URL_ROOT + `?tgl=${document.querySelector("input[name=tanggalawal]").value}|${document.querySelector("input[name=tanggalakhir]").value}`);
 

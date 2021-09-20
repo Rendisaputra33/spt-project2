@@ -80,6 +80,8 @@ Route::prefix('entry')->group(function () {
         Route::get('/search/{s}', [entrycontroller::class, 'searchMethod'])->middleware('authuser');
         Route::get('/filter/{tgl}', [entrycontroller::class, 'filterMethod'])->middleware('authuser');
     });
+
+    Route::get('/get/hpp', [entrycontroller::class, 'hppNotfound'])->middleware('authuser');
 });
 
 // routing master laporan
