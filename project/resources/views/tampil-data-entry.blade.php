@@ -223,10 +223,14 @@ function formatTanggal($tgl)
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group" id="keterangan">
-                                    <label for="exampleInputPassword1">Keterangan</label>
-                                    <input type="text" class="form-control text-dark" placeholder="Keterangan" name="keterangan" required>
-                                    <span class="text-dark"></span>
+                                <div class="form-group">
+                                    <label for="type">Keterangan</label>
+                                    <select class="form-control text-dark" name="ket" id="ket" required>
+                                        <option selected value="">Pilih</option>
+                                        {{-- @foreach ($type as $ket)
+                                            <option value="{{ $item->id_type }}">{{ $item->type }}</option>
+                                        @endforeach --}}
+                                    </select>
                                 </div>
                                 <div class="form-group" id="hpp">
                                     <label for="exampleInputPassword1">HPP</label>
@@ -459,7 +463,7 @@ function formatTanggal($tgl)
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
-    {{-- <div class="modal fade" id="modal-md-edit-hpp">
+    <div class="modal fade" id="modal-md-edit-hpp">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header">
@@ -482,7 +486,7 @@ function formatTanggal($tgl)
             </div>
         </div>
         <!-- /.modal-content -->
-    </div> --}}
+    </div>
 @endsection
 @section('specific-js')
     <script src="{{ asset('assets/js/function/Entry.js') }}"></script>
