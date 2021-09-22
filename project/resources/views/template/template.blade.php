@@ -97,12 +97,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/pemgirim') }}">
-                            <i class="mdi mdi-truck menu-icon"></i>&nbsp;
-                            <span class="menu-title">Pengirim</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ url('/pembayaran') }}">
                             <i class="mdi mdi-view-list menu-icon"></i>&nbsp;
                             <span class="menu-title">Pembayaran</span>
