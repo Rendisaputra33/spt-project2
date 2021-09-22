@@ -23,24 +23,18 @@ class hppcontroller extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, entry $entry)
     {
-        //
+        $id = $request->id;
+        return $entry->where('id_entry', $id)->update([
+            'hpp' => $request->hpp,
+            'keterangan' => $request->pengirim
+        ]) ? redirect()->back() : redirect()->back();
     }
 
     /**
@@ -49,21 +43,13 @@ class hppcontroller extends Controller
      * @param  \App\Models\entry  $entry
      * @return \Illuminate\Http\Response
      */
-    public function show(entry $entry)
+    public function show($id, entry $entry)
     {
-        //
+        return response()->json([
+            'data' => $entry->select('hpp', 'id_entry', 'keterangan')->where('id_entry', $id)->first()
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\entry  $entry
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(entry $entry)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

@@ -44,13 +44,6 @@ class entrycontroller extends Controller
         return date('Y-m-d', $timefuture);
     }
 
-    public function hppNotfound()
-    {
-        return response()->json([
-            'data' => entry::whereNull('hpp')->get()
-        ]);
-    }
-
     public function editHpp(Request $req)
     {
         return entry::where('id_entry', $req->id)->update([
