@@ -77,12 +77,8 @@
                                             <td>{{ $item->nopol }}</td>
                                             <td>{{ $item->pabrik }}</td>
                                             <td>
-                                                {{-- <button type="button" class="btn btn-sm btn-info btn-icon-text detail" data-target="#modal-lg-detail" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
-                                                    <i class="mdi mdi-information-outline btn-icon-prepend"></i>Detail </button> --}}
                                                 <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-md-edit-hpp" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
                                                     <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>Ubah </button>
-                                                {{-- <a href="{{ url('/entry') . '/' . $item->id_entry }}" class="btn btn-sm btn-danger btn-icon-text delete">
-                                                    <i class="mdi mdi-delete-forever btn-icon-prepend"></i>Hapus </a> --}}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -99,96 +95,7 @@
                 </div>
             </footer>
         </div>
-        <!-- modal untuk tambah data -->
-        {{-- <div class="modal fade" id="modal-lg-detail">
-            <div class="modal-dialog modal-lg d-flex justify-content-center">
-                <div class="modal-content modal-md-custom">
-                    <div class="modal-header">
-                        <h3 class="modal-title">Detail</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
 
-                    <div class="modal-body">
-                        <table class="table d-flex flex-row justify-content-lg-around">
-                            <thead>
-                                <tr class="col-sm d-flex flex-column">
-                                    <th>Periode</th>
-                                    <th>Masa Giling</th>
-                                    <th>Tanggal</th>
-                                    <th>REG</th>
-                                    <th>Petani</th>
-                                    <th>No SPTA</th>
-                                    <th>No POL</th>
-                                    <th>Pabrik</th>
-
-                                </tr>
-                            </thead>
-                            <tr class="col-sm d-flex flex-column p-0">
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-
-                            </tr>
-                            <tbody>
-                                <tr class="col-sm d-flex flex-column">
-                                    <td class="periode">dummy</td>
-                                    <td class="masa">dummy</td>
-                                    <td class="tanggal">dummy</td>
-                                    <td class="reg">dummy</td>
-                                    <td class="petani"></td>
-                                    <td class="nospta">dummy</td>
-                                    <td class="nopol">dummy</td>
-                                    <td class="pabrik">dummy</td>
-                                </tr>
-                            </tbody>
-                            <thead>
-                                <tr class="col-sm d-flex flex-column">
-                                    <th>Variasi</th>
-                                    <th>Type Tebu</th>
-                                    <th>Bobot(KW)</th>
-                                    <th>Ket</th>
-                                    <th>Harga Beli</th>
-                                    <th>HPP</th>
-                                    <th>Sisa</th>
-                                </tr>
-                            </thead>
-                            <tr class="col-sm d-flex flex-column p-0">
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                            </tr>
-                            <tbody>
-                                <tr class="col-sm d-flex flex-column">
-                                    <td class="variasi">dummy</td>
-                                    <td class="type">dummy</td>
-                                    <td class="bobot">dummy</td>
-                                    <td class="ket">dummy</td>
-                                    <td class="harga">dummy</td>
-                                    <td class="hpp">dummy</td>
-                                    <td class="sisa">dummy</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-gradient-danger" data-dismiss="modal" aria-label="Close">Close</button>
-                    </div>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div> --}}
         <!-- /.modal-dialog -->
         <div class="modal fade" id="modal-md-edit-hpp">
             <div class="modal-dialog modal-md">
@@ -201,13 +108,13 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="tgl1">HPP</label>
-                            <input type="text" value="" class="form-control text-dark" name="ubah_hpp" id="ubah_hpp">
+                            <label for="ubah_hpp">HPP</label>
+                            <input type="text" class="form-control text-dark" name="hpp" id="ubah_hpp">
                             <span class="text-dark"></span>
                         </div>
                         <div class="form-group">
-                            <label for="type">Keterangan</label>
-                            <select class="form-control text-dark" name="keterangan" id="ket">
+                            <label for="pengirim">Keterangan</label>
+                            <select class="form-control text-dark" name="pengirim" id="pengirim">
                                 <option selected value="">Pilih</option>
                                 @foreach ($pengirim as $item)
                                     <option value="{{ $item->id_pengirim }}">{{ $item->nama_pengirim }}</option>
@@ -225,5 +132,5 @@
         </div>
     @endsection
     @section('specific-js')
-        {{-- <script src="{{ asset('assets/js/function/Petani.js') }}"></script> --}}
+        <script type="module" src="{{ asset('assets/js/function/module/endpoint/hpp/index.js') }}"></script>
     @endsection
