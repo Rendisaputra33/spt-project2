@@ -115,3 +115,8 @@ Route::prefix('pengirim')->group(function () {
     Route::get('/{id}', [pengirimcontroller::class, 'delete'])->middleware('authuser');
     Route::get('/json/{id}', [pengirimcontroller::class, 'getupdate'])->middleware('authuser');
 });
+
+Route::get('/cek-hpp', function() { 
+    return view('cek-hpp');
+
+});
