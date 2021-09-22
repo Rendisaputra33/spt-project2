@@ -97,39 +97,43 @@
         </div>
 
         <!-- /.modal-dialog -->
-        <div class="modal fade" id="modal-md-edit-hpp">
-            <div class="modal-dialog modal-md">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title">Ubah HPP</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="ubah_hpp">HPP</label>
-                            <input type="text" placeholder="Hpp" class="form-control text-dark" name="hpp" id="ubah_hpp">
-                            <span class="text-dark"></span>
+        <form action="" method="post" id="form-">
+            @csrf
+            <div class="modal fade" id="modal-md-edit-hpp">
+                <div class="modal-dialog modal-md">
+                    <input type="hidden" name="id" value="">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Ubah HPP</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        <div class="form-group">
-                            <label for="pengirim">Keterangan</label>
-                            <select class="form-control text-dark" name="pengirim" id="pengirim">
-                                <option selected value="">Pilih</option>
-                                @foreach ($pengirim as $item)
-                                    <option value="{{ $item->id_pengirim }}">{{ $item->nama_pengirim }}</option>
-                                @endforeach
-                            </select>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="ubah_hpp">HPP</label>
+                                <input type="text" placeholder="Hpp" class="form-control text-dark" name="hpp" id="ubah_hpp">
+                                <span class="text-dark"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="pengirim">Keterangan</label>
+                                <select class="form-control text-dark" name="pengirim" id="pengirim">
+                                    <option selected value="">Pilih</option>
+                                    @foreach ($pengirim as $item)
+                                        <option value="{{ $item->id_pengirim }}">{{ $item->nama_pengirim }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        <a href="" class="btn btn-gradient-success">Simpan</a>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-gradient-success">Simpan</button>
+                        </div>
                     </div>
                 </div>
+                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-content -->
-        </div>
+        </form>
     @endsection
     @section('specific-js')
         <script type="module" src="{{ asset('assets/js/function/module/endpoint/hpp/index.js') }}"></script>

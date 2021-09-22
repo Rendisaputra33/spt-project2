@@ -30,7 +30,7 @@ class hppcontroller extends Controller
      */
     public function store(Request $request, entry $entry)
     {
-        $id = $request->id;
+        $id = $request->id; 
         return $entry->where('id_entry', $id)->update([
             'hpp' => $request->hpp,
             'keterangan' => $request->pengirim
