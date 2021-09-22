@@ -1,16 +1,5 @@
 import element from "../../elements/hpp/index.js";
-
-export async function getUpdate(id) {
-	const data = await fetch(element.url + "/entry/cek/hpp/" + id);
-	return await data.json();
-}
-
-export async function setForm({ data }) {
-	element.hpp.value = data.hpp ? data.hpp : "";
-	element.pengirim.value = data.keterangan ? data.keterangan : "";
-	element.id.value = data.id_entry;
-	element.form.setAttribute("action", `${element.url}/entry/cek/hpp`);
-}
+import { handlerBtnupdate } from "./handler.js";
 
 export function bindingUpdate() {
 	element.btnupdate.forEach(btn => {
@@ -20,15 +9,6 @@ export function bindingUpdate() {
 
 export function isNumber(e) {
 	var charCode = e.which ? e.which : event.keyCode;
-	if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-		e.preventDefault();
-		return false;
-	}
+	if (charCode > 31 && (charCode < 48 || charCode > 57)) return e.preventDefault();
 	return true;
-}
-
-export async function handlerBtnupdate(e) {
-	const id = this.getAttribute("data-id");
-	const data = await getUpdate(id);
-	setForm(data);
 }
