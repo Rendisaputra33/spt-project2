@@ -1,4 +1,4 @@
-    @extends('template.cekHpp')
+    @extends('template.template')
     <style>
         td.small,
         th.small {
