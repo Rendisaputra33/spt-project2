@@ -82,7 +82,7 @@ Route::prefix('entry')->group(function () {
         Route::get('/filter/{tgl}', [entrycontroller::class, 'filterMethod'])->middleware('authuser');
     });
 
-    Route::prefix('hpp/get')->group(function () {
+    Route::prefix('cek/hpp')->group(function () {
         Route::get('/',  [hppcontroller::class, 'index'])->middleware('authuser');
         Route::get('/{id}', [hppcontroller::class, 'show'])->middleware('authuser');
         Route::post('/', [hppcontroller::class, 'store'])->middleware('authuser');
