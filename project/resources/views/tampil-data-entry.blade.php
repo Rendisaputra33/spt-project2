@@ -43,9 +43,9 @@ function formatTanggal($tgl)
                         </div>
                     </div>
                     &nbsp;
-                    <button type="button" class="hpp btn btn-gradient-success btn-icon-text d-flex" data-target="#modal-md-hpp" id='tbh' data-toggle="modal">
+                    <a href="{{ url('/') . '/entry/cek/hpp' }}" class="hpp btn btn-gradient-success btn-icon-text d-flex">
                         <i class="mdi mdi-clipboard-text btn-icon-prepend"></i>HPP
-                    </button>
+                    </a>
                     &nbsp;
                     <button type="button" class="btn btn-gradient-success btn-icon-text d-flex" data-target="#modal-md-filter" id='tbh' data-toggle="modal">
                         <i class="mdi mdi-filter-outline btn-icon-prepend"></i>Filter

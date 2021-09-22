@@ -66,10 +66,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="list">
-                                    <?php $bobot = 0; ?>
                                     @foreach ($data as $item)
-                                        <tr class="___class_+?26___">
-                                            <?php $bobot += $item->bobot; ?>
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->masa_giling }}</td>
@@ -80,8 +77,8 @@
                                             <td>{{ $item->nopol }}</td>
                                             <td>{{ $item->pabrik }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-sm btn-info btn-icon-text detail" data-target="#modal-lg-detail" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
-                                                    <i class="mdi mdi-information-outline btn-icon-prepend"></i>Detail </button>
+                                                {{-- <button type="button" class="btn btn-sm btn-info btn-icon-text detail" data-target="#modal-lg-detail" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
+                                                    <i class="mdi mdi-information-outline btn-icon-prepend"></i>Detail </button> --}}
                                                 <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
                                                     <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>Ubah </button>
                                                 {{-- <a href="{{ url('/entry') . '/' . $item->id_entry }}" class="btn btn-sm btn-danger btn-icon-text delete">
