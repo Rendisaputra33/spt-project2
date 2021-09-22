@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\entry;
+use App\Models\pengirim;
 use Illuminate\Http\Request;
 
 class hppcontroller extends Controller
@@ -15,8 +16,9 @@ class hppcontroller extends Controller
     public function index(entry $entry)
     {
         return view('check-hpp', [
-            'data' => $entry->whereNull('hpp')->orderBy('id_entry', 'DESC')->get(),
-            'title' => 'Cek HPP'
+            'data' => $entry->whereNull('hpp')->orderBy('id_entry', 'desc')->get(),
+            'title' => 'Cek HPP',
+            'pengirim' => pengirim::orderBy('id_pengirim', 'desc')->get()
         ]);
     }
 

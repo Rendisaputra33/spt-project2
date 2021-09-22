@@ -3,6 +3,7 @@
 use App\Http\Controllers\authcontroller;
 use App\Http\Controllers\dashboardcontroller;
 use App\Http\Controllers\entrycontroller;
+use App\Http\Controllers\hppcontroller;
 use App\Http\Controllers\laporancontroller;
 use App\Http\Controllers\pabrikcontroller;
 use App\Http\Controllers\pengirimcontroller;
@@ -81,7 +82,7 @@ Route::prefix('entry')->group(function () {
         Route::get('/filter/{tgl}', [entrycontroller::class, 'filterMethod'])->middleware('authuser');
     });
 
-    Route::get('/get/hpp', [entrycontroller::class, 'hppNotfound'])->middleware('authuser');
+    Route::get('/get/hpp', [hppcontroller::class, 'index'])->middleware('authuser');
 });
 
 // routing master laporan
@@ -114,9 +115,4 @@ Route::prefix('pengirim')->group(function () {
     Route::post('/{id}', [pengirimcontroller::class, 'update'])->middleware('authuser');
     Route::get('/{id}', [pengirimcontroller::class, 'delete'])->middleware('authuser');
     Route::get('/json/{id}', [pengirimcontroller::class, 'getupdate'])->middleware('authuser');
-});
-
-Route::get('/cek-hpp', function() { 
-    return view('cek-hpp');
-
 });
