@@ -82,11 +82,9 @@ function formatTanggal($tgl)
                                 </tr>
                             </thead>
                             <tbody id="list">
-                                <?php $sisa = 0; ?>
                                 <?php $bobot = 0; ?>
                                 @foreach ($data as $item)
                                     <tr class="___class_+?26___">
-                                        <?php $sisa += $item->sisa; ?>
                                         <?php $bobot += $item->bobot; ?>
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
@@ -107,8 +105,6 @@ function formatTanggal($tgl)
                                         </td>
                                     </tr>
                                 @endforeach
-
-
                             </tbody>
                         </table>
                         <div class="row mt-5">
@@ -125,7 +121,7 @@ function formatTanggal($tgl)
                                             <td></td>
                                             <td>Total Sisa</td>
                                             <td>:</td>
-                                            <td>Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
+                                            {{-- <td>Rp. {{ number_format($sisa, 0, ',', '.') }}</td> --}}
                                         </tr>
                                     </tbody>
 

@@ -51,10 +51,18 @@ class entrycontroller extends Controller
         ]);
     }
 
+    public function editHpp(Request $req)
+    {
+        return entry::where('id_entry', $req->id)->update([
+            'keterangan' => $req->pengirim,
+            'hpp' => $req->hpp
+        ]) ? redirect()->back()->with('sukses', 'update hpp berhasil') : redirect()->back()->with('error', 'update hpp gagal');
+    }
+
     public function addMethod(Request $req)
     {
         $map = $this->mappingData($req);
-        return entry::insert([
+        $data = [
             'periode' => $req->periode,
             'masa_giling' => $req->masa,
             'id_pabrik' => explode(' | ', $req->pabrik)[0],
@@ -67,12 +75,12 @@ class entrycontroller extends Controller
             'variasi' => $req->variasi,
             'variasi_' => $map['variasi'],
             'type' => $req->type,
-            'type_' => $map['type'],
-            'keterangan' => $req->keterangan,
-            'harga_beli' => str_replace('.', '', explode(' ', $req->harga_beli)[1]),
-            'hpp' => str_replace('.', '', explode(' ', $req->hpp)[1]),
-            'sisa' => str_replace('.', '', explode(' ', $req->sisa)[1]),
-        ])
+            'type_' => $map['type']
+        ];
+        $req->keterangan !== null ? $data['keterangan'] = $req->keterangan : '';
+        $req->hpp !== null ? $data['hpp'] = str_replace('.', '', explode(' ', $req->hpp)[1]) : '';
+
+        return entry::insert($data)
             ? redirect()->back()->with('sukses', 'data berhasil ditambahkan')
             : redirect()->back()->with('error', 'data gagal ditambahkan');
     }

@@ -219,25 +219,23 @@ const setFormUpdate = result => {
 	INPUT.nopol.value = result.data.nopol;
 	INPUT.variasi.value = result.data.variasi;
 	INPUT.type.value = result.data.type;
-	INPUT.keterangan.value = result.data.keterangan;
-	INPUT.harga.value = formatRupiah(result.data.harga_beli.toString(), "Rp. ");
+	INPUT.keterangan.value = result.data.keterangan === null ? "" : result.data.keterangan;
 	INPUT.hpp.value = formatRupiah(result.data.hpp.toString(), "Rp. ");
 	INPUT.bobot.value = result.data.bobot;
-	// INPUT.sisa.value = formatRupiah(result.data.sisa.toString(), "Rp. ");
 	INPUT.pabrik.value = `${result.data.id_pabrik} | ${result.data.pabrik}`;
 	document.querySelector("input[name=petani]").value = result.data.petani;
 };
 
 const setDetail = data => {
 	Detail.bobot.innerHTML = data.bobot;
-	Detail.harga.innerHTML = formatRupiah(data.harga_beli.toString(), "Rp. ");
+	Detail.harga.innerHTML = data.harga_beli !== null ? formatRupiah(data.harga_beli.toString(), "Rp. ") : "-";
 	Detail.hpp.innerHTML = formatRupiah(data.hpp.toString(), "Rp. ");
-	Detail.ket.innerHTML = data.keterangan;
+	Detail.ket.innerHTML = data.keterangan !== null ? data.keterangan : "-";
 	Detail.masa.innerHTML = data.masa_giling;
 	Detail.nopol.innerHTML = data.nopol;
 	Detail.periode.innerHTML = data.periode;
 	Detail.reg.innerHTML = data.reg;
-	Detail.sisa.innerHTML = formatRupiah(data.sisa.toString(), "Rp. ");
+	Detail.sisa.innerHTML = data.harga_beli && data.hpp !== null ? formatRupiah(data.sisa.toString(), "Rp. ") : "-";
 	Detail.nospta.innerHTML = data.nospta;
 	Detail.tanggal.innerHTML = formatTanggalNew(timeTodate(data.created_at));
 	Detail.petani.innerHTML = data.petani;
@@ -371,7 +369,7 @@ const documentHpp = (data, no) => /*html*/ `
 	<td>${data.nopol}</td>
 	<td>${data.pabrik}</td>
 	<td>
-		<button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal" data-id="${data.id_entry}">
+		<button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-md-edit-hpp" id='tbh' data-toggle="modal" data-id="${data.id_entry}">
 			<i class="mdi mdi-lead-pencil btn-icon-prepend"></i>Ubah </button>
 	</td>
 `;
