@@ -6,6 +6,7 @@ use App\Http\Controllers\entrycontroller;
 use App\Http\Controllers\hppcontroller;
 use App\Http\Controllers\laporancontroller;
 use App\Http\Controllers\pabrikcontroller;
+use App\Http\Controllers\pembayarancontroller;
 use App\Http\Controllers\pengirimcontroller;
 use App\Http\Controllers\petanicontroller;
 use App\Http\Controllers\redirectcontroller;
@@ -119,4 +120,11 @@ Route::prefix('pengirim')->group(function () {
     Route::post('/{id}', [pengirimcontroller::class, 'update'])->middleware('authuser');
     Route::get('/{id}', [pengirimcontroller::class, 'delete'])->middleware('authuser');
     Route::get('/json/{id}', [pengirimcontroller::class, 'getupdate'])->middleware('authuser');
+});
+
+Route::prefix('pembayaran')->group(function () {
+    Route::get('/', [pembayarancontroller::class, 'index']);
+    Route::post('/', [pembayarancontroller::class, 'index']);
+    Route::delete('/{id}', [pembayarancontroller::class, 'index']);
+    Route::put('/{id}', [pembayarancontroller::class, 'index']);
 });
