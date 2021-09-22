@@ -344,36 +344,6 @@ const uiSearch = (data, no) => {
   `;
 };
 
-const fetchHpp = async () => {
-	const request = await fetch(`${URL_ROOT}/get/hpp`).then(res => res.json());
-	const data = await request.data;
-	setHpp(data);
-};
-
-const setHpp = data => {
-	let html = "";
-	let no = 1;
-	data.map(d => {
-		html += documentHpp(d, no++);
-	});
-	document.getElementById("list-hpp").innerHTML = html;
-};
-
-const documentHpp = (data, no) => /*html*/ `
-	<td>${no}</td>
-	<td>${data.masa_giling}</td>
-	<td>${data.periode}</td>
-	<td>${data.created_at}</td>
-	<td>${data.reg}</td>
-	<td>${data.nospta}</td>
-	<td>${data.nopol}</td>
-	<td>${data.pabrik}</td>
-	<td>
-		<button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-md-edit-hpp" id='tbh' data-toggle="modal" data-id="${data.id_entry}">
-			<i class="mdi mdi-lead-pencil btn-icon-prepend"></i>Ubah </button>
-	</td>
-`;
-
 const parseRupiah = str => parseInt(str.split(" ")[1].split(".").join(""));
 
 /**
@@ -430,10 +400,6 @@ INPUT.reg.onchange = function () {
 	let data = this.value.split(" | ")[1];
 	document.querySelector("input[name=petani]").value = data;
 };
-
-ELEMENT.btnHpp.addEventListener("click", async function () {
-	await fetchHpp();
-});
 
 document.querySelector(".filter").setAttribute("href", URL_ROOT + `?tgl=${document.querySelector("input[name=tanggalawal]").value}|${document.querySelector("input[name=tanggalakhir]").value}`);
 
