@@ -109,7 +109,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="ubah_hpp">HPP</label>
-                            <input type="text" class="form-control text-dark" name="hpp" id="ubah_hpp">
+                            <input type="text" placeholder="Hpp" class="form-control text-dark" name="hpp" id="ubah_hpp">
                             <span class="text-dark"></span>
                         </div>
                         <div class="form-group">

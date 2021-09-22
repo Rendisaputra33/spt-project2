@@ -6,8 +6,8 @@ export async function getUpdate(id) {
 }
 
 export async function setForm({ data }) {
-	element.hpp.value = data.hpp;
-	element.pengirim.value = data.keterangan;
+	element.hpp.value = data.hpp ? data.hpp : "";
+	element.pengirim.value = data.keterangan ? data.keterangan : "";
 }
 
 export function bindingUpdate() {
