@@ -229,7 +229,7 @@ const setFormUpdate = result => {
 const setDetail = data => {
 	Detail.bobot.innerHTML = data.bobot;
 	Detail.harga.innerHTML = data.harga_beli !== null ? formatRupiah(data.harga_beli.toString(), "Rp. ") : "-";
-	Detail.hpp.innerHTML = formatRupiah(data.hpp.toString(), "Rp. ");
+	Detail.hpp.innerHTML = data.hpp ? formatRupiah(data.hpp.toString(), "Rp. ") : "-";
 	Detail.ket.innerHTML = data.keterangan !== null ? data.keterangan : "-";
 	Detail.masa.innerHTML = data.masa_giling;
 	Detail.nopol.innerHTML = data.nopol;
