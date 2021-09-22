@@ -103,6 +103,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/pembayaran') }}">
+                            <i class="mdi mdi-view-list menu-icon"></i>&nbsp;
+                            <span class="menu-title">Pembayaran</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" id="log">
                             <i class="mdi mdi-logout-variant menu-icon"></i>
                             <span class="menu-title">Logout</span>
