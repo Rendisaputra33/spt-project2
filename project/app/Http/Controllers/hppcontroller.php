@@ -15,7 +15,7 @@ class hppcontroller extends Controller
      */
     public function index(entry $entry)
     {
-        return view('check-hpp', [
+        return view('cek-hpp', [
             'data' => $entry->whereNull('hpp')->orderBy('id_entry', 'desc')->get(),
             'title' => 'Cek HPP',
             'pengirim' => pengirim::orderBy('id_pengirim', 'desc')->get()
