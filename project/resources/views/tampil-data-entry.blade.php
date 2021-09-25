@@ -397,43 +397,7 @@ function formatTanggal($tgl)
         </div>
         <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
-    <div class="modal fade" id="modal-md-hpp">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">List Transaksi Yang Belum Ada HPP</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="col-md-12" style="padding: 0 2rem 2rem 2rem;">
-                        <table class="table table-bordered table-sm w-100" style="table-layout: fixed;">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>MG</th>
-                                    <th>Periode</th>
-                                    <th>Tanggal</th>
-                                    <th>REG</th>
-                                    <th>No SPTA</th>
-                                    <th>No TRUK</th>
-                                    <th>Pabrik</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody id="list-hpp">
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <!-- /.card-body -->
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
+    
     <!-- /.modal-dialog -->
     <div class="modal fade" id="modal-md-edit-hpp">
         <div class="modal-dialog modal-md">
