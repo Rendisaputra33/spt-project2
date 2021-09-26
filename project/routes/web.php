@@ -122,9 +122,13 @@ Route::prefix('pengirim')->group(function () {
     Route::get('/json/{id}', [pengirimcontroller::class, 'getupdate'])->middleware('authuser');
 });
 
-Route::prefix('pembayaran')->group(function () {
-    Route::get('/', [pembayarancontroller::class, 'index']);
-    Route::post('/', [pembayarancontroller::class, 'index']);
-    Route::delete('/{id}', [pembayarancontroller::class, 'index']);
-    Route::put('/{id}', [pembayarancontroller::class, 'index']);
+// Route::prefix('pembayaran')->group(function () {
+//     Route::get('/', [pembayarancontroller::class, 'index']);
+//     Route::post('/', [pembayarancontroller::class, 'index']);
+//     Route::delete('/{id}', [pembayarancontroller::class, 'index']);
+//     Route::put('/{id}', [pembayarancontroller::class, 'index']);
+// });
+
+Route::get('/pembayaran', function() {
+    return view('tampil-data-pembayaran');
 });

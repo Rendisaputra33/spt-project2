@@ -52,7 +52,7 @@
                   </a>
               </li> --}}
                     <li class="nav-item mb-4 d-flex align-items-center text-primary">
-                        <i class="mdi mdi-account-circle display-3"></i>&nbsp;
+                        <i class="mdi mdi-account-circle display-3 "></i>&nbsp;
                         <span class="menu-title display-5">{{ session('name') }}</span>
                     </li>
                     <li class="nav-item">

@@ -39,7 +39,18 @@
                                 </tr>
                             </thead>
                             <tbody id="list">
-
+                                <tr>
+                                    <td>1</td>
+                                    <td>dummy</td>
+                                    <td>dummy</td>
+                                    <td>dummy</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-info btn-icon-text detail" data-target="#modal-lg-detail" id='tbh' data-toggle="modal" data-id="">
+                                            <i class="mdi mdi-information-outline btn-icon-prepend"></i>Detail </button>
+                                        <a href="{{ url('/entry') . '/' . $item->id_entry }}" class="btn btn-sm btn-danger btn-icon-text delete">
+                                            <i class="mdi mdi-delete-forever btn-icon-prepend"></i>Hapus </a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -54,34 +65,32 @@
             </div>
         </footer>
     </div>
-    {{-- <form action="{{ url('/pengirim') }}" method="post" id="form-">
-        @csrf
-        <div id="method"></div>
-        <div class="modal fade" id="modal-md-tambah">
-            <div class="modal-dialog modal-md">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title">Tambah Data Pengirim</h3>
-                        <button type="button" class="close" data-dismiss="modal" id="close-modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group" id="reg">
-                            <label for="exampleInputPassword1">Nama Pengirim</label>
-                            <input type="text" autocomplete="off" class="form-control" placeholder="Nama Pengirim" name="nama" required>
-                            <span class="text-dark"></span>
-                        </div>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-gradient-success">Simpan</button>
+    <div id="method"></div>
+    <div class="modal fade" id="modal-md-tambah">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Tambah Data Pengirim</h3>
+                    <button type="button" class="close" data-dismiss="modal" id="close-modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group" id="reg">
+                        <label for="exampleInputPassword1">Nama Pengirim</label>
+                        <input type="text" autocomplete="off" class="form-control" placeholder="Nama Pengirim" name="nama" required>
+                        <span class="text-dark"></span>
                     </div>
                 </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-gradient-success">Simpan</button>
+                </div>
             </div>
-            <!-- /.modal-dialog -->
         </div>
-    </form> --}}
+        <!-- /.modal-dialog -->
+    </div>
+    </form>
 @endsection
 @section('specific-js')
     <script src="{{ asset('assets/js/function/pengirim.js') }}"></script>
