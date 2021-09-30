@@ -32,7 +32,7 @@ class PembayaranUtility
     /**
      * method make format invoice
      */
-    private function makeZero($id): int | string
+    private function makeZero($id)
     {
         if ($id < 9) :
             return '00' . ($id += 1);
