@@ -424,7 +424,6 @@ function formatTanggal($tgl)
         </div>
         <!-- /.modal-content -->
     </div>
-
     <!-- /.modal-dialog -->
     <div class="modal fade" id="modal-md-edit-hpp">
         <div class="modal-dialog modal-md">

@@ -77,52 +77,81 @@
             </div>
         </footer>
     </div>
-    <!-- /.modal-dialog -->
-    <div class="modal fade" id="modal-lg-detail">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Detail Pembayaran</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="col-md-12" style="padding: 0 2rem 2rem 2rem;">
-                        <table class="table table-bordered table-sm w-100" style="table-layout: fixed;">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>MG</th>
-                                    <th>Periode</th>
-                                    <th>Tanggal</th>
-                                    <th>REG</th>
-                                    <th>No SPTA</th>
-                                    <th>No TRUK</th>
-                                    <th>Pabrik</th>
-                                </tr>
-                            </thead>
-                            <tbody id="list-detail">
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
+    <<<<<<< HEAD <!-- /.modal-dialog -->
+        <div class="modal fade" id="modal-lg-detail">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Detail Pembayaran</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            =======
+                            <div id="method"></div>
+                            <div class="modal fade" id="modal-md-tambah">
+                                <div class="modal-dialog modal-md">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="modal-title">Tambah Data Pengirim</h3>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                id="close-modal" aria-label="Close">
+                                                >>>>>>> a1343948ae04ededc5cdb859de5a96857a4e2ba2
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <<<<<<< HEAD <div class="col-md-12" style="padding: 0 2rem 2rem 2rem;">
+                                                <table class="table table-bordered table-sm w-100"
+                                                    style="table-layout: fixed;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No</th>
+                                                            <th>MG</th>
+                                                            <th>Periode</th>
+                                                            <th>Tanggal</th>
+                                                            <th>REG</th>
+                                                            <th>No SPTA</th>
+                                                            <th>No TRUK</th>
+                                                            <th>Pabrik</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="list-detail">
+                                                        <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                    </div>
+                    =======
+                    <div class="form-group" id="reg">
+                        <label for="exampleInputPassword1">Nama Pengirim</label>
+                        <input type="text" autocomplete="off" class="form-control" placeholder="Nama Pengirim" name="nama"
+                            required>
+                        <span class="text-dark"></span>
                     </div>
                 </div>
                 <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-gradient-success">Simpan</button>
+                </div>
             </div>
         </div>
-        <!-- /.modal-content -->
-    </div>
-@endsection
-@section('specific-js')
-    <script type="module" src="{{ asset('assets/js/function/module/endpoint/pembayaran/index.js') }}"></script>
-@endsection
+        <!-- /.modal-dialog -->
+        </div>
+        </form>
+        >>>>>>> a1343948ae04ededc5cdb859de5a96857a4e2ba2
+    @endsection
+    @section('specific-js')
+        <script type="module" src="{{ asset('assets/js/function/module/endpoint/pembayaran/index.js') }}"></script>
+    @endsection
