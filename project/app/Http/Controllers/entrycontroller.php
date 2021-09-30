@@ -28,7 +28,7 @@ class entrycontroller extends Controller
             ]);
         }
         return view('tampil-data-entry', [
-            'data' => entry::whereDate('created_at', now())->orderBy('id_entry', 'DESC')->get(),
+            'data' => entry::whereDate('entry.created_at', now())->orderBy('id_entry', 'DESC')->get(),
             'type' => type::get(),
             'variasi' => variasi::get(),
             'petani' => petani::get(),
@@ -88,6 +88,7 @@ class entrycontroller extends Controller
     public function updateMethod(Request $req, $id)
     {
         $map = $this->mappingData($req);
+
         return entry::where('id_entry', $id)->update([
             'periode' => $req->periode,
             'masa_giling' => $req->masa,
@@ -103,9 +104,7 @@ class entrycontroller extends Controller
             'type' => $req->type,
             'type_' => $map['type'],
             'keterangan' => $req->keterangan,
-            'harga_beli' => str_replace('.', '', explode(' ', $req->harga_beli)[1]),
-            'hpp' => str_replace('.', '', explode(' ', $req->hpp)[1]),
-            'sisa' => str_replace('.', '', explode(' ', $req->sisa)[1]),
+            'hpp' => $req->hpp === null ? null : str_replace('.', '', explode(' ', $req->hpp)[1])
         ])
             ? redirect()->back()->with('sukses', 'data berhasil ditambahkan')
             : redirect()->back()->with('error', 'data gagal ditambahkan');
@@ -153,14 +152,3 @@ class entrycontroller extends Controller
         }
     }
 }
-
-// entry::whereDate('created_at', now())
-                // ->where('periode', 'LIKE', '%' . $s . '%')
-                // ->orWhere('masa_giling', 'LIKE', '%' . $s . '%')
-                // ->orWhere('reg', 'LIKE', '%' . $s . '%')
-                // ->orWhere('nospta', 'LIKE', '%' . $s . '%')
-                // ->orWhere('nopol', 'LIKE', '%' . $s . '%')
-                // ->orWhere('variasi_', 'LIKE', '%' . $s . '%')
-                // ->orWhere('type_', 'LIKE', '%' . $s . '%')
-                // ->orWhere('pabrik', 'LIKE', '%' . $s . '%')
-                // ->get()

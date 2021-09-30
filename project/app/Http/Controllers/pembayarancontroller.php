@@ -2,19 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Utility\PembayaranUtility;
+use App\Models\entry;
 use App\Models\pembayaran;
+use App\Models\pengirim;
 use Illuminate\Http\Request;
 
 class pembayarancontroller extends Controller
 {
+    protected $util;
+
+    public function __construct()
+    {
+        $this->util = new PembayaranUtility(new pembayaran());
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(pembayaran $pembayaran)
     {
-        //
+        return view('tampil-data-pembayaran', [
+            'title' => 'Pembayaran',
+            'pembayaran' => $pembayaran->getPembayaran()
+        ]);
     }
 
     /**
@@ -22,9 +34,11 @@ class pembayarancontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(pembayaran $pembayaran, $data)
     {
-        //
+        return $pembayaran->insert($data)
+            ? redirect('/pembayaran')->with('sukses', 'pembayaran berhasil')
+            : redirect('/pembayaran')->with('error', 'pembayaran gagal');
     }
 
     /**
@@ -33,9 +47,25 @@ class pembayarancontroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, pembayaran $pembayaran, entry $entry)
     {
-        //
+        if ($request->id === null) :
+            return redirect()->back()->with('error', 'pilih data yang akan di bayar terlebih dahulu');
+        endif;
+        // create new invoice
+        $invoice = $this->util->createInvoice();
+        // get a data entry
+        $recource = $entry->whereIn('id_entry', $request->id)->get();
+        // mapping data
+        $data = $recource->map(function ($ent) use ($invoice) {
+            return [
+                'invoice' => $invoice,
+                'total' => 0,
+                'id_entry' => $ent->id_entry
+            ];
+        })->toArray();
+
+        return $this->create($pembayaran, $data);
     }
 
     /**
@@ -44,9 +74,16 @@ class pembayarancontroller extends Controller
      * @param  \App\Models\pembayaran  $pembayaran
      * @return \Illuminate\Http\Response
      */
-    public function show(pembayaran $pembayaran)
+    public function show(pembayaran $pembayaran, entry $entry)
     {
-        //
+        // get all id entry from pembayaran
+        $ids = $pembayaran->select('id_entry')->get();
+        // send data entry to view
+        return view('tambah-pembayaran', [
+            'data' => $entry->whereNotIn('id_entry', $ids)->whereNotNull('harga_beli')->whereNotNull('keterangan')->get(),
+            'pengirim' => pengirim::orderBy('id_pengirim', 'DESC')->get(),
+            'title' => 'Tambah Pembayaran'
+        ]);
     }
 
     /**
@@ -55,9 +92,12 @@ class pembayarancontroller extends Controller
      * @param  \App\Models\pembayaran  $pembayaran
      * @return \Illuminate\Http\Response
      */
-    public function edit(pembayaran $pembayaran)
+    public function edit(entry $entry, Request $request, $id)
     {
         //
+        return $entry->where('id_entry', $id)->update([
+            'harga_beli' => $request->harga
+        ]) ? redirect()->back() : redirect()->back();
     }
 
     /**
@@ -78,8 +118,56 @@ class pembayarancontroller extends Controller
      * @param  \App\Models\pembayaran  $pembayaran
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pembayaran $pembayaran)
+    public function destroy(pembayaran $pembayaran, $invoice)
     {
-        //
+        return $pembayaran->where('invoice', str_replace('-', '/', $invoice))->delete()
+            ? redirect()->back()->with('sukses', 'data berhasil di hapus')
+            : redirect()->back()->with('error', 'data gagal di hapus');
+    }
+
+    /**
+     * Check data with harga beli equals to null
+     * 
+     * @param \App\Models\entry  $entry
+     * @return \Illuminate\Http\Response
+     */
+    public function cekHarga(entry $entry)
+    {
+        return view('cek-harga-beli', [
+            'title' => 'Cek Harga',
+            'data' => $entry->whereNull('harga_beli')->get()
+        ]);
+    }
+
+    /**
+     * Check data with harga beli equals to null
+     * 
+     * @param \App\Models\entry  $entry
+     * @return \Illuminate\Http\Response
+     */
+    public function detail(entry $entry, $invoice)
+    {
+        // get all id with invoice equals $invoice
+        $recource = pembayaran::select('id_entry')->where('invoice', str_replace('-', '/', $invoice))->get();
+        // return single data entry
+        return response()->json([
+            'data' => $entry->whereIn('id_entry', $recource)->get()
+        ]);
+    }
+
+    /**
+     * Get data with pengirim equals to $request['pengirim']
+     * 
+     * @param \App\Models\entry  $entry
+     * @param \Illuminate\Http\Request
+     * @return \Illuminate\Http\Response
+     */
+    public function filter(Request $request, entry $entry)
+    {
+        $ids = pembayaran::select('id_entry')->get();
+        // get data from database
+        $data = $entry->where('keterangan', $request->pengirim)->whereNotIn('id_entry', $ids)->whereNotNull('keterangan')->whereNotNull('harga_beli')->get();
+        // return data entry with keterangan equals $request['keterangan']
+        return response()->json(['data' => $data]);
     }
 }

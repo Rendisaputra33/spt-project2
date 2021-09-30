@@ -1,3 +1,3 @@
-import element from "./../../elements/hpp/index.js";
+import element from './../../elements/index.js';
 
-export const getUpdate = async id => await (await fetch(element.url + "/entry/cek/hpp/" + id)).json();
+export const getUpdate = async (id) => await (await fetch(element.baseUrl + '/entry/cek/hpp/' + id)).json();

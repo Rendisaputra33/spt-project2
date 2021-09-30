@@ -6,13 +6,13 @@
                 <h2>Data User</h2>
                 <div class="right d-flex align-items-center">
                     <div class="input-group">
-                        <input type="text" id="search" class="form-control form-control-sm" placeholder="Cari Data User.." aria-label="Cari Data Petani.." aria-describedby="basic-addon2">
+                        <input type="text" id="search" class="form-control form-control text-dark-sm" placeholder="Cari Data User.." aria-label="Cari Data Petani.." aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-sm btn-gradient-success" type="button">Cari</button>
+                            <button class="btn btn-sm btn-success" type="button">Cari</button>
                         </div>
                     </div>
                     &nbsp;
-                    <button type="button" class="btn btn-gradient-success btn-icon-text d-flex add" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
+                    <button type="button" class="btn btn-success btn-icon-text d-flex add" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
                         <i class="mdi mdi-plus btn-icon-prepend"></i>Tambah
                     </button>
                 </div>

@@ -16,28 +16,32 @@
                                 <h2 class="">Masuk</h2>
                             </div>
                             <h4>Selamat Datang..!</h4>
-                            <h6 class="font-weight-light">Masuk untuk melanjutkan</h6>
-                            <form class="pt-3" action="{{ route('login') }}" method="POST">
-                                @csrf
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" placeholder="Username" name="username" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" placeholder="Password" name="password" required>
-                                </div>
-                                <div class="mt-3">
-                                    <button type="submit" class="btn btn-block btn-success  btn-lg font-weight-medium auth-form-btn">Masuk</button>
-                                </div>
-                            </form>
+                            <h6 class="
+                                    font-weight-light">Masuk untuk melanjutkan</h6>
+                                    <form class="pt-3" action="{{ route('login') }}" method="POST">
+                                        @csrf
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-lg" placeholder="Username"
+                                                name="username" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-lg"
+                                                placeholder="Password" name="password" required>
+                                        </div>
+                                        <div class="mt-3">
+                                            <button type="submit"
+                                                class="btn btn-block btn-success  btn-lg font-weight-medium auth-form-btn">Masuk</button>
+                                        </div>
+                                    </form>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- content-wrapper ends -->
             </div>
-            <!-- content-wrapper ends -->
+            <!-- page-body-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-@endsection
-@section('specific-js')
-    <script src="{{ asset('assets/js/function/Auth.js') }}"></script>
-@endsection
+    @endsection
+    @section('specific-js')
+        <script src="{{ asset('assets/js/function/Auth.js') }}"></script>
+    @endsection

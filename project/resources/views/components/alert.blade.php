@@ -1,6 +1,6 @@
 <div class="alert alert_{{ $type }}" style="animation-delay: .1s">
     <div class="alert--icon">
-        <i class="{{ $icon }}"></i>
+        <i class="{{ $icon ?? '' }}"></i>
     </div>
     <div class="alert--content">
         {{ $message }}

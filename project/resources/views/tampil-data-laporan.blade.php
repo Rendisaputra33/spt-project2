@@ -26,11 +26,13 @@
             <div class="col-lg-12 p-0 d-flex justify-content-between">
                 <h2>Data Laporan</h2>
                 <div class="right d-flex align-items-center">
-                    <button type="button" class="btn btn-gradient-success btn-icon-text d-flex" data-target="#modal-md-filter" id='tbh' data-toggle="modal">
+                    <button type="button" class="btn btn-success btn-icon-text d-flex" data-target="#modal-md-filter"
+                        id='tbh' data-toggle="modal">
                         <i class="mdi mdi-filter-outline"></i>Filter
                     </button>
                     &nbsp;
-                    <a class="btn btn-gradient-success btn-icon-text d-flex" href="{{ url('/laporan/cetak/') . '/' }}{{ !isset($filter) ? 'month' : $filter['type'] . '=' . $filter['data'] }}">
+                    <a class="btn btn-success btn-icon-text d-flex"
+                        href="{{ url('/laporan/cetak/') . '/' }}{{ !isset($filter) ? 'month' : $filter['type'] . '=' . $filter['data'] }}">
                         <i class="mdi mdi-printer"></i>Cetak
                     </a>
                 </div>
@@ -80,9 +82,13 @@
                                         <td>{{ $item->variasi_ }}</td>
                                         <td>{{ $item->type_ }}</td>
                                         <td>{{ $item->keterangan === null ? '-' : $item->keterangan }}</td>
-                                        <td>{{ $item->harga_beli === null ? '-' : 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') }}</td>
-                                        <td>{{ $item->hpp === null ? '-' : 'Rp. ' . number_format($item->hpp, 0, ',', '.') }}</td>
-                                        <td>{{ 'Rp. ' . number_format($item->sisa, 0, ',', '.') }}</td>
+                                        <td>{{ $item->harga_beli === null ? '-' : 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') }}
+                                        </td>
+                                        <td>{{ $item->hpp === null ? '-' : 'Rp. ' . number_format($item->hpp, 0, ',', '.') }}
+                                        </td>
+                                        <td>
+                                            {{ $item->hpp !== null && $item->harga_beli !== null ? 'Rp. ' . number_format(($item->hpp - $item->harga_beli) * $item->bobot, 0, ',', '.') : '-' }}
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -137,8 +143,11 @@
         </div>
         <footer class=" footer">
             <div class="container-fluid clearfix">
-                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
+                    2020</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
+                        href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin
+                        templates </a> from Bootstrapdash.com</span>
             </div>
         </footer>
     </div>
@@ -160,14 +169,16 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Tanggal Awal</label>
-                                    <input type="date" value="{{ date('Y-m') }}-01" class="form-control text-dark" name="tanggalaw" id="taw">
+                                    <input type="date" value="{{ date('Y-m') }}-01" class="form-control text-dark"
+                                        name="tanggalaw" id="taw">
                                     <span class="text-dark"></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Tanggal Akhir</label>
-                                    <input type="date" value="{{ date('Y-m-d') }}" class="form-control text-dark" name="tanggalak" id="tak">
+                                    <input type="date" value="{{ date('Y-m-d') }}" class="form-control text-dark"
+                                        name="tanggalak" id="tak">
                                     <span class="text-dark"></span>
                                 </div>
                             </div>
@@ -183,7 +194,8 @@
                         </div>
                         <div class="form-group">
                             <label for="masa">Masa Giling</label>
-                            <input type="text" name="masa" value="{{ date('Y') }}" id="masa" class="form-control texk-dark">
+                            <input type="text" name="masa" value="{{ date('Y') }}" id="masa"
+                                class="form-control texk-dark">
                         </div>
                         <div class="form-group">
                             <label for="periode">Periode</label>
@@ -204,7 +216,7 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <button type="submit" id="filter" class="btn btn-gradient-success">Cari</button>
+                        <button type="submit" id="filter" class="btn btn-success">Cari</button>
                     </div>
                 </form>
             </div>

@@ -37,21 +37,24 @@ function formatTanggal($tgl)
                 <h2>Data Transaksi</h2>
                 <div class="right d-flex align-items-center">
                     <div class="input-group">
-                        <input type="text" class="form-control text-dark form-control text-dark-sm" id="search" placeholder="Cari Data Petani.." aria-label="Cari Data Petani.." aria-describedby="basic-addon2">
+                        <input type="text" class="form-control text-dark form-control text-dark-sm" id="search"
+                            placeholder="Cari Data Petani.." aria-label="Cari Data.." aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-sm btn-gradient-success" type="button">Cari</button>
+                            <button class="btn btn-sm btn-success" type="button">Cari</button>
                         </div>
                     </div>
                     &nbsp;
-                    <a href="{{ url('/') . '/entry/cek/hpp' }}" class="hpp btn btn-gradient-success btn-icon-text d-flex">
+                    <a href="{{ url('/') . '/entry/cek/hpp' }}" class="hpp btn btn-success btn-icon-text d-flex">
                         <i class="mdi mdi-clipboard-text btn-icon-prepend"></i>HPP
                     </a>
                     &nbsp;
-                    <button type="button" class="btn btn-gradient-success btn-icon-text d-flex" data-target="#modal-md-filter" id='tbh' data-toggle="modal">
+                    <button type="button" class="btn btn-success btn-icon-text d-flex" data-target="#modal-md-filter"
+                        id='tbh' data-toggle="modal">
                         <i class="mdi mdi-filter-outline btn-icon-prepend"></i>Filter
                     </button>
                     &nbsp;
-                    <button type="button" class="btn btn-gradient-success btn-icon-text d-flex add" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal">
+                    <button type="button" class="btn btn-success btn-icon-text d-flex add" data-target="#modal-lg-tambah"
+                        id='tbh' data-toggle="modal">
                         <i class="mdi mdi-plus btn-icon-prepend"></i>Tambah
                     </button>
                 </div>
@@ -84,7 +87,7 @@ function formatTanggal($tgl)
                             <tbody id="list">
                                 <?php $bobot = 0; ?>
                                 @foreach ($data as $item)
-                                    <tr class="___class_+?26___">
+                                    <tr>
                                         <?php $bobot += $item->bobot; ?>
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
@@ -96,12 +99,20 @@ function formatTanggal($tgl)
                                         <td>{{ $item->nopol }}</td>
                                         <td>{{ $item->pabrik }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-sm btn-info btn-icon-text detail" data-target="#modal-lg-detail" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
-                                                <i class="mdi mdi-information-outline btn-icon-prepend"></i>Detail </button>
-                                            <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
-                                                <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>Ubah </button>
-                                            <a href="{{ url('/entry') . '/' . $item->id_entry }}" class="btn btn-sm btn-danger btn-icon-text delete">
-                                                <i class="mdi mdi-delete-forever btn-icon-prepend"></i>Hapus </a>
+                                            <button type="button" class="btn btn-sm btn-info btn-icon-text detail"
+                                                data-target="#modal-lg-detail" id='tbh' data-toggle="modal"
+                                                data-id="{{ $item->id_entry }}">
+                                                <i class="mdi mdi-information-outline btn-icon-prepend"></i>Detail
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-warning btn-icon-text update"
+                                                data-target="#modal-lg-tambah" id='tbh' data-toggle="modal"
+                                                data-id="{{ $item->id_entry }}">
+                                                <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>Ubah
+                                            </button>
+                                            <a href="{{ url('/entry') . '/' . $item->id_entry }}"
+                                                class="btn btn-sm btn-danger btn-icon-text delete">
+                                                <i class="mdi mdi-delete-forever btn-icon-prepend"></i>Hapus
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -134,8 +145,11 @@ function formatTanggal($tgl)
         </div>
         <footer class="footer">
             <div class="container-fluid clearfix">
-                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
+                    2020</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
+                        href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin
+                        templates </a> from Bootstrapdash.com</span>
             </div>
         </footer>
     </div>
@@ -160,25 +174,29 @@ function formatTanggal($tgl)
                                 <select class="form-control text-dark" name="pabrik" id="pabrik" required>
                                     <option selected value="">Pilih</option>
                                     @foreach ($pabrik as $item)
-                                        <option value="{{ $item->id_pabrik }} | {{ $item->nama_pabrik }}">{{ $item->nama_pabrik }}</option>
+                                        <option value="{{ $item->id_pabrik }} | {{ $item->nama_pabrik }}">
+                                            {{ $item->nama_pabrik }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="pabrik">Tanggal</label>
-                                <input type="date" class="form-control text-dark" name="tanggal" value="{{ date('Y-m-d') }}" required>
+                                <input type="date" class="form-control text-dark" name="tanggal"
+                                    value="{{ date('Y-m-d') }}" required>
                             </div>
                         </div>
                         <div class="col-lg-12 d-flex">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="masa">Masa Giling</label>
-                                    <input type="text" class="form-control text-dark" placeholder="Masa Giling" name="masa" required>
+                                    <input type="text" class="form-control text-dark" placeholder="Masa Giling" name="masa"
+                                        required>
                                     <span class="text-dark"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="periode">Periode</label>
-                                    <select class="form-control text-dark text-dark" name="periode" id="periode" data-change="add" aria-readonly="true" required>
+                                    <select class="form-control text-dark text-dark" name="periode" id="periode"
+                                        data-change="add" aria-readonly="true" required>
                                         <option selected value="">Pilih</option>
                                         <option>1</option>
                                     </select>
@@ -194,16 +212,19 @@ function formatTanggal($tgl)
                                 </div>
                                 <div class="form-group">
                                     <label for="petani">Petani</label>
-                                    <input type="text" class="form-control text-dark" placeholder="Petani" name="petani" readonly required>
+                                    <input type="text" class="form-control text-dark" placeholder="Petani" name="petani"
+                                        readonly required>
                                 </div>
                                 <div class="form-group" id="nospta">
                                     <label for="exampleInputPassword1">No SPTA</label>
-                                    <input type="text" class="form-control text-dark" placeholder="No SPTA" name="nospta" required>
+                                    <input type="text" class="form-control text-dark" placeholder="No SPTA" name="nospta"
+                                        required>
                                     <span class="text-dark"></span>
                                 </div>
                                 <div class="form-group" id="nopol">
                                     <label for="exampleInputPassword1">No POL</label>
-                                    <input type="text" class="form-control text-dark" placeholder="Nopol" name="nopol" required>
+                                    <input type="text" class="form-control text-dark" placeholder="Nopol" name="nopol"
+                                        required>
                                     <span class="text-dark"></span>
                                 </div>
 
@@ -223,13 +244,15 @@ function formatTanggal($tgl)
                                     <select class="form-control text-dark" name="keterangan" id="ket">
                                         <option selected value="">Pilih</option>
                                         @foreach ($pengirim as $item)
-                                            <option value="{{ $item->id_pengirim }}">{{ $item->nama_pengirim }}</option>
+                                            <option value="{{ $item->id_pengirim }}">{{ $item->nama_pengirim }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group" id="hpp">
                                     <label for="exampleInputPassword1">HPP</label>
-                                    <input type="text" class="form-control text-dark" onkeypress="return isNumber(event)" placeholder="Hpp" name="hpp">
+                                    <input type="text" class="form-control text-dark" onkeypress="return isNumber(event)"
+                                        placeholder="Hpp" name="hpp">
                                     <span class="text-dark"></span>
                                 </div>
                                 {{-- <div class="form-group" id="harga_beli">
@@ -239,7 +262,8 @@ function formatTanggal($tgl)
                                 </div> --}}
                                 <div class="form-group" id="bobot">
                                     <label for="exampleInputPassword1">Bobot</label>
-                                    <input type="text" onkeypress="return isNumber(event)" class="form-control text-dark" placeholder="Bobot" name="bobot" required>
+                                    <input type="text" onkeypress="return isNumber(event)" class="form-control text-dark"
+                                        placeholder="Bobot" name="bobot" required>
                                     <span class="text-dark"></span>
                                 </div>
                                 {{-- <div class="form-group">
@@ -261,7 +285,7 @@ function formatTanggal($tgl)
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-gradient-success">Simpan</button>
+                        <button type="submit" class="btn btn-success">Simpan</button>
                     </div>
                 </div>
             </div>
@@ -354,7 +378,8 @@ function formatTanggal($tgl)
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-gradient-danger" data-dismiss="modal" aria-label="Close">Close</button>
+                    <button type="submit" class="btn btn-danger float-right" data-dismiss="modal"
+                        aria-label="Close">Close</button>
                 </div>
             </div>
         </div>
@@ -376,14 +401,16 @@ function formatTanggal($tgl)
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="tgl1">Tanggal Awal</label>
-                                <input type="date" value="{{ date('Y-m') }}-01" class="form-control text-dark" name="tanggalawal" id="tgl1">
+                                <input type="date" value="{{ date('Y-m') }}-01" class="form-control text-dark"
+                                    name="tanggalawal" id="tgl1">
                                 <span class="text-dark"></span>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="tgl2">Tanggal Akhir</label>
-                                <input type="date" value="{{ date('Y-m-d') }}" class="form-control text-dark" name="tanggalakhir" id="tgl2">
+                                <input type="date" value="{{ date('Y-m-d') }}" class="form-control text-dark"
+                                    name="tanggalakhir" id="tgl2">
                                 <span class="text-dark"></span>
                             </div>
                         </div>
@@ -391,49 +418,13 @@ function formatTanggal($tgl)
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <a href="{{ url('/entry') }}" class="btn btn-gradient-success filter">Cari</a>
+                    <a href="{{ url('/entry') }}" class="btn btn-success filter">Cari</a>
                 </div>
             </div>
         </div>
         <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
-    <div class="modal fade" id="modal-md-hpp">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">List Transaksi Yang Belum Ada HPP</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="col-md-12" style="padding: 0 2rem 2rem 2rem;">
-                        <table class="table table-bordered table-sm w-100" style="table-layout: fixed;">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>MG</th>
-                                    <th>Periode</th>
-                                    <th>Tanggal</th>
-                                    <th>REG</th>
-                                    <th>No SPTA</th>
-                                    <th>No TRUK</th>
-                                    <th>Pabrik</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody id="list-hpp">
 
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <!-- /.card-body -->
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
     <!-- /.modal-dialog -->
     <div class="modal fade" id="modal-md-edit-hpp">
         <div class="modal-dialog modal-md">
@@ -453,7 +444,7 @@ function formatTanggal($tgl)
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <a href="" class="btn btn-gradient-success">Simpan</a>
+                    <a href="" class="btn btn-success">Simpan</a>
                 </div>
             </div>
         </div>

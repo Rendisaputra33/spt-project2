@@ -25,20 +25,22 @@
         body {
             margin: 0 1.5rem !important;
         }
-    
+
         table {
-            border-collapse: collapse !important; 
+            border-collapse: collapse !important;
             border-spacing: 0 !important;
         }
+
         /*tr.firstrow{*/
         /*    page-break-before: always !important;*/
         /*}*/
         /*.page-break {*/
         /*    page-break-before: always !important;*/
         /*}*/
-        p.tglcetak{
+        p.tglcetak {
             display: flex !important;
         }
+
     </style>
     @yield('specific-css')
 </head>

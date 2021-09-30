@@ -8,11 +8,11 @@
                     <div class="input-group">
                         <input type="text" id="search" class="form-control text-dark form-control text-dark-sm" placeholder="Cari Data Pabrik.." aria-label="Cari Data Petani.." aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-sm btn-gradient-success" type="button">Cari</button>
+                            <button class="btn btn-sm btn-success" type="button">Cari</button>
                         </div>
                     </div>
                     &nbsp;
-                    <button type="button" class="btn btn-gradient-success btn-icon-text d-flex" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
+                    <button type="button" class="btn btn-success btn-icon-text d-flex" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
                         <i class="mdi mdi-plus btn-icon-prepend"></i>Tambah
                     </button>
                 </div>
@@ -92,7 +92,7 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-gradient-success">Simpan</button>
+                        <button type="submit" class="btn btn-success">Simpan</button>
                     </div>
                 </div>
             </div>

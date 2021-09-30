@@ -14,6 +14,7 @@ class isAdmin
      * @param  \Closure  $next
      * @return mixed
      */
+
     public function handle(Request $request, Closure $next)
     {
         if (session('username') !== null) {

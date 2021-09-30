@@ -30,18 +30,20 @@ function formatTanggal($tgl)
 
     }
 
-    
-    p.tglcetak{
+
+    p.tglcetak {
         display: none;
         font-size: 0.75rem !important;
-        
+
     }
+
     /*.page-break {*/
     /*    page-break-before: auto !important;*/
     /*}*/
     /*tr.firstrow {*/
-	   /* page-break-inside: avoid !important;*/
+    /* page-break-inside: avoid !important;*/
     /*}*/
+
 </style>
 @section('content')
     <div class="main-panel mx-auto">
@@ -50,7 +52,7 @@ function formatTanggal($tgl)
                 <div class="col-md-12 text-left">
                     <p class="tglcetak">
                         <?php
-                            echo date("d/m/Y");
+                        echo date('d/m/Y');
                         ?>
                     </p>
                 </div>
@@ -153,11 +155,12 @@ function formatTanggal($tgl)
 
                             <tr class="border border-top-2 border-dark">
                                 <td class="py-2" colspan="11" class=""></td>
-                                <td class="py-2" colspan="2" class="">
+                                <td class=" py-2" colspan="2" class="">
                                     Total Bobot : {{ $bobot }} Kwintal
                                 </td>
-                                <td class="py-2" colspan="1" class=""></td>
-                                <td class="py-2" colspan="2" class="">Total Sisa : Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
+                                <td class=" py-2" colspan="1" class=""></td>
+                                <td class=" py-2" colspan="2"
+                                    class="">Total Sisa : Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
 
                             </tr>
                             </tbody>
@@ -165,12 +168,12 @@ function formatTanggal($tgl)
                 </div>
             </div>
         </div>
-        <div class="float-right ml-auto">
-            <button onclick="printContent('print')" type="button" class="btn btn-gradient-info btn-icon-text d-flex">
-                <i class="mdi mdi-printer"></i>&nbsp;Cetak
-            </button>
-        </div>
-    @endsection
-    @section('specific-js')
-        <script src="{{ asset('assets/js/function/Entry.js') }}"></script>
-    @endsection
+        <div class=" float-right ml-auto">
+                                    <button onclick="printContent('print')" type="button" class="btn btn-info btn-icon-text d-flex">
+                                        <i class="mdi mdi-printer"></i>&nbsp;Cetak
+                                    </button>
+                </div>
+            @endsection
+            @section('specific-js')
+                <script src="{{ asset('assets/js/function/Entry.js') }}"></script>
+            @endsection

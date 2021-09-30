@@ -11,13 +11,16 @@
     <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <meta name="baseurl" aria-valuemin="{{ url('/') }}">
+    <meta name="token" content="{{ csrf_token() }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/devcss.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('assets/plugins/icon/css/all.min.css') }}">
     <!-- online style -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alerts-css@1.0.2/assets/css/alerts-css.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.18/sweetalert2.min.css" integrity="sha512-riZwnB8ebhwOVAUlYoILfran/fH0deyunXyJZ+yJGDyU0Y8gsDGtPHn1eh276aNADKgFERecHecJgkzcE9J3Lg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.18/sweetalert2.min.css"
+        integrity="sha512-riZwnB8ebhwOVAUlYoILfran/fH0deyunXyJZ+yJGDyU0Y8gsDGtPHn1eh276aNADKgFERecHecJgkzcE9J3Lg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- specific styling -->
     @yield('specific-css')
     <style>
@@ -37,7 +40,8 @@
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="mdi mdi-menu"></span>
                 </button>
-                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
                     <span class="mdi mdi-menu"></span>
                 </button>
             </div>
@@ -63,30 +67,37 @@
                     </li>
                     @if (session('role') === 2)
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#data-master" aria-expanded="false" aria-controls="data-master">
+                            <a class="nav-link" data-toggle="collapse" href="#data-master" aria-expanded="false"
+                                aria-controls="data-master">
                                 <i class="mdi mdi-folder menu-icon"></i>&nbsp;
                                 <span class="menu-title">Master</span>
                                 <i class="menu-arrow"></i>
                             </a>
                             <div class="collapse" id="data-master">
                                 <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link" href="{{ url('/petani') }}">Petani</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="{{ url('/pabrik') }}">PG</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="{{ url('/user') }}">User</a></li>
-                                    <li class="nav-item"> <a class="nav-link" href="{{ url('/pengirim') }}">Pengirim</a></li>
+                                    <li class="nav-item"> <a class="nav-link"
+                                            href="{{ url('/petani') }}">Petani</a></li>
+                                    <li class="nav-item"> <a class="nav-link"
+                                            href="{{ url('/pabrik') }}">PG</a></li>
+                                    <li class="nav-item"> <a class="nav-link"
+                                            href="{{ url('/user') }}">User</a></li>
+                                    <li class="nav-item"> <a class="nav-link"
+                                            href="{{ url('/pengirim') }}">Pengirim</a></li>
                                 </ul>
                             </div>
                         </li>
                     @endif
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#data-transaksi" aria-expanded="false" aria-controls="data-transaksi">
+                        <a class="nav-link" data-toggle="collapse" href="#data-transaksi" aria-expanded="false"
+                            aria-controls="data-transaksi">
                             <i class="mdi mdi-folder menu-icon"></i>&nbsp;
                             <span class="menu-title">Transaksi</span>&nbsp;
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="data-transaksi">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ url('/entry') }}">Pengiriman Tebu</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ url('/entry') }}">Pengiriman Tebu</a></li>
                             </ul>
                         </div>
                     </li>
@@ -121,7 +132,9 @@
     <script src="{{ asset('assets/plugins/icon/js/fontawesome.min.js') }}"></script>
     <script src="{{ asset('assets/js/function/Log.js') }}"></script>
     {{-- online script --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.18/sweetalert2.min.js" integrity="sha512-mBSqtiBr4vcvTb6BCuIAgVx4uF3EVlVvJ2j+Z9USL0VwgL9liZ638rTANn5m1br7iupcjjg/LIl5cCYcNae7Yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.18/sweetalert2.min.js"
+        integrity="sha512-mBSqtiBr4vcvTb6BCuIAgVx4uF3EVlVvJ2j+Z9USL0VwgL9liZ638rTANn5m1br7iupcjjg/LIl5cCYcNae7Yg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/alerts-css@1.0.1/assets/js/alerts.min.js"></script>
     {{-- definition script --}}
     <script>
