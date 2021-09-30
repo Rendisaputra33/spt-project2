@@ -6,9 +6,7 @@
                 <h2>Data Pembayaran</h2>
                 <div class="right d-flex align-items-center">
                     <div class="input-group">
-                        <input type="text" id="search" class="form-control form-control text-dark-sm"
-                            placeholder="Cari Data Petani.." aria-label="Cari Data Petani.."
-                            aria-describedby="basic-addon2">
+                        <input type="text" id="search" class="form-control form-control text-dark-sm" placeholder="Cari Data Petani.." aria-label="Cari Data Petani.." aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-sm btn-success" type="button">Cari</button>
                         </div>
@@ -48,13 +46,10 @@
                                         <td>{{ $item->totals }}</td>
                                         <td>{{ date('d/m/Y', strtotime($item->creates)) }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-sm btn-info btn-icon-text detail"
-                                                data-target="#modal-lg-detail" id='tbh' data-toggle="modal"
-                                                data-id="{{ str_replace('/', '-', $item->invoice) }}">
+                                            <button type="button" class="btn btn-sm btn-info btn-icon-text detail" data-target="#modal-lg-detail" id='tbh' data-toggle="modal" data-id="{{ str_replace('/', '-', $item->invoice) }}">
                                                 <i class="mdi mdi-information-outline btn-icon-prepend"></i>Detail
                                             </button>
-                                            <a href="{{ url('/pembayaran') . '/' . str_replace('/', '-', $item->invoice) }}"
-                                                class="btn btn-sm btn-danger btn-icon-text delete">
+                                            <a href="{{ url('/pembayaran') . '/' . str_replace('/', '-', $item->invoice) }}" class="btn btn-sm btn-danger btn-icon-text delete">
                                                 <i class="mdi mdi-delete-forever btn-icon-prepend"></i>Hapus
                                             </a>
                                         </td>
@@ -71,75 +66,65 @@
             <div class="container-fluid clearfix">
                 <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
                     2020</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
-                        href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin
                         templates </a> from Bootstrapdash.com</span>
             </div>
         </footer>
     </div>
-    <<<<<<< HEAD <!-- /.modal-dialog -->
-        <div class="modal fade" id="modal-lg-detail">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title">Detail Pembayaran</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            =======
-                            <div id="method"></div>
-                            <div class="modal fade" id="modal-md-tambah">
-                                <div class="modal-dialog modal-md">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h3 class="modal-title">Tambah Data Pengirim</h3>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                id="close-modal" aria-label="Close">
-                                                >>>>>>> a1343948ae04ededc5cdb859de5a96857a4e2ba2
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <<<<<<< HEAD <div class="col-md-12" style="padding: 0 2rem 2rem 2rem;">
-                                                <table class="table table-bordered table-sm w-100"
-                                                    style="table-layout: fixed;">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>No</th>
-                                                            <th>MG</th>
-                                                            <th>Periode</th>
-                                                            <th>Tanggal</th>
-                                                            <th>REG</th>
-                                                            <th>No SPTA</th>
-                                                            <th>No TRUK</th>
-                                                            <th>Pabrik</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="list-detail">
-                                                        <tr>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+    <!-- /.modal-dialog -->
+    <div class="modal fade" id="modal-lg-detail">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Detail Pembayaran</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <div id="method"></div>
+                        <div class="modal fade" id="modal-md-tambah">
+                            <div class="modal-dialog modal-md">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title">Tambah Data Pengirim</h3>
+                                        <button type="button" class="close" data-dismiss="modal" id="close-modal" aria-label="Close">
+
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="col-md-12" style="padding: 0 2rem 2rem 2rem;">
+                                            <table class="table table-bordered table-sm w-100" style="table-layout: fixed;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No</th>
+                                                        <th>MG</th>
+                                                        <th>Periode</th>
+                                                        <th>Tanggal</th>
+                                                        <th>REG</th>
+                                                        <th>No SPTA</th>
+                                                        <th>No TRUK</th>
+                                                        <th>Pabrik</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="list-detail">
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                     <!-- /.card-body -->
                                 </div>
                             </div>
                             <!-- /.modal-content -->
-                    </div>
-                    =======
-                    <div class="form-group" id="reg">
-                        <label for="exampleInputPassword1">Nama Pengirim</label>
-                        <input type="text" autocomplete="off" class="form-control" placeholder="Nama Pengirim" name="nama"
-                            required>
-                        <span class="text-dark"></span>
-                    </div>
+                        </div>
+                    </button>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
@@ -148,10 +133,9 @@
             </div>
         </div>
         <!-- /.modal-dialog -->
-        </div>
-        </form>
-        >>>>>>> a1343948ae04ededc5cdb859de5a96857a4e2ba2
-    @endsection
-    @section('specific-js')
-        <script type="module" src="{{ asset('assets/js/function/module/endpoint/pembayaran/index.js') }}"></script>
-    @endsection
+    </div>
+    </form>
+@endsection
+@section('specific-js')
+    <script type="module" src="{{ asset('assets/js/function/module/endpoint/pembayaran/index.js') }}"></script>
+@endsection
