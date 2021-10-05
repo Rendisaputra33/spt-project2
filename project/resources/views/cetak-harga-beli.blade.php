@@ -1,11 +1,11 @@
-@php
-function formatTanggal($tgl)
-{
-    $data = explode('-', $tgl);
-    $month = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-    return "{$data[2]}/{$month[(int) $data[1] - 1]}/{$data[0]}";
-}
-@endphp
+<?php
+    function formatTanggal($tgl)
+    {
+        $data = explode('-', $tgl);
+        $month = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        return "{$data[2]}/{$month[(int) $data[1] - 1]}/{$data[0]}";
+    }
+?>
 
 @extends('template.cetaklayout')
 <style>
@@ -36,13 +36,6 @@ function formatTanggal($tgl)
         font-size: 0.75rem !important;
 
     }
-
-    /*.page-break {*/
-    /*    page-break-before: auto !important;*/
-    /*}*/
-    /*tr.firstrow {*/
-    /* page-break-inside: avoid !important;*/
-    /*}*/
 
 </style>
 @section('content')
@@ -104,7 +97,8 @@ function formatTanggal($tgl)
                     </table>
                 </div>
                 <div class="col-md-12 mt-4">
-                    <table class="cetak table table-sm table-borderless border border-5 border-dark w-100" style="table-layout: fixed;">
+                    <table class="cetak table table-sm table-borderless border border-5 border-dark w-100"
+                        style="table-layout: fixed;">
                         <tr class=" text-bold text-center border border-bottom-2 border-dark w-100" id="header">
                             <th class="small py-2 px-0">NO</th>
                             <th class="small py-2 px-0">MG</th>
@@ -121,35 +115,39 @@ function formatTanggal($tgl)
                             <th class="medium py-2 px-0">KET</th>
                             <th class="py-2 px-0">BELI</th>
                             <th class="py-2 px-0">HPP</th>
-                            <th class="py-2 px-0">SISA</th>
                         </tr>
                         <tbody>
-                            <tr class="text-capitalize text-center w-auto">
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                                <td>dummy</td>
-                            </tr>
+                            @foreach ($data as $item)
+                                <tr class="text-capitalize text-center w-auto">
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->masa_giling }}</td>
+                                    <td>{{ $item->periode }}</td>
+                                    <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
+                                    <td>{{ $item->pabrik }}</td>
+                                    <td>{{ $item->reg }}</td>
+                                    <td>{{ $item->petani }}</td>
+                                    <td>{{ $item->nospta }}</td>
+                                    <td>{{ $item->nopol }}</td>
+                                    <td>{{ $item->bobot }}</td>
+                                    <td>{{ $item->variasi_ }}</td>
+                                    <td>{{ $item->type_ }}</td>
+                                    <td>{{ $item->keterangan }}</td>
+                                    <td>{{ $item->harga_beli }}</td>
+                                    <td>{{ $item->hpp }}</td>
+                                </tr>
+                            @endforeach
 
                             <tr class="border border-top-2 border-dark">
-                                <td class="py-2" colspan="11" class=""></td>
-                                <td class=" py-2" colspan="2" class="">
+                                <td class="py-2" colspan="11"
+                                    class=""></td>
+                                <td class=" py-2" colspan="2"
+                                    class="">
                                     Total Bobot :  Kwintal
                                 </td>
-                                <td class=" py-2" colspan="1" class=""></td>
-                                <td class=" py-2" colspan="2"
+                                <td class="
+                                    py-2" colspan="1" class=""></td>
+                                <td class=" py-2"
+                                    colspan="2"
                                     class="">Total Sisa : Rp. </td>
 
                             </tr>
@@ -158,8 +156,10 @@ function formatTanggal($tgl)
                 </div>
             </div>
         </div>
-        <div class=" float-right ml-auto">
-                                    <button onclick="printContent('print')" type="button" class="btn btn-info btn-icon-text d-flex">
+        <div class="
+                                    float-right ml-auto">
+                                    <button onclick="printContent('print')" type="button"
+                                        class="btn btn-info btn-icon-text d-flex">
                                         <i class="mdi mdi-printer"></i>&nbsp;Cetak
                                     </button>
                 </div>

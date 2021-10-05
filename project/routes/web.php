@@ -108,10 +108,6 @@ Route::middleware('authuser')->prefix('laporan')
         });
     });
 
-// Route::get('/cetak-laporan', function () {
-//     return view('cetak-laporan', ['title' => 'cetak']);
-// });
-
 Route::get('/', [redirectcontroller::class, 'indexMethod']);
 
 Route::middleware('authuser')->prefix('dashboard')
@@ -145,6 +141,7 @@ Route::middleware('authuser')->prefix('pembayaran')
             Route::get('/list-bayar', [pembayarancontroller::class, 'show']);
             Route::get('/cek-harga', [pembayarancontroller::class, 'cekHarga']);
             Route::post('/filter', [pembayarancontroller::class, 'filter']);
+            Route::get('/report', [pembayarancontroller::class, 'report']);
         });
         // data fetching
         Route::prefix('/data')->group(function () {
@@ -152,7 +149,3 @@ Route::middleware('authuser')->prefix('pembayaran')
             Route::get('/detail/single/{id}', [entrycontroller::class, 'getupMethod']);
         });
     });
-
-Route::get('/cetak-harga-beli', function () {
-    return view('cetak-harga-beli');
-});

@@ -105,8 +105,8 @@
                             <label for="level">Level</label>
                             <select class="form-control text-dark" name="level" id="level">
                                 <option selected value="">Pilih</option>
-                                <option value="1">Admin</option>
-                                <option value="2">Super Admin</option>
+                                <option value="1">Petugas</option>
+                                <option value="2">Admin</option>
                             </select>
                         </div>
                     </div>

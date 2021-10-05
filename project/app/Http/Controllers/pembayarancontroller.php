@@ -170,4 +170,34 @@ class pembayarancontroller extends Controller
         // return data entry with keterangan equals $request['keterangan']
         return response()->json(['data' => $data]);
     }
+
+    /**
+     * Create report for transaksi
+     * 
+     * @param \App\Models\entry  $entry
+     * @param \Illuminate\Http\Request
+     * @return \Illuminate\Http\Response
+     */
+    public function report(Request $req, pembayaran $payment, entry $entry)
+    {
+        // select invoice from query parameter url
+        $invoice = $req->input('invoice');
+        // put data pembayaran with same invoice
+        $listPembayaran = $payment->select('id_entry', 'created_at')->where('invoice', $invoice)->get()->toArray();
+        // put data transaksi with id_entry in $listPembayaran
+        $listTransaksi = $entry->whereIn('id_entry', array_column($listPembayaran, 'id_entry'))->get();
+        // return view report to user
+        return view('cetak-harga-beli', [
+            'title' => 'Cetak Pembayaran',
+            'data' => $listTransaksi,
+            'tanggal_bayar' => $listPembayaran[0]['created_at'],
+            'invoice' => $invoice
+        ]);
+    }
+
+    // 
+    public function cobak()
+    {
+        return redirect('/pembayaran/transaksi/report?invoice=001/INV/IX/2021');
+    }
 }

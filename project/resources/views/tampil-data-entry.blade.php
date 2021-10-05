@@ -38,14 +38,15 @@ function formatTanggal($tgl)
                 <div class="right d-flex align-items-center">
                     <div class="input-group">
                         <input type="text" class="form-control text-dark form-control text-dark-sm" id="search"
-                            placeholder="Cari Data Petani.." aria-label="Cari Data.." aria-describedby="basic-addon2">
+                            placeholder="Cari Data.." aria-label="Cari Data.." aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-sm btn-success" type="button">Cari</button>
                         </div>
                     </div>
                     &nbsp;
-                    <a href="{{ url('/') . '/entry/cek/hpp' }}" class="hpp btn btn-success btn-icon-text d-flex">
-                        <i class="mdi mdi-clipboard-text btn-icon-prepend"></i>HPP
+                    <a href="{{ url('/') . '/entry/cek/hpp' }}" class="hpp btn btn-success btn-icon-text d-flex"
+                        style='width: 54% !important;'>
+                        <i class="mdi mdi-clipboard-text btn-icon-prepend"></i>Lengkapi Data
                     </a>
                     &nbsp;
                     <button type="button" class="btn btn-success btn-icon-text d-flex" data-target="#modal-md-filter"
@@ -161,7 +162,7 @@ function formatTanggal($tgl)
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title">Tambah Data Entry</h3>
+                        <h3 class="modal-title" id="title-ubah">Tambah Data Entry</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -255,22 +256,14 @@ function formatTanggal($tgl)
                                         placeholder="Hpp" name="hpp">
                                     <span class="text-dark"></span>
                                 </div>
-                                {{-- <div class="form-group" id="harga_beli">
-                                    <label for="exampleInputPassword1">Harga Beli</label>
-                                    <input type="text" onkeypress="return isNumber(event)" class="form-control text-dark" placeholder="Harga Beli" name="harga_beli" required>
-                                    <span class="text-dark"></span>
-                                </div> --}}
+
                                 <div class="form-group" id="bobot">
                                     <label for="exampleInputPassword1">Bobot</label>
                                     <input type="text" onkeypress="return isNumber(event)" class="form-control text-dark"
                                         placeholder="Bobot" name="bobot" required>
                                     <span class="text-dark"></span>
                                 </div>
-                                {{-- <div class="form-group">
-                                    <label for="sisa">Sisa</label>
-                                    <input type="text" class="form-control text-dark" placeholder="Sisa" name="sisa" readonly required>
-                                    <span class="text-dark"></span>
-                                </div> --}}
+
                                 <div class="form-group">
                                     <label for="variasi">Variasi</label>
                                     <select class="form-control text-dark" name="variasi" id="variasi" required>
@@ -424,6 +417,7 @@ function formatTanggal($tgl)
         </div>
         <!-- /.modal-content -->
     </div>
+
     <!-- /.modal-dialog -->
     <div class="modal fade" id="modal-md-edit-hpp">
         <div class="modal-dialog modal-md">
