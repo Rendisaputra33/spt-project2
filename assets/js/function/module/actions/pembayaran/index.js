@@ -1,13 +1,16 @@
-import * as General from '../../general/index.js';
 import elements from '../../elements/pembayaran/index.js';
-import { handlerDelete, handlerDetail, handlerFilter, handlerUpdateHarga } from './handler.js';
+import { handlerDelete, handlerDetail, handlerFilter, handlerTgl, handlerUpdateHarga } from './handler.js';
 
 export function bindingDelete() {
-    return General.bindingDelete(handlerDelete);
+    document.querySelectorAll('.delete').forEach((element) => {
+        element.addEventListener('click', handlerDelete);
+    });
 }
 
 export function bindingDetail() {
-    return General.bindingDetail(handlerDetail);
+    document.querySelectorAll('.detail').forEach((element) => {
+        element?.addEventListener('click', handlerDetail);
+    });
 }
 
 export function bindingFilter() {
@@ -15,5 +18,11 @@ export function bindingFilter() {
 }
 
 export function bindingUpdate() {
-    return General.bindingUpdate(handlerUpdateHarga);
+    document.querySelectorAll('.update').forEach((element) => {
+        element.addEventListener('click', handlerUpdateHarga);
+    });
+}
+
+export function bindingFilterTanggal() {
+    elements?.filterTgl?.addEventListener('click', handlerTgl);
 }

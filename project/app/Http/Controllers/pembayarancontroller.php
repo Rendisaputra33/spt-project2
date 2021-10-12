@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Utility\PembayaranUtility;
+use App\Http\Utility\PembayaranUtil;
 use App\Models\entry;
 use App\Models\pembayaran;
 use App\Models\pengirim;
@@ -14,7 +14,7 @@ class pembayarancontroller extends Controller
 
     public function __construct()
     {
-        $this->util = new PembayaranUtility(new pembayaran());
+        $this->util = new PembayaranUtil(new pembayaran());
     }
     /**
      * Display a listing of the resource.
@@ -37,7 +37,7 @@ class pembayarancontroller extends Controller
     public function create(pembayaran $pembayaran, $data)
     {
         return $pembayaran->insert($data)
-            ? redirect('/pembayaran')->with('sukses', 'pembayaran berhasil')
+            ? redirect('/pembayaran/transaksi/report?invoice=' . $data[0]['invoice'])->with('sukses', 'pembayaran berhasil')
             : redirect('/pembayaran')->with('error', 'pembayaran gagal');
     }
 
@@ -196,8 +196,17 @@ class pembayarancontroller extends Controller
     }
 
     // 
-    public function cobak()
+    public function filterTanggal(Request $request)
     {
-        return redirect('/pembayaran/transaksi/report?invoice=001/INV/IX/2021');
+        return response()->json([
+            'data' => pembayaran::whereBetween('created_at', [$request->tgl1, $request->tgl2])->get(),
+        ]);
+    }
+    // 
+    public function filterTanggalCek(Request $request)
+    {
+        return response()->json([
+            'data' => entry::whereBetween('created_at', [$request->tgl1, $request->tgl2])->whereNotNull('keterangan')->get()
+        ]);
     }
 }

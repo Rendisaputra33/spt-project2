@@ -1,4 +1,4 @@
-import elements, { elementDetail, elementList } from '../../elements/pembayaran/index.js';
+import elements, { elementDetail, elementGlobal, elementList } from '../../elements/pembayaran/index.js';
 
 // swal definition
 export const swalDelete = (param) => {
@@ -24,6 +24,12 @@ export const setListDetail = (data) => {
 
 export const setListFilter = (data) => {
     let html = '';
-    data.map((item, index) => (html += elementList(item)));
+    data.map((item) => (html += elementList(item)));
+    elements.tbody.innerHTML = html;
+};
+
+export const setListGlobalTgl = (data, callbak) => {
+    let html = '';
+    data.map((item, index) => (html += callbak(item, index)));
     elements.tbody.innerHTML = html;
 };

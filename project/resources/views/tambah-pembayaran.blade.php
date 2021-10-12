@@ -30,18 +30,7 @@
                     <div class="col-lg-12 p-0 d-flex justify-content-between">
                         <h2>Data Pembayaran</h2>
                         <div class="right d-flex align-items-center">
-                            <div class="input-group">
-                                {{-- <label for="exampleFormControlSelect2">Default select</label> --}}
-                                <select class="form-control" name="filter" id="exampleFormControlSelect2"
-                                    style="width: 8rem !important;">
-                                    @foreach ($pengirim as $item)
-                                        <option value="{{ $item->id_pengirim }}">{{ $item->nama_pengirim }}</option>
-                                    @endforeach
-                                </select>
-                                <div class="input-group-append">
-                                    <button class="btn btn-sm btn-success filter" type="button">Filter</button>
-                                </div>
-                            </div>
+
                             &nbsp;
                             <button type="submit" class="btn btn-success btn-icon-text d-flex">
                                 <i class="mdi mdi-library-books btn-icon-prepend"></i>Bayar
@@ -65,7 +54,22 @@
                     <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                         <div class="card">
                             <div class="card-body">
-                                <table class="table table-sm table-hover w-100" style="table-layout: fixed">
+                                <div class="col-sm-3 right d-flex align-items-center p-0">
+                                    <div class="input-group">
+                                        {{-- <label for="exampleFormControlSelect2">Default select</label> --}}
+                                        <select class="form-control text-dark" name="filter" id="exampleFormControlSelect2"
+                                            style="width: 8rem !important;">
+                                            @foreach ($pengirim as $item)
+                                                <option value="{{ $item->id_pengirim }}">{{ $item->nama_pengirim }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-sm btn-success filter" type="button">Filter</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <table class="table table-hover w-100 mt-5" style="table-layout: fixed">
                                     <thead>
                                         <tr>
                                             <th class="small">#</th>
@@ -76,7 +80,6 @@
                                             <th class="medium">No SPTA</th>
                                             <th class="medium">No TRUK</th>
                                             <th class="large">Pabrik</th>
-                                            <th class="v-large"></th>
                                         </tr>
                                     </thead>
                                     <tbody id="list-data">
@@ -93,13 +96,6 @@
                                                 <td>{{ $item->nospta }}</td>
                                                 <td>{{ $item->nopol }}</td>
                                                 <td>{{ $item->pabrik }}</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-info btn-icon-text detaill"
-                                                        data-target="#modal-lg-detail" id='tbh' data-toggle="modal"
-                                                        data-id="">
-                                                        <i class="mdi mdi-information-outline btn-icon-prepend"></i>Detail
-                                                    </button>
-                                                </td>
                                             </tr>
                                         @endforeach
 
@@ -120,100 +116,6 @@
                             templates </a> from Bootstrapdash.com</span>
                 </div>
             </footer>
-
-        </div>
-
-
-        <!-- modal untuk tambah data -->
-        <div class="modal fade" id="modal-lg-detail">
-            <div class="modal-dialog modal-lg d-flex justify-content-center">
-                <div class="modal-content modal-md-custom">
-                    <div class="modal-header">
-                        <h3 class="modal-title">Detail</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <table class="table d-flex flex-row justify-content-lg-around">
-                            <thead>
-                                <tr class="col-sm d-flex flex-column">
-                                    <th>Periode</th>
-                                    <th>Masa Giling</th>
-                                    <th>Tanggal</th>
-                                    <th>REG</th>
-                                    <th>Petani</th>
-                                    <th>No SPTA</th>
-                                    <th>No POL</th>
-                                    <th>Pabrik</th>
-
-                                </tr>
-                            </thead>
-                            <tr class="col-sm d-flex flex-column p-0">
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-
-                            </tr>
-                            <tbody>
-                                <tr class="col-sm d-flex flex-column">
-                                    <td class="periode">dummy</td>
-                                    <td class="masa">dummy</td>
-                                    <td class="tanggal">dummy</td>
-                                    <td class="reg">dummy</td>
-                                    <td class="petani"></td>
-                                    <td class="nospta">dummy</td>
-                                    <td class="nopol">dummy</td>
-                                    <td class="pabrik">dummy</td>
-                                </tr>
-                            </tbody>
-                            <thead>
-                                <tr class="col-sm d-flex flex-column">
-                                    <th>Variasi</th>
-                                    <th>Type Tebu</th>
-                                    <th>Bobot(KW)</th>
-                                    <th>Ket</th>
-                                    <th>Harga Beli</th>
-                                    <th>HPP</th>
-                                    <th>Sisa</th>
-                                </tr>
-                            </thead>
-                            <tr class="col-sm d-flex flex-column p-0">
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                                <td>:</td>
-                            </tr>
-                            <tbody>
-                                <tr class="col-sm d-flex flex-column">
-                                    <td class="variasi">dummy</td>
-                                    <td class="type">dummy</td>
-                                    <td class="bobot">dummy</td>
-                                    <td class="ket">dummy</td>
-                                    <td class="harga">dummy</td>
-                                    <td class="hpp">dummy</td>
-                                    <td class="sisa">dummy</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-danger float-right" data-dismiss="modal"
-                            aria-label="Close">Close</button>
-                    </div>
-                </div>
-            </div>
-            <!-- /.modal-content -->
         </div>
 
     @endsection

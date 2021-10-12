@@ -37,13 +37,6 @@ function formatTanggal($tgl)
 
     }
 
-    /*.page-break {*/
-    /*    page-break-before: auto !important;*/
-    /*}*/
-    /*tr.firstrow {*/
-    /* page-break-inside: avoid !important;*/
-    /*}*/
-
 </style>
 @section('content')
     <div class="main-panel mx-auto">
@@ -79,7 +72,9 @@ function formatTanggal($tgl)
                         </tr>
                         <tbody>
                             <tr class="col-sm d-flex flex-column p-0">
-                                <td class="p-2">{{ !isset($tanggal) ? 'Semua Tanggal' : formatTanggal($tanggal[0]) . ' - ' . formatTanggal($tanggal[1]) }}</td>
+                                <td class="p-2">
+                                    {{ !isset($tanggal) ? 'Semua Tanggal' : formatTanggal($tanggal[0]) . ' - ' . formatTanggal($tanggal[1]) }}
+                                </td>
                                 <td class="p-2">{{ !isset($pabrik) ? 'Semua Pabrik' : $pabrik }}</td>
                             </tr>
                         </tbody>
@@ -107,7 +102,8 @@ function formatTanggal($tgl)
                     </table>
                 </div>
                 <div class="col-md-12 mt-4">
-                    <table class="cetak table table-sm table-borderless border border-5 border-dark w-100" style="table-layout: fixed;">
+                    <table class="cetak table table-sm table-borderless border border-5 border-dark w-100"
+                        style="table-layout: fixed;">
                         <tr class=" text-bold text-center border border-bottom-2 border-dark w-100" id="header">
                             <th class="small py-2 px-0">NO</th>
                             <th class="small py-2 px-0">MG</th>
@@ -147,19 +143,24 @@ function formatTanggal($tgl)
                                     <td class="small px-0">{{ $item->variasi_ }}</td>
                                     <td class="small px-0">{{ $item->type_ }}</td>
                                     <td class="medium px-0">{{ $item->keterangan }}</td>
-                                    <td class="px-0">Rp. {{ number_format($item->harga_beli, 0, ',', '.') }}</td>
+                                    <td class="px-0">Rp. {{ number_format($item->harga_beli, 0, ',', '.') }}
+                                    </td>
                                     <td class="px-0">Rp. {{ number_format($item->hpp, 0, ',', '.') }}</td>
                                     <td class="px-0">Rp. {{ number_format($item->sisa, 0, ',', '.') }}</td>
                                 </tr>
                             @endforeach
 
                             <tr class="border border-top-2 border-dark">
-                                <td class="py-2" colspan="11" class=""></td>
-                                <td class=" py-2" colspan="2" class="">
+                                <td class="py-2" colspan="11"
+                                    class=""></td>
+                                <td class=" py-2" colspan="2"
+                                    class="">
                                     Total Bobot : {{ $bobot }} Kwintal
                                 </td>
-                                <td class=" py-2" colspan="1" class=""></td>
-                                <td class=" py-2" colspan="2"
+                                <td class="
+                                    py-2" colspan="1" class=""></td>
+                                <td class=" py-2"
+                                    colspan="2"
                                     class="">Total Sisa : Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
 
                             </tr>
@@ -168,8 +169,10 @@ function formatTanggal($tgl)
                 </div>
             </div>
         </div>
-        <div class=" float-right ml-auto">
-                                    <button onclick="printContent('print')" type="button" class="btn btn-info btn-icon-text d-flex">
+        <div class="
+                                    float-right ml-auto">
+                                    <button onclick="printContent('print')" type="button"
+                                        class="btn btn-info btn-icon-text d-flex">
                                         <i class="mdi mdi-printer"></i>&nbsp;Cetak
                                     </button>
                 </div>

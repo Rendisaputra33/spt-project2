@@ -43,6 +43,10 @@ function formatTanggal($tgl)
                             <button class="btn btn-success" type="button">Cari</button>
                         </div>
                     </div>
+                    &nbsp;
+                    <a href="{{ url('/pembayaran/transaksi/list-bayar') }}" class="btn btn-success btn-icon-text d-flex">
+                        <i class="mdi mdi-library-books btn-icon-prepend"></i>Bayar
+                    </a>
                 </div>
             </div>
             <div class="msg mt-2">
@@ -56,7 +60,20 @@ function formatTanggal($tgl)
             <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                 <div class="card">
                     <div class="card-body">
-                        <table class="table table-sm table-hover w-100" style="table-layout: fixed">
+                        <div class="col-sm-6 right d-flex align-items-center p-0">
+                            <div class="input-group">
+
+                                <input type="date" class="form-control text-dark" name="tgl1" value="{{ date('Y-m-d') }}"
+                                    required>
+                                <input type="date" class="form-control text-dark" name="tgl2" value="{{ date('Y-m-d') }}"
+                                    required>
+                                <div class="input-group-append">
+                                    <button class="btn btn-sm btn-success" name="filter" data-page="cek"
+                                        type="button">Filter</button>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-sm table-hover w-100 mt-5" style="table-layout: fixed">
                             <thead>
                                 <tr>
                                     <th class="small">No</th>
@@ -70,7 +87,7 @@ function formatTanggal($tgl)
                                     <th class="v-large"></th>
                                 </tr>
                             </thead>
-                            <tbody id="list">
+                            <tbody id="list-data">
                                 @foreach ($data as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
@@ -82,36 +99,18 @@ function formatTanggal($tgl)
                                         <td>{{ $item->nopol }}</td>
                                         <td>{{ $item->pabrik }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-sm btn-warning btn-icon-text update"
+                                            <button type="button"
+                                                class="btn btn-sm btn-{{ $item->harga_beli === null ? 'danger' : 'warning' }} btn-icon-text update"
                                                 data-target="#modal-md-edit" id='tbh' data-toggle="modal"
                                                 data-id="{{ $item->id_entry }}">
-                                                <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>Ubah </button>
+                                                <i
+                                                    class="mdi mdi-lead-pencil btn-icon-prepend"></i>{{ $item->harga_beli === null ? 'Lengkapi' : 'Ubah' }}
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="row mt-5">
-                            <div class="col-md-12 pt-2">
-                                <table class="table table-dark w-100">
-                                    <tbody id="total_">
-                                        <tr class="bg-dark">
-                                            <td></td>
-                                            <td>Total Bobot</td>
-                                            <td>:</td>
-                                            <td> KW</td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>Total Sisa</td>
-                                            <td>:</td>
-                                            {{-- <td>Rp. {{ number_format($sisa, 0, ',', '.') }}</td> --}}
-                                        </tr>
-                                    </tbody>
-
-                                </table>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

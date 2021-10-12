@@ -204,6 +204,7 @@ const listDelete = () => {
 };
 
 const setFormUpdate = (result) => {
+    document.querySelector('#title-ubah').innerHTML='Ubah Data';
     document.querySelector('#reg-petani').style.display = 'block';
     uiReg(result.reg);
     INPUT.periode.setAttribute('data-change', 'update');
@@ -243,6 +244,7 @@ const setDetail = (data) => {
 };
 
 const clearForm = () => {
+    document.querySelector('#title-ubah').innerHTML='Tambah Data Entry';
     INPUT.action.setAttribute('action', URL_ROOT);
     INPUT.periode.setAttribute('data-change', 'add');
     binddingPeriode();

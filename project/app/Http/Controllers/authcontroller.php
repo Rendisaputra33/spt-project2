@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class authcontroller extends Controller
 {
+
     // check user is already exist or not
     public function getUser(string $username)
     {

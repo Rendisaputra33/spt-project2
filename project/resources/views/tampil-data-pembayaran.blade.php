@@ -4,13 +4,21 @@
         <div class="content-wrapper">
             <div class="col-lg-12 p-0 d-flex justify-content-between">
                 <h2>Data Pembayaran</h2>
+
                 <div class="right d-flex align-items-center">
                     <div class="input-group">
-                        <input type="text" id="search" class="form-control form-control text-dark-sm" placeholder="Cari Data Petani.." aria-label="Cari Data Petani.." aria-describedby="basic-addon2">
+                        <input type="text" id="search" class="form-control form-control text-dark-sm"
+                            placeholder="Cari Data Petani.." aria-label="Cari Data Petani.."
+                            aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-sm btn-success" type="button">Cari</button>
                         </div>
                     </div>
+
+                    &nbsp;
+                    <a href="{{ url('/pembayaran/transaksi/cek-harga') }}" class="btn btn-success btn-icon-text d-flex">
+                        <i class="mdi mdi-clipboard-text btn-icon-prepend"></i>Cek
+                    </a>
                     &nbsp;
                     <a href="{{ url('/pembayaran/transaksi/list-bayar') }}" class="btn btn-success btn-icon-text d-flex">
                         <i class="mdi mdi-plus btn-icon-prepend"></i>Tambah
@@ -27,8 +35,21 @@
             </div>
             <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                 <div class="card">
+
                     <div class="card-body">
-                        <table class="table table-hover">
+                        <div class="col-sm-6 right d-flex align-items-center p-0">
+                            <div class="input-group">
+                                <input type="date" class="form-control text-dark" name="tgl1" value="{{ date('Y-m-d') }}"
+                                    required>
+                                <input type="date" class="form-control text-dark" name="tgl2" value="{{ date('Y-m-d') }}"
+                                    required>
+                                <div class="input-group-append">
+                                    <button class="btn btn-sm btn-success" data-page="pembayaran" name="filter"
+                                        type="button">Filter</button>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-hover mt-5">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -38,7 +59,7 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody id="list">
+                            <tbody id="list-data">
                                 @foreach ($pembayaran as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
@@ -46,10 +67,13 @@
                                         <td>{{ $item->totals }}</td>
                                         <td>{{ date('d/m/Y', strtotime($item->creates)) }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-sm btn-info btn-icon-text detail" data-target="#modal-lg-detail" id='tbh' data-toggle="modal" data-id="{{ str_replace('/', '-', $item->invoice) }}">
+                                            <button type="button" class="btn btn-sm btn-info btn-icon-text detail"
+                                                data-target="#modal-lg-detail" id='tbh' data-toggle="modal"
+                                                data-id="{{ str_replace('/', '-', $item->invoice) }}">
                                                 <i class="mdi mdi-information-outline btn-icon-prepend"></i>Detail
                                             </button>
-                                            <a href="{{ url('/pembayaran') . '/' . str_replace('/', '-', $item->invoice) }}" class="btn btn-sm btn-danger btn-icon-text delete">
+                                            <a href="{{ url('/pembayaran') . '/' . str_replace('/', '-', $item->invoice) }}"
+                                                class="btn btn-sm btn-danger btn-icon-text delete">
                                                 <i class="mdi mdi-delete-forever btn-icon-prepend"></i>Hapus
                                             </a>
                                         </td>
@@ -66,7 +90,8 @@
             <div class="container-fluid clearfix">
                 <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
                     2020</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
+                        href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin
                         templates </a> from Bootstrapdash.com</span>
             </div>
         </footer>
@@ -76,7 +101,9 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title">Detail Pembayaran</h3>
+                    <h3 class="modal-title">Detail Pembayaran
+                        <span id="detail-title"></span>
+                    </h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
