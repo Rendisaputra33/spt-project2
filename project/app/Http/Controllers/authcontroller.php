@@ -51,7 +51,7 @@ class authcontroller extends Controller
         }
         // check password wo=rong or not
         if (!password_verify($req->password, $checkaccount['data']['password'])) {
-            return redirect()->back()->with('error', 'password salah!');;
+            return redirect()->back()->with('error', 'password salah!');
         }
         // set user session end redirect to dashboard
         $this->createSession($req, $checkaccount['data']);
