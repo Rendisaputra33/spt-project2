@@ -36,13 +36,13 @@ function formatTanggal($tgl)
             <div class="col-lg-12 p-0 d-flex justify-content-between">
                 <h2>Data Harga Beli</h2>
                 <div class="right d-flex align-items-center">
-                    <div class="input-group">
+                    {{-- <div class="input-group">
                         <input type="text" id="search" class="form-control form-control" placeholder="Cari Data.."
                             aria-label="Cari Data Petani.." aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-success" type="button">Cari</button>
                         </div>
-                    </div>
+                    </div> --}}
                     &nbsp;
                     <a href="{{ url('/pembayaran/transaksi/list-bayar') }}" class="btn btn-success btn-icon-text d-flex">
                         <i class="mdi mdi-library-books btn-icon-prepend"></i>Bayar
@@ -60,19 +60,6 @@ function formatTanggal($tgl)
             <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                 <div class="card">
                     <div class="card-body">
-                        <div class="col-sm-6 right d-flex align-items-center p-0">
-                            <div class="input-group">
-
-                                <input type="date" class="form-control text-dark" name="tgl1" value="{{ date('Y-m-d') }}"
-                                    required>
-                                <input type="date" class="form-control text-dark" name="tgl2" value="{{ date('Y-m-d') }}"
-                                    required>
-                                <div class="input-group-append">
-                                    <button class="btn btn-sm btn-success" name="filter" data-page="cek"
-                                        type="button">Filter</button>
-                                </div>
-                            </div>
-                        </div>
                         <table class="table table-hover w-100 mt-5" style="table-layout: fixed">
                             <thead>
                                 <tr>

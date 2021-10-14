@@ -144,6 +144,7 @@ Route::middleware('authuser')->prefix('pembayaran')
             Route::get('/report', [pembayarancontroller::class, 'report']);
             Route::post('/filter/pembayaran', [pembayarancontroller::class, 'filterTanggal']);
             Route::post('/filter/cek', [pembayarancontroller::class, 'filterTanggalCek']);
+            Route::get('/cek-harga/update', [pembayarancontroller::class, 'viewUpdate']);
         });
         // data fetching
         Route::prefix('/data')->group(function () {

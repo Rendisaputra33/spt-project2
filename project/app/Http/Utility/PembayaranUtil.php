@@ -17,7 +17,7 @@ class PembayaranUtil
     /**
      * method create new invoice
      */
-    public function createInvoice()
+    public function createInvoice(): string
     {
         // initial model
         $pembayaran = $this->model;
@@ -32,7 +32,7 @@ class PembayaranUtil
     /**
      * method make format invoice
      */
-    private function makeZero($id)
+    private function makeZero($id): int | string
     {
         if ($id < 9) :
             return '00' . ($id += 1);
@@ -44,7 +44,7 @@ class PembayaranUtil
     }
 
     // method generate mounth romawi
-    private function getMounth()
+    private function getMounth(): string
     {
         try {
             $im = (int) date('m');
