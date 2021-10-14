@@ -150,4 +150,9 @@ Route::middleware('authuser')->prefix('pembayaran')
             Route::get('/detail/{id}', [pembayarancontroller::class, 'detail']);
             Route::get('/detail/single/{id}', [entrycontroller::class, 'getupMethod']);
         });
+
+        // 
+        Route::prefix('/report')->group(function () {
+            Route::get('/detail', [pembayarancontroller::class, 'globalReport']);
+        });
     });

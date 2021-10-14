@@ -202,11 +202,21 @@ class pembayarancontroller extends Controller
             'data' => pembayaran::whereBetween('created_at', [$request->tgl1, $request->tgl2])->get(),
         ]);
     }
+
     // 
     public function filterTanggalCek(Request $request)
     {
         return response()->json([
             'data' => entry::whereBetween('created_at', [$request->tgl1, $request->tgl2])->whereNotNull('keterangan')->get()
+        ]);
+    }
+
+    // 
+    public function globalReport(pembayaran $pembayaran)
+    {
+        return view('laporan-pembayaran', [
+            'title' => 'Laporan Pembayaran',
+            'data' => $pembayaran->getPembayaran()
         ]);
     }
 }
