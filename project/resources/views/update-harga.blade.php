@@ -6,6 +6,7 @@ function formatTanggal($tgl)
     return "{$data[2]}/{$month[(int) $data[1] - 1]}/{$data[0]}";
 }
 @endphp
+
 @extends('template.template')
 <style>
     td.small,
