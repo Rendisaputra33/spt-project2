@@ -37,17 +37,6 @@ function formatTanggal($tgl)
             <div class="col-lg-12 p-0 d-flex justify-content-between">
                 <h2>Data Harga Beli</h2>
                 <div class="right d-flex align-items-center">
-                    {{-- <div class="input-group">
-                        <input type="text" id="search" class="form-control form-control" placeholder="Cari Data.."
-                            aria-label="Cari Data Petani.." aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-success" type="button">Cari</button>
-                        </div>
-                    </div> --}}
-                    &nbsp;
-                    <a href="{{ url('/pembayaran/transaksi/list-bayar') }}" class="btn btn-success btn-icon-text d-flex">
-                        <i class="mdi mdi-library-books btn-icon-prepend"></i>Bayar
-                    </a>
                 </div>
             </div>
             <div class="msg mt-2">

@@ -36,10 +36,6 @@
                                 <i class="mdi mdi-library-books btn-icon-prepend"></i>Bayar
                             </button>
                             &nbsp;
-                            <a href="{{ url('/pembayaran/transaksi/cek-harga') }}"
-                                class="btn btn-success btn-icon-text d-flex">
-                                <i class="mdi mdi-clipboard-text btn-icon-prepend"></i>Cek
-                            </a>
                         </div>
 
                     </div>

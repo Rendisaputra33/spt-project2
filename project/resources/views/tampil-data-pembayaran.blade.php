@@ -20,9 +20,6 @@
                         <i class="mdi mdi-clipboard-text btn-icon-prepend"></i>Cek
                     </a>
                     &nbsp;
-                    <a href="{{ url('/pembayaran/transaksi/list-bayar') }}" class="btn btn-success btn-icon-text d-flex">
-                        <i class="mdi mdi-plus btn-icon-prepend"></i>Tambah
-                    </a>
                 </div>
             </div>
             <div class="msg mt-2">
