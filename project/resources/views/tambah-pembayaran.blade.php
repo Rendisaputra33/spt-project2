@@ -36,6 +36,10 @@
                                 <i class="mdi mdi-library-books btn-icon-prepend"></i>Bayar
                             </button>
                             &nbsp;
+                        <button type="button" class="btn btn-success btn-icon-text d-flex add" data-target="#modal-lg-tambah"
+                            id='tbh' data-toggle="modal">
+                            <i class="mdi mdi-plus btn-icon-prepend"></i>Tambah
+                        </button>
                         </div>
 
                     </div>
@@ -71,11 +75,12 @@
                                             <th class="small">#</th>
                                             <th class="small">MG</th>
                                             <th class="medium">Periode</th>
-                                            <th class="large">Tanggal</th>
+                                            <th class="medium">Tanggal</th>
                                             <th class="medium">REG</th>
                                             <th class="medium">No SPTA</th>
                                             <th class="medium">No TRUK</th>
-                                            <th class="large">Pabrik</th>
+                                            <th class="medium">Pabrik</th>
+                                            <th class="large">Harga Beli</th>
                                         </tr>
                                     </thead>
                                     <tbody id="list-data">
@@ -92,6 +97,7 @@
                                                 <td>{{ $item->nospta }}</td>
                                                 <td>{{ $item->nopol }}</td>
                                                 <td>{{ $item->pabrik }}</td>
+                                                <td>{{ 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') }}</td>
                                             </tr>
                                         @endforeach
 

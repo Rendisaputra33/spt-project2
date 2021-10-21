@@ -28,6 +28,7 @@ export const elementDetail = (data, no) => `
         <td>${data.nospta}</td>
         <td>${data.nopol}</td>
         <td>${data.pabrik}</td>
+        <td>${data.harga_beli}</td>
     </tr>
 `;
 
@@ -41,6 +42,7 @@ export const elementList = (data) => `
         <td>${data.nospta}</td>
         <td>${data.nopol}</td>
         <td>${data.pabrik}</td>
+        <td>${data.harga_beli}</td>
     </tr>
 `;
 
@@ -74,13 +76,14 @@ export const elementGlobal = (data, no) => `
         <td>${data.nospta}</td>
         <td>${data.nopol}</td>
         <td>${data.pabrik}</td>
+        <td>${data.harga_beli ? data.harga_beli : '-'}</td>
         <td>
             <button type="button"
-                class="btn btn-sm btn-${data.harga_beli ? 'danger' : 'warning'} btn-icon-text update"
+                class="btn btn-sm btn-${data.harga_beli ? 'warning' : 'danger'} btn-icon-text update"
                 data-target="#modal-md-edit" id='tbh' data-toggle="modal"
                 data-id="${data.id_entry}">
                 <i
-                    class="mdi mdi-lead-pencil btn-icon-prepend"></i>${data.harga_beli ? 'Lengkapi' : 'Ubah'}
+                    class="mdi mdi-lead-pencil btn-icon-prepend"></i>${data.harga_beli ? 'Ubah' : 'Lengkapi'}
             </button>
         </td>
     </tr>

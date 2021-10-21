@@ -69,8 +69,8 @@ function formatTanggal($tgl)
                         <div class="col-sm-6 right d-flex align-items-center p-0">
                             <div class="input-group">
 
-                                <input type="date" class="form-control text-dark" name="tgl1" value="{{ date('Y-m-d') }}"
-                                    required>
+                                <input type="date" class="form-control text-dark" name="tgl1"
+                                    value="{{ date('Y-m') . '-01' }}" required>
                                 <input type="date" class="form-control text-dark" name="tgl2" value="{{ date('Y-m-d') }}"
                                     required>
                                 <div class="input-group-append">
