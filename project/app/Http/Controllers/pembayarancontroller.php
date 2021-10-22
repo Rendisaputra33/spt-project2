@@ -80,7 +80,7 @@ class pembayarancontroller extends Controller
         $ids = $pembayaran->select('id_entry')->get();
         // send data entry to view
         return view('tambah-pembayaran', [
-            'data' => $entry->whereNotIn('id_entry', $ids)->whereNotNull('harga_beli')->whereNotNull('keterangan')->get(),
+            'data' => $entry->whereNotIn('id_entry', $ids)->whereNotNull('harga_beli')->whereNotNull('keterangan')->join('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')->get(),
             'pengirim' => pengirim::orderBy('id_pengirim', 'DESC')->get(),
             'title' => 'Tambah Pembayaran'
         ]);

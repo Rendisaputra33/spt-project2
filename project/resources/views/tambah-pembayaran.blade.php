@@ -79,6 +79,8 @@
                                             <th class="medium">No SPTA</th>
                                             <th class="medium">No TRUK</th>
                                             <th class="medium">Pabrik</th>
+                                            <th class="medium">Berat</th>
+                                            <th class="medium">Pengirim</th>
                                             <th class="large">Harga Beli</th>
                                         </tr>
                                     </thead>
@@ -95,6 +97,8 @@
                                                 <td>{{ $item->nospta }}</td>
                                                 <td>{{ $item->nopol }}</td>
                                                 <td>{{ $item->pabrik }}</td>
+                                                <td>{{ $item->bobot . ' KW' }}</td>
+                                                <td>{{ $item->nama_pengirim }}</td>
                                                 <td>{{ 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') }}</td>
                                             </tr>
                                         @endforeach
