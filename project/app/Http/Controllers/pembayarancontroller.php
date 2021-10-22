@@ -135,7 +135,7 @@ class pembayarancontroller extends Controller
     {
         return view('cek-harga-beli', [
             'title' => 'Cek Harga',
-            'data' => $entry->whereDate('created_at', now())->get()
+            'data' => $entry->whereDate('entry.created_at', now())->join('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')->get()
         ]);
     }
 
@@ -227,7 +227,7 @@ class pembayarancontroller extends Controller
         $ids = $pembayaran->select('id_entry')->get();
         //  
         return view('update-harga', [
-            'data' => entry::whereNotIn('id_entry', $ids)->whereNull('harga_beli')->get()
+            'data' => entry::whereNotIn('id_entry', $ids)->whereNull('harga_beli')->join('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')->get()
         ]);
     }
 }

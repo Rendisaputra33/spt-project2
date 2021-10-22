@@ -37,15 +37,13 @@ function formatTanggal($tgl)
                 <h2>Data Harga Beli</h2>
                 <div class="right d-flex align-items-center">
                     <div class="input-group">
-                        <input type="text" id="search" class="form-control form-control" placeholder="Cari Data.."
-                            aria-label="Cari Data Petani.." aria-describedby="basic-addon2">
+                        <input type="text" id="search" class="form-control form-control" placeholder="Cari Data.." aria-label="Cari Data Petani.." aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-success" type="button">Cari</button>
                         </div>
                     </div>
                     &nbsp;
-                    <a href="{{ url('/pembayaran/transaksi/cek-harga/update') }}"
-                        class="hpp btn btn-success btn-icon-text d-flex" style='width: 54% !important;'>
+                    <a href="{{ url('/pembayaran/transaksi/cek-harga/update') }}" class="hpp btn btn-success btn-icon-text d-flex" style='width: 54% !important;'>
                         <i class="mdi mdi-clipboard-text btn-icon-prepend"></i>Lengkapi Data
                     </a>
 
@@ -69,13 +67,10 @@ function formatTanggal($tgl)
                         <div class="col-sm-6 right d-flex align-items-center p-0">
                             <div class="input-group">
 
-                                <input type="date" class="form-control text-dark" name="tgl1"
-                                    value="{{ date('Y-m') . '-01' }}" required>
-                                <input type="date" class="form-control text-dark" name="tgl2" value="{{ date('Y-m-d') }}"
-                                    required>
+                                <input type="date" class="form-control text-dark" name="tgl1" value="{{ date('Y-m') . '-01' }}" required>
+                                <input type="date" class="form-control text-dark" name="tgl2" value="{{ date('Y-m-d') }}" required>
                                 <div class="input-group-append">
-                                    <button class="btn btn-sm btn-success" name="filter" data-page="cek"
-                                        type="button">Filter</button>
+                                    <button class="btn btn-sm btn-success" name="filter" data-page="cek" type="button">Filter</button>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +84,9 @@ function formatTanggal($tgl)
                                     <th class="medium">REG</th>
                                     <th class="medium">No SPTA</th>
                                     <th class="medium">No TRUK</th>
-                                    <th class="large">Pabrik</th>
+                                    <th class="medium">Pabrik</th>
+                                    <th class="medium">Berat</th>
+                                    <th class="large">Pengirim</th>
                                     <th class="large">Harga Beli</th>
                                     <th class="v-large"></th>
                                 </tr>
@@ -105,15 +102,13 @@ function formatTanggal($tgl)
                                         <td>{{ $item->nospta }}</td>
                                         <td>{{ $item->nopol }}</td>
                                         <td>{{ $item->pabrik }}</td>
+                                        <td>{{ $item->bobot . ' KW' }}</td>
+                                        <td>{{ $item->nama_pengirim }}</td>
                                         <td>{{ $item->harga_beli === null ? '-' : 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') }}
                                         </td>
                                         <td>
-                                            <button type="button"
-                                                class="btn btn-sm btn-{{ $item->harga_beli === null ? 'danger' : 'warning' }} btn-icon-text update"
-                                                data-target="#modal-md-edit" id='tbh' data-toggle="modal"
-                                                data-id="{{ $item->id_entry }}">
-                                                <i
-                                                    class="mdi mdi-lead-pencil btn-icon-prepend"></i>{{ $item->harga_beli === null ? 'Lengkapi' : 'Ubah' }}
+                                            <button type="button" class="btn btn-sm btn-{{ $item->harga_beli === null ? 'danger' : 'warning' }} btn-icon-text update" data-target="#modal-md-edit" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
+                                                <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>{{ $item->harga_beli === null ? 'Lengkapi' : 'Ubah' }}
                                             </button>
                                         </td>
                                     </tr>
@@ -128,8 +123,7 @@ function formatTanggal($tgl)
             <div class="container-fluid clearfix">
                 <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
                     2020</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
-                        href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin
                         templates </a> from Bootstrapdash.com</span>
             </div>
         </footer>
@@ -145,16 +139,14 @@ function formatTanggal($tgl)
                     <div class="modal-header">
                         <h3 class="modal-title">Edit Harga Beli</h3>
 
-                        <button type="button" class="close" data-dismiss="modal" id="close-modal"
-                            aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" id="close-modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="form-group" id="reg">
                             <label for="exampleInputPassword1">Harga Beli</label>
-                            <input type="text" class="form-control" autocomplete="off" placeholder="Harga Beli"
-                                name="harga" required>
+                            <input type="text" class="form-control" autocomplete="off" placeholder="Harga Beli" name="harga" required>
                             <span class="text-dark"></span>
                         </div>
                     </div>
