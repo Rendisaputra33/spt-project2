@@ -37,6 +37,9 @@ function formatTanggal($tgl)
             <div class="col-lg-12 p-0 d-flex justify-content-between">
                 <h2>Data Harga Beli</h2>
                 <div class="right d-flex align-items-center">
+                    <a href="{{ url('/pembayaran/transaksi/cek-harga') }}" class="btn btn-success btn-icon-text d-flex">
+                        <i class="mdi mdi-library-books btn-icon-prepend"></i>Kembali
+                    </a>
                 </div>
             </div>
             <div class="msg mt-2">
