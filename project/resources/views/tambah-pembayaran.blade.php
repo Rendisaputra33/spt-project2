@@ -36,10 +36,10 @@
                                 <i class="mdi mdi-library-books btn-icon-prepend"></i>Bayar
                             </button>
                             &nbsp;
-                        <button type="button" class="btn btn-success btn-icon-text d-flex add" data-target="#modal-lg-tambah"
+                            {{-- <button type="button" class="btn btn-success btn-icon-text d-flex add" data-target="#modal-lg-tambah"
                             id='tbh' data-toggle="modal">
                             <i class="mdi mdi-plus btn-icon-prepend"></i>Tambah
-                        </button>
+                        </button> --}}
                         </div>
 
                     </div>
@@ -57,8 +57,7 @@
                                 <div class="col-sm-3 right d-flex align-items-center p-0">
                                     <div class="input-group">
                                         {{-- <label for="exampleFormControlSelect2">Default select</label> --}}
-                                        <select class="form-control text-dark" name="filter" id="exampleFormControlSelect2"
-                                            style="width: 8rem !important;">
+                                        <select class="form-control text-dark" name="filter" id="exampleFormControlSelect2" style="width: 8rem !important;">
                                             @foreach ($pengirim as $item)
                                                 <option value="{{ $item->id_pengirim }}">{{ $item->nama_pengirim }}
                                                 </option>
@@ -87,8 +86,7 @@
                                         @foreach ($data as $item)
                                             <tr>
                                                 <td>
-                                                    <input type="checkbox" name="id[]" class="form-check-info"
-                                                        value="{{ $item->id_entry }}">
+                                                    <input type="checkbox" name="id[]" class="form-check-info" value="{{ $item->id_entry }}">
                                                 </td>
                                                 <td>{{ $item->masa_giling }}</td>
                                                 <td>{{ $item->periode }}</td>
@@ -112,8 +110,7 @@
                 <div class="container-fluid clearfix">
                     <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
                         bootstrapdash.com 2020</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
-                            href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap
                             admin
                             templates </a> from Bootstrapdash.com</span>
                 </div>
