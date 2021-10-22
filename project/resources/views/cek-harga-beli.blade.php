@@ -95,8 +95,8 @@ function formatTanggal($tgl)
                                 @foreach ($data as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->masa_giling }}</td>
-                                        <td>{{ $item->periode }}</td>
+                                        <td style="padding-left: 10px;">{{ $item->masa_giling }}</td>
+                                        <td style="padding-left: 20px;">{{ $item->periode }}</td>
                                         <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
                                         <td>{{ $item->reg }}</td>
                                         <td>{{ $item->nospta }}</td>
