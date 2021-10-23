@@ -16,8 +16,10 @@ export default {
 
 const timeTodate = tgl => {
 	const date = new Date(tgl);
-	return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+	return `${date.getDate()}/${monthZero(date.getMonth())}/${date.getFullYear()}`;
 };
+
+const monthZero = month => (month + 1 <= 9 ? `0${month + 1}` : month + 1);
 
 export const elementDetail = (data, no) => `
     <tr>
@@ -43,7 +45,7 @@ export const elementList = data => `
         <td>${data.nospta}</td>
         <td>${data.nopol}</td>
         <td>${data.pabrik}</td>
-        <td>${data.bobot}</td>
+        <td>${data.bobot} KW</td>
         <td>${data.nama_pengirim}</td>
         <td>${formatRupiah(data.harga_beli.toString(), "Rp. ")}</td>
     </tr>
