@@ -14,6 +14,13 @@ class PembayaranUtil
         $this->model = $pembayaran;
     }
 
+    // 
+    public function tanggal($tgl)
+    {
+        $timefuture = strtotime($tgl) + 86400;
+        return date('Y-m-d', $timefuture);
+    }
+
     /**
      * method create new invoice
      */

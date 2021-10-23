@@ -200,7 +200,7 @@ class pembayarancontroller extends Controller
     public function filterTanggal(Request $request, pembayaran $pembayaran)
     {
         return response()->json([
-            'data' => $pembayaran->filterPembayaran([$request->tgl1, $request->tgl2]),
+            'data' => $pembayaran->filterPembayaran([$request->tgl1, $this->util->tanggal($request->tgl2)]),
         ]);
     }
 
