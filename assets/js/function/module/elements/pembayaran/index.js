@@ -16,7 +16,7 @@ export default {
 
 const timeTodate = tgl => {
 	const date = new Date(tgl);
-	return date.toLocaleDateString();
+	return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 };
 
 export const elementDetail = (data, no) => `
