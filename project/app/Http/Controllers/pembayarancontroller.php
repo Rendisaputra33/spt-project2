@@ -166,7 +166,8 @@ class pembayarancontroller extends Controller
     {
         $ids = pembayaran::select('id_entry')->get();
         // get data from database
-        $data = $entry->where('keterangan', $request->pengirim)->whereNotIn('id_entry', $ids)->whereNotNull('keterangan')->whereNotNull('harga_beli')->get();
+        $data = $entry->where('keterangan', $request->pengirim)->whereNotIn('id_entry', $ids)->whereNotNull('keterangan')->whereNotNull('harga_beli')
+            ->join('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')->get();
         // return data entry with keterangan equals $request['keterangan']
         return response()->json(['data' => $data]);
     }
@@ -196,10 +197,10 @@ class pembayarancontroller extends Controller
     }
 
     // 
-    public function filterTanggal(Request $request)
+    public function filterTanggal(Request $request, pembayaran $pembayaran)
     {
         return response()->json([
-            'data' => pembayaran::whereBetween('created_at', [$request->tgl1, $request->tgl2])->get(),
+            'data' => $pembayaran->filterPembayaran([$request->tgl1, $request->tgl2]),
         ]);
     }
 
