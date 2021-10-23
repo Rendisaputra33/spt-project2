@@ -175,7 +175,7 @@ class pembayarancontroller extends Controller
     /**
      * Create report for transaksi
      * 
-     * @param \App\Models\entry  $entry
+     * @param \App\Models\entry $entry
      * @param \Illuminate\Http\Request
      * @return \Illuminate\Http\Response
      */
