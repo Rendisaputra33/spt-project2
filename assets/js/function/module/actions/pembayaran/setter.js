@@ -37,9 +37,12 @@ export const setListGlobalTgl = (data, callbak) => {
 export const clearFormUpdateHarga = (elHarga, elLoader) => {
 	elHarga.value = '';
 	elLoader.style.display = 'none';
-	document.getElementById('modal-md-edit').classList.remove('show');
-	// get modal backdrop
-	const modalBackdrops = document.getElementsByClassName('modal-backdrop');
-	// remove opened modal backdrop
-	document.body.removeChild(modalBackdrops[0]);
+	document.getElementById('close-modal').click();
+	// document.getElementById('modal-md-edit').classList.remove('show');
+	// document.getElementById('modal-md-edit').setAttribute('aria-hidden', 'true');
+	// document.getElementById('modal-md-edit').setAttribute('style', 'display: none;');
+	// // get modal backdrop
+	// const modalBackdrops = document.getElementsByClassName('modal-backdrop');
+	// // remove opened modal backdrop
+	// document.body.removeChild(modalBackdrops[0]);
 };
