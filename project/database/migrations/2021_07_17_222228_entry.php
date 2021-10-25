@@ -28,7 +28,7 @@ class Entry extends Migration
             $table->string('variasi_');
             $table->integer('type');
             $table->string('type_');
-            $table->text('keterangan')->nullable();
+            $table->integer('keterangan')->nullable();
             $table->double('harga_beli')->nullable();
             $table->double('hpp')->nullable();
             $table->timestamp('created_at')->useCurrent();
