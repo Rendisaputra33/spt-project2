@@ -33,7 +33,7 @@
 
                     <div class="card-body">
                         <div class="col-sm-6 right d-flex align-items-center p-0">
-                            <div class="input-group">
+                            <div class="input-group" id="filter">
                                 <input type="date" class="form-control text-dark" name="tgl1" value="{{ date('Y-m') . '-01' }}" required>
                                 <input type="date" class="form-control text-dark" name="tgl2" value="{{ date('Y-m-d') }}" required>
                                 <div class="input-group-append">
@@ -70,6 +70,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                                        
                             </tbody>
                         </table>
                     </div>
@@ -126,8 +127,24 @@
                                     <td></td>
                                     <td></td>
                                 </tr>
+                                
                             </tbody>
+                            
                         </table>
+                        <div class="row mt-5">
+                            <div class="col-md-12 pt-2">
+                                <table class="table table-dark w-100">
+                                    <tbody>
+                                        <tr class="float-right">
+                                            <td>Total</td>
+                                            <td>:</td>
+                                            <td>168512365</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- /.card-body -->

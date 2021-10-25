@@ -54,9 +54,9 @@
                     <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                         <div class="card">
                             <div class="card-body">
+                                <label for="filter" class="text-bold">Bambang</label>
                                 <div class="col-sm-3 right d-flex align-items-center p-0">
                                     <div class="input-group">
-                                        {{-- <label for="exampleFormControlSelect2">Default select</label> --}}
                                         <select class="form-control text-dark" name="filter" id="exampleFormControlSelect2" style="width: 8rem !important;">
                                             @foreach ($pengirim as $item)
                                                 <option value="{{ $item->id_pengirim }}">{{ $item->nama_pengirim }}
@@ -102,7 +102,7 @@
                                                 <td>{{ 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') }}</td>
                                             </tr>
                                         @endforeach
-
+                                        
                                     </tbody>
                                 </table>
                             </div>
