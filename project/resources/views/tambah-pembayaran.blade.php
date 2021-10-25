@@ -23,7 +23,7 @@
     </style>
     @section('content')
         <div class="main-panel">
-
+            
             <div class="content-wrapper">
                 <form action="{{ route('bayar') }}" method="post">
                     @csrf
@@ -54,7 +54,7 @@
                     <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                         <div class="card">
                             <div class="card-body">
-                                <label for="filter" class="text-bold">Bambang</label>
+                                <label for="filter" class="text-bold">Nama Pengirim</label>
                                 <div class="col-sm-3 right d-flex align-items-center p-0">
                                     <div class="input-group">
                                         <select class="form-control text-dark" name="filter" id="exampleFormControlSelect2" style="width: 8rem !important;">

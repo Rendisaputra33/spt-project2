@@ -1,4 +1,17 @@
 @extends('template.template')
+<style>
+    #loader {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(88, 88, 88);
+        opacity: 0.7;
+        z-index: 9999;
+    }
+</style>
 @section('content')
     <div class="main-panel">
         <div class="content-wrapper">
@@ -90,6 +103,13 @@
     <!-- /.modal-dialog -->
     <div class="modal fade" id="modal-lg-detail">
         <div class="modal-dialog modal-lg">
+        <div id="loader" style="display: none;">
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border text-light" role="status">
+                <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title">Detail Pembayaran

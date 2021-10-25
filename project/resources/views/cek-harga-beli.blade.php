@@ -43,6 +43,7 @@ function formatTanggal($tgl)
 </style>
 @section('content')
     <input type="hidden" name="data-filter" data-tanggal="{{ !isset($tanggal) ? 'null' : $tanggal }}">
+    
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="col-lg-12 p-0 d-flex justify-content-between">

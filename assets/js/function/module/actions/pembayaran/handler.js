@@ -12,8 +12,11 @@ export function handlerDelete(e) {
 }
 
 export async function handlerDetail(e) {
+	document.getElementById('loader').style.display = ' flex ';
 	// get data form server
 	const data = await getDetail(this.getAttribute('data-id'));
+
+	document.getElementById('loader').style.display = ' none ';
 	// set a title
 	elements.detailTitle.innerHTML = this.getAttribute('data-id').replace(/-/gi, '/');
 	// set data to view
