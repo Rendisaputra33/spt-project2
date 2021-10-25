@@ -97,7 +97,7 @@ class pembayarancontroller extends Controller
         //
         return $entry->where('id_entry', $id)->update([
             'harga_beli' => $request->harga
-        ]) ? redirect()->back() : redirect()->back();
+        ]) ? response()->json(['status' => true]) : response()->json(['status' => false]);
     }
 
     /**

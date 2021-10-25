@@ -37,3 +37,8 @@ export const setListGlobalTgl = (data, callbak) => {
 	data.map((item, index) => (html += callbak(item, index)));
 	elements.tbody.innerHTML = html;
 };
+
+export const clearFormUpdateHarga = (elHarga, elLoader) => {
+	elHarga.value = '';
+	elLoader.style.display = 'none';
+};

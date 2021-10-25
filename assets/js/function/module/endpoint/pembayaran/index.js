@@ -17,5 +17,8 @@ Bind.bindingUpdate();
 //
 Bind.bindingFilterTanggal();
 
+//
+Bind.bindingForm();
+
 // binding event user typing letters
 elements?.inputNumbe?.addEventListener('keypress', isNumber);

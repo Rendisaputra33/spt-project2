@@ -11,7 +11,8 @@ export default {
 	tbody: document.querySelector('#list-data'),
 	filterTgl: document.querySelector('button[name=filter]'),
 	tglAwal: document.querySelector('input[name=tgl1]'),
-	tglAkhir: document.querySelector('input[name=tgl2]')
+	tglAkhir: document.querySelector('input[name=tgl2]'),
+	loader: document.getElementById('loader')
 };
 
 const timeTodate = (tgl) => {

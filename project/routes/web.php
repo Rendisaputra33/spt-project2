@@ -157,3 +157,7 @@ Route::middleware('authuser')->prefix('pembayaran')
             Route::get('/detail', [pembayarancontroller::class, 'globalReport']);
         });
     });
+
+Route::get('/coba', function () {
+    return view('coba');
+});
