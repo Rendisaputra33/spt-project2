@@ -33,7 +33,7 @@ export const elementDetail = (data, no) => `
         <td>${data.nopol}</td>
         <td>${data.pabrik}</td>
         <td>${formatRupiah(data.harga_beli.toString(), 'Rp. ')}</td>
-        <td>${data.harga_beli*data.bobot}</td>
+        <td>${formatRupiah((data.harga_beli*data.bobot).toString(), 'Rp. ')}</td>
     </tr>
 
 `;
