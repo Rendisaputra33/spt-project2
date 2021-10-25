@@ -41,6 +41,6 @@ export const requestupdateHarga = async (data, url) => {
 		const result = await (await fetch(url, options)).json();
 		return result ? true : false;
 	} catch (error) {
-		return false;
+		throw false;
 	}
 };

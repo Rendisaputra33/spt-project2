@@ -28,10 +28,6 @@ export const setListFilter = (data) => {
 	elements.tbody.innerHTML = html;
 };
 
-export const test = (req, res) => {
-	XMLHttpRequest;
-};
-
 export const setListGlobalTgl = (data, callbak) => {
 	let html = '';
 	data.map((item, index) => (html += callbak(item, index)));
@@ -41,4 +37,9 @@ export const setListGlobalTgl = (data, callbak) => {
 export const clearFormUpdateHarga = (elHarga, elLoader) => {
 	elHarga.value = '';
 	elLoader.style.display = 'none';
+	document.getElementById('modal-md-edit').classList.remove('show');
+	// get modal backdrop
+	const modalBackdrops = document.getElementsByClassName('modal-backdrop');
+	// remove opened modal backdrop
+	document.body.removeChild(modalBackdrops[0]);
 };
