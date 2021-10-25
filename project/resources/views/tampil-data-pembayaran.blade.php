@@ -113,6 +113,7 @@
                                     <th>No TRUK</th>
                                     <th>Pabrik</th>
                                     <th>Harga Beli</th>
+                                    <th>Jumlah</th>
                                 </tr>
                             </thead>
                             <tbody id="list-detail">
@@ -135,10 +136,10 @@
                             <div class="col-md-12 pt-2">
                                 <table class="table table-dark w-100">
                                     <tbody>
-                                        <tr class="float-right">
+                                        <tr class="d-flex justify-content-around align-items-center">
                                             <td>Total</td>
                                             <td>:</td>
-                                            <td>168512365</td>
+                                            <td></td>
                                         </tr>
                                     </tbody>
 
