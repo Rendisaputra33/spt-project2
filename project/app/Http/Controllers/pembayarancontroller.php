@@ -208,7 +208,7 @@ class pembayarancontroller extends Controller
     public function filterTanggalCek(Request $request)
     {
         return response()->json([
-            'data' => entry::whereBetween('created_at', [$request->tgl1, $request->tgl2])->whereNotNull('keterangan')->get()
+            'data' => entry::whereBetween('entry.created_at', [$request->tgl1, $this->util->tanggal($request->tgl2)])->whereNotNull('keterangan')->join('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')->get()
         ]);
     }
 

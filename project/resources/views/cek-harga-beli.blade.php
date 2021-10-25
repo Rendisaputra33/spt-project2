@@ -80,14 +80,14 @@ function formatTanggal($tgl)
                                     <th class="small">No</th>
                                     <th class="small">MG</th>
                                     <th class="medium">Periode</th>
-                                    <th class="large">Tanggal</th>
+                                    <th class="medium">Tanggal</th>
                                     <th class="medium">REG</th>
                                     <th class="medium">No SPTA</th>
                                     <th class="medium">No TRUK</th>
                                     <th class="medium">Pabrik</th>
                                     <th class="medium">Berat</th>
-                                    <th class="large">Pengirim</th>
-                                    <th class="large">Harga Beli</th>
+                                    <th class="medium">Pengirim</th>
+                                    <th class="medium">Harga Beli</th>
                                     <th class="v-large"></th>
                                 </tr>
                             </thead>
