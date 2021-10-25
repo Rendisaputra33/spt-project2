@@ -28,5 +28,5 @@ export function bindingFilterTanggal() {
 }
 
 export function bindingForm() {
-	elements?.formUpdate.addEventListener('submit', handlerSubmitform);
+	elements?.formUpdate?.addEventListener('submit', handlerSubmitform);
 }
