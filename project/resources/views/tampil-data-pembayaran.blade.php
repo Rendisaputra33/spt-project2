@@ -159,7 +159,7 @@
                                         <tr class="d-flex justify-content-around align-items-center">
                                             <td>Total</td>
                                             <td>:</td>
-                                            <td></td>
+                                            <td id="totals"></td>
                                         </tr>
                                     </tbody>
 

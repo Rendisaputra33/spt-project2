@@ -1,4 +1,5 @@
 import elements, { elementDetail, elementList } from '../../elements/pembayaran/index.js';
+import { formatRupiah } from '../../general/index.js';
 
 // swal definition
 export const swalDelete = (param) => {
@@ -18,8 +19,10 @@ export const swalDelete = (param) => {
 
 export const setListDetail = (data) => {
 	let html = '';
+	const total = data.reduce((a, b) => a + b.harga_beli * b.bobot, 0);
 	data.map((item, index) => (html += elementDetail(item, index)));
 	elements.listDetail.innerHTML = html;
+	elements.totals.innerHTML = formatRupiah(total.toString(), 'Rp. ');
 };
 
 export const setListFilter = (data) => {
