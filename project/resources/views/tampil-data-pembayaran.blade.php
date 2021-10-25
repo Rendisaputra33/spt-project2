@@ -138,7 +138,7 @@
                                         <tr class="float-right">
                                             <td>Total</td>
                                             <td>:</td>
-                                            <td>168512365</td>
+                                            <td id="totals"></td>
                                         </tr>
                                     </tbody>
 
