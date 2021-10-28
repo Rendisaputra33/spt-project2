@@ -123,5 +123,5 @@
 
     @endsection
     @section('specific-js')
-        <script type="module" src="{{ asset('assets/js/function/module/endpoint/pembayaran/index.js') }}"></script>
+        <script src="{{ asset('assets/js/function/pembayaran.js') }}"></script>
     @endsection

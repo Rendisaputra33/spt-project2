@@ -136,5 +136,5 @@
         </form>
     @endsection
     @section('specific-js')
-        <script type="module" src="{{ asset('assets/js/function/module/endpoint/hpp/index.js') }}"></script>
+        <script type="module" src="{{ asset('assets/js/function/hppBundle.js') }}"></script>
     @endsection

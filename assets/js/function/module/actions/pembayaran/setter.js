@@ -40,5 +40,5 @@ export const setListGlobalTgl = (data, callbak) => {
 export const clearFormUpdateHarga = (elHarga, elLoader) => {
 	elHarga.value = '';
 	elLoader.style.display = 'none';
-	document.getElementById('close-modal').click();
+	document.getElementById('close-modal')?.click();
 };

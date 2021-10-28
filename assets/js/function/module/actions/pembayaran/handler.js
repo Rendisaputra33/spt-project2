@@ -47,7 +47,7 @@ export async function handlerFilter(e) {
 
 export async function handlerTgl(e) {
 	// put value form
-	const value = { tgl1: elements.tglAwal.value, tgl2: elements.tglAkhir.value };
+	const value = { tgl1: elements?.tglAwal?.value, tgl2: elements?.tglAkhir?.value };
 	const delimiter = this === undefined ? 'cek' : this.getAttribute('data-page');
 	const data = await getDataWithTgl(value, delimiter);
 	// operation logical
