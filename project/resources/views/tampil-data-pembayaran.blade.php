@@ -11,6 +11,7 @@
         opacity: 0.7;
         z-index: 9999;
     }
+
 </style>
 @section('content')
     <div class="main-panel">
@@ -72,7 +73,7 @@
                                         <td>{{ $item->invoice }}</td>
                                         <td>{{ date('d/m/Y', strtotime($item->creates)) }}</td>
                                         <td>{{ $item->pengirim }}</td>
-                                        <td>{{ $item->totals }}</td>
+                                        <td>Rp. {{ number_format($item->totals, 0, ',', '.') }}</td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-info btn-icon-text detail" data-target="#modal-lg-detail" id='tbh' data-toggle="modal" data-id="{{ str_replace('/', '-', $item->invoice) }}">
                                                 <i class="mdi mdi-information-outline btn-icon-prepend"></i>Detail
@@ -83,7 +84,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                                        
+
                             </tbody>
                         </table>
                     </div>
@@ -103,13 +104,13 @@
     <!-- /.modal-dialog -->
     <div class="modal fade" id="modal-lg-detail">
         <div class="modal-dialog modal-lg">
-        <div id="loader" style="display: none;">
-            <div class="d-flex justify-content-center">
-                <div class="spinner-border text-light" role="status">
-                <span class="sr-only">Loading...</span>
+            <div id="loader" style="display: none;">
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border text-light" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
                 </div>
             </div>
-        </div>
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title">Detail Pembayaran
@@ -148,9 +149,9 @@
                                     <td></td>
                                     <td></td>
                                 </tr>
-                                
+
                             </tbody>
-                            
+
                         </table>
                         <div class="row mt-5">
                             <div class="col-md-12 pt-2">
@@ -175,5 +176,5 @@
     </div>
 @endsection
 @section('specific-js')
-<script src="{{ asset('assets/js/function/pembayaran.js') }}"></script>
+    <script src="{{ asset('assets/js/function/pembayaran.js') }}"></script>
 @endsection

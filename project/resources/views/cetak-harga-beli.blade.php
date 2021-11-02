@@ -156,8 +156,7 @@
                 </div>
             </div>
         </div>
-        <div class="
-                                    float-right ml-auto">
+        <div class="float-right ml-auto">
                                     <button onclick="printContent('print')" type="button"
                                         class="btn btn-info btn-icon-text d-flex">
                                         <i class="mdi mdi-printer"></i>&nbsp;Cetak

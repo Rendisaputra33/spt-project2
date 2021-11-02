@@ -60,7 +60,7 @@ class pembayarancontroller extends Controller
         $data = $recource->map(function ($ent) use ($invoice) {
             return [
                 'invoice' => $invoice,
-                'total' => 0,
+                'total' => $ent->harga_beli * $ent->bobot,
                 'id_entry' => $ent->id_entry
             ];
         })->toArray();
