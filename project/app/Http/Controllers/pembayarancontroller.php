@@ -186,7 +186,7 @@ class pembayarancontroller extends Controller
         // put data pembayaran with same invoice
         $listPembayaran = $payment->select('id_entry', 'created_at')->where('invoice', $invoice)->get()->toArray();
         // put data transaksi with id_entry in $listPembayaran
-        $listTransaksi = $entry->whereIn('id_entry', array_column($listPembayaran, 'id_entry'))->get();
+        $listTransaksi = $entry->whereIn('id_entry', array_column($listPembayaran, 'id_entry'))->join('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')->get();
         // return view report to user
         return view('cetak-harga-beli', [
             'title' => 'Cetak Pembayaran',

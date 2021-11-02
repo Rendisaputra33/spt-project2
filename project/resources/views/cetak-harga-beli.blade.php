@@ -131,9 +131,9 @@
                                     <td>{{ $item->bobot }}</td>
                                     <td>{{ $item->variasi_ }}</td>
                                     <td>{{ $item->type_ }}</td>
-                                    <td>{{ $item->keterangan }}</td>
-                                    <td>{{ $item->harga_beli }}</td>
-                                    <td>{{ $item->hpp }}</td>
+                                    <td>{{ $item->nama_pengirim }}</td>
+                                    <td>Rp. {{ number_format($item->harga_beli, 0, ',', '.') }}</td>
+                                    <td>Rp. {{ number_format($item->hpp, 0, ',', '.') }}</td>
                                 </tr>
                             @endforeach
 
