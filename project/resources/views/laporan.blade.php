@@ -29,7 +29,7 @@
                                     <th>BOBOT</th>
                                     <th>RF</th>
                                     <th>TEBANGAN</th>
-                                    <th>KET</th>
+                                    <th>PENGIRIM</th>
                                     <th>BELI</th>
                                     <th>HPP</th>
                                     <th>SISA</th>

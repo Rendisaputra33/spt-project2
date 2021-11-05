@@ -55,7 +55,7 @@
                                     <th class="small py-2 px-0">BBT</th>
                                     <th class="small py-2 px-0">VAR</th>
                                     <th class="small py-2 px-0">TYPE</th>
-                                    <th class="medium py-2 px-0">KET</th>
+                                    <th class="medium py-2 px-0">PENGIRIM</th>
                                     <th class="medium py-2 px-0">BELI</th>
                                     <th class="medium py-2 px-0">HPP</th>
                                     <th class="medium py-2 px-0">SISA</th>

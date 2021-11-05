@@ -34,8 +34,8 @@
                             </div>
                         </div>
                         &nbsp;
-                        <button type="button" class="btn btn-success btn-icon-text d-flex" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
-                            <i class="mdi mdi-plus btn-icon-prepend"></i>Tambah
+                        <button type="button" class="btn btn-danger btn-icon-text d-flex" data-target="#modal-md-tambah" id='tbh' data-toggle="modal">
+                            Kembali
                         </button>
                     </div>
 
@@ -78,7 +78,7 @@
                                             <td>{{ $item->pabrik }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-md-edit-hpp" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
-                                                    <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>Ubah </button>
+                                                    <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>Lengkapi </button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -116,7 +116,7 @@
                                 <span class="text-dark"></span>
                             </div>
                             <div class="form-group">
-                                <label for="pengirim">Keterangan</label>
+                                <label for="pengirim">Nama Pengirim</label>
                                 <select class="form-control text-dark" name="pengirim" id="pengirim">
                                     <option selected value="">Pilih</option>
                                     @foreach ($pengirim as $item)

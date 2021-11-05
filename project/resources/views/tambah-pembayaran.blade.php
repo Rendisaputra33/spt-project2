@@ -58,6 +58,9 @@
                                 <div class="col-sm-3 right d-flex align-items-center p-0">
                                     <div class="input-group">
                                         <select class="form-control text-dark" name="filter" id="exampleFormControlSelect2" style="width: 8rem !important;">
+                                            <option>
+                                                Pilih Pengirim
+                                            </option>
                                             @foreach ($pengirim as $item)
                                                 <option value="{{ $item->id_pengirim }}">{{ $item->nama_pengirim }}
                                                 </option>

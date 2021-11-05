@@ -241,7 +241,7 @@ function formatTanggal($tgl)
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="type">Keterangan</label>
+                                    <label for="type">Nama Pengirim</label>
                                     <select class="form-control text-dark" name="keterangan" id="ket">
                                         <option selected value="">Pilih</option>
                                         @foreach ($pengirim as $item)
@@ -341,7 +341,7 @@ function formatTanggal($tgl)
                                 <th>Variasi</th>
                                 <th>Type Tebu</th>
                                 <th>Bobot(KW)</th>
-                                <th>Ket</th>
+                                <th>Nama Pengirim</th>
                                 <th>Harga Beli</th>
                                 <th>HPP</th>
                                 <th>Sisa</th>
