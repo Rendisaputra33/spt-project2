@@ -43,7 +43,7 @@ function formatTanggal($tgl)
 </style>
 @section('content')
     <input type="hidden" name="data-filter" data-tanggal="{{ !isset($tanggal) ? 'null' : $tanggal }}">
-    
+
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="col-lg-12 p-0 d-flex justify-content-between">
@@ -120,7 +120,7 @@ function formatTanggal($tgl)
                                         <td>{{ $item->harga_beli === null ? '-' : 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') }}
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-sm btn-{{ $item->harga_beli === null ? 'danger' : 'warning' }} btn-icon-text update" data-target="#modal-md-edit" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
+                                            <button type="button" data-harga="{{ $item->harga_beli ? $item->harga_beli : 0 }}" class="btn btn-sm btn-{{ $item->harga_beli === null ? 'danger' : 'warning' }} btn-icon-text update" data-target="#modal-md-edit" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
                                                 <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>{{ $item->harga_beli === null ? 'Lengkapi' : 'Ubah' }}
                                             </button>
                                         </td>
@@ -151,7 +151,7 @@ function formatTanggal($tgl)
                 <div id="loader" style="display: none;">
                     <div class="d-flex justify-content-center">
                         <div class="spinner-border text-light" role="status">
-                          <span class="sr-only">Loading...</span>
+                            <span class="sr-only">Loading...</span>
                         </div>
                     </div>
                 </div>
@@ -182,5 +182,5 @@ function formatTanggal($tgl)
 
 @endsection
 @section('specific-js')
-<script src="{{ asset('assets/js/function/pembayaran.js') }}"></script>
+    <script type="module" src="{{ asset('assets/js/function/module/endpoint/pembayaran/index.js') }}"></script>
 @endsection

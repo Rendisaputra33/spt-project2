@@ -12,11 +12,11 @@ export function handlerDelete(e) {
 }
 
 export async function handlerDetail(e) {
-	document.getElementById('loader').style.display = ' flex ';
+	document.getElementById('loader').style.display = 'flex';
 	// get data form server
 	const data = await getDetail(this.getAttribute('data-id'));
 
-	document.getElementById('loader').style.display = ' none ';
+	document.getElementById('loader').style.display = 'none';
 	// set a title
 	elements.detailTitle.innerHTML = this.getAttribute('data-id').replace(/-/gi, '/');
 	// set data to view
@@ -32,14 +32,19 @@ export function handlerSubmitform(e) {
 	elements.loader.style.display = 'flex';
 	// make a request to server
 	requestupdateHarga({ harga: harga.value }, this.getAttribute('action')).then(async (res) => {
-		await handlerTgl({});
-		clearFormUpdateHarga(harga, elements.loader);
+		if (this.getAttribute('data-form')) {
+			clearFormUpdateHarga(harga, elements.loader);
+			window.location.href = elglobal.baseUrl + '/pembayaran/transaksi/cek-harga';
+		} else {
+			clearFormUpdateHarga(harga, elements.loader);
+			await handlerTgl({});
+		}
 	});
 }
 
 export async function handlerFilter(e) {
 	// instance variable
-	const selected = elements?.inputFilter?.value;
+	const selected = elements.inputFilter?.value;
 	const data = await getFilter(selected);
 	// set data to view
 	setListFilter(data.data);
@@ -61,7 +66,9 @@ export async function handlerTgl(e) {
 }
 
 export function handlerUpdateHarga(e) {
-	return elements.formUpdate?.setAttribute('action', elglobal.baseUrl + '/pembayaran/' + this.getAttribute('data-id'));
+	const formUpdate = elements.formUpdate;
+	document.querySelector('input[name=harga]').value = this.getAttribute('data-harga');
+	formUpdate?.setAttribute('action', elglobal.baseUrl + '/pembayaran/' + this.getAttribute('data-id'));
 }
 
 export function handlerAfterElementChanged() {

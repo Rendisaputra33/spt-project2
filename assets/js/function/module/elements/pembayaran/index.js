@@ -12,7 +12,7 @@ export default {
 	filterTgl: document.querySelector('button[name=filter]'),
 	tglAwal: document.querySelector('input[name=tgl1]'),
 	tglAkhir: document.querySelector('input[name=tgl2]'),
-	loader: document.getElementById('loader'),
+	loader: document.querySelector('#loader'),
 	totals: document.getElementById('totals')
 };
 
@@ -34,7 +34,7 @@ export const elementDetail = (data, no) => `
         <td>${data.nopol}</td>
         <td>${data.pabrik}</td>
         <td>${formatRupiah(data.harga_beli.toString(), 'Rp. ')}</td>
-        <td>${formatRupiah((data.harga_beli*data.bobot).toString(), 'Rp. ')}</td>
+        <td>${formatRupiah((data.harga_beli * data.bobot).toString(), 'Rp. ')}</td>
     </tr>
 
 `;

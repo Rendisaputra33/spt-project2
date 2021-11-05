@@ -23,7 +23,7 @@
     </style>
     @section('content')
         <div class="main-panel">
-            
+
             <div class="content-wrapper">
                 <form action="{{ route('bayar') }}" method="post">
                     @csrf
@@ -105,7 +105,7 @@
                                                 <td>{{ 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') }}</td>
                                             </tr>
                                         @endforeach
-                                        
+
                                     </tbody>
                                 </table>
                             </div>
@@ -126,5 +126,5 @@
 
     @endsection
     @section('specific-js')
-        <script src="{{ asset('assets/js/function/pembayaran.js') }}"></script>
+        <script type="module" src="{{ asset('assets/js/function/module/endpoint/pembayaran/index.js') }}"></script>
     @endsection
