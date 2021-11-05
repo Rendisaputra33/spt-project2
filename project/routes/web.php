@@ -135,7 +135,7 @@ Route::middleware('authuser')->prefix('pembayaran')
         Route::get('/', [pembayarancontroller::class, 'index']);
         Route::get('/{id}', [pembayarancontroller::class, 'destroy']);
         Route::post('/', [pembayarancontroller::class, 'store'])->name('bayar');
-        Route::put('/{id}', [pembayarancontroller::class, 'edit']);
+        Route::post('/{id}', [pembayarancontroller::class, 'edit']);
         // transaksi
         Route::prefix('/transaksi')->group(function () {
             Route::get('/list-bayar', [pembayarancontroller::class, 'show']);

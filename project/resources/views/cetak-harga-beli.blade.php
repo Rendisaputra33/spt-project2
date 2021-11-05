@@ -1,10 +1,10 @@
 <?php
-    function formatTanggal($tgl)
-    {
-        $data = explode('-', $tgl);
-        $month = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-        return "{$data[2]}/{$month[(int) $data[1] - 1]}/{$data[0]}";
-    }
+function formatTanggal($tgl)
+{
+    $data = explode('-', $tgl);
+    $month = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+    return "{$data[2]}/{$month[(int) $data[1] - 1]}/{$data[0]}";
+}
 ?>
 
 @extends('template.cetaklayout')
@@ -97,8 +97,7 @@
                     </table>
                 </div>
                 <div class="col-md-12 mt-4">
-                    <table class="cetak table table-sm table-borderless border border-5 border-dark w-100"
-                        style="table-layout: fixed;">
+                    <table class="cetak table table-sm table-borderless border border-5 border-dark w-100" style="table-layout: fixed;">
                         <tr class=" text-bold text-center border border-bottom-2 border-dark w-100" id="header">
                             <th class="small py-2 px-0">NO</th>
                             <th class="small py-2 px-0">MG</th>
@@ -138,31 +137,26 @@
                             @endforeach
 
                             <tr class="border border-top-2 border-dark">
-                                <td class="py-2" colspan="11"
-                                    class=""></td>
-                                <td class=" py-2" colspan="2"
-                                    class="">
-                                    Total Bobot :  Kwintal
+                                <td class="py-2" colspan="11" class=""></td>
+                                <td class=" py-2" colspan="2" class="">
+                                    Total Bobot : Kwintal
                                 </td>
                                 <td class="
                                     py-2" colspan="1" class=""></td>
-                                <td class=" py-2"
-                                    colspan="2"
-                                    class="">Total Sisa : Rp. </td>
+                                <td class=" py-2" colspan="2" class="">Total Sisa : Rp. </td>
 
                             </tr>
-                            </tbody>
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
         <div class="float-right ml-auto">
-                                    <button onclick="printContent('print')" type="button"
-                                        class="btn btn-info btn-icon-text d-flex">
-                                        <i class="mdi mdi-printer"></i>&nbsp;Cetak
-                                    </button>
-                </div>
-            @endsection
-            @section('specific-js')
-                <script src="{{ asset('assets/js/function/Entry.js') }}"></script>
-            @endsection
+            <button onclick="printContent('print')" type="button" class="btn btn-info btn-icon-text d-flex">
+                <i class="mdi mdi-printer"></i>&nbsp;Cetak
+            </button>
+        </div>
+    @endsection
+    @section('specific-js')
+        <script src="{{ asset('assets/js/function/Entry.js') }}"></script>
+    @endsection

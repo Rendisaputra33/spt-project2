@@ -31,7 +31,7 @@ export const getFilter = async (selected) => {
 export const requestupdateHarga = async (data, url) => {
 	// declare option fetch request
 	const options = {
-		method: 'PUT',
+		method: 'POST',
 		headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrfToken },
 		body: JSON.stringify(data)
 	};
