@@ -102,8 +102,7 @@ function formatTanggal($tgl)
                     </table>
                 </div>
                 <div class="col-md-12 mt-4">
-                    <table class="cetak table table-sm table-borderless border border-5 border-dark w-100"
-                        style="table-layout: fixed;">
+                    <table class="cetak table table-sm table-borderless border border-5 border-dark w-100" style="table-layout: fixed;">
                         <tr class=" text-bold text-center border border-bottom-2 border-dark w-100" id="header">
                             <th class="small py-2 px-0">NO</th>
                             <th class="small py-2 px-0">MG</th>
@@ -127,7 +126,7 @@ function formatTanggal($tgl)
                             <?php $sisa = 0; ?>
                             <?php $bobot = 0; ?>
                             @foreach ($data as $item)
-                                <?php $sisa += $item->sisa; ?>
+                                <?php $item->harga_beli && $item->hpp ? ($sisa += ($item->hpp - $item->harga_beli) * $item->bobot) : ($sisa += 0); ?>
                                 <?php $bobot += $item->bobot; ?>
                                 <tr class="text-capitalize text-center w-auto">
                                     <td class="small px-0">{{ $no++ }}</td>
@@ -146,37 +145,32 @@ function formatTanggal($tgl)
                                     <td class="px-0">Rp. {{ number_format($item->harga_beli, 0, ',', '.') }}
                                     </td>
                                     <td class="px-0">Rp. {{ number_format($item->hpp, 0, ',', '.') }}</td>
-                                    <td class="px-0">Rp. {{ number_format($item->sisa, 0, ',', '.') }}</td>
+                                    <td class="px-0">Rp. {{ number_format(($item->hpp - $item->harga_beli) * $item->bobot, 0, ',', '.') }}</td>
                                 </tr>
                             @endforeach
 
                             <tr class="border border-top-2 border-dark">
-                                <td class="py-2" colspan="11"
-                                    class=""></td>
-                                <td class=" py-2" colspan="2"
-                                    class="">
+                                <td class="py-2" colspan="11" class=""></td>
+                                <td class=" py-2" colspan="2" class="">
                                     Total Bobot : {{ $bobot }} Kwintal
                                 </td>
                                 <td class="
                                     py-2" colspan="1" class=""></td>
-                                <td class=" py-2"
-                                    colspan="2"
-                                    class="">Total Sisa : Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
+                                <td class=" py-2" colspan="2" class="">Total Sisa : Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
 
                             </tr>
-                            </tbody>
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
         <div class="
                                     float-right ml-auto">
-                                    <button onclick="printContent('print')" type="button"
-                                        class="btn btn-info btn-icon-text d-flex">
-                                        <i class="mdi mdi-printer"></i>&nbsp;Cetak
-                                    </button>
-                </div>
-            @endsection
-            @section('specific-js')
-                <script src="{{ asset('assets/js/function/Entry.js') }}"></script>
-            @endsection
+            <button onclick="printContent('print')" type="button" class="btn btn-info btn-icon-text d-flex">
+                <i class="mdi mdi-printer"></i>&nbsp;Cetak
+            </button>
+        </div>
+    @endsection
+    @section('specific-js')
+        <script src="{{ asset('assets/js/function/Entry.js') }}"></script>
+    @endsection
