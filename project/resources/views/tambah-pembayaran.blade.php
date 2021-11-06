@@ -91,7 +91,7 @@
                                         @foreach ($data as $item)
                                             <tr>
                                                 <td>
-                                                    <input type="checkbox" name="id[]" class="form-check-info" value="{{ $item->id_entry }}">
+                                                    <input disabled type="checkbox" name="id[]" class="form-check-info" value="{{ $item->id_entry }}">
                                                 </td>
                                                 <td>{{ $item->masa_giling }}</td>
                                                 <td>{{ $item->periode }}</td>

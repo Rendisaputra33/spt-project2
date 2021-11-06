@@ -18,7 +18,7 @@ export default {
 
 const timeTodate = (tgl) => {
 	const date = new Date(tgl);
-	return `${date.getDate()}/${monthZero(date.getMonth())}/${date.getFullYear()}`;
+	return `${date.getDate() < 10 ? '0' + date.getDate() : date.getDate()}/${monthZero(date.getMonth())}/${date.getFullYear()}`;
 };
 
 const monthZero = (month) => (month + 1 <= 9 ? `0${month + 1}` : month + 1);
@@ -61,7 +61,7 @@ export const elementPembayaran = (data, no) => `
         <td>${data.invoice}</td>
         <td>${timeTodate(data.creates)}</td>
         <td>${data.pengirim}</td>
-        <td>${data.totals}</td>
+        <td>${formatRupiah(data.totals.toString(), 'Rp. ')}</td>
         <td>
             <button type="button" class="btn btn-sm btn-info btn-icon-text detail"
                 data-target="#modal-lg-detail" id='tbh' data-toggle="modal"

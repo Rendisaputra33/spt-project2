@@ -13,7 +13,7 @@ class laporancontroller extends Controller
     public function indexMethod()
     {
         return view('tampil-data-laporan', [
-            'data' => entry::whereMonth('created_at', date('m'))->get(),
+            'data' => entry::whereMonth('entry.created_at', date('m'))->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')->get(),
             'pabrik' => pabrik::get(),
             'type' => type::get(),
             'title' => 'Laporan'

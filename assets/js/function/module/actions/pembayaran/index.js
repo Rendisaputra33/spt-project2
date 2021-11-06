@@ -14,9 +14,7 @@ export function bindingDetail() {
 }
 
 export function bindingFilter() {
-	if (elements.btnFilter) {
-		elements.btnFilter?.addEventListener('click', handlerFilter);
-	}
+	elements.btnFilter && elements.btnFilter?.addEventListener('click', handlerFilter);
 }
 
 export function bindingUpdate() {
@@ -26,13 +24,9 @@ export function bindingUpdate() {
 }
 
 export function bindingFilterTanggal() {
-	if (elements.filterTgl) {
-		elements.filterTgl?.addEventListener('click', handlerTgl);
-	}
+	elements.filterTgl && elements.filterTgl?.addEventListener('click', handlerTgl);
 }
 
 export function bindingForm() {
-	if (elements.formUpdate) {
-		elements.formUpdate?.addEventListener('submit', handlerSubmitform);
-	}
+	elements.formUpdate && elements.formUpdate?.addEventListener('submit', handlerSubmitform);
 }

@@ -46,6 +46,12 @@ export async function handlerFilter(e) {
 	// instance variable
 	const selected = elements.inputFilter?.value;
 	const data = await getFilter(selected);
+	// if not data filter disable button
+	if (data.data.length !== 0) {
+		document.querySelectorAll('input[type=checkbox]')?.forEach((el) => {
+			el.disabled = false;
+		});
+	}
 	// set data to view
 	setListFilter(data.data);
 }

@@ -78,7 +78,7 @@
                                         <td>{{ $item->bobot }}</td>
                                         <td>{{ $item->variasi_ }}</td>
                                         <td>{{ $item->type_ }}</td>
-                                        <td>{{ $item->keterangan === null ? '-' : $item->keterangan }}</td>
+                                        <td>{{ $item->keterangan === null ? '-' : $item->nama_pengirim }}</td>
                                         <td>{{ $item->harga_beli === null ? '-' : 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') }}
                                         </td>
                                         <td>{{ $item->hpp === null ? '-' : 'Rp. ' . number_format($item->hpp, 0, ',', '.') }}

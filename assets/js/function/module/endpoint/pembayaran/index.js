@@ -22,6 +22,4 @@ Bind.bindingFilterTanggal();
 Bind.bindingForm();
 
 // binding event user typing letters
-if (elements.inputNumbe) {
-	elements.inputNumbe?.addEventListener('keypress', isNumber);
-}
+elements.inputNumbe && elements.inputNumbe?.addEventListener('keypress', isNumber);
