@@ -2,12 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Utility\HppUtil;
 use App\Models\entry;
 use App\Models\pengirim;
 use Illuminate\Http\Request;
 
 class hppcontroller extends Controller
 {
+    private HppUtil $util;
+
+    public function __construct()
+    {
+        $this->util = new HppUtil();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -32,7 +40,7 @@ class hppcontroller extends Controller
     {
         $id = $request->id;
         return $entry->where('id_entry', $id)->update([
-            'hpp' => $request->hpp,
+            'hpp' => $this->util->matchHpp($request->hpp),
             'keterangan' => $request->pengirim
         ]) ? redirect()->back() : redirect()->back();
     }
