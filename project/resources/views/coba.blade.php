@@ -103,25 +103,25 @@ function formatTanggal($tgl)
                                 </tr>
                             </thead>
                             <tbody id="list-data">
-       
-                                    <tr>
-                                        <td>1</td>
-                                        <td style="padding-left: 10px;">1</td>
-                                        <td style="padding-left: 20px;">1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-primary btn-icon-text update" data-target="#modal-md-edit" id='tbh' data-toggle="modal" data-id="   ">
-                                                <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>{{'Lengkapi'}}
-                                            </button>
-                                        </td>
-                                    </tr>
+
+                                <tr>
+                                    <td>1</td>
+                                    <td style="padding-left: 10px;">1</td>
+                                    <td style="padding-left: 20px;">1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-primary btn-icon-text update" data-target="#modal-md-edit" id='tbh' data-toggle="modal" data-id="   ">
+                                            <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>{{ 'Lengkapi' }}
+                                        </button>
+                                    </td>
+                                </tr>
 
                             </tbody>
                         </table>
@@ -148,7 +148,7 @@ function formatTanggal($tgl)
                 <div id="loader">
                     <div class="d-flex justify-content-center">
                         <div class="spinner-border text-light" role="status">
-                          <span class="sr-only">Loading...</span>
+                            <span class="sr-only">Loading...</span>
                         </div>
                     </div>
                 </div>
@@ -160,9 +160,9 @@ function formatTanggal($tgl)
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    
+
                     <div class="modal-body">
-                        
+
                         <div class="form-group" id="reg">
                             <label for="exampleInputPassword1">Harga Beli</label>
                             <input type="text" class="form-control" autocomplete="off" placeholder="Harga Beli" name="harga" required>

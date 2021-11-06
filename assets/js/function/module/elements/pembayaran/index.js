@@ -13,7 +13,7 @@ export default {
 	tglAwal: document.querySelector('input[name=tgl1]'),
 	tglAkhir: document.querySelector('input[name=tgl2]'),
 	loader: document.querySelector('#loader'),
-	totals: document.getElementById('totals')
+	totals: document.querySelector('#totals')
 };
 
 const timeTodate = (tgl) => {
