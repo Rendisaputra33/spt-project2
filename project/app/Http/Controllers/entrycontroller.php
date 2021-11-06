@@ -119,7 +119,7 @@ class entrycontroller extends Controller
 
     public function getupMethod($id)
     {
-        $data = entry::where('id_entry', $id)->first();
+        $data = entry::where('id_entry', $id)->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')->first();
         return response()->json([
             'data' => $data,
             'reg' => petani::where('id_pabrik', $data->id_pabrik)->get()
