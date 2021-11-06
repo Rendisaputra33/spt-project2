@@ -116,20 +116,19 @@ function formatTanggal($tgl)
                             <th class="medium py-2 px-0">BOBOT</th>
                             <th class="small py-2 px-0">VAR</th>
                             <th class="small py-2 px-0">TYPE</th>
-                            <th class="medium py-2 px-0">KET</th>
+                            <th class="medium py-2 px-0">PENGIRIM</th>
                             <th class="py-2 px-0">BELI</th>
                             <th class="py-2 px-0">HPP</th>
                             <th class="py-2 px-0">SISA</th>
                         </tr>
                         <tbody>
-                            <?php $no = 1; ?>
                             <?php $sisa = 0; ?>
                             <?php $bobot = 0; ?>
                             @foreach ($data as $item)
                                 <?php $item->harga_beli && $item->hpp ? ($sisa += ($item->hpp - $item->harga_beli) * $item->bobot) : ($sisa += 0); ?>
                                 <?php $bobot += $item->bobot; ?>
                                 <tr class="text-capitalize text-center w-auto">
-                                    <td class="small px-0">{{ $no++ }}</td>
+                                    <td class="small px-0">{{ $loop->iteration }}</td>
                                     <td class="small px-0">{{ $item->masa_giling }}</td>
                                     <td class="medium px-0">{{ $item->periode }}</td>
                                     <td class="px-0">{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
@@ -141,11 +140,11 @@ function formatTanggal($tgl)
                                     <td class="medium px-0">{{ $item->bobot }}</td>
                                     <td class="small px-0">{{ $item->variasi_ }}</td>
                                     <td class="small px-0">{{ $item->type_ }}</td>
-                                    <td class="medium px-0">{{ $item->keterangan }}</td>
-                                    <td class="px-0">Rp. {{ number_format($item->harga_beli, 0, ',', '.') }}
+                                    <td class="medium px-0">{{ $item->nama_pengirim ? $item->nama_pengirim : '-' }}</td>
+                                    <td class="px-0">{{ $item->harga_beli ? 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') : '-' }}
                                     </td>
                                     <td class="px-0">Rp. {{ number_format($item->hpp, 0, ',', '.') }}</td>
-                                    <td class="px-0">Rp. {{ number_format(($item->hpp - $item->harga_beli) * $item->bobot, 0, ',', '.') }}</td>
+                                    <td class="px-0">{{ $item->harga_beli && $item->hpp ? 'Rp. ' . number_format(($item->hpp - $item->harga_beli) * $item->bobot, 0, ',', '.') : '-' }}</td>
                                 </tr>
                             @endforeach
 

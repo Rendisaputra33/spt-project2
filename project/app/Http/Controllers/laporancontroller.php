@@ -304,8 +304,9 @@ class laporancontroller extends Controller
             if ($param[0] == 'range') {
                 $data = explode('&', $param[1]);
                 return view('cetak-laporan', [
-                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                    'data' => entry::whereBetween('entry.created_at', [$data[0], $this->tanggal($data[1])])
                         ->where('masa_giling', array_pop($data))
+                        ->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
@@ -314,9 +315,10 @@ class laporancontroller extends Controller
             if ($param[0] == 'periode') {
                 $data = explode('&', $param[1]);
                 return view('cetak-laporan', [
-                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                    'data' => entry::whereBetween('entry.created_at', [$data[0], $this->tanggal($data[1])])
                         ->where('periode', $data[2])
                         ->where('masa_giling', array_pop($data))
+                        ->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
@@ -326,9 +328,10 @@ class laporancontroller extends Controller
             if ($param[0] == 'type') {
                 $data = explode('&', $param[1]);
                 return view('cetak-laporan', [
-                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                    'data' => entry::whereBetween('entry.created_at', [$data[0], $this->tanggal($data[1])])
                         ->where('type_', $data[3])
                         ->where('masa_giling', array_pop($data))
+                        ->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
@@ -338,9 +341,10 @@ class laporancontroller extends Controller
                 $data = explode('&', $param[1]);
                 $query = entry::select('pabrik')->where('id_pabrik', $data[2]);
                 return view('cetak-laporan', [
-                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                    'data' => entry::whereBetween('entry.created_at', [$data[0], $this->tanggal($data[1])])
                         ->where('id_pabrik', $data[2])
                         ->where('masa_giling', array_pop($data))
+                        ->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
@@ -351,11 +355,12 @@ class laporancontroller extends Controller
                 $data = explode('&', $param[1]);
                 $query = entry::select('pabrik')->where('id_pabrik', $data[3]);
                 return view('cetak-laporan', [
-                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                    'data' => entry::whereBetween('entry.created_at', [$data[0], $this->tanggal($data[1])])
                         ->where('masa_giling', array_pop($data))
                         ->where('periode', $data[2])
                         ->where('id_pabrik', $data[3])
                         ->where('type_', $data[4])
+                        ->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
@@ -367,10 +372,11 @@ class laporancontroller extends Controller
             if ($param[0] == 'periodeandtype') {
                 $data = explode('&', $param[1]);
                 return view('cetak-laporan', [
-                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                    'data' => entry::whereBetween('entry.created_at', [$data[0], $this->tanggal($data[1])])
                         ->where('periode', $data[2])
                         ->where('type_', $data[3])
                         ->where('masa_giling', array_pop($data))
+                        ->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
@@ -382,10 +388,11 @@ class laporancontroller extends Controller
                 $data = explode('&', $param[1]);
                 $query = entry::select('pabrik')->where('id_pabrik', $data[3]);
                 return view('cetak-laporan', [
-                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                    'data' => entry::whereBetween('entry.created_at', [$data[0], $this->tanggal($data[1])])
                         ->where('periode', $data[2])
                         ->where('id_pabrik', $data[3])
                         ->where('masa_giling', array_pop($data))
+                        ->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
@@ -397,10 +404,11 @@ class laporancontroller extends Controller
                 $data = explode('&', $param[1]);
                 $query = entry::select('pabrik')->where('id_pabrik', $data[3]);
                 return view('cetak-laporan', [
-                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                    'data' => entry::whereBetween('entry.created_at', [$data[0], $this->tanggal($data[1])])
                         ->where('id_pabrik', $data[3])
                         ->where('type_', $data[2])
                         ->where('masa_giling', array_pop($data))
+                        ->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
@@ -411,7 +419,7 @@ class laporancontroller extends Controller
 
             if ($param[0] == 'month') {
                 return view('cetak-laporan', [
-                    'data' => entry::whereMonth('created_at', date('m'))->get(),
+                    'data' => entry::whereMonth('entry.created_at', date('m'))->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [date('Y-m') . '-01', date('Y-m-d')]
                 ]);
@@ -420,8 +428,8 @@ class laporancontroller extends Controller
             if ($param[0] == 'range') {
                 $data = explode('&', $param[1]);
                 return view('cetak-laporan', [
-                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
-                        ->get(),
+                    'data' => entry::whereBetween('entry.created_at', [$data[0], $this->tanggal($data[1])])
+                        ->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
                 ]);
@@ -429,8 +437,9 @@ class laporancontroller extends Controller
             if ($param[0] == 'periode') {
                 $data = explode('&', $param[1]);
                 return view('cetak-laporan', [
-                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                    'data' => entry::whereBetween('entry.created_at', [$data[0], $this->tanggal($data[1])])
                         ->where('periode', $data[2])
+                        ->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
@@ -440,8 +449,9 @@ class laporancontroller extends Controller
             if ($param[0] == 'type') {
                 $data = explode('&', $param[1]);
                 return view('cetak-laporan', [
-                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                    'data' => entry::whereBetween('entry.created_at', [$data[0], $this->tanggal($data[1])])
                         ->where('type_', $data[3])
+                        ->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
@@ -451,8 +461,9 @@ class laporancontroller extends Controller
                 $data = explode('&', $param[1]);
                 $query = entry::select('pabrik')->where('id_pabrik', $data[3]);
                 return view('cetak-laporan', [
-                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                    'data' => entry::whereBetween('entry.created_at', [$data[0], $this->tanggal($data[1])])
                         ->where('id_pabrik', $data[3])
+                        ->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
@@ -463,10 +474,11 @@ class laporancontroller extends Controller
                 $data = explode('&', $param[1]);
                 $query = entry::select('pabrik')->where('id_pabrik', $data[3]);
                 return view('cetak-laporan', [
-                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                    'data' => entry::whereBetween('entry.created_at', [$data[0], $this->tanggal($data[1])])
                         ->where('periode', $data[2])
                         ->where('id_pabrik', $data[3])
                         ->where('type_', $data[4])
+                        ->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
@@ -478,9 +490,10 @@ class laporancontroller extends Controller
             if ($param[0] == 'periodeandtype') {
                 $data = explode('&', $param[1]);
                 return view('cetak-laporan', [
-                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                    'data' => entry::whereBetween('entry.created_at', [$data[0], $this->tanggal($data[1])])
                         ->where('periode', $data[2])
                         ->where('type_', $data[3])
+                        ->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
@@ -492,9 +505,10 @@ class laporancontroller extends Controller
                 $data = explode('&', $param[1]);
                 $query = entry::select('pabrik')->where('id_pabrik', $data[3]);
                 return view('cetak-laporan', [
-                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                    'data' => entry::whereBetween('entry.created_at', [$data[0], $this->tanggal($data[1])])
                         ->where('periode', $data[2])
                         ->where('id_pabrik', $data[3])
+                        ->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
@@ -506,9 +520,10 @@ class laporancontroller extends Controller
                 $data = explode('&', $param[1]);
                 $query = entry::select('pabrik')->where('id_pabrik', $data[3]);
                 return view('cetak-laporan', [
-                    'data' => entry::whereBetween('created_at', [$data[0], $this->tanggal($data[1])])
+                    'data' => entry::whereBetween('entry.created_at', [$data[0], $this->tanggal($data[1])])
                         ->where('id_pabrik', $data[3])
                         ->where('type_', $data[2])
+                        ->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')
                         ->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [$data[0], $data[1]],
@@ -519,7 +534,7 @@ class laporancontroller extends Controller
 
             if ($f == 'month') {
                 return view('cetak-laporan', [
-                    'data' => entry::whereMonth('created_at', date('m'))->get(),
+                    'data' => entry::whereMonth('entry.created_at', date('m'))->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')->get(),
                     'title' => 'Cetak Laporan',
                     'tanggal' => [date('Y-m') . '-01', date('Y-m-d')]
                 ]);
@@ -530,7 +545,7 @@ class laporancontroller extends Controller
     public function cetakMethod($parameter)
     {
         return view('cetak-laporan', [
-            'data' => entry::whereIn('id_entry', $parameter)->get()
+            'data' => entry::whereIn('entry.id_entry', $parameter)->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')->get()
         ]);
     }
 }
