@@ -28,6 +28,11 @@ export const getFilter = async (selected) => {
 	return await (await fetch(baseUrl + '/pembayaran/transaksi/filter', options)).json();
 };
 
+export const getFilterRange = async () => {
+	// fetching data
+	return await (await fetch(baseUrl + '/pembayaran/transaksi/filter/range')).json();
+};
+
 export const requestupdateHarga = async (data, url) => {
 	// declare option fetch request
 	const options = {

@@ -1,5 +1,5 @@
 import elements, { elementGlobal, elementPembayaran } from '../../elements/pembayaran/index.js';
-import { getDetail, getFilter, getDataWithTgl, requestupdateHarga } from './request.js';
+import { getDetail, getFilter, getDataWithTgl, requestupdateHarga, getFilterRange } from './request.js';
 import elglobal from '../../elements/index.js';
 import { clearFormUpdateHarga, setListDetail, setListFilter, setListGlobalTgl, swalDelete } from './setter.js';
 import { bindingDelete, bindingDetail, bindingUpdate } from './index.js';
@@ -37,9 +37,20 @@ export function handlerSubmitform(e) {
 			window.location.href = elglobal.baseUrl + '/pembayaran/transaksi/cek-harga';
 		} else {
 			clearFormUpdateHarga(harga, elements.loader);
-			await handlerTgl({});
+			await afterUpdate();
 		}
 	});
+}
+
+export async function afterUpdate() {
+	const tgl = document.querySelector('input[name=tgl-fil]');
+	if (tgl.getAttribute('data-tgl1') !== '') {
+		await handlerTgl({});
+	} else {
+		const data = await getFilterRange();
+		setListGlobalTgl(data.data, elementGlobal);
+		handlerAfterElementChanged();
+	}
 }
 
 export async function handlerFilter(e) {
@@ -66,8 +77,11 @@ export async function handlerTgl(e) {
 		setListGlobalTgl(data.data, elementPembayaran);
 	} else {
 		setListGlobalTgl(data.data, elementGlobal);
+		// set attribure filter
+		document.querySelector('input[name=tgl-fil]')?.setAttribute('data-tgl1', data.tgl[0]);
+		document.querySelector('input[name=tgl-fil]')?.setAttribute('data-tgl2', data.tgl[1]);
 	}
-
+	// binding event
 	handlerAfterElementChanged();
 }
 
