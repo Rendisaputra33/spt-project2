@@ -52,28 +52,54 @@ function formatTanggal($tgl)
             </div>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <h3>LAPORAN PEMBAYARAN SPT</h3>
-                    <div class="text text-uppercase mt-4 text-center">
-                        
-                    <p class="m-0 " style="letter-spacing: 1px; font-weight: normal;">jl. raya blambangan 88 salakan krebet - malang</p>
-                    <p class="m-0 " style="letter-spacing: 1px; font-weight: normal;">telp (0341) 8038008, 085100727217, 08179660466</p>
-                    </div>
-                    <hr class="my-4" style="height: 2px; background-color: #212121;">
-                    
+                    <h3>Laporan Harian SPT</h3>
                 </div>
             </div>
             <div class="row mt-4">
-                <div class="col-md-8">
-                    <p class="text-uppercase" style="font-size: 1.2rem;">no invoice. 001/rg/ix/2021</p>
+                <div class="col-md-6">
+                    <table class="table table-borderless d-flex flex-row justify-content-start">
+                        <thead>
+                            <tr class="col-sm d-flex flex-column pl-0">
+                                <th class="p-2">Transaksi Tanggal</th>
+                                <th class="p-2">Pabrik</th>
+
+                            </tr>
+                        </thead>
+                        <tr class="col-sm d-flex flex-column p-0">
+                            <td class="p-2">:</td>
+                            <td class="p-2">:</td>
+
+                        </tr>
+                        <tbody>
+                            <tr class="col-sm d-flex flex-column p-0">
+                                <td class="p-2">
+                                    {{ !isset($tanggal) ? 'Semua Tanggal' : formatTanggal($tanggal[0]) . ' - ' . formatTanggal($tanggal[1]) }}
+                                </td>
+                                <td class="p-2">{{ !isset($pabrik) ? 'Semua Pabrik' : $pabrik }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="col-md-4 text-capitalize ">
-                    <span>
-                        <p class="mb-2">Malang, 10 september 2021</p>
-                        <p class="mb-2">Kepada YTH</p>
-                        <p class="mb-2">-Nama Pengirim-</p>
-                        <p class="text-uppercase m-0">krebet malang</p>
-                    </span>
-                    
+                <div class="col-md-6">
+                    <table class="table table-borderless d-flex flex-row justify-content-end">
+                        <thead>
+                            <tr class="col-sm d-flex flex-column">
+                                <th class="p-2">Periode</th>
+                                <th class="p-2">Tipe Tebu</th>
+                            </tr>
+                        </thead>
+                        <tr class="col-sm d-flex flex-column p-0">
+                            <td class="p-2">:</td>
+                            <td class="p-2">:</td>
+                        </tr>
+                        <tbody>
+                            <tr class="col-sm d-flex flex-column p-0">
+
+                                <td class="p-2">{{ !isset($periode) ? 'Semua Periode' : $periode }}</td>
+                                <td class="p-2">{{ !isset($type) ? 'Semua Type Tebu' : $type }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="col-md-12 mt-4">
                     <table class="cetak table table-sm table-borderless border border-5 border-dark w-100" style="table-layout: fixed;">
@@ -135,14 +161,9 @@ function formatTanggal($tgl)
                         </tbody>
                     </table>
                 </div>
-                    <div class="col-md-8 mt-5"></div>
-                    <div class="col-md-4 mt-5 ">
-                        <p>Hormat Kami</p>
-                    </div>
             </div>
         </div>
-        <div class="
-                                    float-right ml-auto">
+        <div class="float-right ml-auto">
             <button onclick="printContent('print')" type="button" class="btn btn-info btn-icon-text d-flex">
                 <i class="mdi mdi-printer"></i>&nbsp;Cetak
             </button>
