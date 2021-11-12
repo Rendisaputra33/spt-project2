@@ -63,13 +63,13 @@ function formatTanggal($tgl)
             </div>
             <div class="row mt-4">
                 <div class="col-md-8">
-                    <p class="text-uppercase" style="font-size: 1.2rem;">no invoice. 001/rg/ix/2021</p>
+                    <p class="text-uppercase" style="font-size: 1.2rem;">no invoice. {{ $invoice }}</p>
                 </div>
                 <div class="col-md-4 text-capitalize ">
                     <span>
                         <p class="mb-2">Malang, 10 september 2021</p>
                         <p class="mb-2">Kepada YTH</p>
-                        <p class="mb-2">-Nama Pengirim-</p>
+                        <p class="mb-2">{{ $data[0]['nama_pengirim'] }}</p>
                         <p class="text-uppercase m-0">krebet malang</p>
                     </span>
 
