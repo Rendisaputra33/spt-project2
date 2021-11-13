@@ -3,6 +3,7 @@ import { getDetail, getFilter, getDataWithTgl, requestupdateHarga, getFilterRang
 import elglobal from '../../elements/index.js';
 import { clearFormUpdateHarga, setListDetail, setListFilter, setListGlobalTgl, swalDelete } from './setter.js';
 import { bindingDelete, bindingDetail, bindingUpdate } from './index.js';
+import { useStatePembayaran } from '../../general/index.js';
 
 export function handlerDelete(e) {
 	// delete the event
@@ -63,8 +64,10 @@ export async function handlerFilter(e) {
 			el.disabled = false;
 		});
 	}
+
 	// set data to view
 	setListFilter(data.data);
+	hanlderChecklist();
 }
 
 export async function handlerTgl(e) {
@@ -96,3 +99,39 @@ export function handlerAfterElementChanged() {
 	bindingDetail();
 	bindingUpdate();
 }
+
+export function hanlderChecklist(e) {
+	const [getTotal, setTotal] = useStatePembayaran(0, document.querySelector('.total-check'));
+
+	document.querySelectorAll('input[type=checkbox]').forEach((el) => {
+		el.addEventListener('input', function () {
+			const after = parseInt(this.getAttribute('data-hrg'));
+			if (this.checked) {
+				setTotal(after ? getTotal() + after : getTotal() + 0);
+			} else {
+				document.querySelector('#check-all').checked = false;
+				setTotal(getTotal() ? getTotal() - after : 0);
+			}
+		});
+	});
+	hanldeWhenCheckedAll(getTotal, setTotal)();
+}
+
+export const hanldeWhenCheckedAll = (get, set) => {
+	return () => {
+		document.querySelector('#check-all').onclick = function (el) {
+			if (!this.checked) {
+				document.querySelectorAll('input[type=checkbox]').forEach((el) => {
+					el.checked = false;
+					set(0);
+				});
+			} else {
+				set(0);
+				document.querySelectorAll('input[type=checkbox]').forEach((el) => {
+					el.checked = true;
+					set(get() + parseInt(el.getAttribute('data-hrg')));
+				});
+			}
+		};
+	};
+};

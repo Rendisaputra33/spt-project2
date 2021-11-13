@@ -1,5 +1,5 @@
 import elements from '../../elements/pembayaran/index.js';
-import { handlerDelete, handlerDetail, handlerFilter, handlerSubmitform, handlerTgl, handlerUpdateHarga } from './handler.js';
+import { handlerDelete, handlerDetail, handlerFilter, handlerSubmitform, handlerTgl, handlerUpdateHarga, hanldeWhenCheckedAll } from './handler.js';
 
 export function bindingDelete() {
 	document.querySelectorAll('.delete')?.forEach((element) => {

@@ -1,20 +1,20 @@
-import elements from "../elements/index.js";
+import elements from '../elements/index.js';
 
 export function bindingUpdate(handler = defaultHandler) {
-	elements.btnUpdate.forEach(async element => {
-		element.addEventListener("click", handler);
+	elements.btnUpdate.forEach(async (element) => {
+		element.addEventListener('click', handler);
 	});
 }
 
 export function bindingDelete(handler = defaultHandler) {
-	elements.btnDelete.forEach(element => {
-		element.addEventListener("click", handler);
+	elements.btnDelete.forEach((element) => {
+		element.addEventListener('click', handler);
 	});
 }
 
 export function bindingDetail(handler = defaultHandler) {
-	elements.btnDetail.forEach(element => {
-		element.addEventListener("click", handler);
+	elements.btnDetail.forEach((element) => {
+		element.addEventListener('click', handler);
 	});
 }
 
@@ -25,20 +25,35 @@ export function isNumber(e) {
 }
 
 export function formatRupiah(angka, prefix) {
-	var number_string = angka.replace(/[^,\d]/g, "").toString(),
-		split = number_string.split(","),
+	var number_string = angka.replace(/[^,\d]/g, '').toString(),
+		split = number_string.split(','),
 		sisa = split[0].length % 3,
 		rupiah = split[0].substr(0, sisa),
 		ribuan = split[0].substr(sisa).match(/\d{3}/gi);
 
 	// tambahkan titik jika yang di input sudah menjadi angka ribuan
 	if (ribuan) {
-		const separator = sisa ? "." : "";
-		rupiah += separator + ribuan.join(".");
+		const separator = sisa ? '.' : '';
+		rupiah += separator + ribuan.join('.');
 	}
 
-	rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-	return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
+	rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+	return prefix == undefined ? rupiah : rupiah ? 'Rp. ' + rupiah : '';
 }
 
-const defaultHandler = e => console.log(e);
+const defaultHandler = (e) => console.log(e);
+
+export const useStatePembayaran = (initialize, element) => {
+	let value;
+
+	const setState = (val) => {
+		value = val;
+		element.innerHTML = formatRupiah(val.toString(), 'Rp. ');
+	};
+
+	const getState = () => {
+		return value ? value : initialize;
+	};
+
+	return [getState, setState];
+};

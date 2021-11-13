@@ -74,7 +74,7 @@
                                 <table class="table table-hover w-100 mt-5" style="table-layout: fixed">
                                     <thead>
                                         <tr>
-                                            <th class="small">#</th>
+                                            <th class="small"><input type="checkbox" id="check-all"></th>
                                             <th class="small">MG</th>
                                             <th class="medium">Periode</th>
                                             <th class="medium">Tanggal</th>
@@ -91,7 +91,7 @@
                                         @foreach ($data as $item)
                                             <tr>
                                                 <td>
-                                                    <input disabled type="checkbox" name="id[]" class="form-check-info" value="{{ $item->id_entry }}">
+                                                    <input disabled type="checkbox" name="id[]" data-hrg="{{ $item->harga_beli * $item->bobot }}" class="form-check-info" value="{{ $item->id_entry }}">
                                                 </td>
                                                 <td>{{ $item->masa_giling }}</td>
                                                 <td>{{ $item->periode }}</td>
@@ -105,8 +105,10 @@
                                                 <td>{{ 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') }}</td>
                                             </tr>
                                         @endforeach
-
                                     </tbody>
+                                    <tr>
+                                        <td colspan="8" class="total-check">Rp. 0</td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>
@@ -126,5 +128,5 @@
 
     @endsection
     @section('specific-js')
-        <script src="{{ asset('assets/js/function/pembayarnBundle.js') }}"></script>
+        <script src="{{ asset('/assets/js/function/pembayarnBundle.js') }}"></script>
     @endsection

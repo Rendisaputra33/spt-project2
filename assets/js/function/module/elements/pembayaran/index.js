@@ -41,7 +41,7 @@ export const elementDetail = (data, no) => `
 
 export const elementList = (data) => `
     <tr>
-        <td><input type="checkbox" name="id[]" class="form-check-info" value="${data.id_entry}"></td>
+        <td><input type="checkbox" name="id[]" class="form-check-info" data-hrg="${data.harga_beli * data.bobot}" value="${data.id_entry}"></td>
         <td>${data.masa_giling}</td>
         <td>${data.periode}</td>
         <td>${timeTodate(data.created_at)}</td>
