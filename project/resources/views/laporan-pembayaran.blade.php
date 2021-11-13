@@ -43,8 +43,9 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Invoice</th>
-                                    <th>Total</th>
                                     <th>Tanggal</th>
+                                    <th>Pengirim</th>
+                                    <th>Jumlah</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -53,8 +54,9 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->invoice }}</td>
-                                        <td>Rp. {{ number_format($item->totals, 0, ',', '.') }}</td>
                                         <td>{{ date('d/m/Y', strtotime($item->creates)) }}</td>
+                                        <td>{{ $item->pengirim }}</td>
+                                        <td>Rp. {{ number_format($item->totals, 0, ',', '.') }}</td>
                                         <td>
                                             <a target="_blank" href="{{ url('/pembayaran/transaksi/report') . '?invoice=' . $item->invoice }}" class="btn btn-sm btn-info btn-icon-text delete">
                                                 Cetak
