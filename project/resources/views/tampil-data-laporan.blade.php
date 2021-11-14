@@ -30,7 +30,7 @@
                         <i class="mdi mdi-filter-outline"></i>Filter
                     </button>
                     &nbsp;
-                    <a class="btn btn-success btn-icon-text d-flex" href="{{ url('/laporan/cetak/') . '/' }}{{ !isset($filter) ? 'month' : $filter['type'] . '=' . $filter['data'] }}">
+                    <a target="_blank" class="btn btn-success btn-icon-text d-flex" href="{{ url('/laporan/cetak/') . '/' }}{{ !isset($filter) ? 'month' : $filter['type'] . '=' . $filter['data'] }}">
                         <i class="mdi mdi-printer"></i>Cetak
                     </a>
                 </div>
