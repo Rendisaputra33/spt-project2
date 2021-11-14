@@ -43,6 +43,12 @@ function getMonth($m)
     }
 
 </style>
+<style type="text/css" media="print">
+    /* ISO Paper Size */
+        @page {
+        size: A4 landscape;
+        }
+</style>
 @section('content')
     <div class="main-panel mx-auto">
         <div class="content-wrapper bg-white px-0" id="print">
@@ -58,11 +64,11 @@ function getMonth($m)
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h3>LAPORAN PEMBAYARAN SPT</h3>
-                    <div class="text text-uppercase mt-4 text-center">
+                    <div class="text text-uppercase mt-4 text-center pb-4" style="border-bottom: 2px solid #000;">
                         <p class="m-0 " style="letter-spacing: 1px; font-weight: normal;">jl. raya blambangan 88 salakan krebet - malang</p>
                         <p class="m-0 " style="letter-spacing: 1px; font-weight: normal;">telp (0341) 8038008, 085100727217, 08179660466</p>
                     </div>
-                    <hr class="my-4" style="height: 2px; background-color: #212121;">
+                    
 
                 </div>
             </div>
