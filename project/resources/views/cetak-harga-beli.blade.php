@@ -5,6 +5,12 @@ function formatTanggal($tgl)
     $month = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
     return "{$data[2]}/{$month[(int) $data[1] - 1]}/{$data[0]}";
 }
+
+function getMonth($m)
+{
+    $month = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+    return $month[(int) $m - 1];
+}
 @endphp
 
 @extends('template.cetaklayout')
@@ -12,7 +18,6 @@ function formatTanggal($tgl)
     td,
     th {
         font-size: 0.75rem !important;
-
     }
 
     th {
@@ -67,7 +72,7 @@ function formatTanggal($tgl)
                 </div>
                 <div class="col-md-4 text-capitalize ">
                     <span>
-                        <p class="mb-2">Malang, 10 september 2021</p>
+                        <p class="mb-2">Malang, {{ date('d') }} {{ getMonth(date('m')) }} {{ date('Y') }}</p>
                         <p class="mb-2">Kepada YTH</p>
                         <p class="mb-2">{{ $data[0]['nama_pengirim'] }}</p>
                         <p class="text-uppercase m-0">krebet malang</p>
@@ -112,7 +117,6 @@ function formatTanggal($tgl)
                                     <td>{{ 'Rp. ' . number_format($item->harga_beli * $item->bobot, 0, ',', '.') }}</td>
                                 </tr>
                             @endforeach
-
                             <tr class="border border-top-2 border-dark">
                                 <td class="py-2" colspan="7" class=""></td>
                                 <td class=" py-2" colspan="2" class="">
@@ -120,7 +124,7 @@ function formatTanggal($tgl)
                                 </td>
                                 <td class="
                                     py-2" colspan="1" class=""></td>
-                                <td class=" py-2" colspan="2" class="">Total Sisa : Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
+                                <td class=" py-2" colspan="2" class="">Total : Rp. {{ number_format($sisa, 0, ',', '.') }}</td>
                             </tr>
                         </tbody>
                     </table>
