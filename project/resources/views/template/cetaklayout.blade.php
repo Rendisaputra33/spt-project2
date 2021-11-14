@@ -30,13 +30,6 @@
             border-collapse: collapse !important;
             border-spacing: 0 !important;
         }
-
-        /*tr.firstrow{*/
-        /*    page-break-before: always !important;*/
-        /*}*/
-        /*.page-break {*/
-        /*    page-break-before: always !important;*/
-        /*}*/
         p.tglcetak {
             display: flex !important;
         }
