@@ -74,7 +74,7 @@
                                 <table class="table table-hover w-100 mt-5" style="table-layout: fixed">
                                     <thead>
                                         <tr>
-                                            <th class="small"><input type="checkbox" id="check-all"></th>
+                                            <th class="small"><input disabled type="checkbox" id="check-all"></th>
                                             <th class="small">MG</th>
                                             <th class="medium">Periode</th>
                                             <th class="medium">Tanggal</th>

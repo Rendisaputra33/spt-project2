@@ -95,10 +95,10 @@ function formatTanggal($tgl)
                                         <td>{{ $item->pabrik }}</td>
                                         <td>{{ $item->bobot . ' KW' }}</td>
                                         <td>{{ $item->nama_pengirim }}</td>
-                                        <td>{{ $item->harga_beli === null ? '-' : 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') }}
+                                        <td>{{ $item->harga_beli === null ? 'kosong' : 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') }}
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-sm btn-{{ $item->harga_beli === null ? 'danger' : 'warning' }} btn-icon-text update" data-target="#modal-md-edit" id='tbh' data-toggle="modal" data-harga="{{ $item->harga_beli ? $item->harga_beli : 0 }}" data-id="{{ $item->id_entry }}">
+                                            <button type="button" class="btn btn-sm btn-{{ $item->harga_beli === null ? 'danger' : 'warning' }} btn-icon-text update" data-target="#modal-md-edit" id='tbh' data-toggle="modal" data-harga="{{ $item->harga_beli ? $item->harga_beli : '' }}" data-id="{{ $item->id_entry }}">
                                                 <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>{{ $item->harga_beli === null ? 'Lengkapi' : 'Ubah' }}
                                             </button>
                                         </td>

@@ -1,4 +1,4 @@
-import elements, { elementDetail, elementList } from '../../elements/pembayaran/index.js';
+import elements, { elementDetail, elementList, elementPembayaran } from '../../elements/pembayaran/index.js';
 import { formatRupiah } from '../../general/index.js';
 
 // swal definition
@@ -41,4 +41,10 @@ export const clearFormUpdateHarga = (elHarga, elLoader) => {
 	elHarga.value = '';
 	elLoader.style.display = 'none';
 	document.getElementById('close-modal')?.click();
+};
+
+export const setListSearch = (data) => {
+	let html = '';
+	data.data.map((item, i) => (html += elementPembayaran(item, i)));
+	elements.tbody.innerHTML = html;
 };

@@ -49,3 +49,14 @@ export const requestupdateHarga = async (data, url) => {
 		throw false;
 	}
 };
+
+export const getSearch = async (selected) => {
+	// declare option fetch request
+	const options = {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrfToken },
+		body: JSON.stringify({ queryData: selected })
+	};
+	// fetching data
+	return await (await fetch(baseUrl + '/pembayaran/data/search', options)).json();
+};

@@ -5,6 +5,20 @@
         height: 100%;
         position: absolute;
         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(88, 88, 88);
+        opacity: 0.7;
+        z-index: 9999;
+    }
+
+    #loader-2 {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         background-color: rgb(88, 88, 88);
@@ -21,7 +35,7 @@
 
                 <div class="right d-flex align-items-center">
                     <div class="input-group">
-                        <input type="text" id="search" class="form-control form-control text-dark-sm" placeholder="Cari Data Petani.." aria-label="Cari Data Petani.." aria-describedby="basic-addon2">
+                        <input type="text" name="search-pem" class="form-control form-control text-dark-sm" placeholder="Cari Data Petani.." aria-label="Cari Data Petani.." aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-sm btn-success" type="button">Cari</button>
                         </div>
@@ -44,7 +58,14 @@
             </div>
             <div class="col-lg-12 grid-margin stretch-card p-0 mt-3">
                 <div class="card">
-
+                    <div id="loader-2" style="display: none;">
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border text-light" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                        <span style="color: white; margin-top: 10px;">Loading...</span>
+                    </div>
                     <div class="card-body">
                         <div class="col-sm-6 right d-flex align-items-center p-0">
                             <div class="input-group" id="filter">
@@ -55,6 +76,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <table class="table table-hover mt-5">
                             <thead>
                                 <tr>

@@ -118,6 +118,7 @@ export function hanlderChecklist(e) {
 }
 
 export const hanldeWhenCheckedAll = (get, set) => {
+	document.querySelector('#check-all').disabled = false;
 	return () => {
 		document.querySelector('#check-all').onclick = function (el) {
 			if (!this.checked) {

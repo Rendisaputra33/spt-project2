@@ -46,7 +46,7 @@
                                     <th class="small py-2 px-0">BBT</th>
                                     <th class="small py-2 px-0">VAR</th>
                                     <th class="small py-2 px-0">TYPE</th>
-                                    <th class="medium py-2 px-0">KET</th>
+                                    <th class="medium py-2 px-0">PENGIRIM</th>
                                     <th class="medium py-2 px-0">BELI</th>
                                     <th class="medium py-2 px-0">HPP</th>
                                     <th class="medium py-2 px-0">SISA</th>
@@ -56,7 +56,7 @@
                                 <?php $no = 1; ?>
                                 @foreach ($data as $item)
                                     <tr style="height: 52px">
-                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->masa_giling }}</td>
                                         <td>{{ $item->periode }}</td>
                                         <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
@@ -68,10 +68,14 @@
                                         <td>{{ $item->bobot }}</td>
                                         <td>{{ $item->variasi_ }}</td>
                                         <td>{{ $item->type_ }}</td>
-                                        <td>{{ $item->keterangan }}</td>
-                                        <td>Rp. {{ number_format($item->harga_beli, 0, ',', '.') }}</td>
-                                        <td>Rp. {{ number_format($item->hpp, 0, ',', '.') }}</td>
-                                        <td>Rp. {{ number_format($item->sisa, 0, ',', '.') }}</td>
+                                        <td>{{ $item->keterangan === null ? '-' : $item->nama_pengirim }}</td>
+                                        <td>{{ $item->harga_beli === null ? '-' : 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') }}
+                                        </td>
+                                        <td>{{ $item->hpp === null ? '-' : 'Rp. ' . number_format($item->hpp, 0, ',', '.') }}
+                                        </td>
+                                        <td>
+                                            {{ $item->hpp !== null && $item->harga_beli !== null ? 'Rp. ' . number_format(($item->hpp - $item->harga_beli) * $item->bobot, 0, ',', '.') : '-' }}
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

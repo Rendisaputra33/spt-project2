@@ -151,6 +151,7 @@ Route::middleware('authuser')->prefix('pembayaran')
         Route::prefix('/data')->group(function () {
             Route::get('/detail/{id}', [pembayarancontroller::class, 'detail']);
             Route::get('/detail/single/{id}', [entrycontroller::class, 'getupMethod']);
+            Route::post('/search', [pembayarancontroller::class, 'search']);
         });
 
         // 

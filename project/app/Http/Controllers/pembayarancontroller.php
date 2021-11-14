@@ -222,11 +222,16 @@ class pembayarancontroller extends Controller
     }
 
     // 
-    public function globalReport(pembayaran $pembayaran)
+    public function globalReport(pembayaran $pembayaran, Request $request)
     {
+        if ($request->input('tgl')) {
+            $data = $pembayaran->filterPembayaran(explode('|',  $request->input('tgl')));
+        } else {
+            $data = $pembayaran->getPembayaran();
+        }
         return view('laporan-pembayaran', [
             'title' => 'Laporan Pembayaran',
-            'data' => $pembayaran->getPembayaran()
+            'data' => $data
         ]);
     }
 
@@ -238,6 +243,13 @@ class pembayarancontroller extends Controller
         //  
         return view('update-harga', [
             'data' => entry::whereNotIn('id_entry', $ids)->whereNull('harga_beli')->join('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')->get()
+        ]);
+    }
+
+    public function search(Request $req, pembayaran $pembayaran)
+    {
+        return response()->json([
+            'data' => $pembayaran->searchPembayaran($req->queryData)
         ]);
     }
 }

@@ -88,14 +88,14 @@ export const elementGlobal = (data, no) => `
         <td>${data.pabrik}</td>
         <td>${data.bobot + ' KW'}</td>
         <td>${data.nama_pengirim}</td>
-        <td>${data.harga_beli ? formatRupiah(data.harga_beli.toString(), 'Rp. ') : '-'}</td>
+        <td>${data.harga_beli !== null ? formatRupiah(data.harga_beli.toString(), 'Rp. ') : 'kosong'}</td>
         <td>
-            <button type="button" data-harga="${data.harga_beli ? data.harga_beli : 0}"
-                class="btn btn-sm btn-${data.harga_beli ? 'warning' : 'danger'} btn-icon-text update"
+            <button type="button" data-harga="${data.harga_beli !== null ? data.harga_beli : ''}"
+                class="btn btn-sm btn-${data.harga_beli !== null ? 'warning' : 'danger'} btn-icon-text update"
                 data-target="#modal-md-edit" id='tbh' data-toggle="modal"
                 data-id="${data.id_entry}">
                 <i
-                    class="mdi mdi-lead-pencil btn-icon-prepend"></i>${data.harga_beli ? 'Ubah' : 'Lengkapi'}
+                    class="mdi mdi-lead-pencil btn-icon-prepend"></i>${data.harga_beli !== null ? 'Ubah' : 'Lengkapi'}
             </button>
         </td>
     </tr>

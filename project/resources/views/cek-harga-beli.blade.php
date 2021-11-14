@@ -120,7 +120,7 @@ function formatTanggal($tgl)
                                         <td>{{ $item->harga_beli === null ? '-' : 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') }}
                                         </td>
                                         <td>
-                                            <button type="button" data-harga="{{ $item->harga_beli ? $item->harga_beli : 0 }}" class="btn btn-sm btn-{{ $item->harga_beli === null ? 'danger' : 'warning' }} btn-icon-text update" data-target="#modal-md-edit" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
+                                            <button type="button" data-harga="{{ $item->harga_beli ? $item->harga_beli : '' }}" class="btn btn-sm btn-{{ $item->harga_beli === null ? 'danger' : 'warning' }} btn-icon-text update" data-target="#modal-md-edit" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
                                                 <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>{{ $item->harga_beli === null ? 'Lengkapi' : 'Ubah' }}
                                             </button>
                                         </td>
