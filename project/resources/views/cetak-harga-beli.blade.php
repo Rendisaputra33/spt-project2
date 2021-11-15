@@ -46,7 +46,7 @@ function getMonth($m)
 <style type="text/css" media="print">
     /* ISO Paper Size */
         @page {
-        size: A4 landscape;
+            size: A4 landscape;
         }
 </style>
 @section('content')
@@ -68,8 +68,6 @@ function getMonth($m)
                         <p class="m-0 " style="letter-spacing: 1px; font-weight: normal;">jl. raya blambangan 88 salakan krebet - malang</p>
                         <p class="m-0 " style="letter-spacing: 1px; font-weight: normal;">telp (0341) 8038008, 085100727217, 08179660466</p>
                     </div>
-                    
-
                 </div>
             </div>
             <div class="row mt-4">

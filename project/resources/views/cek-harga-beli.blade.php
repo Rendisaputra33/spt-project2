@@ -169,6 +169,10 @@ function formatTanggal($tgl)
                             <input type="text" class="form-control" autocomplete="off" placeholder="Harga Beli" name="harga" required>
                             <span class="text-dark"></span>
                         </div>
+                        <div class="w-100 d-flex justify-content-between flex-row py-2 px-4">
+                            <p class="font-weight-bold">Total : </p>
+                            <p class="font-weight-bold">4000</p>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
