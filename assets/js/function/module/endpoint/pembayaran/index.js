@@ -24,4 +24,4 @@ Bind.bindingForm();
 Bind.bindingSearch();
 
 // binding event user typing letters
-elements.inputNumbe && elements.inputNumbe?.addEventListener('keypress', isNumber);
+elements.inputNumbe && elements.inputNumbe?.addEventListener('keyup', Bind.bindingKeyup);

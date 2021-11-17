@@ -90,7 +90,7 @@ export const elementGlobal = (data, no) => `
         <td>${data.nama_pengirim}</td>
         <td>${data.harga_beli !== null ? formatRupiah(data.harga_beli.toString(), 'Rp. ') : 'kosong'}</td>
         <td>
-            <button type="button" data-harga="${data.harga_beli !== null ? data.harga_beli : ''}"
+            <button type="button" data-harga="${data.harga_beli !== null ? data.harga_beli : ''}" data-bobot="${data.bobot}"
                 class="btn btn-sm btn-${data.harga_beli !== null ? 'warning' : 'danger'} btn-icon-text update"
                 data-target="#modal-md-edit" id='tbh' data-toggle="modal"
                 data-id="${data.id_entry}">

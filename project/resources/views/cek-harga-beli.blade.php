@@ -120,7 +120,7 @@ function formatTanggal($tgl)
                                         <td>{{ $item->harga_beli === null ? '-' : 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') }}
                                         </td>
                                         <td>
-                                            <button type="button" data-harga="{{ $item->harga_beli ? $item->harga_beli : '' }}" class="btn btn-sm btn-{{ $item->harga_beli === null ? 'danger' : 'warning' }} btn-icon-text update" data-target="#modal-md-edit" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
+                                            <button type="button" data-harga="{{ $item->harga_beli ? $item->harga_beli : '' }}" data-bobot="{{ $item->bobot }}" class="btn btn-sm btn-{{ $item->harga_beli === null ? 'danger' : 'warning' }} btn-icon-text update" data-target="#modal-md-edit" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">
                                                 <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>{{ $item->harga_beli === null ? 'Lengkapi' : 'Ubah' }}
                                             </button>
                                         </td>
@@ -164,6 +164,7 @@ function formatTanggal($tgl)
                         </button>
                     </div>
                     <div class="modal-body">
+                        <input type="hidden" name="bobot">
                         <div class="form-group" id="reg">
                             <label for="exampleInputPassword1">Harga Beli</label>
                             <input type="text" class="form-control" autocomplete="off" placeholder="Harga Beli" name="harga" required>
@@ -171,7 +172,7 @@ function formatTanggal($tgl)
                         </div>
                         <div class="w-100 d-flex justify-content-between flex-row py-2 px-4">
                             <p class="font-weight-bold">Total : </p>
-                            <p class="font-weight-bold">4000</p>
+                            <p id="total-update" class="font-weight-bold">4000</p>
                         </div>
                     </div>
                     <!-- /.card-body -->

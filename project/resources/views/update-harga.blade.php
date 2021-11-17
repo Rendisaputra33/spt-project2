@@ -98,7 +98,7 @@ function formatTanggal($tgl)
                                         <td>{{ $item->harga_beli === null ? 'kosong' : 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') }}
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-sm btn-{{ $item->harga_beli === null ? 'danger' : 'warning' }} btn-icon-text update" data-target="#modal-md-edit" id='tbh' data-toggle="modal" data-harga="{{ $item->harga_beli ? $item->harga_beli : '' }}" data-id="{{ $item->id_entry }}">
+                                            <button type="button" class="btn btn-sm btn-{{ $item->harga_beli === null ? 'danger' : 'warning' }} btn-icon-text update" data-bobot="{{ $item->bobot }}" data-target="#modal-md-edit" id='tbh' data-toggle="modal" data-harga="{{ $item->harga_beli ? $item->harga_beli : '' }}" data-id="{{ $item->id_entry }}">
                                                 <i class="mdi mdi-lead-pencil btn-icon-prepend"></i>{{ $item->harga_beli === null ? 'Lengkapi' : 'Ubah' }}
                                             </button>
                                         </td>
@@ -136,16 +136,20 @@ function formatTanggal($tgl)
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3 class="modal-title">Edit Harga Beli</h3>
-
                         <button type="button" class="close" data-dismiss="modal" id="close-modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
+                        <input type="hidden" name="bobot">
                         <div class="form-group" id="reg">
                             <label for="exampleInputPassword1">Harga Beli</label>
                             <input type="text" class="form-control" autocomplete="off" placeholder="Harga Beli" name="harga" required>
                             <span class="text-dark"></span>
+                        </div>
+                        <div class="w-100 d-flex justify-content-between flex-row py-2 px-4">
+                            <p class="font-weight-bold">Total : </p>
+                            <p id="total-update" class="font-weight-bold">4000</p>
                         </div>
                     </div>
                     <!-- /.card-body -->

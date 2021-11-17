@@ -3,7 +3,7 @@ import { getDetail, getFilter, getDataWithTgl, requestupdateHarga, getFilterRang
 import elglobal from '../../elements/index.js';
 import { clearFormUpdateHarga, setListDetail, setListFilter, setListGlobalTgl, swalDelete } from './setter.js';
 import { bindingDelete, bindingDetail, bindingUpdate } from './index.js';
-import { useStatePembayaran } from '../../general/index.js';
+import { formatRupiah, useStatePembayaran } from '../../general/index.js';
 
 export function handlerDelete(e) {
 	// delete the event
@@ -90,8 +90,12 @@ export async function handlerTgl(e) {
 
 export function handlerUpdateHarga(e) {
 	const formUpdate = elements.formUpdate;
-	document.querySelector('input[name=harga]').value = this.getAttribute('data-harga');
+	const harga = document.querySelector('input[name=harga]');
+	const bobot = document.querySelector('input[name=bobot]');
+	bobot.value = this.getAttribute('data-bobot');
+	harga.value = this.getAttribute('data-harga');
 	formUpdate?.setAttribute('action', elglobal.baseUrl + '/pembayaran/' + this.getAttribute('data-id'));
+	document.querySelector('#total-update').innerHTML = formatRupiah((parseInt(harga.value) * parseInt(bobot.value)).toString(), 'Rp. ');
 }
 
 export function handlerAfterElementChanged() {

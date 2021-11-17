@@ -1,4 +1,5 @@
 import elements from '../../elements/pembayaran/index.js';
+import { formatRupiah } from '../../general/index.js';
 import { handlerAfterElementChanged, handlerDelete, handlerDetail, handlerFilter, handlerSubmitform, handlerTgl, handlerUpdateHarga, hanldeWhenCheckedAll } from './handler.js';
 import { getSearch } from './request.js';
 import { setListSearch } from './setter.js';
@@ -52,4 +53,15 @@ export function bindingFilterTanggal() {
 
 export function bindingForm() {
 	elements.formUpdate && elements.formUpdate?.addEventListener('submit', handlerSubmitform);
+}
+
+export function bindingKeyup(e) {
+	var charCode = e.which ? e.which : event.keyCode;
+	if (charCode > 31 && (charCode < 48 || charCode > 57)) return e.preventDefault();
+	const bobot = document.querySelector('input[name=bobot]').value;
+	if (this.value !== '') {
+		document.querySelector('#total-update').innerHTML = formatRupiah((parseInt(this.value) * parseInt(bobot)).toString(), 'Rp. ');
+	} else {
+		document.querySelector('#total-update').innerHTML = 'Rp. 0';
+	}
 }
