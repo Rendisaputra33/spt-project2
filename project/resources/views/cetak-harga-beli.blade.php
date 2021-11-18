@@ -139,10 +139,14 @@ function getMonth($m)
                 </div>
             </div>
         </div>
-        <div class="float-right ml-auto">
+        <div class="d-flex justify-content-between align-items-center w-100 ml-auto">
+            <button  onclick="location.href='{{ url('/pembayaran') }}'" class="btn btn-danger btn-icon-text d-flex">
+                Back
+            </button>
             <button onclick="printContent('print')" type="button" class="btn btn-info btn-icon-text d-flex">
                 <i class="mdi mdi-printer"></i>&nbsp;Cetak
             </button>
+            
         </div>
     @endsection
     @section('specific-js')
