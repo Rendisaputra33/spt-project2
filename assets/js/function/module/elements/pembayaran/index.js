@@ -36,7 +36,6 @@ export const elementDetail = (data, no) => `
         <td>${formatRupiah(data.harga_beli.toString(), 'Rp. ')}</td>
         <td>${formatRupiah((data.harga_beli * data.bobot).toString(), 'Rp. ')}</td>
     </tr>
-
 `;
 
 export const elementList = (data) => `
@@ -52,6 +51,7 @@ export const elementList = (data) => `
         <td>${data.bobot} KW</td>
         <td>${data.nama_pengirim}</td>
         <td>${formatRupiah(data.harga_beli.toString(), 'Rp. ')}</td>
+        <td>${formatRupiah((data.harga_beli * data.bobot).toString(), 'Rp. ')}</td>
     </tr>
 `;
 
