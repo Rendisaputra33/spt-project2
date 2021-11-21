@@ -56,7 +56,10 @@
                                         <td>{{ $item->invoice }}</td>
                                         <td>{{ date('d/m/Y', strtotime($item->creates)) }}</td>
                                         <td>{{ $item->pengirim }}</td>
-                                        <td>Rp. {{ number_format($item->totals, 0, ',', '.') }}</td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <span>Rp.</span>  
+                                            <span>{{ number_format($item->totals, 0, ',', '.') }}</span>
+                                        </td>
                                         <td>
                                             <a target="_blank" href="{{ url('/pembayaran/transaksi/report') . '?invoice=' . $item->invoice }}" class="btn btn-sm btn-info btn-icon-text delete">
                                                 Cetak
