@@ -167,7 +167,7 @@ function formatTanggal($tgl)
                         <input type="hidden" name="bobot">
                         <div class="form-group" id="reg">
                             <label for="exampleInputPassword1">Harga Beli</label>
-                            <input type="text" class="form-control" autocomplete="off" placeholder="Harga Beli" name="harga" required>
+                            <input type="text" class="form-control" autocomplete="off" placeholder="Harga Beli" name="harga">
                             <span class="text-dark"></span>
                         </div>
                         <div class="w-100 d-flex justify-content-between flex-row py-2 px-4">
