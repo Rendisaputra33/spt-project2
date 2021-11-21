@@ -75,7 +75,6 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3 class="modal-title">Tambah Data Petani</h3>
-
                         <button type="button" class="close" data-dismiss="modal" id="close-modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
