@@ -242,7 +242,7 @@ class pembayarancontroller extends Controller
         $ids = $pembayaran->select('id_entry')->get();
         //  
         return view('update-harga', [
-            'data' => entry::whereNotIn('id_entry', $ids)->whereNull('harga_beli')->join('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')->get()
+            'data' => entry::whereNotIn('id_entry', $ids)->whereNull('harga_beli')->orWhere('harga_beli', null)->join('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')->get()
         ]);
     }
 

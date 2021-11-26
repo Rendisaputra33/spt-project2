@@ -117,7 +117,13 @@ function formatTanggal($tgl)
                                         <td>{{ $item->pabrik }}</td>
                                         <td>{{ $item->bobot . ' KW' }}</td>
                                         <td>{{ $item->nama_pengirim }}</td>
-                                        <td>{{ $item->harga_beli === null ? '-' : 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') }}
+                                        <td>
+                                            <div>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    {!! $item->harga_beli !== null ? '<span>Rp.</span>' : '' !!}
+                                                    <span>{{ $item->harga_beli === null ? '-' : number_format($item->harga_beli, 0, ',', '.') }}</span>
+                                                </div>
+                                            </div>
                                         </td>
                                         <td>
                                             <button type="button" data-harga="{{ $item->harga_beli ? $item->harga_beli : '' }}" data-bobot="{{ $item->bobot }}" class="btn btn-sm btn-{{ $item->harga_beli === null ? 'danger' : 'warning' }} btn-icon-text update" data-target="#modal-md-edit" id='tbh' data-toggle="modal" data-id="{{ $item->id_entry }}">

@@ -57,7 +57,7 @@
                                         <td>{{ date('d/m/Y', strtotime($item->creates)) }}</td>
                                         <td>{{ $item->pengirim }}</td>
                                         <td class="d-flex justify-content-between align-items-center">
-                                            <span>Rp.</span>  
+                                            <span>Rp.</span>
                                             <span>{{ number_format($item->totals, 0, ',', '.') }}</span>
                                         </td>
                                         <td>

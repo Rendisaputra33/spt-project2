@@ -18,7 +18,9 @@ export default {
 
 const timeTodate = (tgl) => {
 	const date = new Date(tgl);
-	return `${date.getDate() < 10 ? '0' + date.getDate() : date.getDate()}/${monthZero(date.getMonth())}/${date.getFullYear()}`;
+	return `${date.getDate() < 10 ? '0' + date.getDate() : date.getDate()}/${monthZero(
+		date.getMonth()
+	)}/${date.getFullYear()}`;
 };
 
 const monthZero = (month) => (month + 1 <= 9 ? `0${month + 1}` : month + 1);
@@ -40,7 +42,9 @@ export const elementDetail = (data, no) => `
 
 export const elementList = (data) => `
     <tr>
-        <td><input type="checkbox" name="id[]" class="form-check-info" data-hrg="${data.harga_beli * data.bobot}" value="${data.id_entry}"></td>
+        <td><input type="checkbox" name="id[]" class="form-check-info" data-hrg="${
+			data.harga_beli * data.bobot
+		}" value="${data.id_entry}"></td>
         <td>${data.masa_giling}</td>
         <td>${data.periode}</td>
         <td>${timeTodate(data.created_at)}</td>
@@ -50,8 +54,22 @@ export const elementList = (data) => `
         <td>${data.pabrik}</td>
         <td>${data.bobot} KW</td>
         <td>${data.nama_pengirim}</td>
-        <td>${formatRupiah(data.harga_beli.toString(), 'Rp. ')}</td>
-        <td>${formatRupiah((data.harga_beli * data.bobot).toString(), 'Rp. ')}</td>
+        <td>
+            <div style="max-width: 95%;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span>Rp.</span>
+                    <span>${formatRupiah(data.harga_beli.toString())}</span>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div style="max-width: 95%;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span>Rp.</span>
+                    <span>${formatRupiah((data.harga_beli * data.bobot).toString())}</span>
+                </div>
+            </div>
+        </td>
     </tr>
 `;
 
@@ -61,7 +79,14 @@ export const elementPembayaran = (data, no) => `
         <td>${data.invoice}</td>
         <td>${timeTodate(data.creates)}</td>
         <td>${data.pengirim}</td>
-        <td>${formatRupiah(data.totals.toString(), 'Rp. ')}</td>
+        <td>
+            <div style="max-width: 80%;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span>Rp.</span>
+                    <span>${formatRupiah(data.totals.toString())}</span>
+                </div>
+            </div>
+        </td>
         <td>
             <button type="button" class="btn btn-sm btn-info btn-icon-text detail"
                 data-target="#modal-lg-detail" id='tbh' data-toggle="modal"
@@ -88,14 +113,22 @@ export const elementGlobal = (data, no) => `
         <td>${data.pabrik}</td>
         <td>${data.bobot + ' KW'}</td>
         <td>${data.nama_pengirim}</td>
-        <td>${data.harga_beli !== null ? formatRupiah(data.harga_beli.toString(), 'Rp. ') : 'kosong'}</td>
+        <td>${
+			data.harga_beli !== null ? formatRupiah(data.harga_beli.toString(), 'Rp. ') : 'kosong'
+		}</td>
         <td>
-            <button type="button" data-harga="${data.harga_beli !== null ? data.harga_beli : ''}" data-bobot="${data.bobot}"
-                class="btn btn-sm btn-${data.harga_beli !== null ? 'warning' : 'danger'} btn-icon-text update"
+            <button type="button" data-harga="${
+				data.harga_beli !== null ? data.harga_beli : ''
+			}" data-bobot="${data.bobot}"
+                class="btn btn-sm btn-${
+					data.harga_beli !== null ? 'warning' : 'danger'
+				} btn-icon-text update"
                 data-target="#modal-md-edit" id='tbh' data-toggle="modal"
                 data-id="${data.id_entry}">
                 <i
-                    class="mdi mdi-lead-pencil btn-icon-prepend"></i>${data.harga_beli !== null ? 'Ubah' : 'Lengkapi'}
+                    class="mdi mdi-lead-pencil btn-icon-prepend"></i>${
+						data.harga_beli !== null ? 'Ubah' : 'Lengkapi'
+					}
             </button>
         </td>
     </tr>

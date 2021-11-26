@@ -84,7 +84,7 @@
                                     <th>Invoice</th>
                                     <th>Tanggal</th>
                                     <th>Pengirim</th>
-                                    <th>Jumlah</th>
+                                    <th style="text-align: center;">Jumlah</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -95,7 +95,14 @@
                                         <td>{{ $item->invoice }}</td>
                                         <td>{{ date('d/m/Y', strtotime($item->creates)) }}</td>
                                         <td>{{ $item->pengirim }}</td>
-                                        <td>Rp. {{ number_format($item->totals, 0, ',', '.') }}</td>
+                                        <td>
+                                            <div style="max-width: 80%;">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <span>Rp.</span>
+                                                    <span>{{ number_format($item->totals, 0, ',', '.') }}</span>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-info btn-icon-text detail" data-target="#modal-lg-detail" id='tbh' data-toggle="modal" data-id="{{ str_replace('/', '-', $item->invoice) }}">
                                                 <i class="mdi mdi-information-outline btn-icon-prepend"></i>Detail

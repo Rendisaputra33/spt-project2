@@ -36,10 +36,6 @@
                                 <i class="mdi mdi-library-books btn-icon-prepend"></i>Bayar
                             </button>
                             &nbsp;
-                            {{-- <button type="button" class="btn btn-success btn-icon-text d-flex add" data-target="#modal-lg-tambah"
-                            id='tbh' data-toggle="modal">
-                            <i class="mdi mdi-plus btn-icon-prepend"></i>Tambah
-                        </button> --}}
                         </div>
 
                     </div>
@@ -84,7 +80,8 @@
                                             <th class="medium">Pabrik</th>
                                             <th class="medium">Berat</th>
                                             <th class="medium">Pengirim</th>
-                                            <th class="large">Harga Beli</th>
+                                            <th class="medium">Harga Beli</th>
+                                            <th class="large">Sub Total</th>
                                         </tr>
                                     </thead>
                                     <tbody id="list-data">
@@ -102,7 +99,14 @@
                                                 <td>{{ $item->pabrik }}</td>
                                                 <td>{{ $item->bobot . ' KW' }}</td>
                                                 <td>{{ $item->nama_pengirim }}</td>
-                                                <td>{{ 'Rp. ' . number_format($item->harga_beli, 0, ',', '.') }}</td>
+                                                <td>
+                                                    <div style="max-width: 80%;">
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <span>Rp.</span>
+                                                            <span>{{ number_format($item->harga_beli, 0, ',', '.') }}</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

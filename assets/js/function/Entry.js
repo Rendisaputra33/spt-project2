@@ -6,14 +6,29 @@ const URL = document.querySelector('meta[name=baseurl]').getAttribute('aria-valu
 
 const URL_ROOT = URL + '/entry';
 
-const listMonth = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'November', 'Desember'];
+const listMonth = [
+	'Januari',
+	'Februari',
+	'Maret',
+	'April',
+	'Mei',
+	'Juni',
+	'Juli',
+	'Agustus',
+	'September',
+	'November',
+	'Desember'
+];
 
 const A = {
 	d: `class="btn btn-sm btn-info btn-icon-text detail" data-target="#modal-lg-detail" id='tbh' data-toggle="modal"`,
 	id: `<i class="mdi mdi-information-outline btn-icon-prepend"></i>`,
 	u: `class="btn btn-sm btn-warning btn-icon-text update" data-target="#modal-lg-tambah" id='tbh' data-toggle="modal"`,
 	iu: `<i class="mdi mdi-lead-pencil btn-icon-prepend"></i>`,
-	del: `class="btn btn-sm btn-danger btn-icon-text delete"`,
+	del: (status) =>
+		`class="btn btn-sm btn-${status ? 'danger' : 'secondary'} btn-icon-text ${
+			status ? 'delete' : ''
+		}"`,
 	idel: `<i class="mdi mdi-delete-forever btn-icon-prepend"></i>`
 };
 
@@ -40,7 +55,38 @@ const ELEMENT = {
 	btnHpp: document.querySelector('.hpp')
 };
 
-const periode = ['001', '002', '003', '004', '005', '006', '007', '008', '009', '010', '011', '012', '013', '014', '015', '016', '017', '018', '019', '020', '021', '022', '023', '024', '025', '026', '027', '028', '029', '030'];
+const periode = [
+	'001',
+	'002',
+	'003',
+	'004',
+	'005',
+	'006',
+	'007',
+	'008',
+	'009',
+	'010',
+	'011',
+	'012',
+	'013',
+	'014',
+	'015',
+	'016',
+	'017',
+	'018',
+	'019',
+	'020',
+	'021',
+	'022',
+	'023',
+	'024',
+	'025',
+	'026',
+	'027',
+	'028',
+	'029',
+	'030'
+];
 
 const INPUT = {
 	close: document.querySelector('.add'),
@@ -107,9 +153,14 @@ const fetchDetail = async (THIS) => {
 const fetchSearch = async (THIS) => {
 	const param = THIS.value === '' ? 'tidak-ada' : THIS.value;
 
-	const final_param = document.querySelector('input[name=data-filter]').getAttribute('data-tanggal') !== 'null' ? document.querySelector('input[name=data-filter]').getAttribute('data-tanggal') : null;
+	const final_param =
+		document.querySelector('input[name=data-filter]').getAttribute('data-tanggal') !== 'null'
+			? document.querySelector('input[name=data-filter]').getAttribute('data-tanggal')
+			: null;
 
-	const uris = final_param ? `${URL_ROOT}/json/search/${param}&${final_param}` : `${URL_ROOT}/json/search/${param}`;
+	const uris = final_param
+		? `${URL_ROOT}/json/search/${param}&${final_param}`
+		: `${URL_ROOT}/json/search/${param}`;
 
 	await fetch(uris)
 		.then((res) => res.json())
@@ -204,6 +255,27 @@ const listDelete = () => {
 };
 
 const setFormUpdate = (result) => {
+	if (result.data.id_pembayaran !== null) {
+		INPUT.nospta.disabled = true;
+		INPUT.masa.disabled = true;
+		INPUT.bobot.disabled = true;
+		INPUT.pabrik.disabled = true;
+		INPUT.keterangan.disabled = true;
+		INPUT.reg.disabled = true;
+		INPUT.pabrik.disabled = true;
+		INPUT.periode.disabled = true;
+		INPUT.nopol.disabled = true;
+	} else {
+		INPUT.nospta.disabled = false;
+		INPUT.masa.disabled = false;
+		INPUT.bobot.disabled = false;
+		INPUT.pabrik.disabled = false;
+		INPUT.keterangan.disabled = false;
+		INPUT.reg.disabled = false;
+		INPUT.pabrik.disabled = false;
+		INPUT.periode.disabled = false;
+		INPUT.nopol.disabled = false;
+	}
 	document.querySelector('#title-ubah').innerHTML = 'Ubah Data';
 	document.querySelector('#reg-petani').style.display = 'block';
 	uiReg(result.reg);
@@ -213,7 +285,9 @@ const setFormUpdate = (result) => {
 	INPUT.method.innerHTML = '<input type="hidden" name="_method" value="PUT" />';
 	INPUT.periode.value = result.data.periode;
 	INPUT.masa.value = result.data.masa_giling;
-	INPUT.reg.value = `${result.data.reg} | ${result.reg.filter((v) => v.reg === result.data.reg)[0].nama_petani}`;
+	INPUT.reg.value = `${result.data.reg} | ${
+		result.reg.filter((v) => v.reg === result.data.reg)[0].nama_petani
+	}`;
 	INPUT.nospta.value = result.data.nospta;
 	INPUT.nopol.value = result.data.nopol;
 	INPUT.variasi.value = result.data.variasi;
@@ -227,14 +301,18 @@ const setFormUpdate = (result) => {
 
 const setDetail = (data) => {
 	Detail.bobot.innerHTML = data.bobot;
-	Detail.harga.innerHTML = data.harga_beli !== null ? formatRupiah(data.harga_beli.toString(), 'Rp. ') : '-';
+	Detail.harga.innerHTML =
+		data.harga_beli !== null ? formatRupiah(data.harga_beli.toString(), 'Rp. ') : '-';
 	Detail.hpp.innerHTML = data.hpp ? formatRupiah(data.hpp.toString(), 'Rp. ') : '-';
 	Detail.ket.innerHTML = data.keterangan !== null ? data.nama_pengirim : '-';
 	Detail.masa.innerHTML = data.masa_giling;
 	Detail.nopol.innerHTML = data.nopol;
 	Detail.periode.innerHTML = data.periode;
 	Detail.reg.innerHTML = data.reg;
-	Detail.sisa.innerHTML = data.harga_beli && data.hpp !== null ? formatRupiah(((data.hpp - data.harga_beli) * data.bobot).toString(), 'Rp. ') : '-';
+	Detail.sisa.innerHTML =
+		data.harga_beli && data.hpp !== null
+			? formatRupiah(((data.hpp - data.harga_beli) * data.bobot).toString(), 'Rp. ')
+			: '-';
 	Detail.nospta.innerHTML = data.nospta;
 	Detail.tanggal.innerHTML = formatTanggalNew(timeTodate(data.created_at));
 	Detail.petani.innerHTML = data.petani;
@@ -313,7 +391,9 @@ const setReg = async (parameter) => {
 		.then((res) => res.json())
 		.then((res) => uiReg(res.data))
 		.catch((err) => err);
-	parameter === '' ? (document.querySelector('#reg-petani').style.display = 'none') : (document.querySelector('#reg-petani').style.display = 'block');
+	parameter === ''
+		? (document.querySelector('#reg-petani').style.display = 'none')
+		: (document.querySelector('#reg-petani').style.display = 'block');
 };
 
 const uiReg = (data) => {
@@ -338,7 +418,9 @@ const uiSearch = (data, no) => {
           <td>
               <button type="button" ${A.d} data-id="${data.id_entry}">${A.id} Detail </button>
               <button type="button" ${A.u} data-id="${data.id_entry}">${A.iu} Ubah </button>
-              <a href="${URL_ROOT}/${data.id_entry}" ${A.del}>${A.idel} Hapus </a>
+              <a href="${data.id_pembayaran ? `#` : `${URL_ROOT}/${data.id_entry}`}" ${A.del(
+		data.id_pembayaran === null
+	)}>${A.idel} Hapus </a>
           </td>
     </tr>
   `;
@@ -366,7 +448,10 @@ INPUT.close.onclick = function () {
 	clearForm();
 };
 // set dafault input periode
-INPUT.periode.value = window.localStorage.getItem('periode') === undefined ? '' : window.localStorage.getItem('periode');
+INPUT.periode.value =
+	window.localStorage.getItem('periode') === undefined
+		? ''
+		: window.localStorage.getItem('periode');
 // binding format input harga beli
 /* INPUT.harga.addEventListener("keyup", function () {
 	this.value = formatRupiah(this.value, "Rp. ");
@@ -401,10 +486,24 @@ INPUT.reg.onchange = function () {
 	document.querySelector('input[name=petani]').value = data;
 };
 
-document.querySelector('.filter').setAttribute('href', URL_ROOT + `?tgl=${document.querySelector('input[name=tanggalawal]').value}|${document.querySelector('input[name=tanggalakhir]').value}`);
+document
+	.querySelector('.filter')
+	.setAttribute(
+		'href',
+		URL_ROOT +
+			`?tgl=${document.querySelector('input[name=tanggalawal]').value}|${
+				document.querySelector('input[name=tanggalakhir]').value
+			}`
+	);
 
 document.querySelector('input[name=tanggalawal]').onchange = function () {
-	document.querySelector('.filter').setAttribute('href', URL_ROOT + `?tgl=${this.value}|${document.querySelector('input[name=tanggalakhir]').value}`);
+	document
+		.querySelector('.filter')
+		.setAttribute(
+			'href',
+			URL_ROOT +
+				`?tgl=${this.value}|${document.querySelector('input[name=tanggalakhir]').value}`
+		);
 };
 
 document.querySelector('input[name=tanggalakhir]').onchange = function () {

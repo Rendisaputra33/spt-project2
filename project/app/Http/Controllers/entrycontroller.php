@@ -14,10 +14,12 @@ class entrycontroller extends Controller
 {
     public function indexMethod(Request $req)
     {
+        // $data = entry::leftJoin('pembayaran', 'entry.id_entry', 'pembayaran.id_entry')->get();
+        // dd($data);
         if ($req->query('tgl') !== null) {
             $tgl = explode('|', $req->query('tgl'));
             return view('tampil-data-entry', [
-                'data' => entry::whereBetween('created_at', [$tgl[0], $this->tanggal($tgl[1])])->orderBy('id_entry', 'DESC')->get(),
+                'data' => entry::select('entry.id_entry as id_entry', 'id_pembayaran', 'pembayaran.id_entry as entry_id', 'harga_beli', 'bobot', 'type', 'type_', 'variasi', 'variasi_', 'reg', 'nospta', 'nopol', 'periode', 'keterangan', 'pabrik', 'id_pabrik', 'masa_giling', 'entry.created_at as created_at', 'entry.updated_at as updated_at')->whereBetween('entry.created_at', [$tgl[0], $this->tanggal($tgl[1])])->leftJoin('pembayaran', 'entry.id_entry', 'pembayaran.id_entry')->orderBy('entry.id_entry', 'DESC')->get(),
                 'type' => type::get(),
                 'variasi' => variasi::get(),
                 'petani' => petani::get(),
@@ -28,7 +30,7 @@ class entrycontroller extends Controller
             ]);
         }
         return view('tampil-data-entry', [
-            'data' => entry::whereDate('entry.created_at', now())->orderBy('id_entry', 'DESC')->get(),
+            'data' => entry::select('entry.id_entry as id_entry', 'id_pembayaran', 'pembayaran.id_entry as entry_id', 'harga_beli', 'bobot', 'type', 'type_', 'variasi', 'variasi_', 'reg', 'nospta', 'nopol', 'periode', 'keterangan', 'pabrik', 'id_pabrik', 'masa_giling', 'entry.created_at as created_at', 'entry.updated_at as updated_at')->whereDate('entry.created_at', now())->leftJoin('pembayaran', 'entry.id_entry', 'pembayaran.id_entry')->orderBy('entry.id_entry', 'DESC')->get(),
             'type' => type::get(),
             'variasi' => variasi::get(),
             'petani' => petani::get(),
@@ -89,25 +91,36 @@ class entrycontroller extends Controller
     {
         $map = $this->mappingData($req);
 
+        if ($req->pabrik !== null) {
+            return entry::where('id_entry', $id)->update([
+                'periode' => $req->periode,
+                'masa_giling' => $req->masa,
+                'id_pabrik' => explode(' | ', $req->pabrik)[0],
+                'pabrik' => explode(' | ', $req->pabrik)[1],
+                'reg' => explode(' | ', $req->reg)[0],
+                'petani' => $req->petani,
+                'nospta' => $req->nospta,
+                'nopol' => $req->nopol,
+                'bobot' => $req->bobot,
+                'variasi' => $req->variasi,
+                'variasi_' => $map['variasi'],
+                'type' => $req->type,
+                'type_' => $map['type'],
+                'keterangan' => $req->keterangan,
+                'hpp' => $req->hpp === null ? null : str_replace('.', '', explode(' ', $req->hpp)[1])
+            ])
+                ? redirect()->back()->with('sukses', 'data berhasil diupdate')
+                : redirect()->back()->with('error', 'data gagal diupdate');
+        }
+
         return entry::where('id_entry', $id)->update([
-            'periode' => $req->periode,
-            'masa_giling' => $req->masa,
-            'id_pabrik' => explode(' | ', $req->pabrik)[0],
-            'pabrik' => explode(' | ', $req->pabrik)[1],
-            'reg' => explode(' | ', $req->reg)[0],
-            'petani' => $req->petani,
-            'nospta' => $req->nospta,
-            'nopol' => $req->nopol,
-            'bobot' => $req->bobot,
             'variasi' => $req->variasi,
             'variasi_' => $map['variasi'],
-            'type' => $req->type,
             'type_' => $map['type'],
-            'keterangan' => $req->keterangan,
+            'type' => $req->type,
             'hpp' => $req->hpp === null ? null : str_replace('.', '', explode(' ', $req->hpp)[1])
-        ])
-            ? redirect()->back()->with('sukses', 'data berhasil ditambahkan')
-            : redirect()->back()->with('error', 'data gagal ditambahkan');
+        ]) ?  redirect()->back()->with('sukses', 'data berhasil diupdate')
+            : redirect()->back()->with('error', 'data gagal diupdate');
     }
 
     public function deleteMethod($id)
@@ -119,7 +132,7 @@ class entrycontroller extends Controller
 
     public function getupMethod($id)
     {
-        $data = entry::where('id_entry', $id)->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')->first();
+        $data = entry::where('entry.id_entry', $id)->leftJoin('pembayaran', 'entry.id_entry', 'pembayaran.id_entry')->leftJoin('mstr_pengirim', 'entry.keterangan', 'mstr_pengirim.id_pengirim')->first();
         return response()->json([
             'data' => $data,
             'reg' => petani::where('id_pabrik', $data->id_pabrik)->get()
@@ -133,7 +146,7 @@ class entrycontroller extends Controller
             $tgl = explode('|', $param[1]);
             if ($param[0] == 'tidak-ada') {
                 return response()->json([
-                    'data' => entry::whereBetween('created_at', [$tgl[0], $this->tanggal($tgl[1])])->get(),
+                    'data' => entry::select('entry.id_entry as id_entry', 'id_pembayaran', 'pembayaran.id_entry as entry_id', 'harga_beli', 'bobot', 'type', 'type_', 'variasi', 'variasi_', 'reg', 'nospta', 'nopol', 'periode', 'keterangan', 'pabrik', 'id_pabrik', 'masa_giling', 'created_at', 'entry.updated_at as updated_at')->whereBetween('created_at', [$tgl[0], $this->tanggal($tgl[1])])->get(),
                 ]);
             } else {
                 return response()->json([
@@ -143,7 +156,7 @@ class entrycontroller extends Controller
         } else {
             if ($s === 'tidak-ada') {
                 return response()->json([
-                    'data' => entry::whereDate('created_at', now())->get(),
+                    'data' => entry::select('entry.id_entry as id_entry', 'id_pembayaran', 'pembayaran.id_entry as entry_id', 'harga_beli', 'bobot', 'type', 'type_', 'variasi', 'variasi_', 'reg', 'nospta', 'nopol', 'periode', 'keterangan', 'pabrik', 'id_pabrik', 'masa_giling', 'created_at', 'entry.updated_at as updated_at')->whereDate('created_at', now())->get(),
                 ]);
             }
             return response()->json([
